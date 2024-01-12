@@ -1,12 +1,47 @@
-[gd_scene load_steps=3 format=3 uid="uid://dxx3636flyr8a"]
+[gd_scene load_steps=9 format=3 uid="uid://dxx3636flyr8a"]
 
 [ext_resource type="Script" path="res://stateMachine.gd" id="1_1qpr2"]
 [ext_resource type="Script" path="res://State Machine.gd" id="2_15iyj"]
+[ext_resource type="Script" path="res://Player/State Scripts/Idle.gd" id="3_0mjya"]
+[ext_resource type="Script" path="res://Player/State Scripts/Walk.gd" id="4_846i6"]
+[ext_resource type="Script" path="res://Player/State Scripts/interact.gd" id="5_rf5vj"]
+[ext_resource type="Script" path="res://Player/State Scripts/Offscreen.gd" id="6_o4vik"]
 
-[node name="Player" type="Node2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_63l4v"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6dppy"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}]
+
+[node name="Player" type="CharacterBody2D"]
+collision_layer = 8
+collision_mask = 7
 script = ExtResource("1_1qpr2")
 
-[node name="State Machine" type="Node" parent="."]
-script = ExtResource("2_15iyj")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_63l4v")
 
-[node name="Idle" type="Node" parent="State Machine"]
+[node name="State Machine" type="Node" parent="." node_paths=PackedStringArray("initState")]
+script = ExtResource("2_15iyj")
+initState = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="State Machine" node_paths=PackedStringArray("host")]
+script = ExtResource("3_0mjya")
+host = NodePath("../..")
+
+[node name="Walk" type="Node" parent="State Machine"]
+script = ExtResource("4_846i6")
+
+[node name="Interact" type="Node" parent="State Machine"]
+script = ExtResource("5_rf5vj")
+
+[node name="Offscreen" type="Node" parent="State Machine"]
+script = ExtResource("6_o4vik")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_6dppy")
+animation = &"Idle"
