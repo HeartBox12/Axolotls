@@ -10,6 +10,16 @@ func _process(delta):
 	#Get tilemap coords of tile the player is standing on
 	playerPos = $Tiles.local_to_map($Player.position)
 	$indicator.position = $Tiles.map_to_local(playerPos)
+	
+	if $Player.input != Vector2(0, 0):
+		if Input.is_action_pressed("move_left"):
+			$indicator.position.x -= 1
+		if Input.is_action_pressed("move_down"):
+			$indicator.position.y += 1
+		if Input.is_action_pressed("move_right"):
+			$indicator.position.x += 1
+		if Input.is_action_pressed("move_up"):
+			$indicator.position.y -= 1
 
 func adjust_day():
 	$DayCount.text = "[center]The stars will alime in [color=#00FF00]%s days[/color][/center]" %[day]
