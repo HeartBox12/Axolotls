@@ -143,6 +143,26 @@ animations = [{
 "loop": true,
 "name": &"idle_up",
 "speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"walk_down",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"walk_left",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"walk_right",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"walk_up",
+"speed": 5.0
 }]
 
 [node name="Player" type="CharacterBody2D"]
@@ -155,16 +175,17 @@ shape = SubResource("CircleShape2D_63l4v")
 
 [node name="State Machine" type="Node" parent="." node_paths=PackedStringArray("initState")]
 script = ExtResource("2_15iyj")
-initState = NodePath("Idle")
+initState = NodePath("Walk")
 
 [node name="Idle" type="Node" parent="State Machine" node_paths=PackedStringArray("host", "sprite")]
 script = ExtResource("3_0mjya")
 host = NodePath("../..")
 sprite = NodePath("../../sprite")
 
-[node name="Walk" type="Node" parent="State Machine" node_paths=PackedStringArray("host")]
+[node name="Walk" type="Node" parent="State Machine" node_paths=PackedStringArray("host", "sprite")]
 script = ExtResource("4_846i6")
 host = NodePath("../..")
+sprite = NodePath("../../sprite")
 
 [node name="Interact" type="Node" parent="State Machine" node_paths=PackedStringArray("host")]
 script = ExtResource("5_rf5vj")
@@ -177,4 +198,4 @@ host = NodePath("../..")
 [node name="sprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(52, 41)
 sprite_frames = SubResource("SpriteFrames_6dppy")
-animation = &"idle_down"
+animation = &"walk_down"
