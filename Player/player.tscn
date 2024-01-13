@@ -281,7 +281,7 @@ animations = [{
 collision_layer = 8
 collision_mask = 7
 script = ExtResource("1_1qpr2")
-walkSpeed = 1000000000
+walkSpeed = 10000
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_63l4v")

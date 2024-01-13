@@ -120,7 +120,7 @@ length = 5.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("DayCount:position")
+tracks/0/path = NodePath("Control/DayCount:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -132,7 +132,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("DayCount:modulate")
+tracks/1/path = NodePath("Control/DayCount:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -206,7 +206,6 @@ _data = {
 }
 
 [node name="Main" type="Node2D"]
-modulate = Color(0.74902, 0.772549, 0.94902, 1)
 script = ExtResource("1_u5oha")
 
 [node name="Tiles" type="TileMap" parent="."]
@@ -220,30 +219,6 @@ script = ExtResource("2_4tv3b")
 libraries = {
 "": SubResource("AnimationLibrary_6m7n0")
 }
-
-[node name="DayCount" type="RichTextLabel" parent="."]
-modulate = Color(1, 1, 1, 0)
-top_level = true
-z_index = 1
-z_as_relative = false
-offset_right = 960.0
-offset_bottom = 189.0
-theme_override_fonts/normal_font = ExtResource("4_dp6hs")
-theme_override_font_sizes/normal_font_size = 40
-bbcode_enabled = true
-text = "[center]The Stars will alime in [color=#00FF00]x days[/color][/center]"
-
-[node name="TextShadow" type="RichTextLabel" parent="DayCount"]
-z_index = -1
-layout_mode = 0
-offset_left = 2.0
-offset_top = 2.0
-offset_right = 962.0
-offset_bottom = 306.0
-theme_override_fonts/normal_font = ExtResource("4_dp6hs")
-theme_override_font_sizes/normal_font_size = 40
-bbcode_enabled = true
-text = "[center][color=#000000]The Stars will alime in[/color][color=#003300] x days[/color][/center]"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(480, 270)
@@ -269,3 +244,35 @@ texture = ExtResource("6_aqrli")
 [node name="Player" parent="." instance=ExtResource("8_ptg5p")]
 z_index = 1
 position = Vector2(302, 199)
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="DayCount" type="RichTextLabel" parent="Control"]
+modulate = Color(1, 1, 1, 0)
+top_level = true
+z_index = 1
+z_as_relative = false
+layout_mode = 0
+offset_right = 960.0
+offset_bottom = 189.0
+theme_override_fonts/normal_font = ExtResource("4_dp6hs")
+theme_override_font_sizes/normal_font_size = 40
+bbcode_enabled = true
+text = "[center]The Stars will alime in [color=#00FF00]x days[/color][/center]"
+
+[node name="TextShadow" type="RichTextLabel" parent="Control/DayCount"]
+show_behind_parent = true
+z_index = -1
+layout_mode = 0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 962.0
+offset_bottom = 306.0
+theme_override_fonts/normal_font = ExtResource("4_dp6hs")
+theme_override_font_sizes/normal_font_size = 40
+bbcode_enabled = true
+text = "[center][color=#000000]The Stars will alime in[/color][color=#003300] x days[/color][/center]"
