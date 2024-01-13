@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dxx3636flyr8a"]
+[gd_scene load_steps=10 format=3 uid="uid://dxx3636flyr8a"]
 
 [ext_resource type="Script" path="res://stateMachine.gd" id="1_1qpr2"]
 [ext_resource type="Script" path="res://State Machine.gd" id="2_15iyj"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://Player/State Scripts/Walk.gd" id="4_846i6"]
 [ext_resource type="Script" path="res://Player/State Scripts/interact.gd" id="5_rf5vj"]
 [ext_resource type="Script" path="res://Player/State Scripts/Offscreen.gd" id="6_o4vik"]
+[ext_resource type="FontFile" uid="uid://tyuiinyuokna" path="res://Fonts/Cinzel-Regular.ttf" id="7_wwy7j"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_63l4v"]
 
@@ -45,3 +46,11 @@ script = ExtResource("6_o4vik")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_6dppy")
 animation = &"Idle"
+
+[node name="Label" type="RichTextLabel" parent="."]
+offset_right = 933.0
+offset_bottom = 535.0
+theme_override_fonts/normal_font = ExtResource("7_wwy7j")
+theme_override_font_sizes/normal_font_size = 58
+text = "The Stars will alime in 3 days"
+fit_content = true
