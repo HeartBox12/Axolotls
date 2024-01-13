@@ -1,16 +1,17 @@
 extends State
 @export var host:Node
+@export var sprite:Node
 
 func enter(): #When this state is entered
-	match host.facing: #Sprite Assign, might need more if sprites are octal
+	match host.facing: #Sprite Assign
 		0:
-			pass #Up-facing sprite
+			sprite.animation = "idle_right"
 		1:
-			pass
+			sprite.animation = "idle_down"
 		2:
-			pass
+			sprite.animation = "idle_left"
 		3:
-			pass
+			sprite.animation = "idle_up"
 	#Change sprite to idle
 	#Start playing if needed
 	

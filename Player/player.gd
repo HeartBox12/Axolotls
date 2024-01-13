@@ -18,7 +18,16 @@ func _process(delta):
 	if input.length() > 1:
 		input = input.normalized() #input is now ready to go!
 	
-	input.angle()
+	if input != Vector2(0, 0):
+		#Determine facing. Prioritize left and right over up and down.
+		if input.x > 0:
+			facing = 0 #lfacing right
+		elif input.x < 0:
+			facing = 2 #facing left
+		elif input.y < 0:
+			facing = 3 #facing up (away)
+		else:
+			facing = 1 #facing down (towards)
 
 func _physics_process(delta):
 	pass
