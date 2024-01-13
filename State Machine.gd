@@ -28,7 +28,7 @@ func on_swap(curr:State, newName:StringName): #Curr = current state. New = incom
 	if !curr || curr != currentState || !newState: #Validity checks
 		print("Invalid call to on_swap in State Machine!") #Error check
 		return
-	
+		
 	curr.exit()
 	currentState = newState #Refactor later and just use currentState. NOTE: this will not be compatible with checks
 	newState.enter()
