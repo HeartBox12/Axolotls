@@ -19,7 +19,7 @@ func game_start(): #When the game starts, add in the player and setup the UI
 	#player.position = Vector2(48, 48) #TEMPORARY Push the player into the field
 	pass
 
-func _process(delta):
+func _process(_delta):
 	if Input.is_action_just_pressed("test_button_to_make_something_happen"): #we'll get rid of this control in the final version, useful for testing
 		place_turret()
 

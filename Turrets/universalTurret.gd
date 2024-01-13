@@ -21,7 +21,7 @@ func _process(delta):
 	if fireDelay >= fireCooldown and position.distance_to(target) <= range: #Can this turret fire? AKA is the fire cooldown done and is there a target in range?
 		fireBullet() #make turrret go pew
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	rotation = target.angle_to_point(position) + 1.570796 #Gets the angle between turret and target in radians, adds 90 degrees/quarter turn
 #to future me: change the sprites to default face right so there doesn't need to be an angle offset
 

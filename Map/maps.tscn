@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bf0snq1g2u65g"]
+[gd_scene load_steps=13 format=3 uid="uid://bf0snq1g2u65g"]
 
 [ext_resource type="Texture2D" uid="uid://dibnvpc5mj84p" path="res://Assets/temporary backdrop.png" id="1_op4nm"]
 [ext_resource type="Script" path="res://Map/main.gd" id="1_u5oha"]
@@ -6,6 +6,7 @@
 [ext_resource type="FontFile" uid="uid://tyuiinyuokna" path="res://Fonts/Cinzel-Regular.ttf" id="4_dp6hs"]
 [ext_resource type="Texture2D" uid="uid://40qkdi11kb6" path="res://icon.svg" id="5_igkck"]
 [ext_resource type="Texture2D" uid="uid://ba6tp4ogijwrs" path="res://Assets/lime.jpg" id="6_aqrli"]
+[ext_resource type="Texture2D" uid="uid://sjkq12iuacd6" path="res://Assets/credits.png" id="7_r7iq4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ukoqo"]
 texture = ExtResource("1_op4nm")
@@ -28,6 +29,7 @@ sources/1 = SubResource("TileSetAtlasSource_ukoqo")
 
 [sub_resource type="Animation" id="Animation_nfx07"]
 resource_name = "startOfDay"
+length = 5.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -35,10 +37,10 @@ tracks/0/path = NodePath("DayCount:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1.93187, 1),
+"times": PackedFloat32Array(0, 1, 4, 5),
+"transitions": PackedFloat32Array(2, 1, 2, 1),
 "update": 0,
-"values": [Vector2(0, 0), Vector2(0, 100)]
+"values": [Vector2(0, 0), Vector2(0, 100), Vector2(0, 100), Vector2(0, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -47,10 +49,10 @@ tracks/1/path = NodePath("DayCount:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1.8025, 1),
+"times": PackedFloat32Array(0, 1, 4, 5),
+"transitions": PackedFloat32Array(2, 1, 2, 2),
 "update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 tracks/2/type = "method"
 tracks/2/imported = false
@@ -140,6 +142,18 @@ tracks/5/keys = {
 "update": 0,
 "values": [Vector2(480, 270), Vector2(480, -200)]
 }
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Camera2D/Credits:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_6m7n0"]
 _data = {
@@ -188,6 +202,12 @@ text = "[center][color=#000000]The Stars will alime in[/color][color=#003300] x 
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(480, 270)
+
+[node name="Credits" type="Sprite2D" parent="Camera2D"]
+visible = false
+z_index = 1
+scale = Vector2(2, 2)
+texture = ExtResource("7_r7iq4")
 
 [node name="Moon" type="Sprite2D" parent="."]
 z_index = -1
