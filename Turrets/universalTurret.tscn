@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://ca53jhhml5hya"]
+
+[ext_resource type="Texture2D" uid="uid://bftph2kj13h5b" path="res://Assets/limerturret.png" id="1_rtyb2"]
+[ext_resource type="Texture2D" uid="uid://ck5bmxt4n8lyd" path="res://Assets/limerturretempty.png" id="2_iauuy"]
+[ext_resource type="Texture2D" uid="uid://bw8sqh83snbmu" path="res://Assets/limerturretfire.png" id="3_h47fw"]
+[ext_resource type="Script" path="res://Turrets/universalTurret.gd" id="4_2mfe1"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_i10rj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_rtyb2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_iauuy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_h47fw")
+}],
+"loop": false,
+"name": &"default",
+"speed": 0.0
+}]
+
+[node name="UniversalTurret" type="AnimatedSprite2D"]
+z_index = 10
+sprite_frames = SubResource("SpriteFrames_i10rj")
+script = ExtResource("4_2mfe1")

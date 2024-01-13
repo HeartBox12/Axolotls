@@ -175,6 +175,5 @@ script = ExtResource("6_o4vik")
 host = NodePath("../..")
 
 [node name="sprite" type="AnimatedSprite2D" parent="."]
-position = Vector2(52, 41)
 sprite_frames = SubResource("SpriteFrames_6dppy")
 animation = &"idle_down"
