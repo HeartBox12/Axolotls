@@ -1,9 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://bf0snq1g2u65g"]
+[gd_scene load_steps=12 format=3 uid="uid://bf0snq1g2u65g"]
 
 [ext_resource type="Texture2D" uid="uid://dibnvpc5mj84p" path="res://Assets/temporary backdrop.png" id="1_op4nm"]
 [ext_resource type="Script" path="res://Map/main.gd" id="1_u5oha"]
-[ext_resource type="Script" path="res://Map/map.gd" id="2_4tv3b"]
+[ext_resource type="Script" path="res://Map/tiles.gd" id="2_4tv3b"]
 [ext_resource type="FontFile" uid="uid://tyuiinyuokna" path="res://Fonts/Cinzel-Regular.ttf" id="4_dp6hs"]
+[ext_resource type="Texture2D" uid="uid://40qkdi11kb6" path="res://icon.svg" id="5_igkck"]
+[ext_resource type="Texture2D" uid="uid://ba6tp4ogijwrs" path="res://Assets/lime.jpg" id="6_aqrli"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ukoqo"]
 texture = ExtResource("1_op4nm")
@@ -65,15 +67,90 @@ tracks/2/keys = {
 }]
 }
 
+[sub_resource type="Animation" id="Animation_kcwfj"]
+resource_name = "Win"
+length = 8.0
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Moon:scale:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(2, -0.25, 0, 0.25, 0, 2.5, -0.25, 0, 0.25, 0, 1.5, -0.25, 0, 0.25, 0, 3, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1.5, -0.25, 0, 0.25, 0, 2, -0.25, 0, 0.25, 0, 3, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 2, -0.25, 0, 0.25, 0, 2, -0.25, 0, 0.25, 0, 4, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(3, 3.6, 4.2, 5, 5.7, 5.9, 6.3, 6.5, 6.7, 6.9, 7.3, 7.5)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Moon:scale:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(2, -0.25, 0, 0.25, 0, 2.5, -0.25, 0, 0.25, 0, 1.5, -0.25, 0, 0.25, 0, 3, -0.25, 0, 0.25, 0, 1.5, -0.25, 0, 0.25, 0, 2.5, -0.25, 0, 0.25, 0, 1.5, -0.25, 0, 0.25, 0, 3, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 2, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(3, 3.6, 4.2, 5.2, 5.7, 6, 6.2, 6.4, 6.7, 7.3, 7.6)
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Moon:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(4.2, 7.2),
+"transitions": PackedFloat32Array(10.1965, 2.2974),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(100, 0.498039, 0.498039, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MoonLime:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(3, 7.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Moon:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(3, 7.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Camera2D:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(480, 270), Vector2(480, -200)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_6m7n0"]
 _data = {
+"Win": SubResource("Animation_kcwfj"),
 "startOfDay": SubResource("Animation_nfx07")
 }
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_u5oha")
 
-[node name="Map" type="TileMap" parent="."]
+[node name="Tiles" type="TileMap" parent="."]
 scale = Vector2(4, 4)
 tile_set = SubResource("TileSet_0hg27")
 format = 2
@@ -84,6 +161,7 @@ script = ExtResource("2_4tv3b")
 libraries = {
 "": SubResource("AnimationLibrary_6m7n0")
 }
+autoplay = "startOfDay"
 
 [node name="DayCount" type="RichTextLabel" parent="."]
 modulate = Color(1, 1, 1, 0)
@@ -107,3 +185,18 @@ theme_override_fonts/normal_font = ExtResource("4_dp6hs")
 theme_override_font_sizes/normal_font_size = 40
 bbcode_enabled = true
 text = "[center][color=#000000]The Stars will alime in[/color][color=#003300] x days[/color][/center]"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(480, 270)
+
+[node name="Moon" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(480, -200)
+scale = Vector2(2, 2)
+texture = ExtResource("5_igkck")
+
+[node name="MoonLime" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(480, -200)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("6_aqrli")
