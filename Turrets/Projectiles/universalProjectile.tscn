@@ -1,8 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://c1gtroinrhi5m"]
+[gd_scene load_steps=4 format=3 uid="uid://c1gtroinrhi5m"]
 
 [ext_resource type="Script" path="res://Turrets/Projectiles/universalProjectile.gd" id="1_5np6a"]
 [ext_resource type="Texture2D" uid="uid://dhmtj3mxke2o4" path="res://Assets/limebullet.png" id="1_ao74f"]
 
-[node name="UniversalProjectile" type="Sprite2D"]
-texture = ExtResource("1_ao74f")
+[sub_resource type="CircleShape2D" id="CircleShape2D_24hlw"]
+radius = 4.0
+
+[node name="UniversalProjectile" type="Area2D"]
+collision_layer = 64
+collision_mask = 4
 script = ExtResource("1_5np6a")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_24hlw")
+
+[node name="Sprite2D" type="Sprite2D" parent="CollisionShape2D"]
+texture = ExtResource("1_ao74f")
