@@ -28,6 +28,21 @@ uv_clipping = true
 physics_layer_0/collision_layer = 1
 sources/4 = SubResource("TileSetAtlasSource_llqcd")
 
+[sub_resource type="Animation" id="Animation_iq0yl"]
+resource_name = "Loss"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 0, 0, 1)]
+}
+
 [sub_resource type="Animation" id="Animation_kcwfj"]
 resource_name = "Win"
 length = 10.0
@@ -212,21 +227,6 @@ tracks/1/keys = {
 }]
 }
 
-[sub_resource type="Animation" id="Animation_iq0yl"]
-resource_name = "Loss"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 0, 0, 1)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_6m7n0"]
 _data = {
 "Loss": SubResource("Animation_iq0yl"),
@@ -320,9 +320,11 @@ bbcode_enabled = true
 position = Vector2(48, 48)
 texture = ExtResource("9_2hmug")
 
-[node name="Enemy" parent="." node_paths=PackedStringArray("target") instance=ExtResource("10_xaf3q")]
+[node name="Enemy" parent="." instance=ExtResource("10_xaf3q")]
 position = Vector2(525, 396)
-target = NodePath("../plant")
 
 [node name="plant" parent="." instance=ExtResource("10_m1vjg")]
 position = Vector2(335, 411)
+
+[node name="plant2" parent="." instance=ExtResource("10_m1vjg")]
+position = Vector2(250, 329)

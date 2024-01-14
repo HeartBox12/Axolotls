@@ -55,7 +55,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="plant" type="Area2D"]
+[node name="plant" type="Area2D" groups=["targets"]]
 collision_layer = 32
 collision_mask = 4
 script = ExtResource("1_o4dp6")

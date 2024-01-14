@@ -3,8 +3,8 @@ extends Area2D
 @export var health:float = 5
 var ripe = false #Read by interaction system
 
-signal picked
 signal destroyed
+signal picked
 
 func _ready():
 	Global.Daytime.connect(ripen)
@@ -15,4 +15,6 @@ func ripen():
 
 func _process(delta):
 	if health <= 0:
+		remove_from_group("targets")
+		destroyed.emit()
 		queue_free()
