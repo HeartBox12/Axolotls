@@ -1,6 +1,7 @@
 extends Node2D
 var day = 2
 var playerPos #Player position in tilemap coords.
+var lookPos
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -9,17 +10,19 @@ func _ready():
 func _process(delta):
 	#Get tilemap coords of tile the player is standing on
 	playerPos = $Tiles.local_to_map($Player.position)
-	$indicator.position = $Tiles.map_to_local(playerPos)
+	lookPos = playerPos
+
+	if Input.is_action_pressed("move_left"):
+		lookPos.x -= 1
+	if Input.is_action_pressed("move_down"):
+		lookPos.y += 1
+	if Input.is_action_pressed("move_right"):
+		lookPos.x += 1
+	if Input.is_action_pressed("move_up"):
+		lookPos.y -= 1
 	
-	if $Player.input != Vector2(0, 0):
-		if Input.is_action_pressed("move_left"):
-			$indicator.position.x -= 1
-		if Input.is_action_pressed("move_down"):
-			$indicator.position.y += 1
-		if Input.is_action_pressed("move_right"):
-			$indicator.position.x += 1
-		if Input.is_action_pressed("move_up"):
-			$indicator.position.y -= 1
+	if playerPos != lookPos:
+		$indicator.position = $Tiles.map_to_local(lookPos)
 
 func adjust_day():
 	$DayCount.text = "[center]The stars will alime in [color=#00FF00]%s days[/color][/center]" %[day]

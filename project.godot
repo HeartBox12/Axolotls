@@ -66,6 +66,7 @@ test_button_to_make_something_happen={
 2d_physics/layer_4="Player"
 2d_physics/layer_5="Buildings"
 2d_physics/layer_6="Plants"
+2d_physics/layer_7="Bullets"
 
 [rendering]
 
