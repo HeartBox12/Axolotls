@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://ca53jhhml5hya"]
+[gd_scene load_steps=8 format=3 uid="uid://ca53jhhml5hya"]
 
 [ext_resource type="Texture2D" uid="uid://d14nd2d5iblqe" path="res://Assets/limer_turret.png" id="1_i4k2q"]
 [ext_resource type="Script" path="res://Turrets/universalTurret.gd" id="4_2mfe1"]
@@ -32,9 +32,20 @@ animations = [{
 "speed": 0.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_4q2c3"]
+
 [node name="UniversalTurret" type="AnimatedSprite2D"]
 z_index = 10
 sprite_frames = SubResource("SpriteFrames_i10rj")
-centered = false
 flip_v = true
 script = ExtResource("4_2mfe1")
+
+[node name="Range" type="Area2D" parent="."]
+collision_layer = 128
+collision_mask = 4
+
+[node name="RangeCollision" type="CollisionShape2D" parent="Range"]
+shape = SubResource("CircleShape2D_4q2c3")
+
+[connection signal="area_entered" from="Range" to="." method="_on_range_area_entered"]
+[connection signal="area_exited" from="Range" to="." method="_on_range_area_exited"]
