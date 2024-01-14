@@ -3,10 +3,11 @@ extends State
 @export var machine:Node
 
 func enter(): #When this state is entered
-	pass
+	host.visible = false
 	
 func exit(): #Just before this state is exited
-	pass
+	host.visible = true
+	host.facing = 1
 
 func update(_delta): #Equivalent to func process(delta) in the host. Only use process() to call this
 	pass
