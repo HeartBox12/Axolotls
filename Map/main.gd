@@ -5,6 +5,8 @@ var lookPos
 
 signal daytime #Connects to plants to tell them to ripen.
 
+var allTargets = [$plant] #Things that the enemies could theoretically attack.
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass

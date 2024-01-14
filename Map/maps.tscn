@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bf0snq1g2u65g"]
+[gd_scene load_steps=19 format=3 uid="uid://bf0snq1g2u65g"]
 
 [ext_resource type="Texture2D" uid="uid://dibnvpc5mj84p" path="res://Assets/temporary backdrop.png" id="1_op4nm"]
 [ext_resource type="Script" path="res://Map/main.gd" id="1_u5oha"]
@@ -9,6 +9,8 @@
 [ext_resource type="Texture2D" uid="uid://sjkq12iuacd6" path="res://Assets/credits.png" id="7_r7iq4"]
 [ext_resource type="PackedScene" uid="uid://dxx3636flyr8a" path="res://Player/player.tscn" id="8_ptg5p"]
 [ext_resource type="Texture2D" uid="uid://cdquxw2aafc8x" path="res://Assets/indicator.png" id="9_2hmug"]
+[ext_resource type="PackedScene" uid="uid://x18enyc2dnnf" path="res://plant/plant.tscn" id="10_m1vjg"]
+[ext_resource type="PackedScene" uid="uid://dd2dv03lkhv26" path="res://enemy/enemy.tscn" id="10_xaf3q"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_llqcd"]
 texture = ExtResource("1_op4nm")
@@ -210,8 +212,24 @@ tracks/1/keys = {
 }]
 }
 
+[sub_resource type="Animation" id="Animation_iq0yl"]
+resource_name = "Loss"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 0, 0, 1)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_6m7n0"]
 _data = {
+"Loss": SubResource("Animation_iq0yl"),
 "Win": SubResource("Animation_kcwfj"),
 "startOfDay": SubResource("Animation_nfx07"),
 "startOfNight": SubResource("Animation_27aa4")
@@ -231,7 +249,6 @@ script = ExtResource("2_4tv3b")
 libraries = {
 "": SubResource("AnimationLibrary_6m7n0")
 }
-autoplay = "startOfNight"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(480, 270)
@@ -259,6 +276,7 @@ z_index = 1
 position = Vector2(100, 50)
 
 [node name="Control" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
@@ -290,6 +308,20 @@ theme_override_font_sizes/normal_font_size = 40
 bbcode_enabled = true
 text = "[center][color=#000000]The Stars will alime in[/color][color=#003300] x days[/color][/center]"
 
+[node name="LimeCount" type="RichTextLabel" parent="Control"]
+layout_mode = 0
+offset_right = 81.0
+offset_bottom = 40.0
+theme_override_fonts/normal_font = ExtResource("4_dp6hs")
+bbcode_enabled = true
+
 [node name="indicator" type="Sprite2D" parent="."]
 position = Vector2(48, 48)
 texture = ExtResource("9_2hmug")
+
+[node name="Enemy" parent="." node_paths=PackedStringArray("target") instance=ExtResource("10_xaf3q")]
+position = Vector2(525, 396)
+target = NodePath("../plant")
+
+[node name="plant" parent="." instance=ExtResource("10_m1vjg")]
+position = Vector2(335, 411)
