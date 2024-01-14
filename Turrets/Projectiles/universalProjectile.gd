@@ -1,7 +1,7 @@
 extends Area2D
 var direction
-var speed:int = 1000 #how fast does the projectile go? in pixels/second
-var lifetime:float = 0.2 #how many seconds does the projectile say alive for
+var speed:int #how fast does the projectile go? in pixels/second
+var lifetime:float #how many seconds does the projectile say alive for
 var currentLife:float = 0.0 #current time it's been alive for
 signal bulletDestroyed() #unsure if this is needed, it would be to purge the variable from the array in the main code
 

@@ -27,7 +27,7 @@ func _process(delta):
 		lookPos.x += 1
 	if Input.is_action_pressed("move_up"):
 		lookPos.y -= 1
-	
+
 	if playerPos != lookPos:
 		selPos = lookPos
 		$indicator.position = $Tiles.map_to_local(selPos)

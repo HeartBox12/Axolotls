@@ -30,12 +30,14 @@ func place_turret():
 	tempTurret.position = Vector2i(turretPositions, 64)
 	turretPositions += 32
 
-func fire(pos, rot, index):
+func fire(pos, rot, index, speed, lifetime):
 	var shotBullet = bulletScene.instantiate()
 	bullets[index].append(shotBullet)
 	add_child(shotBullet)
 	shotBullet.position = pos
 	shotBullet.rotation = rot
+	shotBullet.speed = speed
+	shotBullet.lifetime = lifetime
 	shotBullet.bulletDestroyed.connect(self.bulletDestroyed)
 
 func bulletDestroyed():

@@ -1,16 +1,17 @@
 extends AnimatedSprite2D
-var fireCooldown:int = 1 #Easy access to change the cooldown period between shots, in seconds
-var fireDelay:float = 0.0 #Fire delay variable, current time between shots; this is the variable that is altered
+@export var fireCooldown:int = 1 #Easy access to change the cooldown period between shots, in seconds
+@export var fireDelay:float = 0.0 #Fire delay variable, current time between shots; this is the variable that is altered
 var target:Vector2 = Vector2(0, 0) #Declares the target variable and restricts it to the Vector2 data type
-var range:int = 100 #this is the range of this turret, will only fire on targets within this range
+@export var range:int = 100 #this is the range of this turret, will only fire on targets within this range
+@export var projectileSpeed:int = 1000
+@export var projectileLifetime:float = 0.5
 var index:int
 var fireRotation:float = 0
-signal fire(pos, rot, me)
+signal fire(pos, rot, me, projectileSpeed, projectileLifetime)
 # Called when the node enters the scene tree for the first time.
 
 func _ready():
 	pass # Replace with function body.
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -34,4 +35,4 @@ func _physics_process(_delta):
 func fireBullet():
 	frame = 2 #Change to firing sprite
 	fireDelay = 0 #Resets the delay between shots
-	fire.emit(position + Vector2(16, 16), fireRotation, index)
+	fire.emit(position + Vector2(16, 16), fireRotation, index, projectileSpeed, projectileLifetime)
