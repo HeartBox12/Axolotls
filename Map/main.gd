@@ -9,6 +9,7 @@ var day = 1
 var playerPos #Player position in tilemap coords.
 var lookPos
 var selPos
+var tiledNodes:Array = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -49,26 +50,20 @@ func start_night(): #Begin spawning enemies, etc.
 
 func _unhandled_input(event):
 	if event.is_action_pressed("interact_plant"):
-		var data = $Tiles.get_cell_tile_data(0, selPos)
+		var selected = tiledNodes[selPos.x][selPos.y]
 		
-		match data.get_custom_data("OccuType"):
-			0: #Nothing
-				var instance = plant.instantiate()
-				$Tiles.add_child(instance)
-				print($Tiles.local_to_map(selPos))
-				instance.position = $Tiles.map_to_local(selPos)
-				if data:
-					data.set_custom_data("Occupant", instance)
-				
-				#create plant
-			1: #plant
-				pass
-				#if plant is ripe:
-					#plant.harvest
-				#else:
-					#plant.regain
-			2: #turret
-				pass
+		if tiledNodes[selPos.x][selPos.y] == null:
+			var instance = plant.instantiate()
+			$Tiles.add_child(instance)
+			instance.position = $Tiles.map_to_local(selPos)
+			tiledNodes[selPos.x][selPos.y] = instance
+			
+			#if plant is ripe:
+				#plant.harvest
+			#else:
+			#plant.regain
+			
+			#turret
 				#nothing
 	
 	if event.is_action_pressed("interact_turret"):
