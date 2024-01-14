@@ -16,6 +16,9 @@ func _ready():
 		currentState = initState
 		initState.enter()
 	
+	Global.Daytime.connect(on_daytime) #Set self up to respond in state to day/night cycle
+	Global.Nighttime.connect(on_nighttime)
+	
 func _process(delta): #Frame-to-frame behavior is dictated by the state
 	currentState.update(delta)
 
@@ -32,3 +35,9 @@ func on_swap(curr:State, newName:StringName): #Curr = current state. New = incom
 	curr.exit()
 	currentState = newState #Refactor later and just use currentState. NOTE: this will not be compatible with checks
 	newState.enter()
+
+func on_daytime():
+	on_swap(currentState, "idle")
+
+func on_nighttime():
+	on_swap(currentState, "offscreen")

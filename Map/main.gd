@@ -1,7 +1,9 @@
 extends Node2D
-var day = 2
+var day = 1
 var playerPos #Player position in tilemap coords.
 var lookPos
+
+signal daytime #Connects to plants to tell them to ripen.
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -25,11 +27,16 @@ func _process(delta):
 		$indicator.position = $Tiles.map_to_local(lookPos)
 
 func adjust_day():
-	$DayCount.text = "[center]The stars will alime in [color=#00FF00]%s days[/color][/center]" %[day]
-	$DayCount/TextShadow.text = "[center][color=#000000]The stars will alime in[/color][color=#003300] %s days[/color][/center]"%[day]
+	if day > 1:
+		$Control/DayCount.text = "[center]The stars will alime in [color=#00FF00]%s days[/color][/center]" %[day]
+		$Control/DayCount/TextShadow.text = "[center][color=#000000]The stars will alime in[/color][color=#003300] %s days[/color][/center]"%[day]
+	else:
+		$Control/DayCount.text = "[center]The stars will alime in [color=#00FF00]1 day[/color][/center]"
+		$Control/DayCount/TextShadow.text = "[center][color=#000000]The stars will alime in[/color][color=#003300] 1 day[/color][/center]"
 
 func start_day(): #Start the day timer, change player to the idle state, etc.
-	pass
+	Global.Daytime.emit()
+	#$Player.position = some starting point to be decided (use a marker2D)
 
 func start_night(): #Begin spawning enemies, etc.
-	pass
+	Global.Nighttime.emit()

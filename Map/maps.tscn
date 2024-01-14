@@ -70,7 +70,7 @@ tracks/3/path = NodePath("MoonLime:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(3, 7.2),
+"times": PackedFloat32Array(0, 7.2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
@@ -82,7 +82,7 @@ tracks/4/path = NodePath("Moon:visible")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(3, 7.2),
+"times": PackedFloat32Array(0, 7.2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
@@ -119,7 +119,7 @@ tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
 "handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 45, -0.25, 0, 0.25, 0, 50, -0.25, 0, 0.25, 0, -20, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0.1, -0.25, 0, 0.25, 0, -0.2, -0.25, 0, 0.25, 0, 0.1, -0.25, 0, 0.25, 0, -0.1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(3, 4, 5.1, 5.9, 6.8, 7.3)
 }
 
@@ -157,11 +157,14 @@ tracks/2/path = NodePath(".")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
 "values": [{
 "args": [],
 "method": &"adjust_day"
+}, {
+"args": [],
+"method": &"start_day"
 }]
 }
 tracks/3/type = "value"
@@ -228,6 +231,7 @@ script = ExtResource("2_4tv3b")
 libraries = {
 "": SubResource("AnimationLibrary_6m7n0")
 }
+autoplay = "startOfNight"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(480, 270)
@@ -239,13 +243,13 @@ scale = Vector2(2, 2)
 texture = ExtResource("7_r7iq4")
 
 [node name="Moon" type="Sprite2D" parent="."]
-visible = false
 z_index = -1
 position = Vector2(480, -200)
 scale = Vector2(2, 2)
 texture = ExtResource("5_igkck")
 
 [node name="MoonLime" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(480, -200)
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("6_aqrli")
