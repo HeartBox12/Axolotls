@@ -1,4 +1,4 @@
-extends Sprite2D
+extends Area2D
 var direction
 var speed:int = 1000 #how fast does the projectile go? in pixels/second
 var lifetime:float = 0.2 #how many seconds does the projectile say alive for
@@ -10,5 +10,5 @@ func _physics_process(delta):
 	if currentLife >= lifetime:
 		queue_free() #destroy this node after this frame
 		bulletDestroyed.emit()
-	direction = global_transform.basis_xform(Vector2.DOWN) #gets a vector direction based on the rotation
+	direction = global_transform.basis_xform(Vector2.RIGHT) #gets a vector direction based on the rotation
 	position += direction * delta * speed #what it says on the tin; makes it move in the proper direction according to delta and speed
