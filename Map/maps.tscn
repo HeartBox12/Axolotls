@@ -1,8 +1,9 @@
-[gd_scene load_steps=19 format=3 uid="uid://bf0snq1g2u65g"]
+[gd_scene load_steps=20 format=3 uid="uid://bf0snq1g2u65g"]
 
 [ext_resource type="Texture2D" uid="uid://dibnvpc5mj84p" path="res://Assets/temporary backdrop.png" id="1_op4nm"]
 [ext_resource type="Script" path="res://Map/main.gd" id="1_u5oha"]
 [ext_resource type="Script" path="res://Map/tiles.gd" id="2_4tv3b"]
+[ext_resource type="PackedScene" uid="uid://ca53jhhml5hya" path="res://Turrets/universalTurret.tscn" id="3_7hvpt"]
 [ext_resource type="FontFile" uid="uid://tyuiinyuokna" path="res://Fonts/Cinzel-Regular.ttf" id="4_dp6hs"]
 [ext_resource type="Texture2D" uid="uid://40qkdi11kb6" path="res://icon.svg" id="5_igkck"]
 [ext_resource type="Texture2D" uid="uid://ba6tp4ogijwrs" path="res://Assets/lime.jpg" id="6_aqrli"]
@@ -26,6 +27,10 @@ texture_region_size = Vector2i(32, 32)
 tile_size = Vector2i(32, 32)
 uv_clipping = true
 physics_layer_0/collision_layer = 1
+custom_data_layer_0/name = "Occupant"
+custom_data_layer_0/type = 24
+custom_data_layer_1/name = "OccuType"
+custom_data_layer_1/type = 2
 sources/4 = SubResource("TileSetAtlasSource_llqcd")
 
 [sub_resource type="Animation" id="Animation_iq0yl"]
@@ -238,6 +243,8 @@ _data = {
 [node name="Main" type="Node2D"]
 modulate = Color(0.74902, 0.772549, 0.94902, 1)
 script = ExtResource("1_u5oha")
+plant = ExtResource("10_m1vjg")
+turret = ExtResource("3_7hvpt")
 
 [node name="Tiles" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_0hg27")
