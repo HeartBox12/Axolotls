@@ -111,6 +111,17 @@ tracks/6/keys = {
 "update": 1,
 "values": [false, true]
 }
+tracks/7/type = "bezier"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Moon:skew")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 45, -0.25, 0, 0.25, 0, 50, -0.25, 0, 0.25, 0, -20, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(3, 4, 5.1, 5.9, 6.8, 7.3)
+}
 
 [sub_resource type="Animation" id="Animation_nfx07"]
 resource_name = "startOfDay"
@@ -228,13 +239,13 @@ scale = Vector2(2, 2)
 texture = ExtResource("7_r7iq4")
 
 [node name="Moon" type="Sprite2D" parent="."]
+visible = false
 z_index = -1
 position = Vector2(480, -200)
 scale = Vector2(2, 2)
 texture = ExtResource("5_igkck")
 
 [node name="MoonLime" type="Sprite2D" parent="."]
-visible = false
 position = Vector2(480, -200)
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("6_aqrli")
