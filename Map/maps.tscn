@@ -13,7 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://cdquxw2aafc8x" path="res://Assets/indicator.png" id="9_2hmug"]
 [ext_resource type="PackedScene" uid="uid://x18enyc2dnnf" path="res://plant/plant.tscn" id="10_m1vjg"]
 [ext_resource type="Texture2D" uid="uid://dockdlpomc1ya" path="res://Assets/testbar.png" id="12_oh1mc"]
-[ext_resource type="Script" path="res://Map/enemySpawner.gd" id="14_7jn5l"]
+[ext_resource type="Script" path="res://spawner/enemySpawner.gd" id="14_7jn5l"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qbw5v"]
 texture = ExtResource("4_0epep")
@@ -630,13 +630,28 @@ script = ExtResource("14_7jn5l")
 [node name="LeftSpawn" type="Path2D" parent="spawner"]
 curve = SubResource("Curve2D_l8fck")
 
+[node name="Follow" type="PathFollow2D" parent="spawner/LeftSpawn"]
+position = Vector2(1000, 32)
+rotation = 1.5708
+
 [node name="BottomSpawn" type="Path2D" parent="spawner"]
 curve = SubResource("Curve2D_lqfc1")
+
+[node name="Follow" type="PathFollow2D" parent="spawner/BottomSpawn"]
+position = Vector2(1000, 575)
+rotation = 3.14159
 
 [node name="RightSpawn" type="Path2D" parent="spawner"]
 curve = SubResource("Curve2D_gr8sa")
 
+[node name="Follow" type="PathFollow2D" parent="spawner/RightSpawn"]
+position = Vector2(-32, 575)
+rotation = -1.5708
+
 [connection signal="coordSelect" from="Player" to="." method="_on_coord_select"]
+<<<<<<< Updated upstream
 [connection signal="planted" from="Player" to="." method="_on_player_planted"]
 [connection signal="turreted" from="Player" to="." method="_on_player_turreted"]
+=======
+>>>>>>> Stashed changes
 [connection signal="pressed" from="Control/Button" to="." method="start_day"]
