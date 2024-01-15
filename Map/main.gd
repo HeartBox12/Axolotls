@@ -31,26 +31,26 @@ func _process(delta):
 		$AnimationPlayer.play("startOfNight")
 		isDay = false
 	
-	#Get tilemap coords of tile the player is standing on
-	playerPos = $Tiles.local_to_map($Player.position)
-	lookPos = playerPos
-
-	if Input.is_action_pressed("move_left"):
-		lookPos.x -= 1
-	if Input.is_action_pressed("move_down"):
-		lookPos.y += 1
-	if Input.is_action_pressed("move_right"):
-		lookPos.x += 1
-	if Input.is_action_pressed("move_up"):
-		lookPos.y -= 1
-
-	if playerPos != lookPos:
-		if $Tiles.get_cell_tile_data(0, lookPos).get_custom_data("valid"):
-			selPos = lookPos
-			$indicator.visible = true
-			$indicator.position = $Tiles.map_to_local(selPos)
-		else:
-			$indicator.visible = false
+	##Get tilemap coords of tile the player is standing on
+	#playerPos = $Tiles.local_to_map($Player.position)
+	#lookPos = playerPos
+#
+	#if Input.is_action_pressed("move_left"):
+		#lookPos.x -= 1
+	#if Input.is_action_pressed("move_down"):
+		#lookPos.y += 1
+	#if Input.is_action_pressed("move_right"):
+		#lookPos.x += 1
+	#if Input.is_action_pressed("move_up"):
+		#lookPos.y -= 1
+#
+	#if playerPos != lookPos:
+		#if $Tiles.get_cell_tile_data(0, lookPos).get_custom_data("valid"):
+			#selPos = lookPos
+			#$indicator.visible = true
+			#$indicator.position = $Tiles.map_to_local(selPos)
+		#else:
+			#$indicator.visible = false
 
 func adjust_day():
 	if day > 1:
@@ -98,3 +98,8 @@ func _unhandled_input(event):
 			
 	if Input.is_action_just_pressed("test_button_to_make_something_happen"):
 		$AnimationPlayer.play("endOfNight")
+
+
+func _on_coord_select(coords):
+	selPos = coords
+	$indicator.position = $Tiles.map_to_local(selPos)
