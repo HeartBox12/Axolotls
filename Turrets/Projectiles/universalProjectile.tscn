@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://c1gtroinrhi5m"]
 
 [ext_resource type="Script" path="res://Turrets/Projectiles/universalProjectile.gd" id="1_5np6a"]
-[ext_resource type="Texture2D" uid="uid://dhmtj3mxke2o4" path="res://Assets/limebullet.png" id="1_ao74f"]
+[ext_resource type="Texture2D" uid="uid://4eql82ei0fog" path="res://Assets/limer_bullet.png" id="2_ns002"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_24hlw"]
 radius = 4.0
@@ -11,12 +11,11 @@ top_level = true
 collision_layer = 64
 collision_mask = 4
 script = ExtResource("1_5np6a")
-speed = 50
-lifetime = 2.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_24hlw")
 
 [node name="Sprite2D" type="Sprite2D" parent="CollisionShape2D"]
-top_level = true
-texture = ExtResource("1_ao74f")
+texture = ExtResource("2_ns002")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

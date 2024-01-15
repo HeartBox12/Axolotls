@@ -1,10 +1,11 @@
 extends AnimatedSprite2D
 @export var fireCooldown:int = 1 #Easy access to change the cooldown period between shots, in seconds
-var fireDelay:float = 0.0 #Fire delay variable, current time between shots; this is the variable that is altered
+var fireDelay:float = 1 #Fire delay variable, current time between shots; this is the variable that is altered
 var target:Vector2 = Vector2(0, 0) #Declares the target variable and restricts it to the Vector2 data type
-@export var range:int = 100 #this is the range of this turret, will only fire on targets within this range
+@export var range:int = 200 #this is the range of this turret, will only fire on targets within this range
 @export var projectileSpeed:int = 1000
-@export var projectileLifetime:float = 0.5
+@export var projectileLifetime:float = 0.25
+@export var projectileDamage:int = 1
 var fireRotation:float = 0
 var potentialTargets = []
 var currentTarget = null
@@ -12,6 +13,7 @@ var bulletScene = load("res://Turrets/Projectiles/universalProjectile.tscn") #Lo
 var bullets:Array = [] #array to store each turret's bullets, turrets[3] will correlate to bullets[3]
 
 func _ready():
+	frame = 0
 	$"Range/RangeCollision".shape.radius = range
 	pass # Replace with function body.
 
@@ -25,21 +27,16 @@ func _process(delta):
 		frame = 1 #Change to unloaded sprite
 	elif fireDelay >= 0.5 * fireCooldown: #If halfway through the cooldown show turret as loaded
 		frame = 0 #Change to loaded sprite
-	var gottenTarget = getTarget()
-	if typeof(gottenTarget) == typeof(null):
-		return
-	target = gottenTarget
-	if fireDelay >= fireCooldown: #Can this turret fire? AKA is the fire cooldown done and is there a target in range?
-		fireBullet() #make turrret go pew
 
 func _physics_process(delta):
-	#target = (get_global_mouse_position() / $"/root/Main/Tiles".scale.x) #this is gonna be where the logic to find the nearest/first enemy in range goes, using mouse position for now
 	fireDelay += delta #Makes fireCooldown work regardless of computer speed
 	var gottenTarget = getTarget()
 	if typeof(gottenTarget) == typeof(null):
 		return
 	target = gottenTarget
-	fireRotation = target.angle_to_point(getTarget()) + PI #Gets the angle between turret and target in radians, adds 90 degrees/quarter turn
+	fireRotation = position.angle_to_point(getTarget()) #Gets the angle between turret and target in radians, adds 90 degrees/quarter turn
+	if fireDelay >= fireCooldown: #Can this turret fire? AKA is the fire cooldown done and is there a target in range?
+		fireBullet() #make turrret go pew
 
 func fireBullet():
 	var shotBullet = bulletScene.instantiate()
@@ -54,12 +51,12 @@ func fireBullet():
 		assignedIndex += 1
 	if !isIndexAssigned:
 		bullets.append(shotBullet)
-	print(bullets)
 	add_child(shotBullet)
 	shotBullet.rotation = fireRotation
 	shotBullet.speed = projectileSpeed
 	shotBullet.lifetime = projectileLifetime
-	shotBullet.position = global_position
+	shotBullet.position = position
+	shotBullet.damage = projectileDamage
 
 func getTarget():
 	if is_instance_valid(currentTarget) or currentTarget == null:
