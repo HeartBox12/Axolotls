@@ -11,6 +11,7 @@ signal clear
 
 @export var initSeeds:int
 @export var initLimes:int
+@export var initDay:int
 
 var day = 2 #days left 'till victory. Counts down.
 var playerPos #Player position in tilemap coords.
@@ -36,6 +37,7 @@ func _ready():
 func setup():
 	Global.limes = initLimes
 	Global.seeds = initSeeds
+	day = initDay
 
 func reset():
 	clear.emit()
