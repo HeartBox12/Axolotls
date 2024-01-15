@@ -3,6 +3,10 @@ extends State
 @export var machine:Node
 @export var sprite:Node
 
+var playerPos
+var lookPos #The currently selected tile. -1, -1 means invalid
+var selPos
+
 func enter(): #When this state is entered
 	match host.facing: #Sprite Assign
 		0:
@@ -22,6 +26,36 @@ func exit(): #Just before this state is exited
 func update(_delta): #Equivalent to func process(delta) in the host. Only use process() to call this
 	if host.input != Vector2(0, 0):
 		swap.emit(self, "walk")
+	
+	playerPos = host.tileSet.local_to_map(host.position)
+	lookPos = playerPos
+	
+	match host.facing:
+		0:
+			lookPos.x += 1
+		1:
+			lookPos.y += 1
+		2:
+			lookPos.x -= 1
+		3:
+			lookPos.y -= 1
+	
+	#if Input.is_action_pressed("move_left"):
+		#lookPos.x -= 1
+	#if Input.is_action_pressed("move_down"):
+		#lookPos.y += 1
+	#if Input.is_action_pressed("move_right"):
+		#lookPos.x += 1
+	#if Input.is_action_pressed("move_up"):
+		#lookPos.y -= 1
+
+	if playerPos != lookPos:
+		if !host.tileSet.get_cell_tile_data(0, lookPos).get_custom_data("valid"):
+			lookPos = Vector2i(-1, -1)
+		host.coordSelect.emit(lookPos)
+	
+	if Input.is_action_just_pressed("interact_plant"):
+		host.tileSet
 
 func physics_update(_delta): #Equivalent to func physics_process() in the host.
 	pass

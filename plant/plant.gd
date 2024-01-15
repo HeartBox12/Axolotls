@@ -13,7 +13,7 @@ func ripen():
 	$sprite.play("ripen")
 	var ripe = true
 
-func _process(delta):
+func _process(_delta):
 	if health <= 0:
 		remove_from_group("targets")
 		destroyed.emit()

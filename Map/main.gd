@@ -5,8 +5,8 @@ signal daytime #Connects to plants to tell them to ripen.
 @export var plant:PackedScene
 @export var turret:PackedScene
 
-@export var boundX:int = 16 #Number of columns
-@export var boundY:int = 12 #number of rows
+@export var boundX:int = 27 #Number of columns + 2
+@export var boundY:int = 14 #number of rows + 2
 
 var day = 1
 var playerPos #Player position in tilemap coords.
@@ -29,6 +29,7 @@ func _process(delta):
 	
 	if $Control/dayTimer.value <= 0:
 		$AnimationPlayer.play("startOfNight")
+		isDay = false
 	
 	#Get tilemap coords of tile the player is standing on
 	playerPos = $Tiles.local_to_map($Player.position)
@@ -44,8 +45,12 @@ func _process(delta):
 		lookPos.y -= 1
 
 	if playerPos != lookPos:
-		selPos = lookPos
-		$indicator.position = $Tiles.map_to_local(selPos)
+		if $Tiles.get_cell_tile_data(0, lookPos).get_custom_data("valid"):
+			selPos = lookPos
+			$indicator.visible = true
+			$indicator.position = $Tiles.map_to_local(selPos)
+		else:
+			$indicator.visible = false
 
 func adjust_day():
 	if day > 1:
@@ -90,3 +95,6 @@ func _unhandled_input(event):
 			$Tiles.add_child(instance)
 			instance.position = $Tiles.map_to_local(selPos)
 			tiledNodes[selPos.x][selPos.y] = instance
+			
+	if Input.is_action_just_pressed("test_button_to_make_something_happen"):
+		$AnimationPlayer.play("endOfNight")
