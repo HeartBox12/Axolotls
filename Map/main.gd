@@ -96,7 +96,7 @@ func _unhandled_input(event):
 			#instance.position = $Tiles.map_to_local(selPos)
 			#tiledNodes[selPos.x][selPos.y] = instance
 			#
-	if Input.is_action_just_pressed("test_button_to_make_something_happen"):
+	if Input.is_action_just_pressed("test0"):
 		$AnimationPlayer.play("endOfNight")
 
 func _on_coord_select(coords):
@@ -106,5 +106,11 @@ func _on_coord_select(coords):
 func _on_player_planted(coords):
 	var instance = plant.instantiate()
 	$Tiles.add_child(instance)
-	instance.position = $Tiles.map_to_local(selPos)
+	instance.position = $Tiles.map_to_local(coords)
+	tiledNodes[selPos.x][selPos.y] = instance
+
+func _on_player_turreted(coords):
+	var instance = turret.instantiate()
+	$Tiles.add_child(instance)
+	instance.position = $Tiles.map_to_local(coords)
 	tiledNodes[selPos.x][selPos.y] = instance

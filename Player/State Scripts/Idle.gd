@@ -39,11 +39,14 @@ func update(_delta): #Equivalent to func process(delta) in the host. Only use pr
 			host.selPos.y -= 1
 	host.validSelect = host.tileSet.get_cell_tile_data(0, host.selPos).get_custom_data("valid")
 	
-	if host.validSelect && host.root.tiledNodes[host.selPos.x][host.selPos.y] == null:
+	if host.validSelect:
 		host.coordSelect.emit(host.selPos)
 	
-	if Input.is_action_just_pressed("interact_plant") && host.validSelect:
+	if Input.is_action_just_pressed("interact_plant") && host.validSelect && host.root.tiledNodes[host.selPos.x][host.selPos.y] == null:
 		swap.emit(self, "plant")
+		
+	if Input.is_action_just_pressed("interact_turret") && host.validSelect && host.root.tiledNodes[host.selPos.x][host.selPos.y] == null:
+		swap.emit(self, "turret")
 
 func physics_update(_delta): #Equivalent to func physics_process() in the host.
 	pass

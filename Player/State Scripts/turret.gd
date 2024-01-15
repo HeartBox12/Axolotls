@@ -5,7 +5,7 @@ extends State
 @export var wait_time:int
 
 func enter(): #When this state is entered
-	clock.max_value = wait_time
+	clock.max_value = wait_time #@export this, probs
 	clock.value = 0
 	clock.visible = true
 	
@@ -18,7 +18,7 @@ func update(delta): #Equivalent to func process(delta) in the host. Only use pro
 	
 	clock.value += delta
 	if clock.value >= clock.max_value:
-		host.planted.emit(host.selPos)
+		host.turreted.emit(host.selPos)
 		swap.emit(self, "idle")
 
 func physics_update(_delta): #Equivalent to func physics_process() in the host.
