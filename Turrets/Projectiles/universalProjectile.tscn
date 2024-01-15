@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://c1gtroinrhi5m"]
 
 [ext_resource type="Script" path="res://Turrets/Projectiles/universalProjectile.gd" id="1_5np6a"]
-[ext_resource type="Texture2D" uid="uid://4eql82ei0fog" path="res://Assets/limer_bullet.png" id="2_ns002"]
+[ext_resource type="Texture2D" path="res://Assets/limer_bullet.png" id="2_ns002"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_24hlw"]
 radius = 4.0
