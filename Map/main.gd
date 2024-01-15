@@ -1,12 +1,16 @@
 extends Node2D
 
 signal daytime #Connects to plants to tell them to ripen.
+signal clear
 
 @export var plant:PackedScene
 @export var turret:PackedScene
 
-@export var boundX:int = 27 #Number of columns + 2
-@export var boundY:int = 14 #number of rows + 2
+@export var boundX:int = 29 #Number of columns + 2
+@export var boundY:int = 16 #number of rows + 2
+
+@export var initSeeds:int
+@export var initLimes:int
 
 var day = 2 #days left 'till victory. Counts down.
 var playerPos #Player position in tilemap coords.
@@ -28,6 +32,20 @@ func _ready():
 		tiledNodes.append([])
 		for j in range(boundY):
 			tiledNodes[i].append(null)
+
+func setup():
+	Global.limes = initLimes
+	Global.seeds = initSeeds
+
+func reset():
+	clear.emit()
+	for i in range(boundX):
+		for j in range(boundY):
+			if tiledNodes[i][j] != null:
+				tiledNodes[i][j].health = 0
+				tiledNodes[i][j] = null
+	
+	setup()
 
 func _process(delta):
 	if isDay:
@@ -63,6 +81,8 @@ func start_night(): #Begin spawning enemies, etc.
 func _unhandled_input(event):
 	if Input.is_action_just_pressed("test0"):
 		$AnimationPlayer.play("endOfNight")
+	if Input.is_action_just_pressed("test5"):
+		$AnimationPlayer.play("Loss")
 
 func _on_coord_select(coords):
 	selPos = coords
@@ -72,7 +92,7 @@ func _on_player_planted(coords):
 	var instance = plant.instantiate()
 	$Tiles.add_child(instance)
 	instance.position = $Tiles.map_to_local(coords)
-	tiledNodes[selPos.x][selPos.y] = instance
+	tiledNodes[coords.x][coords.y] = instance
 	
 	Global.seeds -= Global.plantCost
 	$Control/counters/SeedCount.text = str(Global.seeds)

@@ -40,3 +40,4 @@ func spawnEnemy():
 	enemy = enemy_scene.instantiate()
 	add_child(enemy)
 	enemy.position = follow.position
+	get_parent().clear.connect(Callable(enemy, "_on_clear"))

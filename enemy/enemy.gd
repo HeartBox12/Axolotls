@@ -44,3 +44,6 @@ func on_destroyed(): #Called when the plant the enemy is attacked runs out of he
 	target = null
 	$Sprite.animation = "walk"
 	find_target()
+
+func _on_clear(): #FIXME: connect to signal "clear" from main
+	queue_free()

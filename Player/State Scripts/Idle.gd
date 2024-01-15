@@ -37,10 +37,13 @@ func update(_delta): #Equivalent to func process(delta) in the host. Only use pr
 			host.selPos.x -= 1
 		3:
 			host.selPos.y -= 1
-	host.validSelect = host.tileSet.get_cell_tile_data(0, host.selPos).get_custom_data("valid")
+	if host.tileSet.get_cell_tile_data(0, host.selPos) != null:
+		host.validSelect = host.tileSet.get_cell_tile_data(0, host.selPos).get_custom_data("valid")
 	
 	if host.validSelect:
 		host.coordSelect.emit(host.selPos)
+	else:
+		host.coordSelect.emit(Vector2i(-1, -1))
 	
 	if Input.is_action_just_pressed("interact_plant") && host.validSelect && host.root.tiledNodes[host.selPos.x][host.selPos.y] == null && Global.seeds >= Global.plantCost:
 		swap.emit(self, "plant")
