@@ -5,7 +5,7 @@ extends Node2D
 @onready var rightFollow = $"RightSpawn/Follow"
 @onready var bottomSpawn = $"BottomSpawn"
 @onready var bottomFollow = $"BottomSpawn/Follow"
-@onready var tileMap = $"/root/Main/Tiles"
+#@onready var tileMap = $"/root/Main/Tiles" #is this needed?
 var enemy_scene = load("res://enemy/enemy.tscn")
 var enemyLineProgress:float = randi_range(0, 1)
 var enemy

@@ -563,6 +563,8 @@ _data = {
 point_count = 2
 
 [node name="Main" type="Node2D"]
+process_mode = 1
+y_sort_enabled = true
 script = ExtResource("1_u5oha")
 plant = ExtResource("10_m1vjg")
 turret = ExtResource("3_7hvpt")
@@ -584,6 +586,7 @@ libraries = {
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(480, 270)
+enabled = false
 
 [node name="Credits" type="Sprite2D" parent="Camera2D"]
 visible = false
@@ -604,8 +607,9 @@ scale = Vector2(0.4, 0.4)
 texture = ExtResource("6_aqrli")
 
 [node name="Player" parent="." node_paths=PackedStringArray("root", "tileSet") instance=ExtResource("8_ptg5p")]
-z_index = 1
-position = Vector2(521, 216)
+z_as_relative = false
+position = Vector2(480, 270)
+motion_mode = 1
 root = NodePath("..")
 tileSet = NodePath("../Tiles")
 

@@ -1,0 +1,89 @@
+[gd_scene load_steps=6 format=3 uid="uid://drpk4li4eis1t"]
+
+[ext_resource type="Script" path="res://manager/manager.gd" id="1_mywec"]
+[ext_resource type="PackedScene" uid="uid://bf0snq1g2u65g" path="res://Map/maps.tscn" id="1_wifi7"]
+[ext_resource type="FontFile" uid="uid://c4hliela7vl0q" path="res://Fonts/WorkSans-Bold.ttf" id="2_lirkw"]
+
+[sub_resource type="Animation" id="Animation_emfsh"]
+resource_name = "start"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(2, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -540)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Control/ColorRect:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(2, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -540)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Control/Start:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(2, 1),
+"update": 0,
+"values": [Vector2(448, 238), Vector2(448, -302)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dr384"]
+_data = {
+"start": SubResource("Animation_emfsh")
+}
+
+[node name="manager" type="Node2D"]
+process_mode = 3
+script = ExtResource("1_mywec")
+
+[node name="Main" parent="." instance=ExtResource("1_wifi7")]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+process_mode = 2
+libraries = {
+"": SubResource("AnimationLibrary_dr384")
+}
+
+[node name="Control" type="Control" parent="."]
+process_mode = 2
+top_level = true
+layout_mode = 3
+anchors_preset = 0
+offset_right = 960.0
+offset_bottom = 544.0
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+top_level = true
+layout_mode = 1
+offset_right = 960.0
+offset_bottom = 544.0
+color = Color(0, 0, 0, 1)
+
+[node name="Start" type="Button" parent="Control"]
+top_level = true
+layout_mode = 0
+offset_left = 448.0
+offset_top = 238.0
+offset_right = 512.0
+offset_bottom = 302.0
+theme_override_fonts/font = ExtResource("2_lirkw")
+text = "Start"
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_finished"]
+[connection signal="pressed" from="Control/Start" to="." method="_on_start_pressed"]

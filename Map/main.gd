@@ -1,28 +1,28 @@
 extends Node2D
 
 signal daytime #Connects to plants to tell them to ripen.
-signal clear
+signal clear #Connects to enemies so the script can wipe them out
 
 @export var plant:PackedScene
 @export var turret:PackedScene
 
-@export var boundX:int = 29 #Number of columns + 2
-@export var boundY:int = 16 #number of rows + 2
+@export var boundX:int = 29 #Number of columns + 4. Declare array sizes.
+@export var boundY:int = 16 #number of rows + 4
 
 @export var initSeeds:int
 @export var initLimes:int
 @export var initDay:int
 
-var day = 2 #days left 'till victory. Counts down.
+var day = 5 #days left 'till victory. Counts down.
 var playerPos #Player position in tilemap coords.
 var selPos #The tile currently selected by the player
 var tiledNodes:Array = [] #2d array for tracking which structures are where
-var isDay:bool #for timer purposes
+var isDay:bool = false #for timer purposes
 
 var puns = ["Begin the timer!", "Squeeze the Day!", "No time to cit(rus) around!", 
 "I had this classmate in high school who just sat in the back of the classroom
 all day, eating lime slices out of a tupperware. Seriously, just taking a
-quarter of a lime and biting down. The weirdest part is that she probably could
+quarter of a lime and biting down. Like, she probably could
 have eaten them like oranges, peeling them and taking out the segments, but she
 didn't. Also she hated my guts for some reason. Anyway, want one?"]
 
@@ -33,6 +33,8 @@ func _ready():
 		tiledNodes.append([])
 		for j in range(boundY):
 			tiledNodes[i].append(null)
+	$Camera2D.enabled = true #It starts the game inactive.
+	setup()
 
 func setup():
 	Global.limes = initLimes
@@ -40,6 +42,7 @@ func setup():
 	day = initDay
 
 func reset():
+	isDay = false
 	clear.emit()
 	for i in range(boundX):
 		for j in range(boundY):
