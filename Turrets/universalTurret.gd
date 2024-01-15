@@ -31,7 +31,6 @@ func _process(delta):
 	target = gottenTarget
 	if fireDelay >= fireCooldown: #Can this turret fire? AKA is the fire cooldown done and is there a target in range?
 		fireBullet() #make turrret go pew
-		print("pew pew")
 
 func _physics_process(delta):
 	#target = (get_global_mouse_position() / $"/root/Main/Tiles".scale.x) #this is gonna be where the logic to find the nearest/first enemy in range goes, using mouse position for now
