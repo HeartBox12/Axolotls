@@ -61,11 +61,9 @@ collision_mask = 4
 script = ExtResource("1_o4dp6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(16, 16)
 shape = SubResource("RectangleShape2D_k2ya0")
 
 [node name="sprite" type="AnimatedSprite2D" parent="."]
-position = Vector2(16, 16)
 sprite_frames = SubResource("SpriteFrames_vyaew")
 animation = &"ripen"
 

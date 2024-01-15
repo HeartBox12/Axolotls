@@ -5,6 +5,9 @@ signal daytime #Connects to plants to tell them to ripen.
 @export var plant:PackedScene
 @export var turret:PackedScene
 
+@export var boundX:int = 16 #Number of columns
+@export var boundY:int = 12 #number of rows
+
 var day = 1
 var playerPos #Player position in tilemap coords.
 var lookPos
@@ -13,7 +16,11 @@ var tiledNodes:Array = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass
+	#Declare array sizes
+	for i in range(boundX):
+		tiledNodes.append([])
+		for j in range(boundY):
+			tiledNodes[i].append(null)
 
 func _process(delta):
 	#Get tilemap coords of tile the player is standing on
@@ -52,12 +59,11 @@ func _unhandled_input(event):
 	if event.is_action_pressed("interact_plant"):
 		var selected = tiledNodes[selPos.x][selPos.y]
 		
-		if tiledNodes[selPos.x][selPos.y] == null:
+		if selected == null:
 			var instance = plant.instantiate()
 			$Tiles.add_child(instance)
 			instance.position = $Tiles.map_to_local(selPos)
 			tiledNodes[selPos.x][selPos.y] = instance
-			
 			#if plant is ripe:
 				#plant.harvest
 			#else:
@@ -67,7 +73,9 @@ func _unhandled_input(event):
 				#nothing
 	
 	if event.is_action_pressed("interact_turret"):
-		var data = $Tiles.get_cell_tile_data(1, selPos)
-		pass
-		#if [tile type] is empty:
-			#create turret
+		var selected = tiledNodes[selPos.x][selPos.y]
+		if selected == null:
+			var instance = turret.instantiate()
+			$Tiles.add_child(instance)
+			instance.position = $Tiles.map_to_local(selPos)
+			tiledNodes[selPos.x][selPos.y] = instance

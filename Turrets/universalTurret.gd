@@ -60,6 +60,7 @@ func fireBullet():
 	shotBullet.rotation = fireRotation
 	shotBullet.speed = projectileSpeed
 	shotBullet.lifetime = projectileLifetime
+	shotBullet.position = global_position
 
 func getTarget():
 	if is_instance_valid(currentTarget) or currentTarget == null:
