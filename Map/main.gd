@@ -13,6 +13,7 @@ var playerPos #Player position in tilemap coords.
 var lookPos
 var selPos
 var tiledNodes:Array = []
+var isDay
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -23,6 +24,12 @@ func _ready():
 			tiledNodes[i].append(null)
 
 func _process(delta):
+	if isDay:
+		$Control/dayTimer.value -= delta
+	
+	if $Control/dayTimer.value <= 0:
+		$AnimationPlayer.play("startOfNight")
+	
 	#Get tilemap coords of tile the player is standing on
 	playerPos = $Tiles.local_to_map($Player.position)
 	lookPos = playerPos
@@ -48,8 +55,12 @@ func adjust_day():
 		$Control/DayCount.text = "[center]The stars will alime in [color=#00FF00]1 day[/color][/center]"
 		$Control/DayCount/TextShadow.text = "[center][color=#000000]The stars will alime in[/color][color=#003300] 1 day[/color][/center]"
 
-func start_day(): #Start the day timer, change player to the idle state, etc.
+func start_day():
+	$AnimationPlayer.play("startOfDay")
 	Global.Daytime.emit()
+	$Control/dayTimer.value = $Control/dayTimer.max_value
+	isDay = true #for timer purposes
+	
 	#$Player.position = some starting point to be decided (use a marker2D)
 
 func start_night(): #Begin spawning enemies, etc.

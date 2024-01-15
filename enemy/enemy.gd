@@ -2,8 +2,8 @@ extends Area2D
 
 @export var health:int = 5
 @export var speed:int
-#NOTE: not to be @exported in final build
-var target:Node #To be assigned by some no doubt terribly complicated algorithm
+
+var target:Node
 
 var onTarget = false
 

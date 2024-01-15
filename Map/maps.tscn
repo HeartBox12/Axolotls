@@ -1,9 +1,10 @@
-[gd_scene load_steps=20 format=3 uid="uid://bf0snq1g2u65g"]
+[gd_scene load_steps=25 format=3 uid="uid://bf0snq1g2u65g"]
 
 [ext_resource type="Texture2D" uid="uid://dibnvpc5mj84p" path="res://Assets/temporary backdrop.png" id="1_op4nm"]
 [ext_resource type="Script" path="res://Map/main.gd" id="1_u5oha"]
 [ext_resource type="Script" path="res://Map/tiles.gd" id="2_4tv3b"]
 [ext_resource type="PackedScene" uid="uid://ca53jhhml5hya" path="res://Turrets/universalTurret.tscn" id="3_7hvpt"]
+[ext_resource type="Texture2D" uid="uid://b0e5x30dgky1k" path="res://Assets/tileset.png" id="4_0epep"]
 [ext_resource type="FontFile" uid="uid://tyuiinyuokna" path="res://Fonts/Cinzel-Regular.ttf" id="4_dp6hs"]
 [ext_resource type="Texture2D" uid="uid://40qkdi11kb6" path="res://icon.svg" id="5_igkck"]
 [ext_resource type="Texture2D" uid="uid://ba6tp4ogijwrs" path="res://Assets/lime.jpg" id="6_aqrli"]
@@ -12,6 +13,219 @@
 [ext_resource type="Texture2D" uid="uid://cdquxw2aafc8x" path="res://Assets/indicator.png" id="9_2hmug"]
 [ext_resource type="PackedScene" uid="uid://x18enyc2dnnf" path="res://plant/plant.tscn" id="10_m1vjg"]
 [ext_resource type="PackedScene" uid="uid://dd2dv03lkhv26" path="res://enemy/enemy.tscn" id="10_xaf3q"]
+[ext_resource type="Texture2D" uid="uid://dockdlpomc1ya" path="res://Assets/testbar.png" id="12_oh1mc"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qbw5v"]
+texture = ExtResource("4_0epep")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+1:0/0 = 0
+1:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:0/0/physics_layer_0/angular_velocity = 0.0
+2:0/0 = 0
+2:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:0/0/physics_layer_0/angular_velocity = 0.0
+3:0/0 = 0
+3:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+3:0/0/physics_layer_0/angular_velocity = 0.0
+4:0/0 = 0
+4:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+4:0/0/physics_layer_0/angular_velocity = 0.0
+5:0/0 = 0
+5:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+5:0/0/physics_layer_0/angular_velocity = 0.0
+6:0/0 = 0
+6:0/0/terrain_set = 0
+6:0/0/terrain = 1
+6:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+6:0/0/physics_layer_0/angular_velocity = 0.0
+6:0/0/terrains_peering_bit/right_side = 1
+6:0/0/terrains_peering_bit/bottom_side = 1
+6:0/0/terrains_peering_bit/left_side = 1
+6:0/0/terrains_peering_bit/top_side = 1
+7:0/0 = 0
+7:0/0/terrain_set = 0
+7:0/0/terrain = 1
+7:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+7:0/0/physics_layer_0/angular_velocity = 0.0
+7:0/0/terrains_peering_bit/right_side = 1
+7:0/0/terrains_peering_bit/bottom_side = 1
+7:0/0/terrains_peering_bit/left_side = 1
+7:0/0/terrains_peering_bit/top_side = 1
+0:1/0 = 0
+0:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:1/0/physics_layer_0/angular_velocity = 0.0
+1:1/0 = 0
+1:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:1/0/physics_layer_0/angular_velocity = 0.0
+2:1/0 = 0
+2:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:1/0/physics_layer_0/angular_velocity = 0.0
+3:1/0 = 0
+3:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+3:1/0/physics_layer_0/angular_velocity = 0.0
+4:1/0 = 0
+4:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+4:1/0/physics_layer_0/angular_velocity = 0.0
+5:1/0 = 0
+5:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+5:1/0/physics_layer_0/angular_velocity = 0.0
+6:1/0 = 0
+6:1/0/terrain_set = 0
+6:1/0/terrain = 1
+6:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+6:1/0/physics_layer_0/angular_velocity = 0.0
+6:1/0/terrains_peering_bit/right_side = 1
+6:1/0/terrains_peering_bit/bottom_side = 1
+6:1/0/terrains_peering_bit/left_side = 1
+6:1/0/terrains_peering_bit/top_side = 1
+0:2/0 = 0
+0:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:2/0/physics_layer_0/angular_velocity = 0.0
+1:2/0 = 0
+1:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:2/0/physics_layer_0/angular_velocity = 0.0
+2:2/0 = 0
+2:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:2/0/physics_layer_0/angular_velocity = 0.0
+3:2/0 = 0
+3:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+3:2/0/physics_layer_0/angular_velocity = 0.0
+4:2/0 = 0
+4:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+4:2/0/physics_layer_0/angular_velocity = 0.0
+5:2/0 = 0
+5:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+5:2/0/physics_layer_0/angular_velocity = 0.0
+0:3/0 = 0
+0:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:3/0/physics_layer_0/angular_velocity = 0.0
+1:3/0 = 0
+1:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:3/0/physics_layer_0/angular_velocity = 0.0
+2:3/0 = 0
+2:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:3/0/physics_layer_0/angular_velocity = 0.0
+3:3/0 = 0
+3:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+3:3/0/physics_layer_0/angular_velocity = 0.0
+4:3/0 = 0
+4:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+4:3/0/physics_layer_0/angular_velocity = 0.0
+5:3/0 = 0
+5:3/0/terrain_set = 0
+5:3/0/terrain = 1
+5:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+5:3/0/physics_layer_0/angular_velocity = 0.0
+0:4/0 = 0
+0:4/0/terrain_set = 0
+0:4/0/terrain = 1
+0:4/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:4/0/physics_layer_0/angular_velocity = 0.0
+0:4/0/terrains_peering_bit/right_side = 1
+0:4/0/terrains_peering_bit/bottom_side = 1
+0:4/0/terrains_peering_bit/left_side = 1
+1:4/0 = 0
+1:4/0/terrain_set = 0
+1:4/0/terrain = 1
+1:4/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:4/0/physics_layer_0/angular_velocity = 0.0
+1:4/0/terrains_peering_bit/bottom_side = 1
+1:4/0/terrains_peering_bit/left_side = 1
+1:4/0/terrains_peering_bit/top_side = 1
+2:4/0 = 0
+2:4/0/terrain_set = 0
+2:4/0/terrain = 1
+2:4/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:4/0/physics_layer_0/angular_velocity = 0.0
+2:4/0/terrains_peering_bit/right_side = 1
+2:4/0/terrains_peering_bit/bottom_side = 1
+3:4/0 = 0
+3:4/0/terrain_set = 0
+3:4/0/terrain = 1
+3:4/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+3:4/0/physics_layer_0/angular_velocity = 0.0
+3:4/0/terrains_peering_bit/bottom_side = 1
+4:4/0 = 0
+4:4/0/terrain_set = 0
+4:4/0/terrain = 1
+4:4/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+4:4/0/physics_layer_0/angular_velocity = 0.0
+4:4/0/terrains_peering_bit/bottom_side = 1
+4:4/0/terrains_peering_bit/left_side = 1
+0:5/0 = 0
+0:5/0/terrain_set = 0
+0:5/0/terrain = 1
+0:5/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:5/0/physics_layer_0/angular_velocity = 0.0
+0:5/0/terrains_peering_bit/right_side = 1
+0:5/0/terrains_peering_bit/bottom_side = 1
+0:5/0/terrains_peering_bit/top_side = 1
+1:5/0 = 0
+1:5/0/terrain_set = 0
+1:5/0/terrain = 1
+1:5/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:5/0/physics_layer_0/angular_velocity = 0.0
+1:5/0/terrains_peering_bit/right_side = 1
+1:5/0/terrains_peering_bit/left_side = 1
+1:5/0/terrains_peering_bit/top_side = 1
+2:5/0 = 0
+2:5/0/terrain_set = 0
+2:5/0/terrain = 1
+2:5/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:5/0/physics_layer_0/angular_velocity = 0.0
+2:5/0/terrains_peering_bit/right_side = 1
+3:5/0 = 0
+3:5/0/terrain_set = 0
+3:5/0/terrain = 1
+3:5/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+3:5/0/physics_layer_0/angular_velocity = 0.0
+3:5/0/terrains_peering_bit/right_side = 1
+3:5/0/terrains_peering_bit/bottom_side = 1
+3:5/0/terrains_peering_bit/left_side = 1
+3:5/0/terrains_peering_bit/top_side = 1
+4:5/0 = 0
+4:5/0/terrain_set = 0
+4:5/0/terrain = 1
+4:5/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+4:5/0/physics_layer_0/angular_velocity = 0.0
+4:5/0/terrains_peering_bit/left_side = 1
+5:5/0 = 0
+5:5/0/terrain_set = 0
+5:5/0/terrain = 1
+5:5/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+5:5/0/physics_layer_0/angular_velocity = 0.0
+5:5/0/terrains_peering_bit/right_side = 1
+5:5/0/terrains_peering_bit/left_side = 1
+2:6/0 = 0
+2:6/0/terrain_set = 0
+2:6/0/terrain = 1
+2:6/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:6/0/physics_layer_0/angular_velocity = 0.0
+2:6/0/terrains_peering_bit/right_side = 1
+2:6/0/terrains_peering_bit/top_side = 1
+3:6/0 = 0
+3:6/0/terrain_set = 0
+3:6/0/terrain = 1
+3:6/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+3:6/0/physics_layer_0/angular_velocity = 0.0
+3:6/0/terrains_peering_bit/top_side = 1
+4:6/0 = 0
+4:6/0/terrain_set = 0
+4:6/0/terrain = 1
+4:6/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+4:6/0/physics_layer_0/angular_velocity = 0.0
+4:6/0/terrains_peering_bit/left_side = 1
+4:6/0/terrains_peering_bit/top_side = 1
+5:6/0 = 0
+5:6/0/terrain_set = 0
+5:6/0/terrain = 1
+5:6/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+5:6/0/physics_layer_0/angular_velocity = 0.0
+5:6/0/terrains_peering_bit/bottom_side = 1
+5:6/0/terrains_peering_bit/top_side = 1
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_llqcd"]
 texture = ExtResource("1_op4nm")
@@ -27,7 +241,13 @@ texture_region_size = Vector2i(32, 32)
 tile_size = Vector2i(32, 32)
 uv_clipping = true
 physics_layer_0/collision_layer = 1
+terrain_set_0/mode = 2
+terrain_set_0/terrain_0/name = "Grass 0"
+terrain_set_0/terrain_0/color = Color(0.321569, 0.65098, 0.172549, 1)
+terrain_set_0/terrain_1/name = "Dirt 1"
+terrain_set_0/terrain_1/color = Color(0.72549, 0.282353, 0.0745098, 1)
 sources/4 = SubResource("TileSetAtlasSource_llqcd")
+sources/0 = SubResource("TileSetAtlasSource_qbw5v")
 
 [sub_resource type="Animation" id="Animation_iq0yl"]
 resource_name = "Loss"
@@ -141,63 +361,6 @@ tracks/7/keys = {
 "times": PackedFloat32Array(3, 4, 5.1, 5.9, 6.8, 7.3)
 }
 
-[sub_resource type="Animation" id="Animation_nfx07"]
-resource_name = "startOfDay"
-length = 5.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Control/DayCount:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1, 4, 5),
-"transitions": PackedFloat32Array(2, 1, 2, 1),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(0, 100), Vector2(0, 100), Vector2(0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Control/DayCount:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1, 4, 5),
-"transitions": PackedFloat32Array(2, 1, 2, 2),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-tracks/2/type = "method"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 5),
-"transitions": PackedFloat32Array(1, 1),
-"values": [{
-"args": [],
-"method": &"adjust_day"
-}, {
-"args": [],
-"method": &"start_day"
-}]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath(".:modulate")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(1.5, 3.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(0.74902, 0.772549, 0.94902, 1), Color(1, 1, 1, 1)]
-}
-
 [sub_resource type="Animation" id="Animation_27aa4"]
 resource_name = "startOfNight"
 length = 5.0
@@ -228,13 +391,169 @@ tracks/1/keys = {
 }]
 }
 
+[sub_resource type="Animation" id="Animation_nfx07"]
+resource_name = "startOfDay"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/DayCount:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 4),
+"transitions": PackedFloat32Array(2, 1, 2),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 100), Vector2(0, 100)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Control/DayCount:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 4),
+"transitions": PackedFloat32Array(2, 1, 2),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"adjust_day"
+}]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1.5, 3.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.74902, 0.772549, 0.94902, 1), Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Control/Button:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Control/Button:self_modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(4, 5),
+"transitions": PackedFloat32Array(2, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Control/Button:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(4, 5),
+"transitions": PackedFloat32Array(2, 1),
+"update": 0,
+"values": [Vector2(404, 260), Vector2(404, 360)]
+}
+
+[sub_resource type="Animation" id="Animation_18kjb"]
+resource_name = "startOfDay"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/Button:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(2, 1),
+"update": 0,
+"values": [Vector2(404, 360), Vector2(404, 460)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Control/Button:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Control/Button:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(2, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Control/DayCount:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(2, 1),
+"update": 0,
+"values": [Vector2(0, 100), Vector2(0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Control/DayCount:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_6m7n0"]
 _data = {
 "Loss": SubResource("Animation_iq0yl"),
 "Win": SubResource("Animation_kcwfj"),
-"startOfDay": SubResource("Animation_nfx07"),
+"endOfNight": SubResource("Animation_nfx07"),
+"startOfDay": SubResource("Animation_18kjb"),
 "startOfNight": SubResource("Animation_27aa4")
 }
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sin3g"]
 
 [node name="Main" type="Node2D"]
 modulate = Color(0.74902, 0.772549, 0.94902, 1)
@@ -246,13 +565,14 @@ turret = ExtResource("3_7hvpt")
 tile_set = SubResource("TileSet_0hg27")
 format = 2
 layer_0/name = "Test"
-layer_0/tile_data = PackedInt32Array(65536, 4, 1, 131074, 4, 0, 131075, 4, 0, 131076, 4, 0, 131077, 4, 0, 131078, 4, 0, 131079, 4, 0, 131080, 4, 0, 131081, 4, 0, 131082, 4, 0, 131083, 4, 0, 131084, 4, 0, 131085, 4, 0, 131086, 4, 0, 131087, 4, 0, 131088, 4, 0, 131089, 4, 0, 131099, 4, 0, 131098, 4, 0, 131097, 4, 0, 131096, 4, 0, 131095, 4, 0, 131094, 4, 0, 131093, 4, 0, 131092, 4, 0, 131091, 4, 0, 131090, 4, 0, 196635, 4, 0, 196634, 4, 0, 196633, 4, 0, 196632, 4, 0, 196631, 4, 0, 196630, 4, 0, 196629, 4, 0, 196628, 4, 0, 262163, 4, 0, 262164, 4, 0, 262165, 4, 0, 262166, 4, 0, 262167, 4, 0, 262168, 4, 0, 327700, 4, 0, 327701, 4, 0, 327702, 4, 0, 327703, 4, 0, 327704, 4, 0, 327705, 4, 0, 196627, 4, 0, 196626, 4, 0, 196625, 4, 0, 262160, 4, 0, 327696, 4, 0, 327697, 4, 0, 327698, 4, 0, 327699, 4, 0, 262159, 4, 0, 327695, 4, 0, 393234, 4, 0, 393235, 4, 0, 393236, 4, 0, 393237, 4, 0, 262162, 4, 0, 262161, 4, 0, 393233, 4, 0, 262158, 4, 0, 262157, 4, 0, 327694, 4, 0, 196623, 4, 0, 196622, 4, 0, 196621, 4, 0, 196620, 4, 0, 196619, 4, 0, 196618, 4, 0, 262153, 4, 0, 262152, 4, 0, 262151, 4, 0, 262150, 4, 0, 327686, 4, 0, 393222, 4, 0, 458758, 4, 0, 524294, 4, 0, 589831, 4, 0, 589832, 4, 0, 655369, 4, 0, 655370, 4, 0, 655371, 4, 0, 655372, 4, 0, 655373, 4, 0, 589838, 4, 0, 524303, 4, 0, 458767, 4, 0, 393231, 4, 0, 262156, 4, 0, 262155, 4, 0, 262154, 4, 0, 327688, 4, 0, 393224, 4, 0, 458760, 4, 0, 458761, 4, 0, 524298, 4, 0, 524299, 4, 0, 524300, 4, 0, 524301, 4, 0, 458766, 4, 0, 327693, 4, 0, 327692, 4, 0, 327691, 4, 0, 327690, 4, 0, 393225, 4, 0, 524302, 4, 0, 524296, 4, 0, 589833, 4, 0, 589834, 4, 0, 589835, 4, 0, 589836, 4, 0, 589837, 4, 0, 589839, 4, 0, 589840, 4, 0, 524305, 4, 0, 458769, 4, 0, 458768, 4, 0, 393230, 4, 0, 393227, 4, 0, 393226, 4, 0, 524297, 4, 0, 524304, 4, 0, 458765, 4, 0, 393228, 4, 0, 458763, 4, 0, 458762, 4, 0, 458764, 4, 0, 393229, 4, 0, 327689, 4, 0, 393223, 4, 0, 524295, 4, 0, 327687, 4, 0, 458759, 4, 0, 458757, 4, 0, 393221, 4, 0, 327684, 4, 0, 327683, 4, 0, 262147, 4, 0, 262148, 4, 0, 196612, 4, 0, 196611, 4, 0, 196610, 4, 0, 196609, 4, 1, 65537, 4, 1, 131073, 4, 1, 262145, 4, 1, 327681, 4, 1, 393217, 4, 1, 458753, 4, 1, 524289, 4, 1, 589825, 4, 1, 655361, 4, 1, 720897, 4, 1, 786433, 4, 1, 851969, 4, 1, 917505, 4, 1, 983041, 4, 1, 1048577, 4, 1, 1114113, 4, 1, 1179648, 4, 1, 1114112, 4, 1, 1048576, 4, 1, 983040, 4, 1, 917504, 4, 1, 851968, 4, 1, 786432, 4, 1, 720896, 4, 1, 655360, 4, 1, 589824, 4, 1, 524288, 4, 1, 458752, 4, 1, 393216, 4, 1, 327680, 4, 1, 262144, 4, 1, 196608, 4, 1, 131072, 4, 1, 0, 4, 1)
+layer_0/tile_data = PackedInt32Array(65536, 262144, 0, 131074, 0, 3, 131075, 262144, 0, 131076, 65536, 3, 131077, 262144, 1, 131078, 262144, 1, 131079, 131072, 2, 131080, 262144, 3, 131081, 262144, 1, 131082, 196608, 2, 131083, 0, 1, 131084, 196608, 1, 131085, 262144, 3, 131086, 0, 2, 131087, 196608, 1, 131088, 65536, 1, 131089, 262144, 0, 131099, 65536, 2, 131098, 65536, 1, 131097, 0, 2, 131096, 131072, 0, 131095, 196608, 3, 131094, 0, 3, 131093, 65536, 3, 131092, 65536, 1, 131091, 65536, 3, 131090, 196608, 3, 196635, 131072, 3, 196634, 262144, 3, 196633, 196608, 0, 196632, 65536, 0, 196631, 196608, 0, 196630, 262144, 2, 196629, 196608, 2, 196628, 262144, 2, 262163, 0, 0, 262164, 65536, 3, 262165, 131072, 3, 262166, 196608, 2, 262167, 65536, 0, 262168, 196608, 3, 327700, 131072, 2, 327701, 196608, 0, 327702, 196608, 1, 327703, 65536, 1, 327704, 262144, 3, 327705, 196608, 2, 196627, 196608, 3, 196626, 131072, 3, 196625, 0, 0, 262160, 196608, 3, 327696, 131072, 0, 327697, 65536, 2, 327698, 196608, 3, 327699, 0, 0, 262159, 196608, 0, 327695, 65536, 0, 393234, 0, 0, 393235, 262144, 0, 393236, 131072, 3, 393237, 65536, 0, 262162, 196608, 2, 262161, 65536, 3, 393233, 262144, 1, 262158, 262144, 0, 262157, 65536, 0, 327694, 262144, 2, 196623, 65536, 0, 196622, 196608, 2, 196621, 262144, 2, 196620, 65536, 1, 196619, 262144, 0, 196618, 65536, 2, 262153, 262144, 1, 262152, 65536, 2, 262151, 262144, 0, 262150, 65536, 3, 327686, 0, 2, 393222, 131072, 0, 458758, 65536, 2, 524294, 0, 1, 589831, 65536, 2, 589832, 0, 3, 655369, 65536, 3, 655370, 0, 1, 655371, 131072, 1, 655372, 131072, 3, 655373, 65536, 0, 589838, 262144, 0, 524303, 196608, 1, 458767, 262144, 2, 393231, 262144, 1, 262156, 131072, 2, 262155, 196608, 0, 262154, 196608, 0, 327688, 131072, 0, 393224, 65536, 1, 458760, 0, 2, 458761, 196608, 2, 524301, 196608, 0, 458766, 65536, 2, 327693, 131072, 0, 327692, 196608, 0, 327691, 262144, 3, 327690, 131072, 1, 393225, 262144, 1, 524302, 262144, 0, 524296, 131072, 2, 589837, 262144, 0, 589839, 0, 1, 589840, 196608, 2, 524305, 0, 3, 458769, 196608, 0, 458768, 262144, 2, 393230, 65536, 3, 393227, 0, 0, 393226, 0, 0, 524304, 65536, 2, 458765, 196608, 3, 393228, 0, 1, 458764, 131072, 3, 393229, 262144, 1, 327689, 262144, 3, 393223, 262144, 2, 524295, 131072, 1, 327687, 65536, 2, 458759, 196608, 1, 458757, 65536, 1, 393221, 0, 3, 327684, 65536, 2, 327683, 65536, 0, 262147, 65536, 0, 262148, 196608, 2, 196612, 65536, 2, 196611, 65536, 3, 196610, 131072, 1, 196609, 131072, 2, 65537, 0, 3, 131073, 196608, 2, 262145, 0, 0, 327681, 131072, 2, 393217, 0, 3, 458753, 65536, 0, 524289, 262144, 0, 589825, 262144, 0, 655361, 0, 1, 720897, 196608, 1, 786433, 131072, 0, 851969, 196608, 1, 917505, 262144, 3, 983041, 131072, 1, 1048577, 131072, 1, 1114113, 65536, 0, 1179648, 65536, 1, 1114112, 131072, 2, 1048576, 262144, 3, 983040, 0, 1, 917504, 65536, 0, 851968, 0, 1, 786432, 65536, 1, 720896, 0, 3, 655360, 0, 3, 589824, 0, 3, 524288, 0, 0, 458752, 131072, 2, 393216, 0, 2, 327680, 0, 0, 262144, 262144, 3, 196608, 131072, 3, 131072, 131072, 0, 0, 262144, 0, 589836, 131072, 0, 524300, 65536, 1, 589835, 262144, 2, 524299, 196608, 3, 458763, 196608, 0, 589834, 196608, 0, 524298, 262144, 2, 458762, 65536, 3, 589833, 0, 1, 524297, 65536, 0, 655375, 65536, 0, 655374, 262144, 0, 720910, 0, 2, 720909, 65536, 1, 720908, 196608, 3, 720907, 65536, 1, 720906, 65536, 2, 720905, 131072, 1, 720904, 262144, 3, 655368, 0, 0, 655367, 262144, 2, 655366, 65536, 1, 589830, 65536, 3, 589829, 262144, 2, 524293, 262144, 3, 524292, 131072, 1, 458756, 65536, 1, 393220, 262144, 2, 393219, 262144, 0, 393218, 131072, 3, 327682, 131072, 0, 262146, 196608, 1, 458754, 65536, 2, 524290, 131072, 0, 589826, 262144, 3, 655362, 262144, 3, 720898, 131072, 2, 786434, 196608, 2, 851970, 131072, 3, 917506, 0, 2, 983042, 131072, 1, 1048578, 196608, 1, 1114114, 262144, 2, 1179650, 131072, 3, 1179649, 196608, 2, 1179651, 262144, 0, 1114115, 262144, 1, 1048579, 65536, 1, 983043, 0, 0, 917507, 65536, 1, 851971, 262144, 0, 786435, 131072, 1, 720899, 196608, 1, 655363, 131072, 2, 589827, 0, 3, 524291, 65536, 1, 458755, 196608, 2, 589828, 262144, 0, 655364, 0, 2, 720900, 0, 0, 786436, 262144, 1, 851972, 131072, 3, 917508, 262144, 0, 983044, 196608, 1, 1048580, 0, 0, 1114116, 131072, 2, 1179652, 0, 1, 1179653, 131072, 2, 1114117, 131072, 1, 1048581, 262144, 0, 983045, 196608, 1, 917509, 131072, 1, 851973, 0, 2, 786437, 262144, 1, 720901, 65536, 0, 655365, 65536, 0, 720902, 196608, 0, 786438, 262144, 3, 851974, 196608, 2, 917510, 131072, 3, 983046, 262144, 1, 1048582, 196608, 0, 1114118, 196608, 0, 1179654, 0, 0, 1179655, 65536, 2, 1114119, 196608, 2, 1048583, 65536, 3, 983047, 0, 2, 917511, 196608, 2, 851975, 131072, 2, 786439, 131072, 1, 720903, 131072, 1, 786440, 262144, 1, 851976, 262144, 0, 917512, 0, 0, 983048, 196608, 1, 1048584, 262144, 3, 1114120, 262144, 2, 1179656, 0, 1, 1179657, 131072, 1, 1114121, 65536, 1, 1048585, 262144, 0, 983049, 0, 0, 917513, 196608, 2, 851977, 0, 1, 786441, 0, 3, 786442, 196608, 3, 851978, 0, 0, 917514, 196608, 1, 983050, 262144, 2, 1048586, 131072, 3, 1114122, 131072, 1, 1179658, 196608, 0, 1179659, 65536, 0, 1114123, 262144, 0, 1048587, 196608, 0, 983051, 131072, 2, 917515, 65536, 2, 851979, 131072, 1, 786443, 65536, 0, 786444, 196608, 3, 851980, 196608, 1, 917516, 65536, 0, 983052, 196608, 1, 1048588, 262144, 3, 1114124, 65536, 0, 1179660, 0, 1, 1179661, 0, 2, 1114125, 131072, 1, 1048589, 0, 1, 983053, 65536, 2, 917517, 196608, 2, 851981, 65536, 2, 786445, 262144, 1, 786446, 196608, 2, 851982, 196608, 1, 917518, 0, 3, 983054, 65536, 3, 1048590, 196608, 3, 1114126, 262144, 2, 1179662, 131072, 1, 1179663, 262144, 1, 1114127, 196608, 2, 1048591, 262144, 1, 983055, 131072, 3, 917519, 131072, 0, 851983, 65536, 0, 786447, 196608, 2, 720911, 262144, 0, 720912, 65536, 0, 655376, 65536, 2, 655377, 65536, 3, 589841, 262144, 3, 589842, 131072, 2, 524306, 65536, 1, 458770, 131072, 3, 458771, 65536, 3, 524307, 65536, 2, 589843, 65536, 2, 655379, 0, 3, 655378, 262144, 0, 720914, 0, 3, 720913, 0, 2, 786449, 0, 3, 786448, 0, 1, 851984, 65536, 3, 917520, 65536, 0, 983056, 131072, 1, 1048592, 0, 0, 1114128, 0, 2, 1179664, 262144, 0, 1179665, 262144, 3, 1114129, 65536, 0, 1048593, 131072, 2, 983057, 0, 3, 917521, 196608, 3, 851985, 196608, 3, 851986, 262144, 1, 786450, 131072, 0, 786451, 131072, 0, 720915, 196608, 1, 720916, 196608, 2, 655380, 0, 3, 589844, 65536, 3, 524308, 131072, 0, 458772, 196608, 0, 458773, 65536, 1, 524309, 65536, 0, 589845, 196608, 1, 655381, 65536, 0, 720917, 196608, 0, 786453, 131072, 2, 786452, 65536, 3, 851988, 0, 2, 851987, 0, 2, 917523, 131072, 3, 917522, 196608, 2, 983058, 196608, 2, 1048594, 196608, 3, 1114130, 0, 3, 1179666, 131072, 3, 1179667, 196608, 3, 1114131, 131072, 3, 1048595, 65536, 1, 983059, 131072, 3, 983060, 262144, 1, 917524, 131072, 0, 917525, 65536, 0, 851989, 262144, 3, 851990, 262144, 0, 786454, 65536, 1, 720918, 196608, 3, 655382, 196608, 0, 589846, 262144, 1, 524310, 0, 0, 458774, 0, 2, 393238, 65536, 2, 393239, 0, 3, 458775, 65536, 1, 524311, 65536, 2, 589847, 262144, 1, 655383, 196608, 3, 720919, 196608, 0, 786455, 65536, 2, 851991, 65536, 1, 917527, 196608, 2, 917526, 196608, 2, 983062, 196608, 2, 983061, 196608, 0, 1048597, 0, 0, 1048596, 196608, 3, 1114132, 0, 0, 1179668, 131072, 1, 1179669, 65536, 0, 1114133, 0, 0, 1114134, 65536, 3, 1048598, 131072, 0, 1048599, 65536, 3, 983063, 196608, 0, 983064, 65536, 3, 917528, 65536, 1, 851992, 262144, 2, 786456, 196608, 2, 720920, 262144, 1, 655384, 262144, 3, 589848, 196608, 1, 524312, 0, 2, 458776, 196608, 0, 393240, 0, 1, 393241, 0, 2, 458777, 131072, 0, 524313, 65536, 1, 589849, 262144, 0, 655385, 196608, 2, 720921, 131072, 2, 786457, 131072, 2, 851993, 131072, 0, 917529, 196608, 3, 983065, 131072, 2, 1048601, 131072, 2, 1048600, 0, 0, 1114136, 0, 3, 1114135, 262144, 3, 1179671, 131072, 1, 1179670, 262144, 3, 1179672, 131072, 3, 1179673, 65536, 2, 1114137, 196608, 1, 1114138, 0, 2, 1048602, 196608, 2, 983066, 0, 1, 917530, 196608, 2, 851994, 65536, 2, 786458, 65536, 0, 720922, 131072, 1, 655386, 65536, 2, 589850, 65536, 3, 524314, 65536, 3, 458778, 196608, 3, 393242, 262144, 0, 327706, 262144, 1, 262170, 0, 1, 262169, 262144, 2, 262171, 65536, 1, 327707, 262144, 1, 393243, 262144, 2, 458779, 131072, 0, 524315, 131072, 0, 589851, 196608, 1, 655387, 65536, 2, 720923, 0, 2, 786459, 262144, 2, 851995, 262144, 3, 917531, 262144, 3, 983067, 65536, 1, 1048603, 196608, 3, 1114139, 131072, 3, 1179675, 0, 0, 1179674, 0, 2, 393232, 0, 1, 196624, 0, 0, 196617, 262144, 3, 196616, 0, 1, 196615, 131072, 0, 196614, 262144, 0, 196613, 196608, 3, 262149, 262144, 3, 327685, 196608, 3)
 script = ExtResource("2_4tv3b")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_6m7n0")
 }
+autoplay = "endOfNight"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(480, 270)
@@ -280,20 +600,19 @@ z_index = 1
 position = Vector2(100, 50)
 
 [node name="Control" type="Control" parent="."]
-visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="DayCount" type="RichTextLabel" parent="Control"]
-modulate = Color(1, 1, 1, 0)
 top_level = true
 z_index = 1
 z_as_relative = false
 layout_mode = 0
+offset_top = 100.0
 offset_right = 960.0
-offset_bottom = 189.0
+offset_bottom = 289.0
 theme_override_fonts/normal_font = ExtResource("4_dp6hs")
 theme_override_font_sizes/normal_font_size = 40
 bbcode_enabled = true
@@ -319,6 +638,28 @@ offset_bottom = 40.0
 theme_override_fonts/normal_font = ExtResource("4_dp6hs")
 bbcode_enabled = true
 
+[node name="dayTimer" type="TextureProgressBar" parent="Control"]
+layout_mode = 0
+offset_right = 958.0
+offset_bottom = 48.0
+max_value = 10.0
+step = 0.0
+value = 10.0
+fill_mode = 1
+texture_progress = ExtResource("12_oh1mc")
+metadata/_edit_lock_ = true
+
+[node name="Button" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 404.0
+offset_top = 360.0
+offset_right = 557.0
+offset_bottom = 456.0
+theme_override_fonts/font = ExtResource("4_dp6hs")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_sin3g")
+disabled = true
+text = "Begin the Timer"
+
 [node name="indicator" type="Sprite2D" parent="."]
 position = Vector2(48, 48)
 texture = ExtResource("9_2hmug")
@@ -331,3 +672,5 @@ position = Vector2(335, 411)
 
 [node name="plant2" parent="." instance=ExtResource("10_m1vjg")]
 position = Vector2(250, 329)
+
+[connection signal="pressed" from="Control/Button" to="." method="start_day"]
