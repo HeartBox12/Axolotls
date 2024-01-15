@@ -189,17 +189,18 @@ sources/0 = SubResource("TileSetAtlasSource_qbw5v")
 
 [sub_resource type="Animation" id="Animation_iq0yl"]
 resource_name = "Loss"
+length = 1.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:modulate")
+tracks/0/path = NodePath("Control/ColorRect:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 1, 1.2, 1.5),
+"transitions": PackedFloat32Array(3, 1, 0.5, 3),
 "update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 0, 0, 1)]
+"values": [Vector2(0, 540), Vector2(0, 0), Vector2(0, -10), Vector2(0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_kcwfj"]
@@ -388,6 +389,18 @@ tracks/6/keys = {
 "update": 0,
 "values": [Vector2(404, 260), Vector2(404, 360)]
 }
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Control/counters:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(1, 2),
+"transitions": PackedFloat32Array(2, 1),
+"update": 0,
+"values": [Vector2(960, 0), Vector2(880, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_18kjb"]
 resource_name = "startOfDay"
@@ -481,6 +494,18 @@ tracks/1/keys = {
 "method": &"start_night"
 }]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Control/counters:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(880, 0), Vector2(960, 0)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_6m7n0"]
 _data = {
@@ -552,7 +577,7 @@ texture = ExtResource("6_aqrli")
 
 [node name="Player" parent="." node_paths=PackedStringArray("root", "tileSet") instance=ExtResource("8_ptg5p")]
 z_index = 1
-position = Vector2(100, 50)
+position = Vector2(521, 216)
 root = NodePath("..")
 tileSet = NodePath("../Tiles")
 
@@ -590,17 +615,11 @@ bbcode_enabled = true
 text = "[center][color=#000000]The Stars will alime in[/color][color=#003300] x days[/color][/center]"
 metadata/_edit_lock_ = true
 
-[node name="LimeCount" type="RichTextLabel" parent="Control"]
-layout_mode = 0
-offset_right = 81.0
-offset_bottom = 40.0
-theme_override_fonts/normal_font = ExtResource("4_dp6hs")
-bbcode_enabled = true
-
 [node name="dayTimer" type="TextureProgressBar" parent="Control"]
 layout_mode = 0
-offset_right = 958.0
-offset_bottom = 48.0
+offset_top = 508.0
+offset_right = 960.0
+offset_bottom = 556.0
 max_value = 10.0
 step = 0.0
 value = 10.0
@@ -612,19 +631,55 @@ metadata/_edit_lock_ = true
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 0
 offset_left = 404.0
-offset_top = 260.0
+offset_top = 460.0
 offset_right = 557.0
-offset_bottom = 356.0
+offset_bottom = 556.0
 theme_override_fonts/font = ExtResource("4_dp6hs")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_sin3g")
 disabled = true
 text = "Begin the Timer"
+
+[node name="counters" type="Control" parent="Control"]
+anchors_preset = 0
+offset_left = 960.0
+offset_right = 1040.0
+offset_bottom = 80.0
+
+[node name="LimeCount" type="RichTextLabel" parent="Control/counters"]
+z_index = 1
+z_as_relative = false
+layout_mode = 0
+offset_right = 80.0
+offset_bottom = 40.0
+theme_override_fonts/normal_font = ExtResource("4_dp6hs")
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+text = "32"
+
+[node name="SeedCount" type="RichTextLabel" parent="Control/counters"]
+z_index = 1
+z_as_relative = false
+layout_mode = 0
+offset_top = 40.0
+offset_right = 81.0
+offset_bottom = 80.0
+theme_override_fonts/normal_font = ExtResource("4_dp6hs")
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+text = "32"
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+layout_mode = 0
+offset_right = 960.0
+offset_bottom = 540.0
+color = Color(0, 0, 0, 1)
 
 [node name="indicator" type="Sprite2D" parent="."]
 position = Vector2(48, 48)
 texture = ExtResource("9_2hmug")
 
 [node name="spawner" type="Node2D" parent="."]
+position = Vector2(-32, 0)
 script = ExtResource("14_7jn5l")
 
 [node name="RightSpawn" type="Path2D" parent="spawner"]
@@ -650,3 +705,5 @@ rotation = -1.5708
 
 [connection signal="coordSelect" from="Player" to="." method="_on_coord_select"]
 [connection signal="planted" from="Player" to="." method="_on_player_planted"]
+[connection signal="turreted" from="Player" to="." method="_on_player_turreted"]
+[connection signal="pressed" from="Control/Button" to="." method="start_day"]

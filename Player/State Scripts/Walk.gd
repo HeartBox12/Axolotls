@@ -42,8 +42,6 @@ func update(_delta): #Equivalent to func process(delta) in the host. Only use pr
 	
 	if host.validSelect:
 		host.coordSelect.emit(host.selPos)
-	#Change sprite to walk
-	#Start playing if needed
 
 func physics_update(delta): #Equivalent to func physics_process() in the host.
 	host.velocity = host.input * host.walkSpeed * delta
