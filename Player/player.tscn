@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://State Machine.gd" id="2_15iyj"]
 [ext_resource type="Script" path="res://Player/State Scripts/Idle.gd" id="3_0mjya"]
 [ext_resource type="Script" path="res://Player/State Scripts/Walk.gd" id="4_846i6"]
-[ext_resource type="Script" path="res://Player/State Scripts/interact.gd" id="5_rf5vj"]
+[ext_resource type="Script" path="res://Player/State Scripts/plant.gd" id="5_r8208"]
 [ext_resource type="Script" path="res://Player/State Scripts/Offscreen.gd" id="6_o4vik"]
 [ext_resource type="Texture2D" uid="uid://40qkdi11kb6" path="res://icon.svg" id="7_rsvdi"]
 
@@ -303,7 +303,7 @@ machine = NodePath("..")
 sprite = NodePath("../../sprite")
 
 [node name="plant" type="Node" parent="State Machine" node_paths=PackedStringArray("host", "machine", "clock")]
-script = ExtResource("5_rf5vj")
+script = ExtResource("5_r8208")
 host = NodePath("../..")
 machine = NodePath("..")
 clock = NodePath("../../ProgClock")

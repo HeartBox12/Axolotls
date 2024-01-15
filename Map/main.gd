@@ -99,7 +99,12 @@ func _unhandled_input(event):
 	if Input.is_action_just_pressed("test_button_to_make_something_happen"):
 		$AnimationPlayer.play("endOfNight")
 
-
 func _on_coord_select(coords):
 	selPos = coords
 	$indicator.position = $Tiles.map_to_local(selPos)
+
+func _on_player_planted(coords):
+	var instance = plant.instantiate()
+	$Tiles.add_child(instance)
+	instance.position = $Tiles.map_to_local(selPos)
+	tiledNodes[selPos.x][selPos.y] = instance
