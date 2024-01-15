@@ -44,7 +44,6 @@ func _physics_process(delta):
 
 func fireBullet():
 	var shotBullet = bulletScene.instantiate()
-	add_child(shotBullet)
 	var assignedIndex:int = 0
 	var isIndexAssigned:bool = false
 	frame = 2 #Change to firing sprite
@@ -57,6 +56,7 @@ func fireBullet():
 	if !isIndexAssigned:
 		bullets.append(shotBullet)
 	print(bullets)
+	add_child(shotBullet)
 	shotBullet.rotation = fireRotation
 	shotBullet.speed = projectileSpeed
 	shotBullet.lifetime = projectileLifetime
