@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://dxx3636flyr8a"]
+[gd_scene load_steps=46 format=3 uid="uid://dxx3636flyr8a"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_1qpr2"]
 [ext_resource type="Script" path="res://State Machine.gd" id="2_15iyj"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://Player/State Scripts/Offscreen.gd" id="6_o4vik"]
 [ext_resource type="Script" path="res://Player/State Scripts/unplant.gd" id="7_h3uhe"]
 [ext_resource type="Texture2D" uid="uid://40qkdi11kb6" path="res://icon.svg" id="7_rsvdi"]
+[ext_resource type="Script" path="res://Player/State Scripts/harvest.gd" id="8_rgh44"]
 [ext_resource type="Texture2D" uid="uid://dnur1r83b6m2y" path="res://Assets/radial.png" id="9_w538w"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_63l4v"]
@@ -325,6 +326,13 @@ host = NodePath("../..")
 machine = NodePath("..")
 clock = NodePath("../../ProgClock")
 wait_time = 2
+
+[node name="harvest" type="Node" parent="State Machine" node_paths=PackedStringArray("host", "machine", "clock")]
+script = ExtResource("8_rgh44")
+host = NodePath("../..")
+machine = NodePath("..")
+clock = NodePath("../../ProgClock")
+wait_time = 3
 
 [node name="offscreen" type="Node" parent="State Machine" node_paths=PackedStringArray("host", "machine")]
 script = ExtResource("6_o4vik")

@@ -111,3 +111,10 @@ func _on_player_turreted(coords):
 func _on_player_unplanted(coords):
 	tiledNodes[coords.x][coords.y].health = 0
 	Global.seeds += 1
+	$Control/counters/SeedCount.text = str(Global.seeds)
+
+
+func _on_player_harvested(coords):
+	tiledNodes[coords.x][coords.y].health = 0
+	Global.limes += 1
+	$Control/counters/LimeCount.text = str(Global.limes)

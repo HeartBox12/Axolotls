@@ -45,10 +45,15 @@ func update(_delta): #Equivalent to func process(delta) in the host. Only use pr
 	else:
 		host.coordSelect.emit(Vector2i(-1, -1))
 	
-	if Input.is_action_just_pressed("interact_plant") && host.validSelect && Global.seeds >= Global.plantCost:
-		if  host.root.tiledNodes[host.selPos.x][host.selPos.y] == null:
+	if Input.is_action_just_pressed("interact_plant") && host.validSelect:
+		var target = host.root.tiledNodes[host.selPos.x][host.selPos.y]
+		if  target == null && Global.seeds >= Global.plantCost: #empty tile, can afford plant
 			swap.emit(self, "plant")
-		elif host.root.tiledNodes[host.selPos.x][host.selPos.y].is_in_group("plants"):
+		elif !target.is_in_group("plants"): #Not a plant
+			pass
+		elif target.ripe: #Ripe plant
+			swap.emit(self, "harvest") #pick the plant
+		else:
 			swap.emit(self, "unplant")
 		
 	if Input.is_action_just_pressed("interact_turret") && host.validSelect && host.root.tiledNodes[host.selPos.x][host.selPos.y] == null && Global.limes >= Global.turretCost:

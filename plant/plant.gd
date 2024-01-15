@@ -1,7 +1,7 @@
 extends Area2D
 
 @export var health:float = 5
-var ripe = false #Read by interaction system
+var ripe = false #FIXME: change to false
 
 signal destroyed
 signal picked

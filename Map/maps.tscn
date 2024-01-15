@@ -736,6 +736,7 @@ position = Vector2(-32, 575)
 rotation = -1.5708
 
 [connection signal="coordSelect" from="Player" to="." method="_on_coord_select"]
+[connection signal="harvested" from="Player" to="." method="_on_player_harvested"]
 [connection signal="planted" from="Player" to="." method="_on_player_planted"]
 [connection signal="turreted" from="Player" to="." method="_on_player_turreted"]
 [connection signal="unplanted" from="Player" to="." method="_on_player_unplanted"]
