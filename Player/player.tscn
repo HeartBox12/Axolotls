@@ -302,10 +302,11 @@ host = NodePath("../..")
 machine = NodePath("..")
 sprite = NodePath("../../sprite")
 
-[node name="interact" type="Node" parent="State Machine" node_paths=PackedStringArray("host", "machine")]
+[node name="set plant" type="Node" parent="State Machine" node_paths=PackedStringArray("host", "machine", "clock")]
 script = ExtResource("5_rf5vj")
 host = NodePath("../..")
 machine = NodePath("..")
+clock = NodePath("../../ProgClock")
 
 [node name="offscreen" type="Node" parent="State Machine" node_paths=PackedStringArray("host", "machine")]
 script = ExtResource("6_o4vik")
@@ -315,3 +316,10 @@ machine = NodePath("..")
 [node name="sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_6dppy")
 animation = &"idle_down"
+
+[node name="ProgClock" type="TextureProgressBar" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+value = 50.0
+fill_mode = 4
+texture_progress = ExtResource("7_rsvdi")

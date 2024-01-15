@@ -1,6 +1,7 @@
 extends State
 @export var host:Node
 @export var machine:Node
+@export var clock:Node
 
 func enter(): #When this state is entered
 	pass

@@ -9,6 +9,8 @@ signal coordSelect
 
 var input:Vector2 = Vector2(0, 0) #Unit vector representing player movement dir
 var facing:int = 1 #clockwise, 0 is right, 4 is up.
+var selPos:Vector2i # The currently selected tile coordinates
+var validSelect:bool #Whether that tile is in-range. More checks are needed
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
