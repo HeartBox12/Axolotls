@@ -72,30 +72,30 @@ func start_night(): #Begin spawning enemies, etc.
 	Global.Nighttime.emit()
 
 func _unhandled_input(event):
-	if event.is_action_pressed("interact_plant"):
-		var selected = tiledNodes[selPos.x][selPos.y]
-		
-		if selected == null:
-			var instance = plant.instantiate()
-			$Tiles.add_child(instance)
-			instance.position = $Tiles.map_to_local(selPos)
-			tiledNodes[selPos.x][selPos.y] = instance
-			#if plant is ripe:
-				#plant.harvest
-			#else:
-			#plant.regain
-			
-			#turret
-				#nothing
-	
-	if event.is_action_pressed("interact_turret"):
-		var selected = tiledNodes[selPos.x][selPos.y]
-		if selected == null:
-			var instance = turret.instantiate()
-			$Tiles.add_child(instance)
-			instance.position = $Tiles.map_to_local(selPos)
-			tiledNodes[selPos.x][selPos.y] = instance
-			
+	#if event.is_action_pressed("interact_plant"):
+		#var selected = tiledNodes[selPos.x][selPos.y]
+		#
+		#if selected == null:
+			#var instance = plant.instantiate()
+			#$Tiles.add_child(instance)
+			#instance.position = $Tiles.map_to_local(selPos)
+			#tiledNodes[selPos.x][selPos.y] = instance
+			##if plant is ripe:
+				##plant.harvest
+			##else:
+			##plant.regain
+			#
+			##turret
+				##nothing
+	#
+	#if event.is_action_pressed("interact_turret"):
+		#var selected = tiledNodes[selPos.x][selPos.y]
+		#if selected == null:
+			#var instance = turret.instantiate()
+			#$Tiles.add_child(instance)
+			#instance.position = $Tiles.map_to_local(selPos)
+			#tiledNodes[selPos.x][selPos.y] = instance
+			#
 	if Input.is_action_just_pressed("test_button_to_make_something_happen"):
 		$AnimationPlayer.play("endOfNight")
 

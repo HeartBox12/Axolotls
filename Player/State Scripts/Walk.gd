@@ -39,6 +39,9 @@ func update(_delta): #Equivalent to func process(delta) in the host. Only use pr
 		3:
 			host.selPos.y -= 1
 	host.validSelect = host.tileSet.get_cell_tile_data(0, host.selPos).get_custom_data("valid")
+	
+	if host.validSelect:
+		host.coordSelect.emit(host.selPos)
 	#Change sprite to walk
 	#Start playing if needed
 

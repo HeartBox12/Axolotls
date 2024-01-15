@@ -302,7 +302,7 @@ host = NodePath("../..")
 machine = NodePath("..")
 sprite = NodePath("../../sprite")
 
-[node name="set plant" type="Node" parent="State Machine" node_paths=PackedStringArray("host", "machine", "clock")]
+[node name="plant" type="Node" parent="State Machine" node_paths=PackedStringArray("host", "machine", "clock")]
 script = ExtResource("5_rf5vj")
 host = NodePath("../..")
 machine = NodePath("..")
@@ -320,6 +320,7 @@ animation = &"idle_down"
 [node name="ProgClock" type="TextureProgressBar" parent="."]
 offset_right = 40.0
 offset_bottom = 40.0
-value = 50.0
+max_value = 5.0
+step = 0.0
 fill_mode = 4
 texture_progress = ExtResource("7_rsvdi")
