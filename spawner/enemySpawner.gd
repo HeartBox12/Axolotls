@@ -32,10 +32,11 @@ func setSide(button):
 		follow = bottomFollow
 	if button == "right":
 		side = rightSpawn
-		follow = bottomFollow
+		follow = rightFollow
 	spawnEnemy()
 
 func spawnEnemy():
-	follow.progress_ratio = randi_range(0, 1)
+	follow.progress_ratio = randf_range(0, 1)
 	enemy = enemy_scene.instantiate()
 	add_child(enemy)
+	enemy.position = follow.position

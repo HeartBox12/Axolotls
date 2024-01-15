@@ -627,10 +627,10 @@ texture = ExtResource("9_2hmug")
 [node name="spawner" type="Node2D" parent="."]
 script = ExtResource("14_7jn5l")
 
-[node name="LeftSpawn" type="Path2D" parent="spawner"]
+[node name="RightSpawn" type="Path2D" parent="spawner"]
 curve = SubResource("Curve2D_l8fck")
 
-[node name="Follow" type="PathFollow2D" parent="spawner/LeftSpawn"]
+[node name="Follow" type="PathFollow2D" parent="spawner/RightSpawn"]
 position = Vector2(1000, 32)
 rotation = 1.5708
 
@@ -641,17 +641,12 @@ curve = SubResource("Curve2D_lqfc1")
 position = Vector2(1000, 575)
 rotation = 3.14159
 
-[node name="RightSpawn" type="Path2D" parent="spawner"]
+[node name="LeftSpawn" type="Path2D" parent="spawner"]
 curve = SubResource("Curve2D_gr8sa")
 
-[node name="Follow" type="PathFollow2D" parent="spawner/RightSpawn"]
+[node name="Follow" type="PathFollow2D" parent="spawner/LeftSpawn"]
 position = Vector2(-32, 575)
 rotation = -1.5708
 
 [connection signal="coordSelect" from="Player" to="." method="_on_coord_select"]
-<<<<<<< Updated upstream
 [connection signal="planted" from="Player" to="." method="_on_player_planted"]
-[connection signal="turreted" from="Player" to="." method="_on_player_turreted"]
-=======
->>>>>>> Stashed changes
-[connection signal="pressed" from="Control/Button" to="." method="start_day"]

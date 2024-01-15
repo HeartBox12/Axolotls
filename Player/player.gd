@@ -20,6 +20,12 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
+	
+	if Input.is_action_just_pressed("test5"):
+		planted.emit(position/Vector2(32,32))
+	
+	
+	
 	input = Vector2(0, 0) #Reset
 	
 	#Read keyboard/controller. Accounts for weird input and < 1 controller tilt.

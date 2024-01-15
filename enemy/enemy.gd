@@ -18,7 +18,7 @@ func find_target():
 		print("No targets found!")
 		queue_free()
 	#But if there are targets...
-	var closest = 1000 #Arbitrarily large value
+	var closest = 100000 #Arbitrarily large value
 	for i in prospects: #Iterate to find closest
 		if position.distance_to(i.position) < closest:
 			closest = position.distance_to(i.position)
