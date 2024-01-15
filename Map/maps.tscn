@@ -738,4 +738,5 @@ rotation = -1.5708
 [connection signal="coordSelect" from="Player" to="." method="_on_coord_select"]
 [connection signal="planted" from="Player" to="." method="_on_player_planted"]
 [connection signal="turreted" from="Player" to="." method="_on_player_turreted"]
+[connection signal="unplanted" from="Player" to="." method="_on_player_unplanted"]
 [connection signal="pressed" from="Control/Button" to="." method="start_day"]

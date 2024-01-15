@@ -45,8 +45,11 @@ func update(_delta): #Equivalent to func process(delta) in the host. Only use pr
 	else:
 		host.coordSelect.emit(Vector2i(-1, -1))
 	
-	if Input.is_action_just_pressed("interact_plant") && host.validSelect && host.root.tiledNodes[host.selPos.x][host.selPos.y] == null && Global.seeds >= Global.plantCost:
-		swap.emit(self, "plant")
+	if Input.is_action_just_pressed("interact_plant") && host.validSelect && Global.seeds >= Global.plantCost:
+		if  host.root.tiledNodes[host.selPos.x][host.selPos.y] == null:
+			swap.emit(self, "plant")
+		elif host.root.tiledNodes[host.selPos.x][host.selPos.y].is_in_group("plants"):
+			swap.emit(self, "unplant")
 		
 	if Input.is_action_just_pressed("interact_turret") && host.validSelect && host.root.tiledNodes[host.selPos.x][host.selPos.y] == null && Global.limes >= Global.turretCost:
 		swap.emit(self, "turret")

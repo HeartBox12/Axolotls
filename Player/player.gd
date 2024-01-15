@@ -8,6 +8,7 @@ extends Node2D
 signal coordSelect
 signal planted
 signal turreted
+signal unplanted
 
 var input:Vector2 = Vector2(0, 0) #Unit vector representing player movement dir
 var facing:int = 1 #clockwise, 0 is right, 4 is up.

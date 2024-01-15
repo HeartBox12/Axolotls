@@ -103,7 +103,11 @@ func _on_player_turreted(coords):
 	var instance = turret.instantiate()
 	$Tiles.add_child(instance)
 	instance.position = $Tiles.map_to_local(coords)
-	tiledNodes[selPos.x][selPos.y] = instance
+	tiledNodes[coords.x][coords.y] = instance
 	
 	Global.limes -= Global.turretCost
 	$Control/counters/LimeCount.text = str(Global.limes)
+
+func _on_player_unplanted(coords):
+	tiledNodes[coords.x][coords.y].health = 0
+	Global.seeds += 1
