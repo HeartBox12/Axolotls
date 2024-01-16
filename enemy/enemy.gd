@@ -3,7 +3,7 @@ extends Area2D
 @export var health:int = 5
 @export var speed:int
 
-var dying:int = 0
+var dying:float = 0
 
 var target:Node
 
@@ -31,15 +31,18 @@ func _process(delta):
 		target.health -= delta
 
 func _physics_process(delta):
-	if dying == 0:
+	if dying == 0: #only move or begin dying if not already dying
 		if !onTarget && target != null:
 			global_position += global_position.direction_to(target.position) * speed * delta
-		if health <= 0:
+		elif !onTarget && target == null:
+			find_target()
+		if health <= 0: #got hit too many times
 			dying += delta
-	else:
+			$"CollisionShape2D".disabled = true #stop turrets from targeting after dying has begun
+	else: #if already dying
 		dying += delta
-		if dying >= 5:
-			queue_free()
+		if dying >= 1: #1 is time to die in seconds, aka death animation time
+			queue_free() #destroy self
 
 #Called when the enemy is within range of a plant.
 func _on_arrived(area_rid, area, area_shape_index, local_shape_index):

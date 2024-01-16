@@ -34,7 +34,7 @@ func _ready():
 		tiledNodes.append([])
 		for j in range(boundY):
 			tiledNodes[i].append(null)
-	$Camera2D.enabled = true #It starts the game inactive.
+	$CutsceneCamera.enabled = true #It starts the game inactive.
 	setup()
 
 func setup():
