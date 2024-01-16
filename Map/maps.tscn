@@ -823,7 +823,6 @@ script = ExtResource("2_4tv3b")
 libraries = {
 "": SubResource("AnimationLibrary_6m7n0")
 }
-autoplay = "Win"
 
 [node name="CutsceneCamera" type="Camera2D" parent="."]
 position = Vector2(480, 270)
