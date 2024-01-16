@@ -19,6 +19,7 @@ var playerPos #Player position in tilemap coords.
 var selPos #The tile currently selected by the player
 var tiledNodes:Array = [] #2d array for tracking which structures are where
 var isDay:bool = false #for timer purposes
+var livingEnems = 2 #Living enemies. When it reaches 0, start day. FIXME: set 0.
 
 var puns = ["Begin the timer!", "Squeeze the Day!", "No time to cit(rus) around!", 
 "When life gives you limes, uh, um, er, erm...",
@@ -127,6 +128,10 @@ func _on_player_harvested(coords):
 	tiledNodes[coords.x][coords.y].health = 0
 	$Control/counters/LimeCount.text = str(Global.limes)
 
-
 func play_TMG_credit():
 	$"AnimationPlayer".play("TheMagmaPsychicCredits")
+
+func _enemy_down():
+	livingEnems -= 1
+	if livingEnems <= 0:
+		$AnimationPlayer.play("endOfNight")

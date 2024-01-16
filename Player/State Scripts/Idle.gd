@@ -47,8 +47,11 @@ func update(_delta): #Equivalent to func process(delta) in the host. Only use pr
 	
 	if Input.is_action_just_pressed("interact_plant") && host.validSelect:
 		var target = host.root.tiledNodes[host.selPos.x][host.selPos.y]
-		if  target == null && Global.seeds >= Global.plantCost: #empty tile, can afford plant
-			swap.emit(self, "plant")
+		if  target == null: #Trying to plant on empty tile
+			if Global.seeds >= Global.plantCost:
+				swap.emit(self, "plant")
+			else:
+				pass
 		elif !target.is_in_group("plants"): #Not a plant
 			pass
 		elif target.profit < 0: #Ripe/mature plant

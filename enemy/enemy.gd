@@ -3,6 +3,8 @@ extends Area2D
 @export var health:int = 5
 @export var speed:int
 
+signal death
+
 var dying:float = 0
 
 var target:Node
@@ -45,6 +47,7 @@ func _physics_process(delta):
 		dying += delta
 		if dying >= 1: #1 is time to die in seconds, aka death animation time
 			queue_free() #destroy self
+			death.emit()
 
 #Called when the enemy is within range of a plant.
 func _on_arrived(area_rid, area, area_shape_index, local_shape_index):

@@ -358,7 +358,6 @@ offset_right = 16.0
 offset_bottom = -18.0
 max_value = 5.0
 step = 0.0
-value = 5.0
 fill_mode = 4
 texture_progress = ExtResource("12_rf8i5")
 

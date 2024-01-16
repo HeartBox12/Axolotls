@@ -34,7 +34,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_mca8u")
 }],
 "loop": true,
-"name": &"pick",
+"name": &"mature",
 "speed": 5.0
 }, {
 "frames": [{
@@ -65,6 +65,6 @@ shape = SubResource("RectangleShape2D_k2ya0")
 
 [node name="sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_vyaew")
-animation = &"ripen"
+animation = &"mature"
 
 [connection signal="animation_finished" from="sprite" to="." method="_on_sprite_animation_finished"]

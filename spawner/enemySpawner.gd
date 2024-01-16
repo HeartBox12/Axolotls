@@ -39,5 +39,6 @@ func spawnEnemy():
 	follow.progress_ratio = randf_range(0, 1)
 	enemy = enemy_scene.instantiate()
 	enemy.position = follow.position
-	add_child(enemy)
+	get_parent().add_child(enemy)
+	enemy.death.connect(Callable(get_parent(), "_enemy_down"))
 	get_parent().clear.connect(Callable(enemy, "_on_clear"))
