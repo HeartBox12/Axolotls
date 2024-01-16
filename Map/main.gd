@@ -12,6 +12,7 @@ signal clear #Connects to enemies so the script can wipe them out
 @export var initSeeds:int
 @export var initLimes:int
 @export var initDay:int
+@export var dayLength:int
 
 var day = 5 #days left 'till victory. Counts down.
 var playerPos #Player position in tilemap coords.
@@ -75,7 +76,8 @@ func adjust_day():
 func start_day():
 	$AnimationPlayer.play("startOfDay")
 	Global.Daytime.emit()
-	$Control/dayTimer.value = $Control/dayTimer.max_value
+	$Control/dayTimer.max_value = dayLength
+	$Control/dayTimer.value = dayLength
 	isDay = true #for timer purposes
 	
 	#$Player.position = some starting point to be decided (use a marker2D)
