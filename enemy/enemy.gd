@@ -3,6 +3,8 @@ extends Area2D
 @export var health:int = 5
 @export var speed:int
 
+var dying:int = 0
+
 var target:Node
 
 var onTarget = false
@@ -29,8 +31,15 @@ func _process(delta):
 		target.health -= delta
 
 func _physics_process(delta):
-	if !onTarget && target != null:
-		global_position += global_position.direction_to(target.position) * speed * delta
+	if dying == 0:
+		if !onTarget && target != null:
+			global_position += global_position.direction_to(target.position) * speed * delta
+		if health <= 0:
+			dying += delta
+	else:
+		dying += delta
+		if dying >= 5:
+			queue_free()
 
 #Called when the enemy is within range of a plant.
 func _on_arrived(area_rid, area, area_shape_index, local_shape_index):
