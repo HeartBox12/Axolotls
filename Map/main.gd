@@ -88,8 +88,8 @@ func start_night(): #Begin spawning enemies, etc.
 func _unhandled_input(event):
 	if Input.is_action_just_pressed("test0"):
 		$AnimationPlayer.play("endOfNight")
-	if Input.is_action_just_pressed("test5"):
-		$AnimationPlayer.play("Loss")
+#	if Input.is_action_just_pressed("test5"):
+#		$AnimationPlayer.play("Loss")
 
 func _on_coord_select(coords):
 	selPos = coords

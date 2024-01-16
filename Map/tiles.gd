@@ -13,8 +13,8 @@ func game_start():
 func _process(_delta):
 	pass
 	#DEBUG: we'll get rid of this control in the final version, useful for testing
-	#if Input.is_action_just_pressed("left click"):
-	#	place_turret(get_global_mouse_position())
+	if Input.is_action_just_pressed("ui_left"):
+		place_turret(get_global_mouse_position())
 
 func place_turret(placement):
 	var assignedIndex:int = 0
