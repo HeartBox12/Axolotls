@@ -8,13 +8,13 @@ var playerPos
 func enter(): #When this state is entered
 	match host.facing: #Sprite Assign
 		0:
-			sprite.animation = "idle_right"
+			sprite.play("idle_right")
 		1:
-			sprite.animation = "idle_down"
+			sprite.play("idle_down")
 		2:
-			sprite.animation = "idle_left"
+			sprite.play("idle_left")
 		3:
-			sprite.animation = "idle_up"
+			sprite.play("idle_up")
 	#Change sprite to idle
 	#Start playing if needed
 	

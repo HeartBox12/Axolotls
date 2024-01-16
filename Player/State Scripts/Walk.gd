@@ -15,13 +15,13 @@ func exit(): #Just before this state is exited
 func update(_delta): #Equivalent to func process(delta) in the host. Only use process() to call this
 	match host.facing: #Sprite Assign
 		0:
-			sprite.animation = "walk_right"
+			sprite.play("walk_right")
 		1:
-			sprite.animation = "walk_down"
+			sprite.play("walk_down")
 		2:
-			sprite.animation = "walk_left"
+			sprite.play("walk_left")
 		3:
-			sprite.animation = "walk_up"
+			sprite.play("walk_up")
 	
 	if host.input == Vector2(0, 0):
 		swap.emit(self, "idle")
