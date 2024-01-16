@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://bf0snq1g2u65g"]
+[gd_scene load_steps=42 format=3 uid="uid://bf0snq1g2u65g"]
 
 [ext_resource type="Texture2D" uid="uid://dibnvpc5mj84p" path="res://Assets/temporary backdrop.png" id="1_op4nm"]
 [ext_resource type="Script" path="res://Map/main.gd" id="1_u5oha"]
@@ -10,9 +10,9 @@
 [ext_resource type="Texture2D" uid="uid://ba6tp4ogijwrs" path="res://Assets/lime.jpg" id="6_aqrli"]
 [ext_resource type="Texture2D" uid="uid://sjkq12iuacd6" path="res://Assets/credits.png" id="7_r7iq4"]
 [ext_resource type="PackedScene" uid="uid://dxx3636flyr8a" path="res://Player/player.tscn" id="8_ptg5p"]
-[ext_resource type="Texture2D" uid="uid://cdquxw2aafc8x" path="res://Assets/indicator.png" id="9_2hmug"]
 [ext_resource type="PackedScene" uid="uid://x18enyc2dnnf" path="res://plant/plant.tscn" id="10_m1vjg"]
 [ext_resource type="Texture2D" uid="uid://dockdlpomc1ya" path="res://Assets/testbar.png" id="12_oh1mc"]
+[ext_resource type="Texture2D" uid="uid://5mtqajuld3qn" path="res://Assets/indicatorsheet.png" id="13_w1431"]
 [ext_resource type="Script" path="res://spawner/enemySpawner.gd" id="14_7jn5l"]
 [ext_resource type="AudioStream" uid="uid://br4qnoosexow" path="res://Assets/LimeScene_Drone.wav" id="15_wmapv"]
 [ext_resource type="AudioStream" uid="uid://3kf2ukbv1qw6" path="res://Assets/LimeScene_pop.wav" id="16_37h54"]
@@ -577,6 +577,91 @@ _data = {
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sin3g"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_b8dn1"]
+atlas = ExtResource("13_w1431")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dtjof"]
+atlas = ExtResource("13_w1431")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gs75c"]
+atlas = ExtResource("13_w1431")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0m10a"]
+atlas = ExtResource("13_w1431")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b4v55"]
+atlas = ExtResource("13_w1431")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s35s6"]
+atlas = ExtResource("13_w1431")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6gtik"]
+atlas = ExtResource("13_w1431")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rhwgr"]
+atlas = ExtResource("13_w1431")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2n8qa"]
+atlas = ExtResource("13_w1431")
+region = Rect2(256, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ra8hx"]
+atlas = ExtResource("13_w1431")
+region = Rect2(288, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wsmcq"]
+atlas = ExtResource("13_w1431")
+region = Rect2(320, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fy6e1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b8dn1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dtjof")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gs75c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0m10a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b4v55")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s35s6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6gtik")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rhwgr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2n8qa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ra8hx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wsmcq")
+}],
+"loop": true,
+"name": &"default",
+"speed": 15.0
+}]
+
 [sub_resource type="Curve2D" id="Curve2D_l8fck"]
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 1000, 32, 0, 0, 0, 0, 1000, 575)
@@ -603,6 +688,7 @@ plant = ExtResource("10_m1vjg")
 turret = ExtResource("3_7hvpt")
 initSeeds = 3
 initLimes = 2
+dayLength = 30
 metadata/_edit_lock_ = true
 
 [node name="Tiles" type="TileMap" parent="."]
@@ -743,9 +829,10 @@ offset_right = 960.0
 offset_bottom = 0.000488281
 color = Color(0, 0, 0, 1)
 
-[node name="indicator" type="Sprite2D" parent="."]
+[node name="indicator" type="AnimatedSprite2D" parent="."]
 position = Vector2(48, 48)
-texture = ExtResource("9_2hmug")
+sprite_frames = SubResource("SpriteFrames_fy6e1")
+frame_progress = 0.147206
 
 [node name="spawner" type="Node2D" parent="."]
 position = Vector2(-32, 0)
