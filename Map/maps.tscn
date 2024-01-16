@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://bf0snq1g2u65g"]
+[gd_scene load_steps=45 format=3 uid="uid://bf0snq1g2u65g"]
 
 [ext_resource type="Texture2D" uid="uid://dibnvpc5mj84p" path="res://Assets/temporary backdrop.png" id="1_op4nm"]
 [ext_resource type="Script" path="res://Map/main.gd" id="1_u5oha"]
@@ -8,6 +8,7 @@
 [ext_resource type="FontFile" uid="uid://tyuiinyuokna" path="res://Fonts/Cinzel-Regular.ttf" id="4_dp6hs"]
 [ext_resource type="Texture2D" uid="uid://40qkdi11kb6" path="res://icon.svg" id="5_igkck"]
 [ext_resource type="Texture2D" uid="uid://ba6tp4ogijwrs" path="res://Assets/lime.jpg" id="6_aqrli"]
+[ext_resource type="FontFile" uid="uid://daoephs38yckp" path="res://Fonts/WorkSans-Regular.ttf" id="7_j4n7e"]
 [ext_resource type="Texture2D" uid="uid://sjkq12iuacd6" path="res://Assets/credits.png" id="7_r7iq4"]
 [ext_resource type="PackedScene" uid="uid://dxx3636flyr8a" path="res://Player/player.tscn" id="8_ptg5p"]
 [ext_resource type="PackedScene" uid="uid://x18enyc2dnnf" path="res://plant/plant.tscn" id="10_m1vjg"]
@@ -234,7 +235,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_kcwfj"]
 resource_name = "Win"
-length = 10.0
+length = 11.0
 tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -296,7 +297,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("Camera2D:position")
+tracks/5/path = NodePath("CutsceneCamera:position")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -308,7 +309,7 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("Camera2D/Credits:visible")
+tracks/6/path = NodePath("CutsceneCamera/Credits:visible")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -357,6 +358,20 @@ tracks/9/keys = {
 "values": [{
 "args": [0.0],
 "method": &"play"
+}]
+}
+tracks/10/type = "method"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath(".")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(11),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"play_TMG_credit"
 }]
 }
 
@@ -567,9 +582,114 @@ tracks/2/keys = {
 "values": [Vector2(880, 0), Vector2(960, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_04gt3"]
+resource_name = "TheMagmaPsychicCredits"
+length = 20.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CutsceneCamera/Credits/TheMagmaPsychicLabel:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 1.5, 1.8, 2.1, 2.2, 3.5, 4.5, 5.5, 6.5, 7.5, 8.3, 20),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": ["T", "ThrMa", "Th", "Themag", "The", "TheM", "TheMagma", "TheMagmaSpyci", "TheMagma", "TheMagmaPsychic
+", "TheMagmaPsychic
+-Codingg", "TheMagmaPsychic
+-Coding", "TheMagmaPsychic
+-Coding"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CutsceneCamera/Credits/TheMagmaPsychicLabel:theme_override_fonts/font")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("7_j4n7e"), ExtResource("4_dp6hs")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CutsceneCamera/Credits/TheMagmaPsychicLabel:theme_override_colors/font_color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 10),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Color(0, 0, 0, 1), Color(0.219608, 0.929412, 0.294118, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CutsceneCamera/Credits/TheMagmaPsychicLabel:theme_override_constants/shadow_offset_x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 12.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 2]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CutsceneCamera/Credits/TheMagmaPsychicLabel:theme_override_constants/shadow_offset_y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 13.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 2]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CutsceneCamera/Credits/TheMagmaPsychicLabel:theme_override_constants/shadow_outline_size")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 10.7, 11.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 90, 6]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("CutsceneCamera/Credits/TheMagmaPsychicLabel:theme_override_font_sizes/font_size")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 14.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [30, 50]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("CutsceneCamera/Credits/TheMagmaPsychicLabel:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 15.2, 15.3, 16.2, 17.7),
+"transitions": PackedFloat32Array(1, 1e+06, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-19, 66.5), Vector2(-19, 66.5), Vector2(2500, 66.5), Vector2(250, 66.5), Vector2(-19, 66.5)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_6m7n0"]
 _data = {
 "Loss": SubResource("Animation_iq0yl"),
+"TheMagmaPsychicCredits": SubResource("Animation_04gt3"),
 "Win": SubResource("Animation_kcwfj"),
 "endOfNight": SubResource("Animation_nfx07"),
 "startOfDay": SubResource("Animation_18kjb"),
@@ -705,24 +825,39 @@ libraries = {
 }
 autoplay = "Win"
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(480, 270)
+[node name="CutsceneCamera" type="Camera2D" parent="."]
+position = Vector2(480, -200)
 enabled = false
 
-[node name="Credits" type="Sprite2D" parent="Camera2D"]
-visible = false
+[node name="Credits" type="Sprite2D" parent="CutsceneCamera"]
 z_index = 1
 scale = Vector2(2, 2)
 texture = ExtResource("7_r7iq4")
 
+[node name="TheMagmaPsychicLabel" type="Label" parent="CutsceneCamera/Credits"]
+offset_left = -19.0
+offset_top = 66.5
+offset_right = 576.0
+offset_bottom = 211.5
+scale = Vector2(0.5, 0.5)
+theme_override_colors/font_color = Color(0.219608, 0.929412, 0.294118, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_outline_size = 6
+theme_override_constants/line_spacing = -19
+theme_override_fonts/font = ExtResource("4_dp6hs")
+theme_override_font_sizes/font_size = 50
+
 [node name="Moon" type="Sprite2D" parent="."]
+visible = false
+self_modulate = Color(100, 0.498039, 0.498039, 1)
 z_index = -1
 position = Vector2(480, -270)
-scale = Vector2(2, 2)
+scale = Vector2(4, 1)
 texture = ExtResource("5_igkck")
 
 [node name="MoonLime" type="Sprite2D" parent="."]
-visible = false
 position = Vector2(480, -270)
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("6_aqrli")
@@ -837,7 +972,6 @@ sprite_frames = SubResource("SpriteFrames_fy6e1")
 frame_progress = 0.873249
 
 [node name="spawner" type="Node2D" parent="."]
-position = Vector2(-12, 0)
 script = ExtResource("14_7jn5l")
 
 [node name="RightSpawn" type="Path2D" parent="spawner"]

@@ -123,3 +123,7 @@ func _on_player_harvested(coords):
 	tiledNodes[coords.x][coords.y].health = 0
 	Global.limes += 1
 	$Control/counters/LimeCount.text = str(Global.limes)
+
+
+func play_TMG_credit():
+	$"AnimationPlayer".play("TheMagmaPsychicCredits")
