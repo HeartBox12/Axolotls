@@ -123,8 +123,8 @@ func _on_player_unplanted(coords):
 
 
 func _on_player_harvested(coords):
+	Global.limes += tiledNodes[coords.x][coords.y].profit
 	tiledNodes[coords.x][coords.y].health = 0
-	Global.limes += 1
 	$Control/counters/LimeCount.text = str(Global.limes)
 
 
