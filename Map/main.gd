@@ -90,6 +90,8 @@ func _unhandled_input(event):
 		$AnimationPlayer.play("endOfNight")
 #	if Input.is_action_just_pressed("test5"):
 #		$AnimationPlayer.play("Loss")
+	if Input.is_action_just_pressed("test3"):
+		$AnimationPlayer.play("Win")
 
 func _on_coord_select(coords):
 	selPos = coords
