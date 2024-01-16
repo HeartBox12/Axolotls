@@ -9,10 +9,10 @@
 [ext_resource type="Script" path="res://Player/State Scripts/Offscreen.gd" id="6_o4vik"]
 [ext_resource type="Script" path="res://Player/State Scripts/unplant.gd" id="7_h3uhe"]
 [ext_resource type="Script" path="res://Player/State Scripts/harvest.gd" id="8_rgh44"]
-[ext_resource type="Texture2D" uid="uid://dnur1r83b6m2y" path="res://Assets/radial.png" id="9_w538w"]
 [ext_resource type="Texture2D" uid="uid://y00wutkvwqlw" path="res://Assets/stickmanwalking.png" id="10_l70k5"]
 [ext_resource type="Texture2D" uid="uid://dd5kq4mby8og2" path="res://Assets/stickmanidle.png" id="11_6nym4"]
 [ext_resource type="AudioStream" uid="uid://lbw53vx0cl2h" path="res://Sounds/riser.wav" id="12_i57cy"]
+[ext_resource type="Texture2D" uid="uid://cpysr50mc03b" path="res://Assets/limetimer.png" id="12_rf8i5"]
 [ext_resource type="AudioStream" uid="uid://su6g8cdur4xp" path="res://Sounds/plant_pop.wav" id="13_cpcc3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_63l4v"]
@@ -352,14 +352,15 @@ sprite_frames = SubResource("SpriteFrames_6dppy")
 animation = &"walk_up"
 
 [node name="ProgClock" type="TextureProgressBar" parent="."]
-offset_left = -8.0
-offset_top = -32.0
-offset_right = 8.0
-offset_bottom = -16.0
+offset_left = -16.0
+offset_top = -50.0
+offset_right = 16.0
+offset_bottom = -18.0
 max_value = 5.0
 step = 0.0
+value = 5.0
 fill_mode = 4
-texture_progress = ExtResource("9_w538w")
+texture_progress = ExtResource("12_rf8i5")
 
 [node name="riser" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("12_i57cy")

@@ -21,6 +21,7 @@ var tiledNodes:Array = [] #2d array for tracking which structures are where
 var isDay:bool = false #for timer purposes
 
 var puns = ["Begin the timer!", "Squeeze the Day!", "No time to cit(rus) around!", 
+"When life gives you limes, uh, um, er, erm...",
 "I had this classmate in high school who just sat in the back of the classroom
 all day, eating lime slices out of a tupperware. Seriously, just taking a
 quarter of a lime and biting down. Like, she probably could
