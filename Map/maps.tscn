@@ -823,13 +823,13 @@ script = ExtResource("2_4tv3b")
 libraries = {
 "": SubResource("AnimationLibrary_6m7n0")
 }
-autoplay = "Win"
 
 [node name="CutsceneCamera" type="Camera2D" parent="."]
-position = Vector2(480, -200)
+position = Vector2(480, 270)
 enabled = false
 
 [node name="Credits" type="Sprite2D" parent="CutsceneCamera"]
+visible = false
 z_index = 1
 scale = Vector2(2, 2)
 texture = ExtResource("7_r7iq4")
