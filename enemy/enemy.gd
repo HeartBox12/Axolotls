@@ -22,9 +22,11 @@ func find_target():
 	#But if there are targets...
 	var closest = 100000 #Arbitrarily large value
 	for i in prospects: #Iterate to find closest
-		if position.distance_to(i.position) < closest:
-			closest = position.distance_to(i.position)
+		var dist = position.distance_to(i.position)
+		if dist < closest:
+			closest = dist
 			target = i
+			pass
 
 func _process(delta):
 	if onTarget: #Progress the anim. Equivalent to damage.

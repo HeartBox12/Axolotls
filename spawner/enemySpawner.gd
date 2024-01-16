@@ -38,6 +38,6 @@ func setSide(button):
 func spawnEnemy():
 	follow.progress_ratio = randf_range(0, 1)
 	enemy = enemy_scene.instantiate()
-	add_child(enemy)
 	enemy.position = follow.position
+	add_child(enemy)
 	get_parent().clear.connect(Callable(enemy, "_on_clear"))
