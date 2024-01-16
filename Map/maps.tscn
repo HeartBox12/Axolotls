@@ -296,7 +296,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("CutsceneCamera:position")
+tracks/5/path = NodePath("Camera2D:position")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -308,7 +308,7 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("CutsceneCamera/Credits:visible")
+tracks/6/path = NodePath("Camera2D/Credits:visible")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -705,11 +705,11 @@ libraries = {
 }
 autoplay = "Win"
 
-[node name="CutsceneCamera" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(480, 270)
 enabled = false
 
-[node name="Credits" type="Sprite2D" parent="CutsceneCamera"]
+[node name="Credits" type="Sprite2D" parent="Camera2D"]
 visible = false
 z_index = 1
 scale = Vector2(2, 2)
@@ -837,6 +837,7 @@ sprite_frames = SubResource("SpriteFrames_fy6e1")
 frame_progress = 0.873249
 
 [node name="spawner" type="Node2D" parent="."]
+position = Vector2(-12, 0)
 script = ExtResource("14_7jn5l")
 
 [node name="RightSpawn" type="Path2D" parent="spawner"]
