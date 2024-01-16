@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://dxx3636flyr8a"]
+[gd_scene load_steps=48 format=3 uid="uid://dxx3636flyr8a"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_1qpr2"]
 [ext_resource type="Script" path="res://State Machine.gd" id="2_15iyj"]
@@ -11,6 +11,8 @@
 [ext_resource type="Texture2D" uid="uid://40qkdi11kb6" path="res://icon.svg" id="7_rsvdi"]
 [ext_resource type="Script" path="res://Player/State Scripts/harvest.gd" id="8_rgh44"]
 [ext_resource type="Texture2D" uid="uid://dnur1r83b6m2y" path="res://Assets/radial.png" id="9_w538w"]
+[ext_resource type="AudioStream" uid="uid://lbw53vx0cl2h" path="res://Sounds/riser.wav" id="12_i57cy"]
+[ext_resource type="AudioStream" uid="uid://su6g8cdur4xp" path="res://Sounds/plant_pop.wav" id="13_cpcc3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_63l4v"]
 
@@ -306,32 +308,37 @@ host = NodePath("../..")
 machine = NodePath("..")
 sprite = NodePath("../../sprite")
 
-[node name="plant" type="Node" parent="State Machine" node_paths=PackedStringArray("host", "machine", "clock")]
+[node name="plant" type="Node" parent="State Machine" node_paths=PackedStringArray("host", "machine", "clock", "riser", "pop")]
 script = ExtResource("5_r8208")
 host = NodePath("../..")
 machine = NodePath("..")
 clock = NodePath("../../ProgClock")
+riser = NodePath("../../riser")
+pop = NodePath("../../PlantPop")
 wait_time = 3
 
-[node name="turret" type="Node" parent="State Machine" node_paths=PackedStringArray("host", "machine", "clock")]
+[node name="turret" type="Node" parent="State Machine" node_paths=PackedStringArray("host", "machine", "clock", "riser")]
 script = ExtResource("6_feh3s")
 host = NodePath("../..")
 machine = NodePath("..")
 clock = NodePath("../../ProgClock")
+riser = NodePath("../../riser")
 wait_time = 5
 
-[node name="unplant" type="Node" parent="State Machine" node_paths=PackedStringArray("host", "machine", "clock")]
+[node name="unplant" type="Node" parent="State Machine" node_paths=PackedStringArray("host", "machine", "clock", "riser")]
 script = ExtResource("7_h3uhe")
 host = NodePath("../..")
 machine = NodePath("..")
 clock = NodePath("../../ProgClock")
+riser = NodePath("../../riser")
 wait_time = 2
 
-[node name="harvest" type="Node" parent="State Machine" node_paths=PackedStringArray("host", "machine", "clock")]
+[node name="harvest" type="Node" parent="State Machine" node_paths=PackedStringArray("host", "machine", "clock", "riser")]
 script = ExtResource("8_rgh44")
 host = NodePath("../..")
 machine = NodePath("..")
 clock = NodePath("../../ProgClock")
+riser = NodePath("../../riser")
 wait_time = 3
 
 [node name="offscreen" type="Node" parent="State Machine" node_paths=PackedStringArray("host", "machine")]
@@ -352,3 +359,9 @@ max_value = 5.0
 step = 0.0
 fill_mode = 4
 texture_progress = ExtResource("9_w538w")
+
+[node name="riser" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_i57cy")
+
+[node name="PlantPop" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_cpcc3")
