@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://bf0snq1g2u65g"]
+[gd_scene load_steps=30 format=3 uid="uid://bf0snq1g2u65g"]
 
 [ext_resource type="Texture2D" uid="uid://dibnvpc5mj84p" path="res://Assets/temporary backdrop.png" id="1_op4nm"]
 [ext_resource type="Script" path="res://Map/main.gd" id="1_u5oha"]
@@ -14,6 +14,8 @@
 [ext_resource type="PackedScene" uid="uid://x18enyc2dnnf" path="res://plant/plant.tscn" id="10_m1vjg"]
 [ext_resource type="Texture2D" uid="uid://dockdlpomc1ya" path="res://Assets/testbar.png" id="12_oh1mc"]
 [ext_resource type="Script" path="res://spawner/enemySpawner.gd" id="14_7jn5l"]
+[ext_resource type="AudioStream" uid="uid://br4qnoosexow" path="res://Assets/LimeScene_Drone.wav" id="15_wmapv"]
+[ext_resource type="AudioStream" uid="uid://3kf2ukbv1qw6" path="res://Assets/LimeScene_pop.wav" id="16_37h54"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qbw5v"]
 texture = ExtResource("4_0epep")
@@ -325,6 +327,37 @@ tracks/7/keys = {
 "points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0.1, -0.25, 0, 0.25, 0, -0.2, -0.25, 0, 0.25, 0, 0.1, -0.25, 0, 0.25, 0, -0.1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(3, 4, 5.1, 5.9, 6.8, 7.3)
 }
+tracks/8/type = "method"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("CutsceneDrone")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 7.2),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}, {
+"args": [],
+"method": &"stop"
+}]
+}
+tracks/9/type = "method"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("CutscenePop")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(7.2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_nfx07"]
 resource_name = "startOfDay"
@@ -583,6 +616,7 @@ script = ExtResource("2_4tv3b")
 libraries = {
 "": SubResource("AnimationLibrary_6m7n0")
 }
+autoplay = "Win"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(480, 270)
@@ -738,6 +772,14 @@ curve = SubResource("Curve2D_gr8sa")
 [node name="Follow" type="PathFollow2D" parent="spawner/LeftSpawn"]
 position = Vector2(-32, 575)
 rotation = -1.5708
+
+[node name="CutsceneDrone" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("15_wmapv")
+volume_db = -10.0
+
+[node name="CutscenePop" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("16_37h54")
+volume_db = -10.0
 
 [connection signal="coordSelect" from="Player" to="." method="_on_coord_select"]
 [connection signal="harvested" from="Player" to="." method="_on_player_harvested"]
