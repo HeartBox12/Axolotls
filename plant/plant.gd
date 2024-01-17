@@ -13,10 +13,10 @@ func ripen():
 	if profit == 0: #This plant is not yet ripe, but will ripen.
 		$sprite.play("ripen")
 		profit = 1
-	if profit == 1: #The plant is ripe, and will mature
+	elif profit == 1: #The plant is ripe, and will mature
 		$sprite.play("mature")
 		profit = 3
-	if profit == 3: #The plant is mature, and will die
+	elif profit == 3: #The plant is mature, and will die
 		health = 0
 
 func _process(_delta):

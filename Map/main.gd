@@ -14,7 +14,7 @@ signal clear #Connects to enemies so the script can wipe them out
 @export var lastDay:int #var day must equal this for the player to win
 @export var dayLength:int
 
-var day = 1 #days left 'till victory. Counts down.
+var day = -1 #Counts up to 0 when the game starts. Compared against lastDay for victory.
 var playerPos #Player position in tilemap coords.
 var selPos #The tile currently selected by the player
 var tiledNodes:Array = [] #2d array for tracking which structures are where
@@ -39,6 +39,7 @@ func _ready():
 			tiledNodes[i].append(null)
 	$CutsceneCamera.enabled = true #It starts the game inactive.
 	setup()
+	nightOver()
 
 func setup():
 	Global.limes = initLimes
@@ -63,18 +64,6 @@ func _process(delta):
 		if $Control/dayTimer.value <= 0:
 			$AnimationPlayer.play("startOfNight")
 			isDay = false
-
-func adjust_day():
-	if lastDay - day > 1:
-		$Control/DayCount.text = "[center]The stars will alime in [color=#00FF00]%s days[/color][/center]" %[lastDay - day]
-		$Control/DayCount/TextShadow.text = "[center][color=#000000]The stars will alime in[/color][color=#003300] %s days[/color][/center]"%[lastDay - day]
-	else:
-		$Control/DayCount.text = "[center]The stars will alime in [color=#00FF00]1 day[/color][/center]"
-		$Control/DayCount/TextShadow.text = "[center][color=#000000]The stars will alime in[/color][color=#003300] 1 day[/color][/center]"
-		
-	$Control/Button.text = puns[day]
-	$Control/counters/LimeCount.text = str(Global.limes)
-	$Control/counters/SeedCount.text = str(Global.seeds)
 
 func start_day():
 	$AnimationPlayer.play("startOfDay")
@@ -138,7 +127,18 @@ func _enemy_down():
 		nightOver()
 
 func nightOver():
+	day += 1
 	if lastDay == day: #If this is going to be the last day
 		pass #end the game
 	else: #This is not the last day
+		if lastDay - day > 1:
+			$Control/DayCount.text = "[center]The stars will alime in [color=#00FF00]%s days[/color][/center]" %[lastDay - day]
+			$Control/DayCount/TextShadow.text = "[center][color=#000000]The stars will alime in[/color][color=#003300] %s days[/color][/center]"%[lastDay - day]
+		else:
+			$Control/DayCount.text = "[center]The stars will alime in [color=#00FF00]1 day[/color][/center]"
+			$Control/DayCount/TextShadow.text = "[center][color=#000000]The stars will alime in[/color][color=#003300] 1 day[/color][/center]"
+			
+		$Control/Button.text = puns[day]
+		$Control/counters/LimeCount.text = str(Global.limes)
+		$Control/counters/SeedCount.text = str(Global.seeds)
 		$AnimationPlayer.play("endOfNight")
