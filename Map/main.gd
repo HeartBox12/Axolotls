@@ -22,7 +22,7 @@ var isDay:bool = false #for timer purposes
 var livingEnems = 6 #Living enemies. When it reaches 0, start day. FIXME: set 0.
 var enemArray = []
 
-var puns = ["Begin the timer!", "Squeeze the Day!", "No time to cit(rus) around!", 
+var puns = ["FUCK YOU BDOSFISDJFSODKFSDFSDFSDFSDFSDFSDFSDFSDFSDFSDFSDF", "Begin the timer!", "Squeeze the Day!", "No time to cit(rus) around!", 
 "Lime 'em up, knock 'em down!",
 "When life gives you limes, give the limes guns.",
 "I had this classmate in high school who took a tupperware of sliced limes to 
@@ -40,7 +40,8 @@ func _ready():
 			tiledNodes[i].append(null)
 	$CutsceneCamera.enabled = true #The camera starts the game inactive.
 	setup()
-	nightOver()
+	$Control/Button.text = puns[day + 1]
+	call_deferred("nightOver")
 
 func setup():
 	Global.limes = initLimes
@@ -71,6 +72,7 @@ func start_day():
 	Global.Daytime.emit()
 	$Control/dayTimer.max_value = dayLength
 	$Control/dayTimer.value = dayLength
+	$Control/Button.text = puns[day + 1]
 	isDay = true #for timer purposes
 	
 	#$Player.position = some starting point to be decided (use a marker2D)
@@ -78,9 +80,7 @@ func start_day():
 func start_night(): #Begin spawning enemies, etc.
 	Global.Nighttime.emit()
 #
-func _unhandled_input(event):
-	if Input.is_action_just_pressed("begin_day"):
-		start_day()
+#func _unhandled_input(event):
 	#if event.is_action_pressed("test0"):
 		#$AnimationPlayer.play("endOfNight")
 ##	if Input.is_action_just_pressed("test5"):
@@ -128,7 +128,8 @@ func _enemy_down(instance):
 	livingEnems -= 1
 	enemArray.pop_at(enemArray.find(instance))
 	if livingEnems <= 0: #If the enemies are wiped out
-		nightOver()
+		$Control/Button.text = puns[day + 1]
+		call_deferred(nightOver())
 
 func nightOver():
 	day += 1
@@ -139,8 +140,10 @@ func nightOver():
 			$Control/DayCount.text = "[center]The stars will alime in [color=#00FF00]%s days[/color][/center]" %[lastDay - day]
 		else:
 			$Control/DayCount.text = "[center]The stars will alime in [color=#00FF00]1 day[/color][/center]"
-			
-		$Control/Button.text = puns[day]
+		var center = (960 - $Control/Button.size.x) / 2
+		$AnimationPlayer.get_animation("endOfNight").track_set_key_value(6, 1, Vector2(center, 260))
+		$AnimationPlayer.get_animation("endOfNight").track_set_key_value(6, 1, Vector2(center, 260))
+		$AnimationPlayer.get_animation("endOfNight").track_set_key_value(6, 2, Vector2(center, 360))
 		$Control/counters/LimeCount.text = str(Global.limes)
 		$Control/counters/SeedCount.text = str(Global.seeds)
 		$AnimationPlayer.play("endOfNight")

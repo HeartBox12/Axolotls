@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://bf0snq1g2u65g"]
+[gd_scene load_steps=47 format=3 uid="uid://bf0snq1g2u65g"]
 
 [ext_resource type="Texture2D" uid="uid://dibnvpc5mj84p" path="res://Assets/temporary backdrop.png" id="1_op4nm"]
 [ext_resource type="Script" path="res://Map/main.gd" id="1_u5oha"]
@@ -592,10 +592,10 @@ tracks/6/path = NodePath("Control/Button:position")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(4, 5),
-"transitions": PackedFloat32Array(2, 1),
+"times": PackedFloat32Array(0, 4, 5),
+"transitions": PackedFloat32Array(1, 2, 1),
 "update": 0,
-"values": [Vector2(404, 260), Vector2(404, 360)]
+"values": [Vector2(404, 260), Vector2(404, 260), Vector2(404, 360)]
 }
 tracks/7/type = "value"
 tracks/7/imported = false
@@ -608,6 +608,18 @@ tracks/7/keys = {
 "transitions": PackedFloat32Array(2, 1),
 "update": 0,
 "values": [Vector2(960, 0), Vector2(880, 0)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Control/Button:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
 }
 
 [sub_resource type="Animation" id="Animation_18kjb"]
@@ -726,6 +738,14 @@ _data = {
 }
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sin3g"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_ybyye"]
+device = -1
+keycode = 32
+unicode = 32
+
+[sub_resource type="Shortcut" id="Shortcut_2jnyp"]
+events = [SubResource("InputEventKey_ybyye")]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_b8dn1"]
 atlas = ExtResource("13_w1431")
@@ -914,8 +934,8 @@ tileSet = NodePath("../Tiles")
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 960.0
+offset_bottom = 540.0
 
 [node name="DayCount" type="RichTextLabel" parent="Control"]
 modulate = Color(1, 1, 1, 0)
@@ -950,14 +970,14 @@ metadata/_edit_lock_ = true
 [node name="Button" type="Button" parent="Control"]
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 0
-offset_left = 404.0
-offset_top = 260.0
-offset_right = 557.0
-offset_bottom = 356.0
+offset_right = 64.0
+offset_bottom = 44.0
 theme_override_fonts/font = ExtResource("4_dp6hs")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_sin3g")
 disabled = true
-text = "Begin the Timer"
+shortcut = SubResource("Shortcut_2jnyp")
+text = "asdf
+asdfafs"
 
 [node name="counters" type="Control" parent="Control"]
 anchors_preset = 0
