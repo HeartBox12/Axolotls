@@ -11,21 +11,22 @@ signal clear #Connects to enemies so the script can wipe them out
 
 @export var initSeeds:int
 @export var initLimes:int
-@export var initDay:int
+@export var lastDay:int #var day must equal this for the player to win
 @export var dayLength:int
 
-var day = 5 #days left 'till victory. Counts down.
+var day = 1 #days left 'till victory. Counts down.
 var playerPos #Player position in tilemap coords.
 var selPos #The tile currently selected by the player
 var tiledNodes:Array = [] #2d array for tracking which structures are where
 var isDay:bool = false #for timer purposes
-var livingEnems = 2 #Living enemies. When it reaches 0, start day. FIXME: set 0.
+var livingEnems = 6 #Living enemies. When it reaches 0, start day. FIXME: set 0.
 
 var puns = ["Begin the timer!", "Squeeze the Day!", "No time to cit(rus) around!", 
-"When life gives you limes, uh, um, er, erm...",
-"I had this classmate in high school who just sat in the back of the classroom
-all day, eating lime slices out of a tupperware. Seriously, just taking a
-quarter of a lime and biting down. Like, she probably could
+"Lime 'em up, knock 'em down!",
+"When life gives you limes, just, uh, uhm, give them back?",
+"I had this classmate in high school who took a tupperware of sliced limes to 
+school every day and ate them in class. Seriously, she'd take a 
+quarter of a raw, unsweeted lime and just bite into it. Like, she probably could
 have eaten them like oranges, peeling them and taking out the segments, but she
 didn't. Also she hated my guts for some reason. Anyway, want one?"]
 
@@ -42,7 +43,7 @@ func _ready():
 func setup():
 	Global.limes = initLimes
 	Global.seeds = initSeeds
-	day = initDay
+	day = 1
 
 func reset():
 	isDay = false
@@ -64,9 +65,9 @@ func _process(delta):
 			isDay = false
 
 func adjust_day():
-	if day > 1:
-		$Control/DayCount.text = "[center]The stars will alime in [color=#00FF00]%s days[/color][/center]" %[day]
-		$Control/DayCount/TextShadow.text = "[center][color=#000000]The stars will alime in[/color][color=#003300] %s days[/color][/center]"%[day]
+	if lastDay - day > 1:
+		$Control/DayCount.text = "[center]The stars will alime in [color=#00FF00]%s days[/color][/center]" %[lastDay - day]
+		$Control/DayCount/TextShadow.text = "[center][color=#000000]The stars will alime in[/color][color=#003300] %s days[/color][/center]"%[lastDay - day]
 	else:
 		$Control/DayCount.text = "[center]The stars will alime in [color=#00FF00]1 day[/color][/center]"
 		$Control/DayCount/TextShadow.text = "[center][color=#000000]The stars will alime in[/color][color=#003300] 1 day[/color][/center]"
@@ -86,14 +87,14 @@ func start_day():
 
 func start_night(): #Begin spawning enemies, etc.
 	Global.Nighttime.emit()
-
-func _unhandled_input(event):
-	if Input.is_action_just_pressed("test0"):
-		$AnimationPlayer.play("endOfNight")
-#	if Input.is_action_just_pressed("test5"):
-#		$AnimationPlayer.play("Loss")
-	if Input.is_action_just_pressed("test3"):
-		$AnimationPlayer.play("Win")
+#
+#func _unhandled_input(event):
+	#if event.is_action_pressed("test0"):
+		#$AnimationPlayer.play("endOfNight")
+##	if Input.is_action_just_pressed("test5"):
+##		$AnimationPlayer.play("Loss")
+	#if event.is_action_pressed("test3"):
+		#$AnimationPlayer.play("Win")
 
 func _on_coord_select(coords):
 	selPos = coords
@@ -133,5 +134,11 @@ func play_TMG_credit():
 
 func _enemy_down():
 	livingEnems -= 1
-	if livingEnems <= 0:
+	if livingEnems <= 0: #If the enemies are wiped out
+		nightOver()
+
+func nightOver():
+	if lastDay == day: #If this is going to be the last day
+		pass #end the game
+	else: #This is not the last day
 		$AnimationPlayer.play("endOfNight")

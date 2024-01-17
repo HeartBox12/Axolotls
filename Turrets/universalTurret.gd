@@ -18,7 +18,7 @@ func _ready():
 	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	if fireRotation >= PI / 2 and fireRotation <= (3 * PI) / 2: #flip horizontally according to where it's target is
 		flip_h = true
 	else:

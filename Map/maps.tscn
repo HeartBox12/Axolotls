@@ -545,12 +545,9 @@ tracks/2/path = NodePath(".")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"adjust_day"
-}]
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"values": []
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -835,12 +832,14 @@ point_count = 2
 
 [node name="Main" type="Node2D"]
 process_mode = 1
+modulate = Color(0.74902, 0.772549, 0.94902, 1)
 y_sort_enabled = true
 script = ExtResource("1_u5oha")
 plant = ExtResource("10_m1vjg")
 turret = ExtResource("3_7hvpt")
 initSeeds = 3
 initLimes = 2
+lastDay = 6
 dayLength = 30
 metadata/_edit_lock_ = true
 
@@ -855,6 +854,7 @@ script = ExtResource("2_4tv3b")
 libraries = {
 "": SubResource("AnimationLibrary_6m7n0")
 }
+autoplay = "endOfNight"
 
 [node name="CutsceneCamera" type="Camera2D" parent="."]
 position = Vector2(480, 270)
@@ -962,9 +962,9 @@ metadata/_edit_lock_ = true
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 0
 offset_left = 404.0
-offset_top = 460.0
+offset_top = 260.0
 offset_right = 557.0
-offset_bottom = 556.0
+offset_bottom = 356.0
 theme_override_fonts/font = ExtResource("4_dp6hs")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_sin3g")
 disabled = true
@@ -1039,6 +1039,13 @@ curve = SubResource("Curve2D_gr8sa")
 position = Vector2(-32, 575)
 rotation = -1.5708
 
+[node name="leftTimer" type="Timer" parent="spawner"]
+wait_time = 2.0
+
+[node name="bottomTimer" type="Timer" parent="spawner"]
+
+[node name="rightTimer" type="Timer" parent="spawner"]
+
 [node name="CutsceneDrone" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("15_wmapv")
 volume_db = -10.0
@@ -1059,3 +1066,6 @@ centered = false
 [connection signal="turreted" from="Player" to="." method="_on_player_turreted"]
 [connection signal="unplanted" from="Player" to="." method="_on_player_unplanted"]
 [connection signal="pressed" from="Control/Button" to="." method="start_day"]
+[connection signal="timeout" from="spawner/leftTimer" to="spawner" method="_left_spawn_time"]
+[connection signal="timeout" from="spawner/bottomTimer" to="spawner" method="_bottom_spawn_time"]
+[connection signal="timeout" from="spawner/rightTimer" to="spawner" method="_right_spawn_time"]
