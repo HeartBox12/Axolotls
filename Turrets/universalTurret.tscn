@@ -35,7 +35,7 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_4q2c3"]
 
 [node name="UniversalTurret" type="AnimatedSprite2D"]
-z_index = 10
+y_sort_enabled = true
 sprite_frames = SubResource("SpriteFrames_i10rj")
 flip_v = true
 script = ExtResource("4_2mfe1")

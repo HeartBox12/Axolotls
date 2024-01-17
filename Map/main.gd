@@ -29,7 +29,7 @@ var puns = ["Begin the timer!", "Squeeze the Day!", "No time to cit(rus) around!
 school every day and ate them in class. Seriously, she'd take a 
 quarter of a raw, unsweeted lime and just bite into it. Like, she probably could
 have eaten them like oranges, peeling them and taking out the segments, but she
-didn't. Also she hated my guts for some reason. Anyway, want one?"]
+didn't. Also she hated my guts for some reason. Anyway, want one?", "Fulfill your zestiny!"]
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -62,14 +62,25 @@ func reset():
 func _process(delta):
 	if isDay:
 		$Control/dayTimer.value -= delta
-		
+		if $Control/dayTimer.value >= 1 && $Control/dayTimer.value <= 2:
+			$Control/Button.text = puns[day]
 		if $Control/dayTimer.value <= 0:
 			$AnimationPlayer.play("startOfNight")
 			isDay = false
 
+
+func _day_button_pressed():
+	if lastDay + 1 == day:
+		$AnimationPlayer.play("Win")
+	else:
+		start_day()
+
 func start_day():
 	$AnimationPlayer.play("startOfDay")
 	Global.Daytime.emit()
+	if day != 0 && day != 5:
+		Global.seeds += 2
+		$Control/counters/SeedCount.text = str(Global.seeds)
 	$Control/dayTimer.max_value = dayLength
 	$Control/dayTimer.value = dayLength
 	isDay = true #for timer purposes
@@ -141,8 +152,15 @@ func _enemy_down(instance):
 
 func nightOver():
 	day += 1
-	if lastDay == day: #If this is going to be the last day
-		$AnimationPlayer.play("Win")
+	if lastDay + 1 == day: #If this is going to be the last day
+		var center = (960 - $Control/Button.size.x) / 2
+		$AnimationPlayer.get_animation("endOfNight").track_set_key_value(6, 1, Vector2(center, 260))
+		$AnimationPlayer.get_animation("endOfNight").track_set_key_value(6, 1, Vector2(center, 260))
+		$AnimationPlayer.get_animation("endOfNight").track_set_key_value(6, 2, Vector2(center, 360))
+		$Control/DayCount.text = "
+[center]The stars have alimed.
+Fulfull your zestiny.[/center]"
+		$AnimationPlayer.play("endOfNight")
 	else: #This is not the last day
 		if lastDay - day > 1:
 			$Control/DayCount.text = "[center]The stars will alime in [color=#00FF00]%s days[/color][/center]" %[lastDay - day]
@@ -155,4 +173,4 @@ func nightOver():
 		$Control/counters/LimeCount.text = str(Global.limes)
 		$Control/counters/SeedCount.text = str(Global.seeds)
 		$AnimationPlayer.play("endOfNight")
-		$Control/Button.text = puns[day]
+

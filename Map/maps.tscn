@@ -1074,7 +1074,7 @@ centered = false
 [connection signal="planted" from="Player" to="." method="_on_player_planted"]
 [connection signal="turreted" from="Player" to="." method="_on_player_turreted"]
 [connection signal="unplanted" from="Player" to="." method="_on_player_unplanted"]
-[connection signal="pressed" from="Control/Button" to="." method="start_day"]
+[connection signal="pressed" from="Control/Button" to="." method="_day_button_pressed"]
 [connection signal="timeout" from="spawner/leftTimer" to="spawner" method="_left_spawn_time"]
 [connection signal="timeout" from="spawner/bottomTimer" to="spawner" method="_bottom_spawn_time"]
 [connection signal="timeout" from="spawner/rightTimer" to="spawner" method="_right_spawn_time"]

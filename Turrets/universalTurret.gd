@@ -2,7 +2,7 @@ extends AnimatedSprite2D
 @export var fireCooldown:int = 1 #Easy access to change the cooldown period between shots, in seconds
 var fireDelay:float = 1 #Fire delay variable, current time between shots; this is the variable that is altered
 var target:Vector2 = Vector2(0, 0) #Declares the target variable and restricts it to the Vector2 data type
-@export var range:int = 200 #this is the range of this turret, will only fire on targets within this range
+@export var fireRange:int = 200 #this is the range of this turret, will only fire on targets within this range
 @export var projectileSpeed:int = 1000
 @export var projectileLifetime:float = 0.25
 @export var projectileDamage:int = 1
@@ -14,7 +14,7 @@ var bullets:Array = [] #array to store each turret's bullets, turrets[3] will co
 
 func _ready():
 	frame = 0
-	$"Range/RangeCollision".shape.radius = range
+	$"Range/RangeCollision".shape.radius = fireRange
 	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

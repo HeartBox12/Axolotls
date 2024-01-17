@@ -54,7 +54,7 @@ func update(_delta): #Equivalent to func process(delta) in the host. Only use pr
 				pass
 		elif !target.is_in_group("plants"): #Not a plant
 			pass
-		elif target.profit < 0: #Ripe/mature plant
+		elif target.profit > 0: #Ripe/mature plant
 			swap.emit(self, "harvest") #pick the plant
 		else:
 			swap.emit(self, "unplant")
