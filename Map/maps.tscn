@@ -839,7 +839,7 @@ plant = ExtResource("10_m1vjg")
 turret = ExtResource("3_7hvpt")
 initSeeds = 3
 initLimes = 2
-lastDay = 7
+lastDay = 5
 dayLength = 30
 metadata/_edit_lock_ = true
 

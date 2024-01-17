@@ -14,7 +14,7 @@ signal clear #Connects to enemies so the script can wipe them out
 @export var lastDay:int #var day must equal this for the player to win
 @export var dayLength:int
 
-var day = -1 #Counts up to 0 when the game starts. Compared against lastDay for victory.
+var day = 0 #Counts up to 0 when the game starts. Compared against lastDay for victory.
 var playerPos #Player position in tilemap coords.
 var selPos #The tile currently selected by the player
 var tiledNodes:Array = [] #2d array for tracking which structures are where
@@ -37,14 +37,14 @@ func _ready():
 		tiledNodes.append([])
 		for j in range(boundY):
 			tiledNodes[i].append(null)
-	$CutsceneCamera.enabled = true #It starts the game inactive.
+	$CutsceneCamera.enabled = true #The camera starts the game inactive.
 	setup()
 	nightOver()
 
 func setup():
 	Global.limes = initLimes
 	Global.seeds = initSeeds
-	day = 1
+	day = -1
 
 func reset():
 	isDay = false
@@ -129,7 +129,7 @@ func _enemy_down():
 func nightOver():
 	day += 1
 	if lastDay == day: #If this is going to be the last day
-		pass #end the game
+		$AnimationPlayer.play("Win")
 	else: #This is not the last day
 		if lastDay - day > 1:
 			$Control/DayCount.text = "[center]The stars will alime in [color=#00FF00]%s days[/color][/center]" %[lastDay - day]
