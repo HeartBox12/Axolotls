@@ -46,8 +46,8 @@ func _physics_process(delta):
 	else: #if already dying
 		dying += delta
 		if dying >= 1: #1 is time to die in seconds, aka death animation time
+			death.emit(self)
 			queue_free() #destroy self
-			death.emit()
 
 #Called when the enemy is within range of a plant.
 func _on_arrived(_area_rid, area, _area_shape_index, _local_shape_index):
