@@ -6,26 +6,31 @@ extends Node2D
 @onready var bottomSpawn = $"BottomSpawn"
 @onready var bottomFollow = $"BottomSpawn/Follow"
 #@onready var tileMap = $"/root/Main/Tiles" #is this needed?
-var enemy_scene = load("res://enemy/enemy.tscn")
+
+#For the sake of code brevity, enemy_scene was renamed PSbase. 
+#Future enemy PackedScenes should be given the prefix of PS and the shortest possible descriptor.
+#We should consider using integers.
+var PSbase = load("res://enemy/enemy.tscn")
 var enemyLineProgress:float = randi_range(0, 1)
 var enemy
 var side
 var follow
 
-var leftSpawns = [enemy_scene, enemy_scene]
-var bottomSpawns = []
-var rightSpawns = []
+var leftSpawns = [PSbase, PSbase]
+var bottomSpawns = [PSbase, PSbase, PSbase]
+var rightSpawns = [PSbase]
 
 func _ready():
 	Global.Nighttime.connect(_on_night)
+	Global.Daytime.connect(populateSpawns)
 
 func _process(_delta):
 	if Input.is_action_just_pressed("test4"):
-		setSide("left", enemy_scene)
+		setSide("left", PSbase)
 	if Input.is_action_just_pressed("test2"):
-		setSide("bottom", enemy_scene)
+		setSide("bottom", PSbase)
 	if Input.is_action_just_pressed("test6"):
-		setSide("right", enemy_scene)
+		setSide("right", PSbase)
 
 func setSide(button, instanceScene:PackedScene):
 	if button == "left":
@@ -65,8 +70,8 @@ func _left_spawn_time(): #Called by leftTimer timing out
 	
 func _bottom_spawn_time(): #Called by leftTimer timing out
 	setSide("bottom", bottomSpawns.pop_front())
-	if leftSpawns.is_empty():
-		$rightTimer.stop()
+	if bottomSpawns.is_empty():
+		$bottomTimer.stop()
 	#FIXME: set to spawn any FBI or protesters
 	
 func _right_spawn_time(): #Called by leftTimer timing out
@@ -74,3 +79,33 @@ func _right_spawn_time(): #Called by leftTimer timing out
 	if rightSpawns.is_empty():
 		$rightTimer.stop()
 	#FIXME: set to spawn any FBI or protesters
+
+#---- FROM THIS POINT FORWARD YOU ENTER THE DOMAIN OF THE DAMNED ----#
+
+#For the love of GOD, please put some really short variable names for PackedScenes
+func populateSpawns():
+	match get_parent().day:
+		0:
+			leftSpawns = [PSbase]
+			bottomSpawns = [PSbase, PSbase]
+			rightSpawns = [PSbase]
+		1:
+			leftSpawns = [PSbase, PSbase]
+			bottomSpawns = [PSbase, PSbase]
+			rightSpawns = [PSbase, PSbase]
+		2:
+			leftSpawns = [PSbase, PSbase]
+			bottomSpawns = [PSbase, PSbase, PSbase, PSbase, PSbase, PSbase, PSbase]
+			rightSpawns = [PSbase, PSbase]
+		3:
+			leftSpawns = [PSbase, PSbase, PSbase, PSbase]
+			bottomSpawns = [PSbase, PSbase, PSbase, PSbase, PSbase]
+			rightSpawns = [PSbase, PSbase, PSbase, PSbase, PSbase, PSbase, PSbase, PSbase]
+		4:
+			leftSpawns = [PSbase, PSbase, PSbase, PSbase, PSbase, PSbase, PSbase, PSbase, PSbase, PSbase]
+			bottomSpawns = [PSbase, PSbase, PSbase, PSbase, PSbase]
+			rightSpawns = [PSbase, PSbase, PSbase, PSbase]
+		5:
+			leftSpawns = [PSbase, PSbase, PSbase, PSbase, PSbase, PSbase, PSbase, PSbase, PSbase, PSbase]
+			bottomSpawns = [PSbase, PSbase, PSbase, PSbase, PSbase, PSbase, PSbase, PSbase, PSbase, PSbase]
+			rightSpawns = [PSbase, PSbase, PSbase, PSbase, PSbase, PSbase, PSbase, PSbase, PSbase, PSbase]

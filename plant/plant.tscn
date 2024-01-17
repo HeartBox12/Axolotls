@@ -65,6 +65,6 @@ shape = SubResource("RectangleShape2D_k2ya0")
 
 [node name="sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_vyaew")
-animation = &"mature"
+animation = &"ripen"
 
 [connection signal="animation_finished" from="sprite" to="." method="_on_sprite_animation_finished"]

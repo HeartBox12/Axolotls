@@ -53,7 +53,7 @@ func reset():
 	for i in range(boundX):
 		for j in range(boundY):
 			if tiledNodes[i][j] != null:
-				tiledNodes[i][j].health = 0
+				tiledNodes[i][j].health = 0 #This is NOT the right way to do it.
 				tiledNodes[i][j] = null
 	
 	setup()
@@ -72,6 +72,16 @@ func start_day():
 	$Control/dayTimer.max_value = dayLength
 	$Control/dayTimer.value = dayLength
 	isDay = true #for timer purposes
+	
+	# vvv BAD BAD BAD vvv
+	match day: #FIXME FIXME FIXME
+		0: livingEnems = 4
+		1: livingEnems = 6
+		2: livingEnems = 9
+		3: livingEnems = 17
+		4: livingEnems = 19
+		5: livingEnems = 30
+	# ^^^ COME ON YOU KNOW BETTER ^^^
 	
 	#$Player.position = some starting point to be decided (use a marker2D)
 
