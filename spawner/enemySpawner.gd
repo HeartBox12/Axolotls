@@ -12,23 +12,22 @@ var enemy
 var side
 var follow
 
-#These arrays track how many of each type of enemy is set to spawn where each night.
-var torchforkSpawns = [2, 2, 2]
-var picketerSpawns = [0, 0, 0]
-var FBISpawns = [0, 0, 0]
+var leftSpawns = [enemy_scene, enemy_scene]
+var bottomSpawns = []
+var rightSpawns = []
 
 func _ready():
 	Global.Nighttime.connect(_on_night)
 
 func _process(_delta):
 	if Input.is_action_just_pressed("test4"):
-		setSide("left")
+		setSide("left", enemy_scene)
 	if Input.is_action_just_pressed("test2"):
-		setSide("bottom")
+		setSide("bottom", enemy_scene)
 	if Input.is_action_just_pressed("test6"):
-		setSide("right")
+		setSide("right", enemy_scene)
 
-func setSide(button):
+func setSide(button, instanceScene:PackedScene):
 	if button == "left":
 		side = leftSpawn
 		follow = leftFollow
@@ -38,11 +37,11 @@ func setSide(button):
 	if button == "right":
 		side = rightSpawn
 		follow = rightFollow
-	spawnEnemy()
+	spawnEnemy(instanceScene)
 
-func spawnEnemy():
+func spawnEnemy(instanceScene:PackedScene):
 	follow.progress_ratio = randf_range(0, 1)
-	enemy = enemy_scene.instantiate()
+	enemy = instanceScene.instantiate()
 	enemy.position = follow.position
 	get_parent().add_child(enemy)
 	enemy.death.connect(Callable(get_parent(), "_enemy_down"))
@@ -51,30 +50,27 @@ func spawnEnemy():
 	get_parent().enemArray.append(enemy)
 
 func _on_night(): #called by Global.Nighttime
-	if torchforkSpawns[0] > 0:
+	if !leftSpawns.is_empty():
 		$leftTimer.start() #leftTimer is connected to left_spawn_time()
-	if torchforkSpawns[1] > 0:
+	if !bottomSpawns.is_empty():
 		$bottomTimer.start()
-	if torchforkSpawns[2] > 0:
+	if !rightSpawns.is_empty():
 		$rightTimer.start()
 	
 func _left_spawn_time(): #Called by leftTimer timing out
-	torchforkSpawns[0] -= 1
-	if torchforkSpawns[0] <= 0:
+	setSide("left", leftSpawns.pop_front())
+	if leftSpawns.is_empty():
 		$leftTimer.stop()
-	setSide("left")
 	#FIXME: set to spawn any FBI or protesters
 	
 func _bottom_spawn_time(): #Called by leftTimer timing out
-	torchforkSpawns[1] -= 1
-	if torchforkSpawns[1] <= 0:
-		$bottomTimer.stop()
-	setSide("bottom")
+	setSide("bottom", bottomSpawns.pop_front())
+	if leftSpawns.is_empty():
+		$rightTimer.stop()
 	#FIXME: set to spawn any FBI or protesters
 	
 func _right_spawn_time(): #Called by leftTimer timing out
-	torchforkSpawns[2] -= 1
-	if torchforkSpawns[2] <= 0:
+	setSide("right", rightSpawns.pop_front())
+	if rightSpawns.is_empty():
 		$rightTimer.stop()
-	setSide("right")
 	#FIXME: set to spawn any FBI or protesters
