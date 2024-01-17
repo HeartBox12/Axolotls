@@ -295,7 +295,7 @@ shape = SubResource("CircleShape2D_63l4v")
 
 [node name="State Machine" type="Node" parent="." node_paths=PackedStringArray("initState")]
 script = ExtResource("2_15iyj")
-initState = NodePath("offscreen")
+initState = NodePath("idle")
 
 [node name="idle" type="Node" parent="State Machine" node_paths=PackedStringArray("host", "machine", "sprite")]
 script = ExtResource("3_0mjya")
