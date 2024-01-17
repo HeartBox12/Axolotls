@@ -14,7 +14,7 @@ func _process(_delta):
 	pass
 	#DEBUG: we'll get rid of this control in the final version, useful for testing
 	if Input.is_action_just_pressed("left_click"):
-		place_turret(floor((get_global_mouse_position() + Vector2(16, 16)) / 32)*32)
+		place_turret((floor(get_global_mouse_position() / 32) * 32) + Vector2(16, 16))
 
 func place_turret(placement):
 	var assignedIndex:int = 0
@@ -29,6 +29,7 @@ func place_turret(placement):
 		turrets.append(tempTurret)
 	add_child(tempTurret)
 	tempTurret.position = placement
+	print(len(turrets))
 
 
 

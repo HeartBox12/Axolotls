@@ -854,7 +854,6 @@ script = ExtResource("2_4tv3b")
 libraries = {
 "": SubResource("AnimationLibrary_6m7n0")
 }
-autoplay = "endOfNight"
 
 [node name="CutsceneCamera" type="Camera2D" parent="."]
 position = Vector2(480, 270)
@@ -926,24 +925,14 @@ z_as_relative = false
 layout_mode = 0
 offset_right = 960.0
 offset_bottom = 189.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_outline_size = 2
 theme_override_fonts/normal_font = ExtResource("4_dp6hs")
 theme_override_font_sizes/normal_font_size = 40
 bbcode_enabled = true
 text = "[center]The Stars will alime in [color=#00FF00]x days[/color][/center]"
-metadata/_edit_lock_ = true
-
-[node name="TextShadow" type="RichTextLabel" parent="Control/DayCount"]
-show_behind_parent = true
-z_index = -1
-layout_mode = 0
-offset_left = 2.0
-offset_top = 2.0
-offset_right = 962.0
-offset_bottom = 306.0
-theme_override_fonts/normal_font = ExtResource("4_dp6hs")
-theme_override_font_sizes/normal_font_size = 40
-bbcode_enabled = true
-text = "[center][color=#000000]The Stars will alime in[/color][color=#003300] x days[/color][/center]"
 metadata/_edit_lock_ = true
 
 [node name="dayTimer" type="TextureProgressBar" parent="Control"]

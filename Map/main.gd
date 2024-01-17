@@ -77,7 +77,9 @@ func start_day():
 func start_night(): #Begin spawning enemies, etc.
 	Global.Nighttime.emit()
 #
-#func _unhandled_input(event):
+func _unhandled_input(event):
+	if Input.is_action_just_pressed("begin_day"):
+		start_day()
 	#if event.is_action_pressed("test0"):
 		#$AnimationPlayer.play("endOfNight")
 ##	if Input.is_action_just_pressed("test5"):
@@ -133,10 +135,8 @@ func nightOver():
 	else: #This is not the last day
 		if lastDay - day > 1:
 			$Control/DayCount.text = "[center]The stars will alime in [color=#00FF00]%s days[/color][/center]" %[lastDay - day]
-			$Control/DayCount/TextShadow.text = "[center][color=#000000]The stars will alime in[/color][color=#003300] %s days[/color][/center]"%[lastDay - day]
 		else:
 			$Control/DayCount.text = "[center]The stars will alime in [color=#00FF00]1 day[/color][/center]"
-			$Control/DayCount/TextShadow.text = "[center][color=#000000]The stars will alime in[/color][color=#003300] 1 day[/color][/center]"
 			
 		$Control/Button.text = puns[day]
 		$Control/counters/LimeCount.text = str(Global.limes)
