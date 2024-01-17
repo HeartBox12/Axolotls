@@ -122,7 +122,7 @@ begin_day={
 2d_physics/layer_3="Enemies"
 2d_physics/layer_4="Player"
 2d_physics/layer_5="Buildings"
-2d_physics/layer_6="Plants"
+2d_physics/layer_6="Targets"
 2d_physics/layer_7="Bullets"
 2d_physics/layer_8="Range"
 

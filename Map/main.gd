@@ -40,13 +40,14 @@ func _ready():
 			tiledNodes[i].append(null)
 	$CutsceneCamera.enabled = true #The camera starts the game inactive.
 	setup()
-	$Control/Button.text = puns[day + 1]
-	call_deferred("nightOver")
 
 func setup():
 	Global.limes = initLimes
 	Global.seeds = initSeeds
 	day = -1
+	$Control/Button.text = puns[day + 1]
+	
+	call_deferred("nightOver")
 
 func reset():
 	isDay = false
@@ -56,8 +57,9 @@ func reset():
 			if tiledNodes[i][j] != null:
 				tiledNodes[i][j].health = 0 #This is NOT the right way to do it.
 				tiledNodes[i][j] = null
-	
-	setup()
+
+func _on_shrine_destroyed(): #The player let the shrine get defaced. They lose.
+	$AnimationPlayer.play("Loss")
 
 func _process(delta):
 	if isDay:

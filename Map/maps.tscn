@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://bf0snq1g2u65g"]
+[gd_scene load_steps=48 format=3 uid="uid://bf0snq1g2u65g"]
 
 [ext_resource type="Texture2D" uid="uid://dibnvpc5mj84p" path="res://Assets/temporary backdrop.png" id="1_op4nm"]
 [ext_resource type="Script" path="res://Map/main.gd" id="1_u5oha"]
@@ -18,6 +18,7 @@
 [ext_resource type="AudioStream" uid="uid://br4qnoosexow" path="res://Assets/LimeScene_Drone.wav" id="15_wmapv"]
 [ext_resource type="AudioStream" uid="uid://3kf2ukbv1qw6" path="res://Assets/LimeScene_pop.wav" id="16_37h54"]
 [ext_resource type="Texture2D" uid="uid://mng3dtqi3o7p" path="res://Assets/skydrop.png" id="17_b45k4"]
+[ext_resource type="PackedScene" uid="uid://cj7ghoonwgss6" path="res://shrine/shrine.tscn" id="19_fnmnm"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qbw5v"]
 texture = ExtResource("4_0epep")
@@ -221,11 +222,14 @@ tracks/2/path = NodePath(".")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(1.4),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(1.4, 3),
+"transitions": PackedFloat32Array(1, 1),
 "values": [{
 "args": [],
 "method": &"reset"
+}, {
+"args": [],
+"method": &"setup"
 }]
 }
 
@@ -1069,6 +1073,9 @@ position = Vector2(0, -540)
 texture = ExtResource("17_b45k4")
 centered = false
 
+[node name="shrine" parent="." instance=ExtResource("19_fnmnm")]
+position = Vector2(486, 18)
+
 [connection signal="coordSelect" from="Player" to="." method="_on_coord_select"]
 [connection signal="harvested" from="Player" to="." method="_on_player_harvested"]
 [connection signal="planted" from="Player" to="." method="_on_player_planted"]
@@ -1078,3 +1085,4 @@ centered = false
 [connection signal="timeout" from="spawner/leftTimer" to="spawner" method="_left_spawn_time"]
 [connection signal="timeout" from="spawner/bottomTimer" to="spawner" method="_bottom_spawn_time"]
 [connection signal="timeout" from="spawner/rightTimer" to="spawner" method="_right_spawn_time"]
+[connection signal="destroyed" from="shrine" to="." method="_on_shrine_destroyed"]
