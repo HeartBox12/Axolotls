@@ -20,10 +20,11 @@ var selPos #The tile currently selected by the player
 var tiledNodes:Array = [] #2d array for tracking which structures are where
 var isDay:bool = false #for timer purposes
 var livingEnems = 6 #Living enemies. When it reaches 0, start day. FIXME: set 0.
+var enemArray = []
 
 var puns = ["Begin the timer!", "Squeeze the Day!", "No time to cit(rus) around!", 
 "Lime 'em up, knock 'em down!",
-"When life gives you limes, just, uh, uhm, give them back?",
+"When life gives you limes, give the limes guns.",
 "I had this classmate in high school who took a tupperware of sliced limes to 
 school every day and ate them in class. Seriously, she'd take a 
 quarter of a raw, unsweeted lime and just bite into it. Like, she probably could
@@ -121,8 +122,9 @@ func _on_player_harvested(coords):
 func play_TMG_credit():
 	$"AnimationPlayer".play("TheMagmaPsychicCredits")
 
-func _enemy_down():
+func _enemy_down(instance):
 	livingEnems -= 1
+	enemArray.pop_at(enemArray.find(instance))
 	if livingEnems <= 0: #If the enemies are wiped out
 		nightOver()
 

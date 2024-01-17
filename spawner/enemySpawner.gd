@@ -47,6 +47,8 @@ func spawnEnemy():
 	get_parent().add_child(enemy)
 	enemy.death.connect(Callable(get_parent(), "_enemy_down"))
 	get_parent().clear.connect(Callable(enemy, "_on_clear"))
+	
+	get_parent().enemArray.append(enemy)
 
 func _on_night(): #called by Global.Nighttime
 	if torchforkSpawns[0] > 0:
