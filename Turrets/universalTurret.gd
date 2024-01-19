@@ -57,6 +57,8 @@ func fireBullet():
 	shotBullet.lifetime = projectileLifetime
 	shotBullet.global_position = global_position
 	shotBullet.damage = projectileDamage
+	
+	$gunsnd_1.play()
 
 func getTarget():
 	if is_instance_valid(currentTarget) or currentTarget == null: #if the current target exists

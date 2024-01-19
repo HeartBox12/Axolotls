@@ -11,3 +11,4 @@ func _on_start_pressed():
 func _on_animation_finished(anim_name):
 	if anim_name == "start":
 		get_tree().paused = false
+		$Main._load()

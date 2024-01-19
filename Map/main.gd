@@ -32,7 +32,7 @@ have eaten them like oranges, peeling them and taking out the segments, but she
 didn't. Also she hated my guts for some reason. Anyway, want one?", "Fulfill your zestiny!"]
 
 # Called when the node enters the scene tree for the first time.
-func _ready():
+func _load():
 	#Declare array sizes
 	for i in range(boundX):
 		tiledNodes.append([])
@@ -154,7 +154,7 @@ func _enemy_down(instance):
 
 func nightOver():
 	day += 1
-	if lastDay + 1 == day: #If this is going to be the last day
+	if lastDay == day: #If this is going to be the last day
 		var center = (960 - $Control/Button.size.x) / 2
 		$AnimationPlayer.get_animation("endOfNight").track_set_key_value(6, 1, Vector2(center, 260))
 		$AnimationPlayer.get_animation("endOfNight").track_set_key_value(6, 1, Vector2(center, 260))
@@ -162,7 +162,7 @@ func nightOver():
 		$Control/DayCount.text = "
 [center]The stars have alimed.
 Fulfull your zestiny.[/center]"
-		$AnimationPlayer.play("endOfNight")
+		$AnimationPlayer.play("Win")
 	else: #This is not the last day
 		if lastDay - day > 1:
 			$Control/DayCount.text = "[center]The stars will alime in [color=#00FF00]%s days[/color][/center]" %[lastDay - day]

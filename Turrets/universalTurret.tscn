@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://ca53jhhml5hya"]
+[gd_scene load_steps=9 format=3 uid="uid://ca53jhhml5hya"]
 
 [ext_resource type="Texture2D" uid="uid://d14nd2d5iblqe" path="res://Assets/limer_turret.png" id="1_i4k2q"]
+[ext_resource type="AudioStream" uid="uid://dkjv2m2kwchtn" path="res://Sounds/gunshot_1.wav" id="3_275ji"]
 [ext_resource type="Script" path="res://Turrets/universalTurret.gd" id="4_2mfe1"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lq53w"]
@@ -46,6 +47,9 @@ collision_mask = 4
 
 [node name="RangeCollision" type="CollisionShape2D" parent="Range"]
 shape = SubResource("CircleShape2D_4q2c3")
+
+[node name="gunsnd_1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_275ji")
 
 [connection signal="area_entered" from="Range" to="." method="_on_range_area_entered"]
 [connection signal="area_exited" from="Range" to="." method="_on_range_area_exited"]
