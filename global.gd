@@ -6,5 +6,7 @@ signal Nighttime
 var limes:int = 2
 var seeds:int = 3
 
-var turretCost = 1 #in limes
 var plantCost = 1 #in seeds
+
+var turretPrices = [1, 1, 1, 2, 2, 3, 4, 5]
+var turrPriceInd = 0
