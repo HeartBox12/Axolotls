@@ -24,3 +24,7 @@ func _process(_delta):
 		remove_from_group("targets")
 		destroyed.emit()
 		queue_free()
+
+func _on_sprite_animation_finished():
+	if $sprite.animation == "ripen":
+		$sprite.play("ripe")
