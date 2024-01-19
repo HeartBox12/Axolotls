@@ -82,3 +82,6 @@ func _on_range_area_exited(area): #keep track of enemies in range, remove them f
 	var areaLeft = potentialTargets.find(area)
 	if areaLeft != -1:
 		potentialTargets.pop_at(areaLeft) #remove the enemy that left range from targets
+
+func remove():
+	queue_free() #This is only here so I can remove it the same way one removes a plant

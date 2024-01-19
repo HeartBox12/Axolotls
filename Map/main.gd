@@ -55,7 +55,7 @@ func reset():
 	for i in range(boundX):
 		for j in range(boundY):
 			if tiledNodes[i][j] != null:
-				tiledNodes[i][j].health = 0 #This is NOT the right way to do it.
+				tiledNodes[i][j].remove() #This is still not the right way.
 				tiledNodes[i][j] = null
 
 func _on_shrine_destroyed(): #The player let the shrine get defaced. They lose.
@@ -87,15 +87,7 @@ func start_day():
 	$Control/dayTimer.value = dayLength
 	isDay = true #for timer purposes
 	
-	# vvv BAD BAD BAD vvv
-	match day: #FIXME FIXME FIXME
-		0: livingEnems = 4
-		1: livingEnems = 6
-		2: livingEnems = 9
-		3: livingEnems = 17
-		4: livingEnems = 19
-		5: livingEnems = 30
-	# ^^^ COME ON YOU KNOW BETTER ^^^
+	livingEnems = ($spawner.leftSpawns.size() + $spawner.bottomSpawns.size() + $spawner.rightSpawns.size())
 	
 	#$Player.position = some starting point to be decided (use a marker2D)
 
@@ -114,7 +106,7 @@ func _on_coord_select(coords):
 	selPos = coords
 	$indicator.position = $Tiles.map_to_local(selPos)
 
-func _on_player_planted(coords):
+func _on_player_planted(coords): #called by player.planted
 	var instance = plant.instantiate()
 	$Tiles.add_child(instance)
 	instance.position = $Tiles.map_to_local(coords)
@@ -122,8 +114,10 @@ func _on_player_planted(coords):
 	
 	Global.seeds -= Global.plantCost
 	$Control/counters/SeedCount.text = str(Global.seeds)
+	
+	instance.destroyed.connect(_plant_down)
 
-func _on_player_turreted(coords):
+func _on_player_turreted(coords): #called by player.turreted
 	var instance = turret.instantiate()
 	$Tiles.add_child(instance)
 	instance.position = $Tiles.map_to_local(coords)
@@ -132,15 +126,13 @@ func _on_player_turreted(coords):
 	Global.limes -= Global.turretCost
 	$Control/counters/LimeCount.text = str(Global.limes)
 
-func _on_player_unplanted(coords):
+func _on_player_unplanted(coords): #called by player.unplanted
 	tiledNodes[coords.x][coords.y].health = 0
-	Global.seeds += 1
-	$Control/counters/SeedCount.text = str(Global.seeds)
 
 
-func _on_player_harvested(coords):
+func _on_player_harvested(coords): #called by player.harvested
 	Global.limes += tiledNodes[coords.x][coords.y].profit
-	tiledNodes[coords.x][coords.y].health = 0
+	tiledNodes[coords.x][coords.y].remove()
 	$Control/counters/LimeCount.text = str(Global.limes)
 
 func play_TMG_credit():
@@ -151,6 +143,11 @@ func _enemy_down(instance):
 	enemArray.pop_at(enemArray.find(instance))
 	if livingEnems <= 0: #If the enemies are wiped out
 		nightOver()
+	
+func _plant_down(): #called by plant.destroyed
+	Global.seeds += 1
+	$Control/counters/SeedCount.text = str(Global.seeds)
+	
 
 func nightOver():
 	day += 1

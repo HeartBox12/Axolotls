@@ -21,12 +21,22 @@ func ripen():
 
 func _process(_delta):
 	if health <= 0:
-		remove_from_group("targets")
-		destroyed.emit()
-		queue_free()
+		$AnimationPlayer.play("death")
+		match profit:
+			0:
+				$sprite.animation = "dead_unripe"
+			1:
+				$sprite.animation = "dead_ripe"
+			3:
+				$sprite.animation = "dead_mature"
 
 func _on_sprite_animation_finished():
 	if $sprite.animation == "ripen":
 		$sprite.play("ripe")
 	elif $sprite.animation == "maturing":
 		$sprite.play("mature")
+
+func remove():
+	remove_from_group("targets")
+	destroyed.emit()
+	queue_free()

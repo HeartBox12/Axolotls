@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Lime Rancher"
-run/main_scene="res://Map/maps.tscn"
+run/main_scene="res://manager/manager.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://icon.svg"
 

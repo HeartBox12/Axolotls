@@ -1,13 +1,29 @@
-[gd_scene load_steps=40 format=3 uid="uid://x18enyc2dnnf"]
+[gd_scene load_steps=49 format=3 uid="uid://x18enyc2dnnf"]
 
 [ext_resource type="Script" path="res://plant/plant.gd" id="1_o4dp6"]
+[ext_resource type="Texture2D" uid="uid://1itovynffnvi" path="res://Assets/plantmaturedead.png" id="2_nyetf"]
 [ext_resource type="Texture2D" uid="uid://fmmhjesvoexh" path="res://Assets/plantmature.png" id="2_q3uxb"]
 [ext_resource type="Texture2D" uid="uid://dv5syddkt51ck" path="res://Assets/limeplantgrowing.png" id="3_6ispt"]
 [ext_resource type="Texture2D" uid="uid://nu6to7vs7e58" path="res://Assets/limeplantgrown.png" id="3_puhbe"]
 [ext_resource type="Texture2D" uid="uid://dxwaci6xt8y4" path="res://Assets/limeplantmaturing.png" id="3_vq70x"]
+[ext_resource type="Texture2D" uid="uid://d20wyja1volo8" path="res://Assets/plantgrowndead.png" id="3_yobo8"]
+[ext_resource type="Texture2D" uid="uid://cfepmqlvoee0y" path="res://Assets/plantunripedead.png" id="4_bsnj0"]
+[ext_resource type="Texture2D" uid="uid://bf3ag6ailcl2a" path="res://Assets/plantskull.png" id="9_0ofk4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k2ya0"]
 size = Vector2(32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dbwie"]
+atlas = ExtResource("2_nyetf")
+region = Rect2(0, 0, 30, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p1kb7"]
+atlas = ExtResource("3_yobo8")
+region = Rect2(0, 0, 31, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lfpcl"]
+atlas = ExtResource("4_bsnj0")
+region = Rect2(0, 0, 19, 18)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nw2ao"]
 atlas = ExtResource("2_q3uxb")
@@ -141,6 +157,30 @@ region = Rect2(160, 0, 32, 32)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_dbwie")
+}],
+"loop": true,
+"name": &"dead_mature",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p1kb7")
+}],
+"loop": true,
+"name": &"dead_ripe",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lfpcl")
+}],
+"loop": true,
+"name": &"dead_unripe",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_nw2ao")
 }, {
 "duration": 1.0,
@@ -256,6 +296,64 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="Animation" id="Animation_3c6sv"]
+resource_name = "death"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("skull:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("skull:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("skull:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -32)]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"remove"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hq8vo"]
+_data = {
+"death": SubResource("Animation_3c6sv")
+}
+
 [node name="plant" type="Area2D" groups=["plants", "targets"]]
 collision_layer = 32
 collision_mask = 4
@@ -267,5 +365,16 @@ shape = SubResource("RectangleShape2D_k2ya0")
 [node name="sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_vyaew")
 animation = &"ripen"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_hq8vo")
+}
+
+[node name="skull" type="Sprite2D" parent="."]
+visible = false
+self_modulate = Color(1, 1, 1, 0)
+position = Vector2(0, -32)
+texture = ExtResource("9_0ofk4")
 
 [connection signal="animation_finished" from="sprite" to="." method="_on_sprite_animation_finished"]
