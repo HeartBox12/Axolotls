@@ -39,3 +39,4 @@ func _on_area_entered(area):
 func splatAnimation():
 	splatting = true
 	sprite.texture = texture
+	$hitsnd_3.play()

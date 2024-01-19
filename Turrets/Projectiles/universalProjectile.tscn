@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://c1gtroinrhi5m"]
+[gd_scene load_steps=5 format=3 uid="uid://c1gtroinrhi5m"]
 
 [ext_resource type="Script" path="res://Turrets/Projectiles/universalProjectile.gd" id="1_5np6a"]
 [ext_resource type="Texture2D" uid="uid://4eql82ei0fog" path="res://Assets/limer_bullet.png" id="2_ns002"]
+[ext_resource type="AudioStream" uid="uid://bgbjitj4nj6bp" path="res://Sounds/enemy_hit-003.wav" id="3_8g0mv"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_24hlw"]
 radius = 4.0
@@ -17,5 +18,8 @@ shape = SubResource("CircleShape2D_24hlw")
 
 [node name="Sprite2D" type="Sprite2D" parent="CollisionShape2D"]
 texture = ExtResource("2_ns002")
+
+[node name="hitsnd_3" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_8g0mv")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
