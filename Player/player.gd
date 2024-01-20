@@ -48,3 +48,6 @@ func _process(_delta):
 
 func _physics_process(_delta):
 	pass
+
+func _reset(): #Yeah I know this is jank as hell.
+	$"State Machine".on_swap($"State Machine".currentState, "offscreen")

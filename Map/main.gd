@@ -47,6 +47,7 @@ func setup():
 	day = -1
 	$Control/Button.text = puns[day + 1]
 	$Control/counters/TurretCost.text = str(Global.turretPrices[Global.turrPriceInd])
+	$Control/dayTimer.value = $Control/dayTimer.max_value
 	
 	call_deferred("nightOver")
 
@@ -70,6 +71,9 @@ func _process(delta):
 		if $Control/dayTimer.value <= 0:
 			$AnimationPlayer.play("startOfNight")
 			isDay = false
+	
+	if Input.is_action_just_pressed("reset"):
+		_on_shrine_destroyed()
 
 
 func _day_button_pressed():
