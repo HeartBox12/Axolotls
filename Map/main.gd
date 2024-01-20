@@ -158,7 +158,7 @@ func nightOver():
 		$AnimationPlayer.get_animation("endOfNight").track_set_key_value(6, 2, Vector2(center, 360))
 		$Control/DayCount.text = "
 [center]The stars have alimed.
-Fulfull your zestiny.[/center]"
+Fulfull your zestiny.[/center]" #Note: might make this value-setting part of anim
 		$AnimationPlayer.play("Win")
 	else: #This is not the last day
 		if lastDay - day > 1:
