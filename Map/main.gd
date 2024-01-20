@@ -127,7 +127,7 @@ func _on_player_turreted(coords): #called by player.turreted
 	Global.limes -= Global.turretPrices[Global.turrPriceInd]
 	$Control/counters/LimeCount.text = str(Global.limes)
 	
-	if Global.turrPriceInd == Global.turretPrices.size() - 1:
+	if Global.turrPriceInd < Global.turretPrices.size() - 1:
 		Global.turrPriceInd += 1
 		$Control/counters/TurretCost.text = str(Global.turretPrices[Global.turrPriceInd])
 

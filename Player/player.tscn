@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=3 uid="uid://dxx3636flyr8a"]
+[gd_scene load_steps=50 format=3 uid="uid://dxx3636flyr8a"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_1qpr2"]
 [ext_resource type="Script" path="res://State Machine.gd" id="2_15iyj"]
@@ -14,6 +14,7 @@
 [ext_resource type="AudioStream" uid="uid://lbw53vx0cl2h" path="res://Sounds/riser.wav" id="12_i57cy"]
 [ext_resource type="Texture2D" uid="uid://cpysr50mc03b" path="res://Assets/limetimer.png" id="12_rf8i5"]
 [ext_resource type="AudioStream" uid="uid://su6g8cdur4xp" path="res://Sounds/plant_pop.wav" id="13_cpcc3"]
+[ext_resource type="FontFile" uid="uid://daoephs38yckp" path="res://Fonts/WorkSans-Regular.ttf" id="15_omwui"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_63l4v"]
 
@@ -309,37 +310,41 @@ host = NodePath("../..")
 machine = NodePath("..")
 sprite = NodePath("../../sprite")
 
-[node name="plant" type="Node" parent="State Machine" node_paths=PackedStringArray("host", "machine", "clock", "riser", "pop")]
+[node name="plant" type="Node" parent="State Machine" node_paths=PackedStringArray("host", "machine", "clock", "riser", "pop", "text")]
 script = ExtResource("5_r8208")
 host = NodePath("../..")
 machine = NodePath("..")
 clock = NodePath("../../ProgClock")
 riser = NodePath("../../riser")
 pop = NodePath("../../PlantPop")
+text = NodePath("../../actDisplay")
 wait_time = 3
 
-[node name="turret" type="Node" parent="State Machine" node_paths=PackedStringArray("host", "machine", "clock", "riser")]
+[node name="turret" type="Node" parent="State Machine" node_paths=PackedStringArray("host", "machine", "clock", "riser", "text")]
 script = ExtResource("6_feh3s")
 host = NodePath("../..")
 machine = NodePath("..")
 clock = NodePath("../../ProgClock")
 riser = NodePath("../../riser")
+text = NodePath("../../actDisplay")
 wait_time = 5
 
-[node name="unplant" type="Node" parent="State Machine" node_paths=PackedStringArray("host", "machine", "clock", "riser")]
+[node name="unplant" type="Node" parent="State Machine" node_paths=PackedStringArray("host", "machine", "clock", "riser", "text")]
 script = ExtResource("7_h3uhe")
 host = NodePath("../..")
 machine = NodePath("..")
 clock = NodePath("../../ProgClock")
 riser = NodePath("../../riser")
+text = NodePath("../../actDisplay")
 wait_time = 2
 
-[node name="harvest" type="Node" parent="State Machine" node_paths=PackedStringArray("host", "machine", "clock", "riser")]
+[node name="harvest" type="Node" parent="State Machine" node_paths=PackedStringArray("host", "machine", "clock", "riser", "text")]
 script = ExtResource("8_rgh44")
 host = NodePath("../..")
 machine = NodePath("..")
 clock = NodePath("../../ProgClock")
 riser = NodePath("../../riser")
+text = NodePath("../../actDisplay")
 wait_time = 3
 
 [node name="offscreen" type="Node" parent="State Machine" node_paths=PackedStringArray("host", "machine")]
@@ -366,3 +371,13 @@ stream = ExtResource("12_i57cy")
 
 [node name="PlantPop" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("13_cpcc3")
+
+[node name="actDisplay" type="RichTextLabel" parent="."]
+visible = false
+offset_left = -60.0
+offset_top = 16.0
+offset_right = 60.0
+offset_bottom = 56.0
+theme_override_fonts/normal_font = ExtResource("15_omwui")
+theme_override_font_sizes/normal_font_size = 15
+bbcode_enabled = true

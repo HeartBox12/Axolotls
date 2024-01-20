@@ -3,7 +3,7 @@
 [ext_resource type="TileSet" uid="uid://dbq1l3eowpxt" path="res://Assets/grassnDirt.tres" id="1_7qnh0"]
 [ext_resource type="PackedScene" uid="uid://x18enyc2dnnf" path="res://plant/plant.tscn" id="2_c04t2"]
 
-[node name="Node2D" type="Node2D"]
+[node name="tutorial" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource("1_7qnh0")
