@@ -857,6 +857,18 @@ theme_override_font_sizes/normal_font_size = 20
 bbcode_enabled = true
 text = "32"
 
+[node name="TurretCost" type="RichTextLabel" parent="Control/counters"]
+z_index = 1
+z_as_relative = false
+layout_mode = 0
+offset_top = 80.0
+offset_right = 81.0
+offset_bottom = 120.0
+theme_override_fonts/normal_font = ExtResource("4_dp6hs")
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+text = "32"
+
 [node name="LossRect" type="ColorRect" parent="Control"]
 visible = false
 top_level = true

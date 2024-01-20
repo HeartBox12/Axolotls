@@ -46,6 +46,7 @@ func setup():
 	Global.seeds = initSeeds
 	day = -1
 	$Control/Button.text = puns[day + 1]
+	$Control/counters/TurretCost.text = str(Global.turretPrices[Global.turrPriceInd])
 	
 	call_deferred("nightOver")
 
@@ -123,8 +124,12 @@ func _on_player_turreted(coords): #called by player.turreted
 	instance.position = $Tiles.map_to_local(coords)
 	tiledNodes[coords.x][coords.y] = instance
 	
-	Global.limes -= Global.turretCost
+	Global.limes -= Global.turretPrices[Global.turrPriceInd]
 	$Control/counters/LimeCount.text = str(Global.limes)
+	
+	if Global.turrPriceInd == Global.turretPrices.size() - 1:
+		Global.turrPriceInd += 1
+		$Control/counters/TurretCost.text = str(Global.turretPrices[Global.turrPriceInd])
 
 func _on_player_unplanted(coords): #called by player.unplanted
 	tiledNodes[coords.x][coords.y].health = 0

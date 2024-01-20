@@ -59,7 +59,7 @@ func update(_delta): #Equivalent to func process(delta) in the host. Only use pr
 		else:
 			swap.emit(self, "unplant")
 		
-	if Input.is_action_just_pressed("interact_turret") && host.validSelect && host.root.tiledNodes[host.selPos.x][host.selPos.y] == null && Global.limes >= Global.turretCost:
+	if Input.is_action_just_pressed("interact_turret") && host.validSelect && host.root.tiledNodes[host.selPos.x][host.selPos.y] == null && Global.limes >= Global.turretPrices[Global.turrPriceInd]:
 		swap.emit(self, "turret")
 
 func physics_update(_delta): #Equivalent to func physics_process() in the host.

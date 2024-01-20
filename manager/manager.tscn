@@ -1,7 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://drpk4li4eis1t"]
+[gd_scene load_steps=5 format=3 uid="uid://drpk4li4eis1t"]
 
 [ext_resource type="Script" path="res://manager/manager.gd" id="1_mywec"]
-[ext_resource type="PackedScene" uid="uid://bf0snq1g2u65g" path="res://Map/maps.tscn" id="1_wifi7"]
 [ext_resource type="FontFile" uid="uid://c4hliela7vl0q" path="res://Fonts/WorkSans-Bold.ttf" id="2_lirkw"]
 
 [sub_resource type="Animation" id="Animation_emfsh"]
@@ -40,7 +39,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(2, 1),
 "update": 0,
-"values": [Vector2(448, 238), Vector2(448, -302)]
+"values": [Vector2(416, 238), Vector2(416, -302)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -54,6 +53,18 @@ tracks/3/keys = {
 "update": 1,
 "values": [true, false]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Control/Tutorial:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(2, 1),
+"update": 0,
+"values": [Vector2(416, 302), Vector2(416, -238)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_dr384"]
 _data = {
@@ -64,17 +75,14 @@ _data = {
 process_mode = 3
 script = ExtResource("1_mywec")
 
-[node name="Main" parent="." instance=ExtResource("1_wifi7")]
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-process_mode = 2
+process_mode = 3
 libraries = {
 "": SubResource("AnimationLibrary_dr384")
 }
 
 [node name="Control" type="Control" parent="."]
-process_mode = 2
-top_level = true
+process_mode = 3
 layout_mode = 3
 anchors_preset = 0
 offset_right = 960.0
@@ -90,12 +98,22 @@ color = Color(0, 0, 0, 1)
 [node name="Start" type="Button" parent="Control"]
 top_level = true
 layout_mode = 0
-offset_left = 448.0
+offset_left = 416.0
 offset_top = 238.0
-offset_right = 512.0
+offset_right = 544.0
 offset_bottom = 302.0
 theme_override_fonts/font = ExtResource("2_lirkw")
 text = "Start"
+
+[node name="Tutorial" type="Button" parent="Control"]
+top_level = true
+layout_mode = 0
+offset_left = 416.0
+offset_top = 302.0
+offset_right = 544.0
+offset_bottom = 366.0
+theme_override_fonts/font = ExtResource("2_lirkw")
+text = "Tutorial"
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_finished"]
 [connection signal="pressed" from="Control/Start" to="." method="_on_start_pressed"]
