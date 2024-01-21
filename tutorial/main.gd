@@ -31,11 +31,7 @@ var phase:int : set = _phaseAdvance
 #3 [Plant harvested] - Player prompted to build on turrSpot
 #4 [Turret built] - Enemy spawns. Plant spawns. Player told about cost increases.
 #5 [Space pressed] - Shutter w/ text falls. Booted to main menu.
-
-func _ready():
-	setup()
-
-func setup():
+func _load():
 	tutSetup.emit() #Gets the player into the idle state
 	Global.limes = initLimes
 	Global.seeds = initSeeds
