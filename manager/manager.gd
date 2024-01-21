@@ -1,5 +1,6 @@
 extends Node2D
 var mainScene = preload("res://Map/maps.tscn")
+var tutScene = preload("res://tutorial/tutorial.tscn")
 var instance:Node = null
 
 # Called when the node enters the scene tree for the first time.
@@ -8,6 +9,13 @@ func _ready():
 
 func _on_start_pressed():
 	instance = mainScene.instantiate()
+	instance.position = Vector2(0, 0)
+	add_child(instance)
+	$AnimationPlayer.play("start")
+	get_tree().paused = false
+
+func _on_tutorial_pressed():
+	instance = tutScene.instantiate()
 	instance.position = Vector2(0, 0)
 	add_child(instance)
 	$AnimationPlayer.play("start")

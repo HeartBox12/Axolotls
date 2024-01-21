@@ -434,6 +434,7 @@ theme_override_constants/outline_size = 2
 text = "<- Face this tile and press Q/numpad 7/N/Q"
 
 [node name="harvestPrompt" type="RichTextLabel" parent="Control/Control"]
+visible = false
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 0
 offset_left = 490.0
@@ -446,6 +447,7 @@ bbcode_enabled = true
 text = "The same button (Q/N/Z) is used to [color=#FFAA00]harvest[/color] a plant."
 
 [node name="buildPrompt" type="RichTextLabel" parent="Control/Control"]
+visible = false
 layout_mode = 0
 offset_left = 490.0
 offset_top = 286.0
@@ -457,6 +459,7 @@ bbcode_enabled = true
 text = "<- Create an [color=#FFAA00]Installation[/color] on this tile."
 
 [node name="Info" type="RichTextLabel" parent="Control/Control"]
+visible = false
 layout_mode = 0
 offset_top = 426.0
 offset_right = 960.0
