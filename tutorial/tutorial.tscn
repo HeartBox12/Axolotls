@@ -225,5 +225,12 @@ sprite_frames = SubResource("SpriteFrames_416b2")
 autoplay = "default"
 
 [connection signal="coordValid" from="." to="Player" method="_set_coord_valid"]
-[connection signal="setup" from="." to="Player" method="_set_idle"]
+[connection signal="setHarvest" from="." to="Player" method="_set_harvest"]
+[connection signal="setPlant" from="." to="Player" method="_set_plant"]
+[connection signal="setTurret" from="." to="Player" method="_set_turret"]
+[connection signal="tutSetup" from="." to="Player" method="_set_idle"]
 [connection signal="coordSelect" from="Player" to="." method="_on_player_coord_select"]
+[connection signal="planted" from="Player" to="." method="_on_player_planted"]
+[connection signal="reqPlant" from="Player" to="." method="_on_player_reqPlant"]
+[connection signal="reqTurret" from="Player" to="." method="_on_player_reqTurret"]
+[connection signal="turreted" from="Player" to="." method="_on_player_turreted"]
