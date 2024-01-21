@@ -9,6 +9,7 @@ signal setHarvest
 
 @export var plant:PackedScene
 @export var turret:PackedScene
+@export var enemy:PackedScene
 @export var initSeeds:int
 @export var initLimes:int
 
@@ -23,7 +24,7 @@ var turretInstance
 var enemyInstance
 
  #The step that the player is on. Checked for a few things
-var phase : set = _phaseAdvance
+var phase:int : set = _phaseAdvance
 #0 [start] - Player is prompted to place a lime on plantSpot
 #1 [plant is planted] - Plant info comes up. Player prompted to press space.
 #2 [Space pressed] - Day passes, plant ripens. Player prompted to harvest.
@@ -52,18 +53,25 @@ func _phaseAdvance(new): #Called automatically when phase is rewritten.
 		2:
 			$AnimationPlayer.play("phase2")
 		3:
+			$indicator.visible = false
+			coordValid.emit(false)
 			$AnimationPlayer.play("phase3")
 		4:
-			pass
+			$indicator.visible = false
+			coordValid.emit(false)
+			spawnemy()
+			$AnimationPlayer.play("phase4")
+		5:
+			pass #end the tutorial!
 
 func _on_player_coord_select(coords):
 	selPos = coords
 	
-	if phase == 0 && coords == plantSpot:
+	if phase <= 2 && coords == plantSpot:
 		$indicator.visible = true
 		$indicator.position = $tiles.map_to_local(plantSpot)
 		coordValid.emit(true)
-	elif phase == 2 && coords == turrSpot:
+	elif phase == 3 && coords == turrSpot:
 		$indicator.visible = true
 		$indicator.position = $tiles.map_to_local(turrSpot)
 		coordValid.emit(true)
@@ -117,6 +125,17 @@ func _on_player_turreted(_coords):
 	$Control/counters/SeedCount.text = str(Global.limes)
 	
 	phase = 4
+
+func spawnemy():
+	
+	enemyInstance = enemy.instantiate()
+	enemyInstance.position = $enemSpawn.position
+	add_child(enemyInstance)
+	enemyInstance.death.connect(_on_enemy_down)
+	#clear.connect(Callable(enemyInstance, "_on_clear"))
+	
+func _on_enemy_down(_instance):
+	pass
 
 func _unhandled_input(event):
 	if event.is_action_pressed("begin_day") && phase == 1: #Placeholder

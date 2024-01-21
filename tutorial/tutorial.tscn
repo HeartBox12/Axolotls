@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://boom8e2b00di8"]
+[gd_scene load_steps=32 format=3 uid="uid://boom8e2b00di8"]
 
 [ext_resource type="TileSet" uid="uid://dbq1l3eowpxt" path="res://Assets/grassnDirt.tres" id="1_7qnh0"]
 [ext_resource type="Script" path="res://tutorial/main.gd" id="1_d8a0d"]
@@ -6,7 +6,9 @@
 [ext_resource type="FontFile" uid="uid://tyuiinyuokna" path="res://Fonts/Cinzel-Regular.ttf" id="2_y1rl5"]
 [ext_resource type="PackedScene" uid="uid://ca53jhhml5hya" path="res://Turrets/universalTurret.tscn" id="3_1tqfq"]
 [ext_resource type="PackedScene" uid="uid://dxx3636flyr8a" path="res://Player/player.tscn" id="3_x65of"]
+[ext_resource type="PackedScene" uid="uid://dd2dv03lkhv26" path="res://enemy/enemy.tscn" id="4_n6sgw"]
 [ext_resource type="Texture2D" uid="uid://5mtqajuld3qn" path="res://Assets/indicatorsheet.png" id="7_1b0ly"]
+[ext_resource type="PackedScene" uid="uid://cj7ghoonwgss6" path="res://shrine/shrine.tscn" id="9_rifa0"]
 
 [sub_resource type="Animation" id="Animation_mjalu"]
 resource_name = "phase0"
@@ -33,6 +35,18 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(2, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Control/Control/plantPrompt:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
 }
 
 [sub_resource type="Animation" id="Animation_1lrxd"]
@@ -95,10 +109,22 @@ tracks/4/path = NodePath("Control/Control/Info:visible")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(1, 1.6),
+"times": PackedFloat32Array(0, 1.6),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Control/Control/plantPrompt:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
 }
 
 [sub_resource type="Animation" id="Animation_umcum"]
@@ -167,6 +193,30 @@ tracks/4/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Control/Control/harvestPrompt:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 3.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Control/Control/plantPrompt:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_li2r5"]
 resource_name = "phase3"
@@ -192,9 +242,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0.8),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": ["[center][color=#00FF00]Limes[/color] can be [color=#FFAA00]stationed[/color] with E/X/M.The amount of limes needed for each [color=FFAA00]Installation[/color] increases as you place more of them.
-
-[color=FFAA00]Installations[/color] will defend your lime plants and [color=FFFF00]Shrine[/color] from those that reject the way of the lime. Build as many as possible.[/center]"]
+"values": ["[center][color=#00FF00]Limes[/color] can be [color=#FFAA00]stationed[/color] with E/X/M.The amount of limes needed for each [color=FFAA00]Installation[/color] increases as you place more of them.[/center]"]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -244,13 +292,64 @@ tracks/5/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Control/Control/buildPrompt:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Control/Control/harvestPrompt:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_qrcpi"]
+resource_name = "phase4"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/Control/Info:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": ["[center][color=#00FF00]Limes[/color] can be [color=#FFAA00]stationed[/color] with E/X/M.The amount of limes needed for each [color=FFAA00]Installation[/color] increases as you place more of them.", "[center][color=FFAA00]Installations[/color] will defend your lime plants and [color=FFFF00]Shrine[/color] from those that reject the way of the lime. Build as many as possible.[/center]"]
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Control/Control/Info:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(426, -0.25, 0, 0.25, 0, 476, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_dy8nj"]
 _data = {
 "phase0": SubResource("Animation_mjalu"),
 "phase1": SubResource("Animation_1lrxd"),
 "phase2": SubResource("Animation_umcum"),
-"phase3": SubResource("Animation_li2r5")
+"phase3": SubResource("Animation_li2r5"),
+"phase4": SubResource("Animation_qrcpi")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mlc44"]
@@ -354,6 +453,7 @@ animations = [{
 script = ExtResource("1_d8a0d")
 plant = ExtResource("2_hgs71")
 turret = ExtResource("3_1tqfq")
+enemy = ExtResource("4_n6sgw")
 initSeeds = 1
 plantSpot = Vector2i(14, 8)
 turrSpot = Vector2i(14, 9)
@@ -423,6 +523,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="plantPrompt" type="RichTextLabel" parent="Control/Control"]
+visible = false
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 0
 offset_left = 490.0
@@ -434,6 +535,7 @@ theme_override_constants/outline_size = 2
 text = "<- Face this tile and press Q/numpad 7/N/Q"
 
 [node name="harvestPrompt" type="RichTextLabel" parent="Control/Control"]
+visible = false
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 0
 offset_left = 490.0
@@ -446,6 +548,7 @@ bbcode_enabled = true
 text = "The same button (Q/N/Z) is used to [color=#FFAA00]harvest[/color] a plant."
 
 [node name="buildPrompt" type="RichTextLabel" parent="Control/Control"]
+visible = false
 layout_mode = 0
 offset_left = 490.0
 offset_top = 286.0
@@ -457,16 +560,15 @@ bbcode_enabled = true
 text = "<- Create an [color=#FFAA00]Installation[/color] on this tile."
 
 [node name="Info" type="RichTextLabel" parent="Control/Control"]
+visible = false
 layout_mode = 0
-offset_top = 426.0
+offset_top = 326.0
 offset_right = 960.0
-offset_bottom = 644.0
+offset_bottom = 544.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 2
 bbcode_enabled = true
-text = "[center][color=#00FF00]Limes[/color] can be [color=#FFAA00]stationed[/color] with E/X/M.The amount of limes needed for each [color=FFAA00]Installation[/color] increases as you place more of them.
-
-[color=FFAA00]Installations[/color] will defend your lime plants and [color=FFFF00]Shrine[/color] from those that reject the way of the lime. Build as many as possible.[/center]"
+text = "[center][color=FFAA00]Installations[/color] will defend your lime plants and [color=FFFF00]Shrine[/color] from those that reject the way of the lime. Build as many as possible.[/center]"
 
 [node name="Player" parent="." node_paths=PackedStringArray("root", "tileSet") instance=ExtResource("3_x65of")]
 position = Vector2(480, 158)
@@ -511,6 +613,12 @@ anchor_mode = 0
 position = Vector2(48, 48)
 sprite_frames = SubResource("SpriteFrames_416b2")
 autoplay = "default"
+
+[node name="enemSpawn" type="Marker2D" parent="."]
+position = Vector2(0, 544)
+
+[node name="shrine" parent="." instance=ExtResource("9_rifa0")]
+position = Vector2(467, 59)
 
 [connection signal="coordValid" from="." to="Player" method="_set_coord_valid"]
 [connection signal="setHarvest" from="." to="Player" method="_set_harvest"]
