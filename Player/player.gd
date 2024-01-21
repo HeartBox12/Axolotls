@@ -11,6 +11,9 @@ signal turreted
 signal unplanted
 signal harvested
 
+signal reqPlant #Requesting to plant
+signal reqTurret #Requesting to make turret
+
 var input:Vector2 = Vector2(0, 0) #Unit vector representing player movement dir
 var facing:int = 1 #clockwise, 0 is right, 4 is up.
 var selPos:Vector2i # The currently selected tile coordinates
@@ -22,9 +25,6 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
-	
-	
-	
 	input = Vector2(0, 0) #Reset
 	
 	#Read keyboard/controller. Accounts for weird input and < 1 controller tilt.
@@ -51,3 +51,21 @@ func _physics_process(_delta):
 
 func _reset(): #Yeah I know this is jank as hell.
 	$"State Machine".on_swap($"State Machine".currentState, "offscreen")
+
+func _set_coord_valid(value:bool):
+	validSelect = value
+
+func _set_idle(): #For use in the tutorial
+	$"State Machine".on_swap($"State Machine/offscreen", "idle")
+
+func _set_plant(): #For use when attempting to build
+	$"State Machine".on_swap($"State Machine/idle", "plant")
+
+func _set_harvest():
+	$"State Machine".on_swap($"State Machine/idle", "harvest")
+
+func _set_unplant():
+	$"State Machine".on_swap($"State Machine/idle", "unplant")
+
+func _set_turret():
+	$"State Machine".on_swap($"State Machine/idle", "turret")

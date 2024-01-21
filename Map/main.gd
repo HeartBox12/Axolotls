@@ -3,6 +3,13 @@ extends Node2D
 signal daytime #Connects to plants to tell them to ripen.
 signal clear #Connects to enemies so the script can wipe them out
 
+signal coordValid
+
+signal setTurret
+signal setPlant
+signal setUnplant
+signal setHarvest
+
 @export var plant:PackedScene
 @export var turret:PackedScene
 
@@ -19,8 +26,10 @@ var playerPos #Player position in tilemap coords.
 var selPos #The tile currently selected by the player
 var tiledNodes:Array = [] #2d array for tracking which structures are where
 var isDay:bool = false #for timer purposes
-var livingEnems = 6 #Living enemies. When it reaches 0, start day. FIXME: set 0.
+var livingEnems:int = 6 #Living enemies. When it reaches 0, start day. FIXME: set 0.
 var enemArray = []
+
+var validTarget:bool #Whether the player is looking at a valid tile for placement
 
 var puns = ["Begin the timer!", "Squeeze the Day!", "No time to cit(rus) around!", 
 "Lime 'em up, knock 'em down!",
@@ -98,20 +107,27 @@ func start_day():
 
 func start_night(): #Begin spawning enemies, etc.
 	Global.Nighttime.emit()
-#
-#func _unhandled_input(event):
-	#if event.is_action_pressed("test0"):
-		#$AnimationPlayer.play("endOfNight")
-##	if Input.is_action_just_pressed("test5"):
-##		$AnimationPlayer.play("Loss")
-	#if event.is_action_pressed("test3"):
-		#$AnimationPlayer.play("Win")
 
 func _on_coord_select(coords):
-	selPos = coords
-	$indicator.position = $Tiles.map_to_local(selPos)
+	if coords != null: #Player node actually transmitted coords
+		$indicator.visible = true
+		selPos = coords
+		
+		#Tile is dirt, can be selected
+		if $Tiles.get_cell_tile_data(0, selPos).get_custom_data("valid"):
+			$indicator.position = $Tiles.map_to_local(selPos)
+			validTarget = true
+			
+		else: #Tile is grass, cannot be selected
+			$indicator.position = $Tiles.map_to_local(Vector2(-1, -1))
+			validTarget = false
+			
+	else: #Null indicating "I want to select nothing!" (offscreen state)
+		validTarget = false
+		$indicator.visible = false
+		coordValid.emit(validTarget)
 
-func _on_player_planted(coords): #called by player.planted
+func _on_player_planted(coords): #player transmits after completed planting
 	var instance = plant.instantiate()
 	$Tiles.add_child(instance)
 	instance.position = $Tiles.map_to_local(coords)
@@ -122,7 +138,7 @@ func _on_player_planted(coords): #called by player.planted
 	
 	instance.destroyed.connect(_plant_down)
 
-func _on_player_turreted(coords): #called by player.turreted
+func _on_player_turreted(coords): #Player places a turret at coords
 	var instance = turret.instantiate()
 	$Tiles.add_child(instance)
 	instance.position = $Tiles.map_to_local(coords)
@@ -135,11 +151,11 @@ func _on_player_turreted(coords): #called by player.turreted
 		Global.turrPriceInd += 1
 		$Control/counters/TurretCost.text = str(Global.turretPrices[Global.turrPriceInd])
 
-func _on_player_unplanted(coords): #called by player.unplanted
+func _on_player_unplanted(coords): #Player uproots a plant at coords
 	tiledNodes[coords.x][coords.y].health = 0
 
 
-func _on_player_harvested(coords): #called by player.harvested
+func _on_player_harvested(coords): #Player harvests a plant at coords
 	Global.limes += tiledNodes[coords.x][coords.y].profit
 	tiledNodes[coords.x][coords.y].remove()
 	$Control/counters/LimeCount.text = str(Global.limes)
@@ -182,3 +198,24 @@ Fulfull your zestiny.[/center]" #Note: might make this value-setting part of ani
 		$Control/counters/SeedCount.text = str(Global.seeds)
 		$AnimationPlayer.play("endOfNight")
 
+func _on_player_reqPlant(coords): #When the player requests a plant action.
+	var target = tiledNodes[coords.x][coords.y]
+	
+	#Elif statement to ascertain what the player is trying to do
+	if  target == null: #Trying to plant on empty tile
+		if Global.seeds >= Global.plantCost:
+			setPlant.emit()
+		else:
+			pass
+	elif !target.is_in_group("plants"): #Not a plant
+		pass
+	elif target.profit > 0: #Ripe/mature plant
+		setHarvest.emit()
+	else:
+		setUnplant.emit()
+
+func _on_player_reqTurret(coords): #When the player requests a build action.
+	var target = tiledNodes[coords.x][coords.y]
+	
+	if target == null && Global.limes >= Global.turretPrices[Global.turrPriceInd]: #If there's room...
+		setTurret.emit()

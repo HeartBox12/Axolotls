@@ -37,30 +37,25 @@ func update(_delta): #Equivalent to func process(delta) in the host. Only use pr
 			host.selPos.x -= 1
 		3:
 			host.selPos.y -= 1
-	if host.tileSet.get_cell_tile_data(0, host.selPos) != null:
-		host.validSelect = host.tileSet.get_cell_tile_data(0, host.selPos).get_custom_data("valid")
 	
-	if host.validSelect:
-		host.coordSelect.emit(host.selPos)
-	else:
-		host.coordSelect.emit(Vector2i(-1, -1))
-	
-	if Input.is_action_just_pressed("interact_plant") && host.validSelect:
-		var target = host.root.tiledNodes[host.selPos.x][host.selPos.y]
-		if  target == null: #Trying to plant on empty tile
-			if Global.seeds >= Global.plantCost:
-				swap.emit(self, "plant")
-			else:
-				pass
-		elif !target.is_in_group("plants"): #Not a plant
-			pass
-		elif target.profit > 0: #Ripe/mature plant
-			swap.emit(self, "harvest") #pick the plant
-		else:
-			swap.emit(self, "unplant")
+	if Input.is_action_just_pressed("interact_plant"):
+		host.reqPlant.emit(host.selPos)
 		
-	if Input.is_action_just_pressed("interact_turret") && host.validSelect && host.root.tiledNodes[host.selPos.x][host.selPos.y] == null && Global.limes >= Global.turretPrices[Global.turrPriceInd]:
-		swap.emit(self, "turret")
+		#var target = host.root.tiledNodes[host.selPos.x][host.selPos.y]
+		#if  target == null: #Trying to plant on empty tile
+			#if Global.seeds >= Global.plantCost:
+				#swap.emit(self, "plant")
+			#else:
+				#pass
+		#elif !target.is_in_group("plants"): #Not a plant
+			#pass
+		#elif target.profit > 0: #Ripe/mature plant
+			#swap.emit(self, "harvest") #pick the plant
+		#else:
+			#swap.emit(self, "unplant")
+		
+	if Input.is_action_just_pressed("interact_turret"):
+		host.reqTurret.emit(host.selPos)
 
 func physics_update(_delta): #Equivalent to func physics_process() in the host.
 	pass

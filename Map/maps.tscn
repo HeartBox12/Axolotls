@@ -572,7 +572,7 @@ _data = {
 "startOfNight": SubResource("Animation_27aa4")
 }
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sin3g"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_t0hi3"]
 
 [sub_resource type="InputEventKey" id="InputEventKey_ybyye"]
 device = -1
@@ -822,7 +822,7 @@ offset_top = 260.0
 offset_right = 468.0
 offset_bottom = 304.0
 theme_override_fonts/font = ExtResource("4_dp6hs")
-theme_override_styles/normal = SubResource("StyleBoxEmpty_sin3g")
+theme_override_styles/normal = SubResource("StyleBoxTexture_t0hi3")
 disabled = true
 shortcut = SubResource("Shortcut_2jnyp")
 text = "asdf
@@ -965,9 +965,16 @@ position = Vector2(480, 512)
 shape = SubResource("RectangleShape2D_a1ruj")
 
 [connection signal="clear" from="." to="Player" method="_reset"]
+[connection signal="coordValid" from="." to="Player" method="_set_coord_valid"]
+[connection signal="setHarvest" from="." to="Player" method="_set_harvest"]
+[connection signal="setPlant" from="." to="Player" method="_set_plant"]
+[connection signal="setTurret" from="." to="Player" method="_set_turret"]
+[connection signal="setUnplant" from="." to="Player" method="_set_unplant"]
 [connection signal="coordSelect" from="Player" to="." method="_on_coord_select"]
 [connection signal="harvested" from="Player" to="." method="_on_player_harvested"]
 [connection signal="planted" from="Player" to="." method="_on_player_planted"]
+[connection signal="reqPlant" from="Player" to="." method="_on_player_reqPlant"]
+[connection signal="reqTurret" from="Player" to="." method="_on_player_reqTurret"]
 [connection signal="turreted" from="Player" to="." method="_on_player_turreted"]
 [connection signal="unplanted" from="Player" to="." method="_on_player_unplanted"]
 [connection signal="pressed" from="Control/Button" to="." method="_day_button_pressed"]

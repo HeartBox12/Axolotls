@@ -4,7 +4,7 @@ extends State
 
 func enter(): #When this state is entered
 	host.visible = false
-	host.coordSelect.emit(Vector2i(-1, -1))
+	host.coordSelect.emit(null)
 	
 func exit(): #Just before this state is exited
 	host.visible = true
