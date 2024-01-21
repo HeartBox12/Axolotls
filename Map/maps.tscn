@@ -699,7 +699,7 @@ size = Vector2(960, 64)
 
 [node name="Main" type="Node2D"]
 process_mode = 1
-modulate = Color(0.74902, 0.772549, 0.94902, 1)
+modulate = Color(0.815948, 0.833203, 0.962614, 1)
 y_sort_enabled = true
 script = ExtResource("1_u5oha")
 plant = ExtResource("10_m1vjg")

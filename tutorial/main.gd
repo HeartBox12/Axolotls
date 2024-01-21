@@ -23,12 +23,13 @@ var turretInstance
 var enemyInstance
 
  #The step that the player is on. Checked for a few things
-var phase = 0 : set = _phaseAdvance
+var phase : set = _phaseAdvance
 #0 [start] - Player is prompted to place a lime on plantSpot
-#1 [plant is planted] - Day passes, plant ripens. Player prompted to harvest.
-#2 [Plant harvested] - Player prompted to plant on turrSpot
-#3 [Turret built] - Enemy spawns. Plant spawns. Player told about cost increases
-#4 [Enemy killed] - Shutter w/ text falls. Booted to main menu.
+#1 [plant is planted] - Plant info comes up. Player prompted to press space.
+#2 [Space pressed] - Day passes, plant ripens. Player prompted to harvest.
+#3 [Plant harvested] - Player prompted to build on turrSpot
+#4 [Turret built] - Enemy spawns. Plant spawns. Player told about cost increases.
+#5 [Space pressed] - Shutter w/ text falls. Booted to main menu.
 
 func _ready():
 	setup()
@@ -45,13 +46,13 @@ func _phaseAdvance(new): #Called automatically when phase is rewritten.
 	
 	match phase:
 		0:
-			pass
+			$AnimationPlayer.play("phase0")
 		1:
-			pass
+			$AnimationPlayer.play("phase1")
 		2:
-			pass
+			$AnimationPlayer.play("phase2")
 		3:
-			pass
+			$AnimationPlayer.play("phase3")
 		4:
 			pass
 
@@ -70,7 +71,13 @@ func _on_player_coord_select(coords):
 		$indicator.visible = false
 		coordValid.emit(false)
 
-func _on_player_planted(coords): #player transmits after completed planting
+func _on_player_reqPlant(coords):
+	if phase == 0 && coords == plantSpot:
+		setPlant.emit()
+	if phase == 2 && coords == plantSpot:
+		setHarvest.emit()
+
+func _on_player_planted(_coords): #player transmits after completed planting
 	if phase != 0:
 		print("Error! Error! Sequence broken!")
 	
@@ -83,23 +90,34 @@ func _on_player_planted(coords): #player transmits after completed planting
 	
 	plantInstance.destroyed.connect(_plant_down)
 	
-	phase = 2
+	phase = 1
+
+func _on_player_harvested(coords): #Player harvests a plant at coords
+	Global.limes += plantInstance.profit
+	plantInstance.remove()
+	$Control/counters/LimeCount.text = str(Global.limes)
+	phase = 3
+
+func _start_day():
+	Global.Daytime.emit()
 
 func _plant_down():
 	pass#FIXME: end the tutorial
 
-func _on_player_reqPlant(coords):
-	if phase == 0 && coords == plantSpot:
-		setPlant.emit()
-
 func _on_player_reqTurret(coords):
-	if phase == 2 && coords == turrSpot:
-		setPlant.emit()
+	if phase == 3 && coords == turrSpot:
+		setTurret.emit()
 
-func _on_player_turreted():
+func _on_player_turreted(_coords):
 	turretInstance = turret.instantiate()
-	$Tiles.add_child(turretInstance)
-	turretInstance.position = $Tiles.map_to_local(turrSpot)
+	add_child(turretInstance)
+	turretInstance.position = $tiles.map_to_local(turrSpot)
 	
 	Global.seeds -= 1
 	$Control/counters/SeedCount.text = str(Global.limes)
+	
+	phase = 4
+
+func _unhandled_input(event):
+	if event.is_action_pressed("begin_day") && phase == 1: #Placeholder
+		phase = 2
