@@ -2,6 +2,7 @@ extends Node2D
 
 signal coordValid
 signal tutSetup
+signal finished
 
 signal setPlant
 signal setTurret
@@ -42,23 +43,23 @@ func _phaseAdvance(new): #Called automatically when phase is rewritten.
 	phase = new
 	
 	match phase:
-		0:
+		0: #tutorial entered
 			$AnimationPlayer.play("phase0")
-		1:
+		1: #Plant planted
 			$AnimationPlayer.play("phase1")
-		2:
+		2: #SPACE pressed
 			$AnimationPlayer.play("phase2")
-		3:
+		3: #Plant harvested
 			$indicator.visible = false
 			coordValid.emit(false)
 			$AnimationPlayer.play("phase3")
-		4:
+		4:#turret placed
 			$indicator.visible = false
 			coordValid.emit(false)
 			spawnemy()
 			$AnimationPlayer.play("phase4")
-		5:
-			pass #end the tutorial!
+		5: #Enemy killed
+			$AnimationPlayer.play("phase5")
 
 func _on_player_coord_select(coords):
 	selPos = coords
@@ -131,8 +132,11 @@ func spawnemy():
 	#clear.connect(Callable(enemyInstance, "_on_clear"))
 	
 func _on_enemy_down(_instance):
-	pass
+	phase = 5
 
 func _unhandled_input(event):
 	if event.is_action_pressed("begin_day") && phase == 1: #Placeholder
 		phase = 2
+
+func _close():
+	finished.emit()

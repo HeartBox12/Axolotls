@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://boom8e2b00di8"]
+[gd_scene load_steps=33 format=3 uid="uid://boom8e2b00di8"]
 
 [ext_resource type="TileSet" uid="uid://dbq1l3eowpxt" path="res://Assets/grassnDirt.tres" id="1_7qnh0"]
 [ext_resource type="Script" path="res://tutorial/main.gd" id="1_d8a0d"]
@@ -15,7 +15,7 @@ resource_name = "phase0"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Control/Control/plantPrompt:position")
+tracks/0/path = NodePath("Control/text/plantPrompt:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -27,7 +27,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Control/Control/plantPrompt:self_modulate")
+tracks/1/path = NodePath("Control/text/plantPrompt:self_modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -39,7 +39,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Control/Control/plantPrompt:visible")
+tracks/2/path = NodePath("Control/text/plantPrompt:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -55,7 +55,7 @@ length = 2.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Control/Control/plantPrompt:position")
+tracks/0/path = NodePath("Control/text/plantPrompt:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -67,7 +67,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Control/Control/plantPrompt:self_modulate")
+tracks/1/path = NodePath("Control/text/plantPrompt:self_modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -79,7 +79,7 @@ tracks/1/keys = {
 tracks/2/type = "bezier"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Control/Control/Info:position:y")
+tracks/2/path = NodePath("Control/text/Info:position:y")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -90,7 +90,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Control/Control/Info:text")
+tracks/3/path = NodePath("Control/text/Info:text")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -105,7 +105,7 @@ Press SPACE to continue.[/center]"]
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Control/Control/Info:visible")
+tracks/4/path = NodePath("Control/text/Info:visible")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -117,7 +117,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("Control/Control/plantPrompt:visible")
+tracks/5/path = NodePath("Control/text/plantPrompt:visible")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -133,7 +133,7 @@ length = 4.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Control/Control/Info:text")
+tracks/0/path = NodePath("Control/text/Info:text")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -172,7 +172,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Control/Control/harvestPrompt:position")
+tracks/3/path = NodePath("Control/text/harvestPrompt:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -184,7 +184,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Control/Control/harvestPrompt:self_modulate")
+tracks/4/path = NodePath("Control/text/harvestPrompt:self_modulate")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -196,7 +196,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("Control/Control/harvestPrompt:visible")
+tracks/5/path = NodePath("Control/text/harvestPrompt:visible")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -208,7 +208,7 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("Control/Control/plantPrompt:visible")
+tracks/6/path = NodePath("Control/text/plantPrompt:visible")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -224,7 +224,7 @@ length = 1.5
 tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Control/Control/Info:position:y")
+tracks/0/path = NodePath("Control/text/Info:position:y")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -235,7 +235,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Control/Control/Info:text")
+tracks/1/path = NodePath("Control/text/Info:text")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -247,7 +247,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Control/Control/harvestPrompt:position")
+tracks/2/path = NodePath("Control/text/harvestPrompt:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -259,7 +259,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Control/Control/harvestPrompt:self_modulate")
+tracks/3/path = NodePath("Control/text/harvestPrompt:self_modulate")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -271,7 +271,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Control/Control/buildPrompt:position")
+tracks/4/path = NodePath("Control/text/buildPrompt:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -283,7 +283,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("Control/Control/buildPrompt:self_modulate")
+tracks/5/path = NodePath("Control/text/buildPrompt:self_modulate")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -295,7 +295,7 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("Control/Control/buildPrompt:visible")
+tracks/6/path = NodePath("Control/text/buildPrompt:visible")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -307,7 +307,7 @@ tracks/6/keys = {
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("Control/Control/harvestPrompt:visible")
+tracks/7/path = NodePath("Control/text/harvestPrompt:visible")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
@@ -322,11 +322,11 @@ resource_name = "phase4"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Control/Control/Info:text")
+tracks/0/path = NodePath("Control/text/Info:text")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3),
+"times": PackedFloat32Array(0, 0.8),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": ["[center][color=#00FF00]Limes[/color] can be [color=#FFAA00]stationed[/color] with E/X/M.The amount of limes needed for each [color=FFAA00]Installation[/color] increases as you place more of them.", "[center][color=FFAA00]Installations[/color] will defend your lime plants and [color=FFFF00]Shrine[/color] from those that reject the way of the lime. Build as many as possible.[/center]"]
@@ -334,13 +334,111 @@ tracks/0/keys = {
 tracks/1/type = "bezier"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Control/Control/Info:position:y")
+tracks/1/path = NodePath("Control/text/Info:position:y")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "handle_modes": PackedInt32Array(0, 0),
 "points": PackedFloat32Array(426, -0.25, 0, 0.25, 0, 476, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0.5, 1)
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Control/text/buildPrompt:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Control/text/buildPrompt:self_modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(2, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Control/text/buildPrompt:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(2, 1),
+"update": 0,
+"values": [Vector2(490, 286), Vector2(490, 236)]
+}
+
+[sub_resource type="Animation" id="Animation_rkcrk"]
+resource_name = "phase5"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/text/Survive:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(2, 3, 4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": ["[center]SURVIVE FIVE DAYS.[/center]", "[center]SURVIVE FIVE DAYS.
+
+
+COMPLETE THE RITUAL.[/center]", "[center]SURVIVE FIVE DAYS.
+
+
+COMPLETE THE RITUAL.
+
+
+THE MOON SHALL BE SUBSUMED[/center]"]
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Control/text/Info:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(476, -0.25, 0, 0.25, 0, 540, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0, 0.5)
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Control/text/Survive:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_close"
+}]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_dy8nj"]
@@ -349,7 +447,8 @@ _data = {
 "phase1": SubResource("Animation_1lrxd"),
 "phase2": SubResource("Animation_umcum"),
 "phase3": SubResource("Animation_li2r5"),
-"phase4": SubResource("Animation_qrcpi")
+"phase4": SubResource("Animation_qrcpi"),
+"phase5": SubResource("Animation_rkcrk")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mlc44"]
@@ -469,6 +568,11 @@ format = 2
 layer_0/tile_data = PackedInt32Array(0, 262144, 3, 65536, 196608, 1, 131072, 65536, 2, 196608, 196608, 2, 262144, 196608, 3, 327680, 262144, 1, 393216, 65536, 3, 458752, 0, 2, 524288, 0, 0, 589824, 196608, 1, 655360, 131072, 0, 720896, 131072, 2, 786432, 196608, 1, 851968, 327680, 0, 917504, 262144, 0, 983040, 131072, 0, 1048576, 262144, 2, 1, 196608, 1, 65537, 262144, 3, 131073, 196608, 2, 196609, 131072, 1, 262145, 0, 0, 327681, 196608, 2, 393217, 196608, 1, 458753, 0, 2, 524289, 65536, 0, 589825, 131072, 1, 655361, 65536, 2, 720897, 131072, 1, 786433, 65536, 2, 851969, 196608, 1, 917505, 327680, 0, 983041, 0, 0, 1048577, 131072, 1, 2, 65536, 3, 65538, 0, 1, 131074, 262144, 3, 196610, 262144, 2, 262146, 131072, 1, 327682, 196608, 2, 393218, 262144, 2, 458754, 131072, 1, 524290, 65536, 0, 589826, 0, 2, 655362, 65536, 3, 720898, 0, 1, 786434, 262144, 2, 851970, 131072, 3, 917506, 0, 0, 983042, 196608, 2, 1048578, 262144, 0, 3, 0, 2, 65539, 0, 0, 131075, 65536, 1, 196611, 0, 1, 262147, 131072, 1, 327683, 327680, 1, 393219, 0, 0, 458755, 327680, 0, 524291, 0, 3, 589827, 65536, 2, 655363, 262144, 0, 720899, 131072, 1, 786435, 327680, 1, 851971, 327680, 0, 917507, 262144, 2, 983043, 327680, 0, 1048579, 131072, 2, 4, 131072, 3, 65540, 65536, 2, 131076, 0, 3, 196612, 65536, 1, 262148, 131072, 3, 327684, 65536, 1, 393220, 0, 1, 458756, 131072, 2, 524292, 327680, 2, 589828, 131072, 0, 655364, 262144, 2, 720900, 327680, 1, 786436, 262144, 3, 851972, 327680, 1, 917508, 131072, 3, 983044, 131072, 3, 1048580, 262144, 3, 5, 65536, 0, 65541, 0, 2, 131077, 262144, 1, 196613, 65536, 2, 262149, 0, 1, 327685, 65536, 1, 393221, 131072, 0, 458757, 196608, 1, 524293, 0, 2, 589829, 262144, 0, 655365, 262144, 0, 720901, 0, 0, 786437, 65536, 2, 851973, 0, 2, 917509, 327680, 1, 983045, 65536, 0, 1048581, 65536, 0, 6, 196608, 3, 65542, 262144, 1, 131078, 196608, 2, 196614, 0, 0, 262150, 65536, 3, 327686, 262144, 3, 393222, 131072, 2, 458758, 0, 2, 524294, 262144, 3, 589830, 196608, 0, 655366, 131072, 1, 720902, 131072, 1, 786438, 196608, 0, 851974, 65536, 3, 917510, 65536, 2, 983046, 65536, 0, 1048582, 327680, 2, 7, 327680, 2, 65543, 262144, 2, 131079, 196608, 1, 196615, 65536, 2, 262151, 262144, 2, 327687, 196608, 2, 393223, 262144, 1, 458759, 0, 2, 524295, 262144, 0, 589831, 131072, 1, 655367, 65536, 2, 720903, 131072, 0, 786439, 262144, 2, 851975, 262144, 1, 917511, 131072, 0, 983047, 196608, 3, 1048583, 0, 2, 8, 196608, 1, 65544, 327680, 0, 131080, 196608, 2, 196616, 131072, 2, 262152, 0, 0, 327688, 196608, 2, 393224, 262144, 1, 458760, 327680, 2, 524296, 0, 1, 589832, 65536, 0, 655368, 65536, 2, 720904, 196608, 2, 786440, 65536, 3, 851976, 65536, 1, 917512, 65536, 3, 983048, 65536, 1, 1048584, 262144, 1, 9, 131072, 0, 65545, 262144, 1, 131081, 131072, 3, 196617, 0, 2, 262153, 0, 3, 327689, 131072, 3, 393225, 262144, 1, 458761, 196608, 2, 524297, 262144, 1, 589833, 262144, 3, 655369, 196608, 3, 720905, 0, 1, 786441, 262144, 3, 851977, 65536, 2, 917513, 131072, 0, 983049, 196608, 0, 1048585, 196608, 2, 10, 131072, 2, 65546, 196608, 1, 131082, 0, 0, 196618, 196608, 0, 262154, 327680, 0, 327690, 327680, 2, 393226, 262144, 0, 458762, 65536, 0, 524298, 327680, 2, 589834, 196608, 1, 655370, 262144, 0, 720906, 0, 0, 786442, 131072, 3, 851978, 131072, 1, 917514, 131072, 3, 983050, 196608, 2, 1048586, 196608, 2, 11, 327680, 2, 65547, 0, 0, 131083, 327680, 1, 196619, 131072, 0, 262155, 0, 3, 327691, 262144, 1, 393227, 0, 1, 458763, 196608, 2, 524299, 262144, 2, 589835, 262144, 1, 655371, 131072, 2, 720907, 65536, 1, 786443, 0, 1, 851979, 131072, 1, 917515, 327680, 1, 983051, 196608, 3, 1048587, 262144, 0, 12, 0, 1, 65548, 131072, 3, 131084, 131072, 3, 196620, 196608, 2, 262156, 196608, 3, 327692, 0, 1, 393228, 0, 3, 458764, 0, 0, 524300, 0, 1, 589836, 0, 2, 655372, 262144, 1, 720908, 131072, 3, 786444, 65536, 1, 851980, 131072, 2, 917516, 131072, 3, 983052, 131072, 2, 1048588, 262144, 0, 13, 196608, 2, 65549, 262144, 1, 131085, 131072, 1, 196621, 0, 2, 262157, 262144, 0, 327693, 262144, 2, 393229, 131072, 2, 458765, 65536, 0, 524301, 65536, 1, 589837, 65536, 2, 655373, 196608, 3, 720909, 262144, 1, 786445, 65536, 3, 851981, 327680, 1, 917517, 65536, 2, 983053, 0, 3, 1048589, 65536, 1, 14, 262144, 3, 65550, 262144, 2, 131086, 327680, 2, 196622, 262144, 0, 262158, 327680, 1, 327694, 327680, 1, 393230, 196608, 2, 458766, 131072, 0, 524302, 196608, 4, 589838, 196608, 6, 655374, 196608, 0, 720910, 196608, 3, 786446, 196608, 3, 851982, 196608, 0, 917518, 65536, 1, 983054, 0, 1, 1048590, 0, 0, 15, 262144, 2, 65551, 262144, 1, 131087, 262144, 3, 196623, 65536, 3, 262159, 262144, 3, 327695, 262144, 2, 393231, 327680, 0, 458767, 196608, 0, 524303, 196608, 1, 589839, 196608, 2, 655375, 65536, 3, 720911, 131072, 2, 786447, 65536, 3, 851983, 131072, 3, 917519, 0, 1, 983055, 65536, 2, 1048591, 196608, 3, 16, 65536, 2, 65552, 262144, 0, 131088, 327680, 0, 196624, 131072, 2, 262160, 0, 2, 327696, 196608, 0, 393232, 65536, 2, 458768, 262144, 0, 524304, 262144, 1, 589840, 262144, 2, 655376, 131072, 1, 720912, 131072, 2, 786448, 196608, 3, 851984, 196608, 0, 917520, 131072, 3, 983056, 0, 0, 1048592, 0, 2, 17, 0, 0, 65553, 327680, 0, 131089, 65536, 0, 196625, 262144, 3, 262161, 131072, 0, 327697, 65536, 2, 393233, 262144, 0, 458769, 0, 0, 524305, 65536, 2, 589841, 131072, 3, 655377, 0, 3, 720913, 65536, 1, 786449, 196608, 1, 851985, 196608, 0, 917521, 65536, 1, 983057, 0, 0, 1048593, 196608, 2, 18, 262144, 2, 65554, 0, 0, 131090, 65536, 0, 196626, 0, 1, 262162, 131072, 0, 327698, 262144, 0, 393234, 65536, 3, 458770, 0, 0, 524306, 196608, 1, 589842, 131072, 0, 655378, 131072, 2, 720914, 327680, 1, 786450, 131072, 2, 851986, 196608, 0, 917522, 262144, 0, 983058, 196608, 2, 1048594, 262144, 0, 19, 196608, 1, 65555, 0, 1, 131091, 196608, 0, 196627, 196608, 1, 262163, 262144, 1, 327699, 65536, 0, 393235, 262144, 0, 458771, 65536, 1, 524307, 196608, 1, 589843, 131072, 3, 655379, 131072, 1, 720915, 0, 0, 786451, 196608, 0, 851987, 65536, 1, 917523, 327680, 0, 983059, 131072, 3, 1048595, 262144, 0, 20, 131072, 2, 65556, 262144, 0, 131092, 0, 3, 196628, 131072, 3, 262164, 327680, 2, 327700, 262144, 2, 393236, 65536, 2, 458772, 65536, 3, 524308, 327680, 0, 589844, 0, 2, 655380, 65536, 2, 720916, 327680, 1, 786452, 327680, 2, 851988, 327680, 0, 917524, 131072, 1, 983060, 0, 3, 1048596, 0, 2, 21, 0, 2, 65557, 327680, 1, 131093, 65536, 2, 196629, 0, 2, 262165, 196608, 0, 327701, 0, 3, 393237, 65536, 0, 458773, 0, 0, 524309, 65536, 1, 589845, 65536, 1, 655381, 262144, 3, 720917, 131072, 0, 786453, 262144, 3, 851989, 196608, 2, 917525, 327680, 2, 983061, 65536, 0, 1048597, 65536, 0, 22, 0, 2, 65558, 196608, 1, 131094, 262144, 0, 196630, 65536, 3, 262166, 196608, 1, 327702, 196608, 2, 393238, 196608, 3, 458774, 196608, 3, 524310, 327680, 1, 589846, 196608, 2, 655382, 327680, 0, 720918, 131072, 3, 786454, 131072, 3, 851990, 262144, 2, 917526, 65536, 0, 983062, 0, 3, 1048598, 262144, 3, 23, 262144, 2, 65559, 0, 2, 131095, 327680, 1, 196631, 65536, 2, 262167, 131072, 0, 327703, 262144, 0, 393239, 65536, 3, 458775, 131072, 1, 524311, 327680, 2, 589847, 196608, 3, 655383, 0, 3, 720919, 196608, 0, 786455, 131072, 1, 851991, 327680, 2, 917527, 262144, 0, 983063, 131072, 1, 1048599, 262144, 1, 24, 262144, 1, 65560, 131072, 0, 131096, 65536, 1, 196632, 65536, 0, 262168, 196608, 1, 327704, 327680, 1, 393240, 262144, 0, 458776, 0, 1, 524312, 0, 0, 589848, 262144, 3, 655384, 65536, 3, 720920, 327680, 2, 786456, 327680, 1, 851992, 327680, 2, 917528, 327680, 0, 983064, 131072, 2, 1048600, 65536, 0, 25, 65536, 2, 65561, 0, 1, 131097, 262144, 2, 196633, 327680, 1, 262169, 262144, 1, 327705, 262144, 2, 393241, 0, 2, 458777, 327680, 2, 524313, 327680, 2, 589849, 65536, 1, 655385, 131072, 0, 720921, 0, 1, 786457, 262144, 2, 851993, 131072, 1, 917529, 196608, 3, 983065, 196608, 3, 1048601, 196608, 2, 26, 327680, 1, 65562, 327680, 2, 131098, 262144, 0, 196634, 196608, 3, 262170, 327680, 0, 327706, 262144, 2, 393242, 196608, 3, 458778, 262144, 3, 524314, 262144, 0, 589850, 0, 3, 655386, 327680, 1, 720922, 262144, 0, 786458, 0, 3, 851994, 0, 3, 917530, 196608, 3, 983066, 196608, 2, 1048602, 131072, 1, 27, 262144, 2, 65563, 262144, 0, 131099, 0, 2, 196635, 196608, 2, 262171, 65536, 0, 327707, 196608, 0, 393243, 262144, 2, 458779, 196608, 1, 524315, 0, 3, 589851, 196608, 3, 655387, 196608, 2, 720923, 196608, 0, 786459, 262144, 0, 851995, 196608, 1, 917531, 262144, 2, 983067, 0, 3, 1048603, 327680, 2, 28, 131072, 1, 65564, 262144, 1, 131100, 65536, 0, 196636, 196608, 0, 262172, 327680, 2, 327708, 65536, 2, 393244, 65536, 3, 458780, 262144, 3, 524316, 0, 0, 589852, 131072, 1, 655388, 0, 1, 720924, 65536, 3, 786460, 65536, 2, 851996, 196608, 2, 917532, 327680, 0, 983068, 327680, 0, 1048604, 196608, 3, 29, 0, 3, 65565, 65536, 3, 131101, 131072, 3, 196637, 65536, 3, 262173, 65536, 0, 327709, 196608, 0, 393245, 0, 3, 458781, 65536, 3, 524317, 327680, 2, 589853, 0, 0, 655389, 196608, 3, 720925, 196608, 1, 786461, 327680, 0, 851997, 131072, 3, 917533, 196608, 0, 983069, 262144, 0, 1048605, 262144, 1)
 metadata/_edit_lock_ = true
 
+[node name="Player" parent="." node_paths=PackedStringArray("root", "tileSet") instance=ExtResource("3_x65of")]
+position = Vector2(480, 158)
+root = NodePath("..")
+tileSet = NodePath("../tiles")
+
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
@@ -517,12 +621,12 @@ theme_override_font_sizes/normal_font_size = 20
 bbcode_enabled = true
 text = "32"
 
-[node name="Control" type="Control" parent="Control"]
+[node name="text" type="Control" parent="Control"]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="plantPrompt" type="RichTextLabel" parent="Control/Control"]
+[node name="plantPrompt" type="RichTextLabel" parent="Control/text"]
 visible = false
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 0
@@ -534,7 +638,7 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 2
 text = "<- Face this tile and press Q/numpad 7/N/Q"
 
-[node name="harvestPrompt" type="RichTextLabel" parent="Control/Control"]
+[node name="harvestPrompt" type="RichTextLabel" parent="Control/text"]
 visible = false
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 0
@@ -547,33 +651,49 @@ theme_override_constants/outline_size = 2
 bbcode_enabled = true
 text = "The same button (Q/N/Z) is used to [color=#FFAA00]harvest[/color] a plant."
 
-[node name="buildPrompt" type="RichTextLabel" parent="Control/Control"]
+[node name="buildPrompt" type="RichTextLabel" parent="Control/text"]
 visible = false
+self_modulate = Color(1, 1, 1, 0)
 layout_mode = 0
 offset_left = 490.0
-offset_top = 286.0
+offset_top = 236.0
 offset_right = 1056.0
-offset_bottom = 319.0
+offset_bottom = 269.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 2
 bbcode_enabled = true
 text = "<- Create an [color=#FFAA00]Installation[/color] on this tile."
 
-[node name="Info" type="RichTextLabel" parent="Control/Control"]
+[node name="Info" type="RichTextLabel" parent="Control/text"]
 visible = false
 layout_mode = 0
-offset_top = 326.0
+offset_top = 476.0
 offset_right = 960.0
-offset_bottom = 544.0
+offset_bottom = 694.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 2
 bbcode_enabled = true
 text = "[center][color=FFAA00]Installations[/color] will defend your lime plants and [color=FFFF00]Shrine[/color] from those that reject the way of the lime. Build as many as possible.[/center]"
 
-[node name="Player" parent="." node_paths=PackedStringArray("root", "tileSet") instance=ExtResource("3_x65of")]
-position = Vector2(480, 158)
-root = NodePath("..")
-tileSet = NodePath("../tiles")
+[node name="Survive" type="RichTextLabel" parent="Control/text"]
+visible = false
+layout_mode = 0
+offset_top = 116.0
+offset_right = 960.0
+offset_bottom = 544.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/normal_font = ExtResource("2_y1rl5")
+theme_override_font_sizes/normal_font_size = 30
+bbcode_enabled = true
+text = "[center]SURVIVE FIVE DAYS.
+
+
+COMPLETE THE RITUAL.
+
+
+THE MOON SHALL BE SUBSUMED[/center]"
 
 [node name="Walls" type="Node2D" parent="."]
 visible = false

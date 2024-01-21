@@ -20,7 +20,15 @@ func _on_tutorial_pressed():
 	add_child(instance)
 	$AnimationPlayer.play("start")
 	get_tree().paused = false
+	
+	instance.finished.connect(_on_tutorial_finished)
 
 func _on_animation_finished(anim_name):
 	if anim_name == "start":
 		instance._load()
+	if anim_name == "finish":
+		instance.queue_free()
+		instance = null
+
+func _on_tutorial_finished():
+	$AnimationPlayer.play("finish")
