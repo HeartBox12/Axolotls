@@ -5,11 +5,11 @@
 [ext_resource type="PackedScene" uid="uid://ca53jhhml5hya" path="res://Turrets/universalTurret.tscn" id="3_7hvpt"]
 [ext_resource type="TileSet" uid="uid://dbq1l3eowpxt" path="res://Assets/grassnDirt.tres" id="4_03pcs"]
 [ext_resource type="FontFile" uid="uid://tyuiinyuokna" path="res://Fonts/Cinzel-Regular.ttf" id="4_dp6hs"]
-[ext_resource type="Texture2D" uid="uid://40qkdi11kb6" path="res://icon.svg" id="5_igkck"]
 [ext_resource type="Texture2D" uid="uid://ba6tp4ogijwrs" path="res://Assets/lime.jpg" id="6_aqrli"]
 [ext_resource type="FontFile" uid="uid://daoephs38yckp" path="res://Fonts/WorkSans-Regular.ttf" id="7_j4n7e"]
 [ext_resource type="Texture2D" uid="uid://sjkq12iuacd6" path="res://Assets/credits.png" id="7_r7iq4"]
 [ext_resource type="PackedScene" uid="uid://dxx3636flyr8a" path="res://Player/player.tscn" id="8_ptg5p"]
+[ext_resource type="Texture2D" uid="uid://bhvahw3h141m5" path="res://Assets/Moon2.png" id="9_s1qpi"]
 [ext_resource type="PackedScene" uid="uid://x18enyc2dnnf" path="res://plant/plant.tscn" id="10_m1vjg"]
 [ext_resource type="Texture2D" uid="uid://dockdlpomc1ya" path="res://Assets/testbar.png" id="12_oh1mc"]
 [ext_resource type="Texture2D" uid="uid://5mtqajuld3qn" path="res://Assets/indicatorsheet.png" id="13_w1431"]
@@ -800,7 +800,7 @@ text = "Max Cheskin/HeartBox1:
 z_index = -1
 position = Vector2(480, -270)
 scale = Vector2(2, 2)
-texture = ExtResource("5_igkck")
+texture = ExtResource("9_s1qpi")
 
 [node name="MoonLime" type="Sprite2D" parent="."]
 visible = false
