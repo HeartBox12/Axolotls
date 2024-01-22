@@ -71,7 +71,6 @@ func reset():
 				tiledNodes[i][j] = null
 
 func _on_shrine_destroyed(): #The player let the shrine get defaced. They lose.
-	zoomOut()
 	$AnimationPlayer.queue("Loss")
 
 func _process(delta):

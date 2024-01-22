@@ -36,7 +36,7 @@ func _load():
 	tutSetup.emit() #Gets the player into the idle state
 	Global.limes = initLimes
 	Global.seeds = initSeeds
-	$UI/Control/counters/TurretCost.text = str(Global.turretPrices[Global.turrPriceInd])
+	$Control/counters/TurretCost.text = str(Global.turretPrices[Global.turrPriceInd])
 	phase = 0 #It begins
 
 func _phaseAdvance(new): #Called automatically when phase is rewritten.
@@ -91,7 +91,7 @@ func _on_player_planted(_coords): #player transmits after completed planting
 	plantInstance.position = $tiles.map_to_local(plantSpot)
 	
 	Global.seeds -= Global.plantCost
-	$UI/Control/counters/SeedCount.text = str(Global.seeds)
+	$Control/counters/SeedCount.text = str(Global.seeds)
 	
 	plantInstance.destroyed.connect(_plant_down)
 	
@@ -100,7 +100,7 @@ func _on_player_planted(_coords): #player transmits after completed planting
 func _on_player_harvested(coords): #Player harvests a plant at coords
 	Global.limes += plantInstance.profit
 	plantInstance.remove()
-	$UI/Control/counters/LimeCount.text = str(Global.limes)
+	$Control/counters/LimeCount.text = str(Global.limes)
 	phase = 3
 
 func _start_day():
@@ -119,7 +119,7 @@ func _on_player_turreted(_coords):
 	turretInstance.position = $tiles.map_to_local(turrSpot)
 	
 	Global.seeds -= 1
-	$UI/Control/counters/SeedCount.text = str(Global.limes)
+	$Control/counters/SeedCount.text = str(Global.limes)
 	
 	phase = 4
 

@@ -33,13 +33,12 @@ func _physics_process(delta):
 	fireRotation = global_position.angle_to_point(getTarget()) #Gets the angle between turret and target in radians, adds 90 degrees/quarter turn
 	if fireDelay >= fireCooldown: #Can this turret fire? AKA is the fire cooldown done and is there a target in range?
 		fireBullet() #make turrret go pew
-		play_backwards("firing")
+		play("firing")
 
 func fireBullet():
 	var shotBullet = bulletScene.instantiate()
 	var assignedIndex:int = 0
 	var isIndexAssigned:bool = false
-	frame = 2 #Change to firing sprite
 	fireDelay = 0 #Resets the delay between shots
 	for x in bullets: #this for loop checks if any bullets have been destroyed yet, replaces if so
 		if !is_instance_valid(x):

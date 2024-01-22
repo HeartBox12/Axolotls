@@ -26,9 +26,9 @@ func _ready():
 
 func _process(_delta):
 	if Input.is_action_just_pressed("test4"):
-		setSide("left", PSbase[0])
+		setSide("left", PSbase[2])
 	if Input.is_action_just_pressed("test2"):
-		setSide("bottom", PSbase[0])
+		setSide("bottom", PSbase[1])
 	if Input.is_action_just_pressed("test6"):
 		setSide("right", PSbase[0])
 
