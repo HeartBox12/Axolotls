@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dd5kq4mby8og2"
-path="res://.godot/imported/stickmanidle.png-e95da06af9375c2560e93ec2dac0e0d6.ctex"
+uid="uid://chmed3t7klmw7"
+path="res://.godot/imported/limefriendshoot.png-b38aa2b0747869903d43efa89cb29efb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/stickmanidle.png"
-dest_files=["res://.godot/imported/stickmanidle.png-e95da06af9375c2560e93ec2dac0e0d6.ctex"]
+source_file="res://Assets/limefriendshoot.png"
+dest_files=["res://.godot/imported/limefriendshoot.png-b38aa2b0747869903d43efa89cb29efb.ctex"]
 
 [params]
 

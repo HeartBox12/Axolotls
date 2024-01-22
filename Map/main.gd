@@ -28,6 +28,7 @@ var tiledNodes:Array = [] #2d array for tracking which structures are where
 var isDay:bool = false #for timer purposes
 var livingEnems:int = 6 #Living enemies. When it reaches 0, start day. FIXME: set 0.
 var enemArray = []
+var charZoom:bool = true
 
 var validTarget:bool #Whether the player is looking at a valid tile for placement
 
@@ -47,16 +48,16 @@ func _load():
 		tiledNodes.append([])
 		for j in range(boundY):
 			tiledNodes[i].append(null)
-	$CutsceneCamera.enabled = true #The camera starts the game inactive.
+	$Camera.enabled = true #The camera starts the game inactive.
 	setup()
 
 func setup():
 	Global.limes = initLimes
 	Global.seeds = initSeeds
 	day = -1
-	$Control/Button.text = puns[day + 1]
-	$Control/counters/TurretCost.text = str(Global.turretPrices[Global.turrPriceInd])
-	$Control/dayTimer.value = $Control/dayTimer.max_value
+	$UI/Control/Button.text = puns[day + 1]
+	$UI/Control/counters/TurretCost.text = str(Global.turretPrices[Global.turrPriceInd])
+	$UI/Control/dayTimer.value = $UI/Control/dayTimer.max_value
 	
 	call_deferred("nightOver")
 
@@ -70,35 +71,42 @@ func reset():
 				tiledNodes[i][j] = null
 
 func _on_shrine_destroyed(): #The player let the shrine get defaced. They lose.
-	$AnimationPlayer.play("Loss")
+	zoomOut()
+	$AnimationPlayer.queue("Loss")
 
 func _process(delta):
 	if isDay:
-		$Control/dayTimer.value -= delta
-		if $Control/dayTimer.value >= 1 && $Control/dayTimer.value <= 2:
-			$Control/Button.text = puns[day]
-		if $Control/dayTimer.value <= 0:
-			$AnimationPlayer.play("startOfNight")
+		$UI/Control/dayTimer.value -= delta
+		if $UI/Control/dayTimer.value >= 1 && $UI/Control/dayTimer.value <= 2:
+			$UI/Control/Button.text = puns[day]
+		if $UI/Control/dayTimer.value <= 0:
+			zoomOut()
+			$AnimationPlayer.queue("startOfNight")
 			isDay = false
 	
 	if Input.is_action_just_pressed("reset"):
 		_on_shrine_destroyed()
+	
+	if charZoom:
+		$Camera.position = $Player.position
 
 
 func _day_button_pressed():
 	if lastDay + 1 == day:
-		$AnimationPlayer.play("Win")
+		modulate = Color("ffffff")
+		$AnimationPlayer.queue("Win")
 	else:
 		start_day()
 
 func start_day():
-	$AnimationPlayer.play("startOfDay")
+	zoomIn()
+	$AnimationPlayer.queue("startOfDay")
 	Global.Daytime.emit()
 	if day != 0 && day != 5:
 		Global.seeds += 2
-		$Control/counters/SeedCount.text = str(Global.seeds)
-	$Control/dayTimer.max_value = dayLength
-	$Control/dayTimer.value = dayLength
+		$UI/Control/counters/SeedCount.text = str(Global.seeds)
+	$UI/Control/dayTimer.max_value = dayLength
+	$UI/Control/dayTimer.value = dayLength
 	isDay = true #for timer purposes
 	
 	livingEnems = ($spawner.leftSpawns.size() + $spawner.bottomSpawns.size() + $spawner.rightSpawns.size())
@@ -134,7 +142,7 @@ func _on_player_planted(coords): #player transmits after completed planting
 	tiledNodes[coords.x][coords.y] = instance
 	
 	Global.seeds -= Global.plantCost
-	$Control/counters/SeedCount.text = str(Global.seeds)
+	$UI/Control/counters/SeedCount.text = str(Global.seeds)
 	
 	instance.destroyed.connect(_plant_down)
 
@@ -145,11 +153,11 @@ func _on_player_turreted(coords): #Player places a turret at coords
 	tiledNodes[coords.x][coords.y] = instance
 	
 	Global.limes -= Global.turretPrices[Global.turrPriceInd]
-	$Control/counters/LimeCount.text = str(Global.limes)
+	$UI/Control/counters/LimeCount.text = str(Global.limes)
 	
 	if Global.turrPriceInd < Global.turretPrices.size() - 1:
 		Global.turrPriceInd += 1
-		$Control/counters/TurretCost.text = str(Global.turretPrices[Global.turrPriceInd])
+		$UI/Control/counters/TurretCost.text = str(Global.turretPrices[Global.turrPriceInd])
 
 func _on_player_unplanted(coords): #Player uproots a plant at coords
 	tiledNodes[coords.x][coords.y].health = 0
@@ -158,10 +166,10 @@ func _on_player_unplanted(coords): #Player uproots a plant at coords
 func _on_player_harvested(coords): #Player harvests a plant at coords
 	Global.limes += tiledNodes[coords.x][coords.y].profit
 	tiledNodes[coords.x][coords.y].remove()
-	$Control/counters/LimeCount.text = str(Global.limes)
+	$UI/Control/counters/LimeCount.text = str(Global.limes)
 
 func play_TMG_credit():
-	$"AnimationPlayer".play("TheMagmaPsychicCredits")
+	$"AnimationPlayer".queue("TheMagmaPsychicCredits")
 
 func _enemy_down(instance):
 	livingEnems -= 1
@@ -171,32 +179,51 @@ func _enemy_down(instance):
 	
 func _plant_down(): #called by plant.destroyed
 	Global.seeds += 1
-	$Control/counters/SeedCount.text = str(Global.seeds)
+	$UI/Control/counters/SeedCount.text = str(Global.seeds)
 	
 
 func nightOver():
 	day += 1
 	if lastDay == day: #If this is going to be the last day
-		var center = (960 - $Control/Button.size.x) / 2
+		var center = (960 - $UI/Control/Button.size.x) / 2
 		$AnimationPlayer.get_animation("endOfNight").track_set_key_value(6, 1, Vector2(center, 260))
 		$AnimationPlayer.get_animation("endOfNight").track_set_key_value(6, 1, Vector2(center, 260))
 		$AnimationPlayer.get_animation("endOfNight").track_set_key_value(6, 2, Vector2(center, 360))
-		$Control/DayCount.text = "
+		$UI/Control/DayCount.text = "
 [center]The stars have alimed.
 Fulfull your zestiny.[/center]" #Note: might make this value-setting part of anim
-		$AnimationPlayer.play("Win")
+		$AnimationPlayer.queue("Win")
 	else: #This is not the last day
 		if lastDay - day > 1:
-			$Control/DayCount.text = "[center]The stars will alime in [color=#00FF00]%s days[/color][/center]" %[lastDay - day]
+			$UI/Control/DayCount.text = "[center]The stars will alime in [color=#00FF00]%s days[/color][/center]" %[lastDay - day]
 		else:
-			$Control/DayCount.text = "[center]The stars will alime in [color=#00FF00]1 day[/color][/center]"
-		var center = (960 - $Control/Button.size.x) / 2
+			$UI/Control/DayCount.text = "[center]The stars will alime in [color=#00FF00]1 day[/color][/center]"
+		var center = (960 - $UI/Control/Button.size.x) / 2
 		$AnimationPlayer.get_animation("endOfNight").track_set_key_value(6, 1, Vector2(center, 260))
 		$AnimationPlayer.get_animation("endOfNight").track_set_key_value(6, 1, Vector2(center, 260))
 		$AnimationPlayer.get_animation("endOfNight").track_set_key_value(6, 2, Vector2(center, 360))
-		$Control/counters/LimeCount.text = str(Global.limes)
-		$Control/counters/SeedCount.text = str(Global.seeds)
-		$AnimationPlayer.play("endOfNight")
+		$UI/Control/counters/LimeCount.text = str(Global.limes)
+		$UI/Control/counters/SeedCount.text = str(Global.seeds)
+		$AnimationPlayer.queue("endOfNight")
+
+func zoomIn():
+	$Camera.set_limit(SIDE_TOP, 0)
+	$AnimationPlayer.get_animation("Zoom").track_set_key_value(1, 0, Vector2(480, 270)) #sets beginning position keyframe to center of screen
+	$AnimationPlayer.get_animation("Zoom").track_set_key_value(1, 1, $Player.position) #sets end position keyframe to player position
+	$AnimationPlayer.get_animation("Zoom").track_set_key_value(0, 0, Vector2(1, 1)) #sets beginning zoom to full
+	$AnimationPlayer.get_animation("Zoom").track_set_key_value(0, 1, Vector2(2, 2)) #sets end zoom to double
+	$AnimationPlayer.play("Zoom")
+	charZoom = true
+
+func zoomOut():
+	$Camera.set_limit(SIDE_TOP, -540)
+	$AnimationPlayer.get_animation("Zoom").track_set_key_value(1, 0, $Camera.position) #sets beginning position keyframe to player position
+	$AnimationPlayer.get_animation("Zoom").track_set_key_value(1, 1, Vector2(480, 270)) #sets end position keyframe to center of screen
+	$AnimationPlayer.get_animation("Zoom").track_set_key_value(0, 0, Vector2(2, 2)) #sets beginning zoom to double
+	$AnimationPlayer.get_animation("Zoom").track_set_key_value(0, 1, Vector2(1, 1)) #sets end zoom to full
+	$AnimationPlayer.play("Zoom")
+	charZoom = false
+
 
 func _on_player_reqPlant(coords): #When the player requests a plant action.
 	var target = tiledNodes[coords.x][coords.y]

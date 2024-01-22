@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dibnvpc5mj84p"
-path="res://.godot/imported/temporary backdrop.png-8b36f400af39b3d651cea6a6fb67f6ae.ctex"
+uid="uid://c6rwpmbju4of"
+path="res://.godot/imported/enemyfbiwalk.png-236c21134ef756091402d2d8adaa764a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/temporary backdrop.png"
-dest_files=["res://.godot/imported/temporary backdrop.png-8b36f400af39b3d651cea6a6fb67f6ae.ctex"]
+source_file="res://Assets/enemyfbiwalk.png"
+dest_files=["res://.godot/imported/enemyfbiwalk.png-236c21134ef756091402d2d8adaa764a.ctex"]
 
 [params]
 

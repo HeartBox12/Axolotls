@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dit3qvl0q1m2n"
-path="res://.godot/imported/temporary backdropx4.png-d94f012e1e3289554719a081ad3b36a2.ctex"
+uid="uid://r1i4jnr8gfjl"
+path="res://.godot/imported/maincharidle.png-32600d3a7cbf1380e25e4f39deb314e8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/temporary backdropx4.png"
-dest_files=["res://.godot/imported/temporary backdropx4.png-d94f012e1e3289554719a081ad3b36a2.ctex"]
+source_file="res://Assets/maincharidle.png"
+dest_files=["res://.godot/imported/maincharidle.png-32600d3a7cbf1380e25e4f39deb314e8.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b6pwlq30u0jqn"
-path="res://.godot/imported/stickmandancing.png-820a50b56492c1fa7a3e9e92462ace23.ctex"
+uid="uid://disqcshu8lnj"
+path="res://.godot/imported/maincharwalking.png-fbfc7b3fa82d021dc357f59462775092.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/stickmandancing.png"
-dest_files=["res://.godot/imported/stickmandancing.png-820a50b56492c1fa7a3e9e92462ace23.ctex"]
+source_file="res://Assets/maincharwalking.png"
+dest_files=["res://.godot/imported/maincharwalking.png-fbfc7b3fa82d021dc357f59462775092.ctex"]
 
 [params]
 

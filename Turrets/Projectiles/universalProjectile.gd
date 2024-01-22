@@ -6,7 +6,6 @@ var currentLife:float = 0.0 #current time it's been alive for
 var damage:int = 1
 var animationTime:float = 0
 @onready var sprite = $"CollisionShape2D/Sprite2D"
-var texture = load("res://Assets/limer_splat.png")
 var splatting:bool = false
 var areaHit
 var hitOffset
@@ -38,5 +37,6 @@ func _on_area_entered(area):
 
 func splatAnimation():
 	splatting = true
-	sprite.texture = texture
+	#sprite.texture = texture
 	$hitsnd_3.play()
+	queue_free()

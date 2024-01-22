@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://4eql82ei0fog"
-path="res://.godot/imported/limer_bullet.png-6365a9d312912128f6969a66911e1736.ctex"
+uid="uid://vgd0yj8g1w0w"
+path="res://.godot/imported/Lime.png-ddb0b79c2b90abc3b31888c768474af6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/limer_bullet.png"
-dest_files=["res://.godot/imported/limer_bullet.png-6365a9d312912128f6969a66911e1736.ctex"]
+source_file="res://Assets/Lime.png"
+dest_files=["res://.godot/imported/Lime.png-ddb0b79c2b90abc3b31888c768474af6.ctex"]
 
 [params]
 

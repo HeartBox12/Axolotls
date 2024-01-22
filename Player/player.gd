@@ -15,7 +15,7 @@ signal reqPlant #Requesting to plant
 signal reqTurret #Requesting to make turret
 
 var input:Vector2 = Vector2(0, 0) #Unit vector representing player movement dir
-var facing:int = 1 #clockwise, 0 is right, 4 is up.
+var facing:int = 1 #clockwise, 0 is right, 3 is up.
 var selPos:Vector2i # The currently selected tile coordinates
 var validSelect:bool #Whether that tile is in-range. More checks are needed
 
@@ -38,9 +38,11 @@ func _process(_delta):
 	if input != Vector2(0, 0):
 		#Determine facing. Prioritize left and right over up and down.
 		if input.x > 0:
-			facing = 0 #lfacing right
+			$sprite.flip_h = false
+			facing = 0
 		elif input.x < 0:
-			facing = 2 #facing left
+			$sprite.flip_h = true
+			facing = 2
 		elif input.y < 0:
 			facing = 3 #facing up (away)
 		else:

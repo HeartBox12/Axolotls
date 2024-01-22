@@ -10,15 +10,15 @@ extends Node2D
 #For the sake of code brevity, enemy_scene was renamed PSbase. 
 #Future enemy PackedScenes should be given the prefix of PS and the shortest possible descriptor.
 #We should consider using integers.
-var PSbase = load("res://enemy/enemy.tscn")
+var PSbase = [load("res://enemy/enemyPitchfork.tscn"), load("res://enemy/enemyProtestor.tscn"), load("res://enemy/enemyFBI.tscn")]
 var enemyLineProgress:float = randi_range(0, 1)
 var enemy
 var side
 var follow
 
-var leftSpawns = [PSbase, PSbase]
-var bottomSpawns = [PSbase, PSbase, PSbase]
-var rightSpawns = [PSbase]
+var leftSpawns = [PSbase[0], PSbase[0]]
+var bottomSpawns = [PSbase[0], PSbase[0], PSbase[0]]
+var rightSpawns = [PSbase[0]]
 
 func _ready():
 	Global.Nighttime.connect(_on_night)
@@ -26,11 +26,11 @@ func _ready():
 
 func _process(_delta):
 	if Input.is_action_just_pressed("test4"):
-		setSide("left", PSbase)
+		setSide("left", PSbase[0])
 	if Input.is_action_just_pressed("test2"):
-		setSide("bottom", PSbase)
+		setSide("bottom", PSbase[0])
 	if Input.is_action_just_pressed("test6"):
-		setSide("right", PSbase)
+		setSide("right", PSbase[0])
 
 func setSide(button, instanceScene:PackedScene):
 	if button == "left":
@@ -86,26 +86,26 @@ func _right_spawn_time(): #Called by leftTimer timing out
 func populateSpawns():
 	match get_parent().day:
 		0:
-			leftSpawns = [PSbase]
-			bottomSpawns = [PSbase, PSbase]
-			rightSpawns = [PSbase]
+			leftSpawns = [PSbase[0]]
+			bottomSpawns = [PSbase[0], PSbase[0]]
+			rightSpawns = [PSbase[0]]
 		1:
-			leftSpawns = [PSbase, PSbase]
-			bottomSpawns = [PSbase, PSbase]
-			rightSpawns = [PSbase, PSbase]
+			leftSpawns = [PSbase[0], PSbase[0]]
+			bottomSpawns = [PSbase[0], PSbase[0]]
+			rightSpawns = [PSbase[0], PSbase[0]]
 		2:
-			leftSpawns = [PSbase, PSbase]
-			bottomSpawns = [PSbase, PSbase, PSbase, PSbase, PSbase, PSbase, PSbase]
-			rightSpawns = [PSbase, PSbase]
+			leftSpawns = [PSbase[0], PSbase[0]]
+			bottomSpawns = [PSbase[0], PSbase[0], PSbase[0], PSbase[0], PSbase[0], PSbase[0], PSbase[0]]
+			rightSpawns = [PSbase[0], PSbase[0]]
 		3:
-			leftSpawns = [PSbase, PSbase, PSbase, PSbase]
-			bottomSpawns = [PSbase, PSbase, PSbase, PSbase, PSbase]
-			rightSpawns = [PSbase, PSbase, PSbase, PSbase, PSbase, PSbase, PSbase, PSbase]
+			leftSpawns = [PSbase[0], PSbase[0], PSbase[0], PSbase[0]]
+			bottomSpawns = [PSbase[0], PSbase[0], PSbase[0], PSbase[0], PSbase[0]]
+			rightSpawns = [PSbase[0], PSbase[0], PSbase[0], PSbase[0], PSbase[0], PSbase[0], PSbase[0], PSbase[0]]
 		4:
-			leftSpawns = [PSbase, PSbase, PSbase, PSbase, PSbase, PSbase, PSbase, PSbase, PSbase, PSbase]
-			bottomSpawns = [PSbase, PSbase, PSbase, PSbase, PSbase]
-			rightSpawns = [PSbase, PSbase, PSbase, PSbase]
+			leftSpawns = [PSbase[0], PSbase[0], PSbase[0], PSbase[0], PSbase[0], PSbase[0], PSbase[0], PSbase[0], PSbase[0], PSbase[0]]
+			bottomSpawns = [PSbase[0], PSbase[0], PSbase[0], PSbase[0], PSbase[0]]
+			rightSpawns = [PSbase[0], PSbase[0], PSbase[0], PSbase[0]]
 		5:
-			leftSpawns = [PSbase, PSbase, PSbase, PSbase, PSbase, PSbase, PSbase, PSbase, PSbase, PSbase]
-			bottomSpawns = [PSbase, PSbase, PSbase, PSbase, PSbase, PSbase, PSbase, PSbase, PSbase, PSbase]
-			rightSpawns = [PSbase, PSbase, PSbase, PSbase, PSbase, PSbase, PSbase, PSbase, PSbase, PSbase]
+			leftSpawns = [PSbase[0], PSbase[0], PSbase[0], PSbase[0], PSbase[0], PSbase[0], PSbase[0], PSbase[0], PSbase[0], PSbase[0]]
+			bottomSpawns = [PSbase[0], PSbase[0], PSbase[0], PSbase[0], PSbase[0], PSbase[0], PSbase[0], PSbase[0], PSbase[0], PSbase[0]]
+			rightSpawns = [PSbase[0], PSbase[0], PSbase[0], PSbase[0], PSbase[0], PSbase[0], PSbase[0], PSbase[0], PSbase[0], PSbase[0]]

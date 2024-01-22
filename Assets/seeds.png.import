@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://y00wutkvwqlw"
-path="res://.godot/imported/stickmanwalking.png-3b598f371f3e9d740c3670ca6b1f0bf1.ctex"
+uid="uid://dmb2bhnjihw33"
+path="res://.godot/imported/seeds.png-5bfd017cb7195f3808069d5528af8790.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/stickmanwalking.png"
-dest_files=["res://.godot/imported/stickmanwalking.png-3b598f371f3e9d740c3670ca6b1f0bf1.ctex"]
+source_file="res://Assets/seeds.png"
+dest_files=["res://.godot/imported/seeds.png-5bfd017cb7195f3808069d5528af8790.ctex"]
 
 [params]
 

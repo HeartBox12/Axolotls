@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c5hoia8jbpwsc"
-path="res://.godot/imported/limer_splat.png-fb25c54160900db4574075b1837889b8.ctex"
+uid="uid://cquywalj6nkuq"
+path="res://.godot/imported/enemyprotestorattack.png-0b01372b72de5d5d8ecd3ab36a268f14.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/limer_splat.png"
-dest_files=["res://.godot/imported/limer_splat.png-fb25c54160900db4574075b1837889b8.ctex"]
+source_file="res://Assets/enemyprotestorattack.png"
+dest_files=["res://.godot/imported/enemyprotestorattack.png-0b01372b72de5d5d8ecd3ab36a268f14.ctex"]
 
 [params]
 

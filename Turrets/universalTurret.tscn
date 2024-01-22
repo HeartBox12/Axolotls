@@ -1,44 +1,100 @@
-[gd_scene load_steps=9 format=3 uid="uid://ca53jhhml5hya"]
+[gd_scene load_steps=17 format=3 uid="uid://ca53jhhml5hya"]
 
-[ext_resource type="Texture2D" uid="uid://d14nd2d5iblqe" path="res://Assets/limer_turret.png" id="1_i4k2q"]
+[ext_resource type="Texture2D" uid="uid://chmed3t7klmw7" path="res://Assets/limefriendshoot.png" id="1_5axq7"]
+[ext_resource type="Texture2D" uid="uid://cfu6tyco46kdg" path="res://Assets/limefriendidle.png" id="2_y3flu"]
 [ext_resource type="AudioStream" uid="uid://dkjv2m2kwchtn" path="res://Sounds/gunshot_1.wav" id="3_275ji"]
 [ext_resource type="Script" path="res://Turrets/universalTurret.gd" id="4_2mfe1"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_lq53w"]
-atlas = ExtResource("1_i4k2q")
-region = Rect2(0, 0, 32, 32)
+[sub_resource type="AtlasTexture" id="AtlasTexture_n42v3"]
+atlas = ExtResource("1_5axq7")
+region = Rect2(0, 0, 49, 57)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_oqn5g"]
-atlas = ExtResource("1_i4k2q")
-region = Rect2(32, 0, 32, 32)
+[sub_resource type="AtlasTexture" id="AtlasTexture_8vik2"]
+atlas = ExtResource("1_5axq7")
+region = Rect2(49, 0, 49, 57)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_emnsi"]
-atlas = ExtResource("1_i4k2q")
-region = Rect2(0, 32, 32, 32)
+[sub_resource type="AtlasTexture" id="AtlasTexture_1w7yu"]
+atlas = ExtResource("1_5axq7")
+region = Rect2(98, 0, 49, 57)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cypxb"]
+atlas = ExtResource("1_5axq7")
+region = Rect2(147, 0, 49, 57)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dnlw7"]
+atlas = ExtResource("1_5axq7")
+region = Rect2(196, 0, 49, 57)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vyh44"]
+atlas = ExtResource("2_y3flu")
+region = Rect2(0, 0, 49, 57)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ttnyp"]
+atlas = ExtResource("2_y3flu")
+region = Rect2(49, 0, 49, 57)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_16j5s"]
+atlas = ExtResource("2_y3flu")
+region = Rect2(98, 0, 49, 57)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5u2cr"]
+atlas = ExtResource("2_y3flu")
+region = Rect2(147, 0, 49, 57)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kjj68"]
+atlas = ExtResource("2_y3flu")
+region = Rect2(196, 0, 49, 57)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_i10rj"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_lq53w")
+"texture": SubResource("AtlasTexture_n42v3")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_oqn5g")
+"texture": SubResource("AtlasTexture_8vik2")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_emnsi")
+"texture": SubResource("AtlasTexture_1w7yu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cypxb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dnlw7")
 }],
 "loop": false,
-"name": &"default",
-"speed": 0.0
+"name": &"firing",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vyh44")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ttnyp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_16j5s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5u2cr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kjj68")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4q2c3"]
 
 [node name="UniversalTurret" type="AnimatedSprite2D"]
-y_sort_enabled = true
 sprite_frames = SubResource("SpriteFrames_i10rj")
-flip_v = true
+animation = &"firing"
+frame = 4
+offset = Vector2(0, -8)
 script = ExtResource("4_2mfe1")
 
 [node name="Range" type="Area2D" parent="."]
@@ -51,5 +107,6 @@ shape = SubResource("CircleShape2D_4q2c3")
 [node name="gunsnd_1" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_275ji")
 
+[connection signal="animation_finished" from="." to="." method="_on_animation_finished"]
 [connection signal="area_entered" from="Range" to="." method="_on_range_area_entered"]
 [connection signal="area_exited" from="Range" to="." method="_on_range_area_exited"]

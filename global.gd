@@ -8,5 +8,5 @@ var seeds:int = 3
 
 var plantCost = 1 #in seeds
 
-var turretPrices = [1, 1, 1, 2, 2, 3, 4, 5]
+var turretPrices = [1, 1, 1, 2, 2, 3, 3, 4, 5, 5, 5, 5]
 var turrPriceInd = 0

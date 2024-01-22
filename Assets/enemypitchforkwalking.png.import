@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c5j1rmc8sefut"
-path="res://.godot/imported/plant_placeholder.png-5b800d0683e18173384e5448183b50c3.ctex"
+uid="uid://dbbhxq27t2nkj"
+path="res://.godot/imported/enemypitchforkwalking.png-a173b2c52c00928e30d9e5b29f206cec.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/plant_placeholder.png"
-dest_files=["res://.godot/imported/plant_placeholder.png-5b800d0683e18173384e5448183b50c3.ctex"]
+source_file="res://Assets/enemypitchforkwalking.png"
+dest_files=["res://.godot/imported/enemypitchforkwalking.png-a173b2c52c00928e30d9e5b29f206cec.ctex"]
 
 [params]
 

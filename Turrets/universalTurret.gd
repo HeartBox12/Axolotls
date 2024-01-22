@@ -13,7 +13,7 @@ var bulletScene = load("res://Turrets/Projectiles/universalProjectile.tscn") #Lo
 var bullets:Array = [] #array to store each turret's bullets, turrets[3] will correlate to bullets[3]
 
 func _ready():
-	frame = 0
+	play("idle")
 	$"Range/RangeCollision".shape.radius = fireRange
 	pass # Replace with function body.
 
@@ -23,10 +23,6 @@ func _process(_delta):
 		flip_h = true
 	else:
 		flip_h = false
-	if fireDelay >= 0.05 * fireCooldown and fireDelay < 0.5 * fireCooldown: #Gives leeway between firing sprite and empty sprite
-		frame = 1 #Change to unloaded sprite
-	elif fireDelay >= 0.5 * fireCooldown: #If halfway through the cooldown show turret as loaded
-		frame = 0 #Change to loaded sprite
 
 func _physics_process(delta):
 	fireDelay += delta #Makes fireCooldown work regardless of computer speed
@@ -37,6 +33,7 @@ func _physics_process(delta):
 	fireRotation = global_position.angle_to_point(getTarget()) #Gets the angle between turret and target in radians, adds 90 degrees/quarter turn
 	if fireDelay >= fireCooldown: #Can this turret fire? AKA is the fire cooldown done and is there a target in range?
 		fireBullet() #make turrret go pew
+		play_backwards("firing")
 
 func fireBullet():
 	var shotBullet = bulletScene.instantiate()
@@ -85,3 +82,6 @@ func _on_range_area_exited(area): #keep track of enemies in range, remove them f
 
 func remove():
 	queue_free() #This is only here so I can remove it the same way one removes a plant
+
+func _on_animation_finished():
+	play("idle")

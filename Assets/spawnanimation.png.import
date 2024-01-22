@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d14nd2d5iblqe"
-path="res://.godot/imported/limer_turret.png-d0767a2e366813e0759eef22d0835b87.ctex"
+uid="uid://cvys4c6bbp835"
+path="res://.godot/imported/spawnanimation.png-37e67c0468ba44317c01c4a163e490ae.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/limer_turret.png"
-dest_files=["res://.godot/imported/limer_turret.png-d0767a2e366813e0759eef22d0835b87.ctex"]
+source_file="res://Assets/spawnanimation.png"
+dest_files=["res://.godot/imported/spawnanimation.png-37e67c0468ba44317c01c4a163e490ae.ctex"]
 
 [params]
 

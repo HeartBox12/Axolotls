@@ -6,15 +6,16 @@ extends State
 var playerPos
 
 func enter(): #When this state is entered
-	match host.facing: #Sprite Assign
-		0:
-			sprite.play("idle_right")
-		1:
-			sprite.play("idle_down")
-		2:
-			sprite.play("idle_left")
-		3:
-			sprite.play("idle_up")
+	sprite.play("idle")
+	#match host.facing: #Sprite Assign
+		#0:
+			#sprite.play("idle_right")
+		#1:
+			#sprite.play("idle_down")
+		#2:
+			#sprite.play("idle_left")
+		#3:
+			#sprite.play("idle_up")
 	#Change sprite to idle
 	#Start playing if needed
 	
