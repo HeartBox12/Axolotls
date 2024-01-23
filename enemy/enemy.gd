@@ -49,13 +49,16 @@ func _physics_process(delta):
 		elif !onTarget && target == null:
 			find_target()
 		if health <= 0: #got hit too many times
+			onTarget = false
+			target = null
+			$Sprite.play("die")
 			dying += delta
 			$"CollisionShape2D".disabled = true #stop turrets from targeting after dying has begun
-	else: #if already dying
-		dying += delta
-		if dying >= 1: #1 is time to die in seconds, aka death animation time
-			death.emit(self)
-			queue_free() #destroy self
+	#else: #if already dying
+		#dying += delta
+		#if dying >= 1: #1 is time to die in seconds, aka death animation time
+			#death.emit(self)
+			#queue_free() #destroy self
 
 #Called when the enemy is within range of a plant.
 func _on_arrived(_area_rid, area, _area_shape_index, _local_shape_index):
@@ -72,3 +75,9 @@ func on_destroyed(): #Called when the plant the enemy is attacked runs out of he
 
 func _on_clear(): #FIXME: connect to signal "clear" from main
 	queue_free()
+
+
+func _on_animation_finished():
+	if $Sprite.animation == "die":
+		death.emit(self)
+		queue_free()

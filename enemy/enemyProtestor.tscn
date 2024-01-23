@@ -1,11 +1,52 @@
-[gd_scene load_steps=16 format=3 uid="uid://davth80nrk7ba"]
+[gd_scene load_steps=27 format=3 uid="uid://crebxjccq0c18"]
 
 [ext_resource type="Script" path="res://enemy/enemy.gd" id="1_np3ah"]
+[ext_resource type="Texture2D" uid="uid://b6ex15bujwce7" path="res://Assets/protesterdeath.png" id="2_6tdh0"]
 [ext_resource type="Texture2D" uid="uid://cquywalj6nkuq" path="res://Assets/enemyprotestorattack.png" id="2_26i82"]
 [ext_resource type="Texture2D" uid="uid://c7uadxfjmex3q" path="res://Assets/protesterenemywalk.png" id="3_a6rn7"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_i7hmr"]
 radius = 20.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_38tp6"]
+atlas = ExtResource("2_6tdh0")
+region = Rect2(0, 0, 128, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_01mxs"]
+atlas = ExtResource("2_6tdh0")
+region = Rect2(128, 0, 128, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bdomt"]
+atlas = ExtResource("2_6tdh0")
+region = Rect2(256, 0, 128, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7tndb"]
+atlas = ExtResource("2_6tdh0")
+region = Rect2(384, 0, 128, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c0sa0"]
+atlas = ExtResource("2_6tdh0")
+region = Rect2(512, 0, 128, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gjy8u"]
+atlas = ExtResource("2_6tdh0")
+region = Rect2(640, 0, 128, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8pr2g"]
+atlas = ExtResource("2_6tdh0")
+region = Rect2(768, 0, 128, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_81qvx"]
+atlas = ExtResource("2_6tdh0")
+region = Rect2(896, 0, 128, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p1rtu"]
+atlas = ExtResource("2_6tdh0")
+region = Rect2(1024, 0, 128, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l4jfl"]
+atlas = ExtResource("2_6tdh0")
+region = Rect2(1152, 0, 128, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_quasv"]
 atlas = ExtResource("2_26i82")
@@ -49,6 +90,41 @@ region = Rect2(184, 0, 46, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_r8pkn"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_38tp6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_01mxs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bdomt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7tndb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c0sa0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gjy8u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8pr2g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_81qvx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p1rtu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l4jfl")
+}],
+"loop": false,
+"name": &"die",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_quasv")
@@ -102,7 +178,8 @@ shape = SubResource("CircleShape2D_i7hmr")
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(13, -9)
 sprite_frames = SubResource("SpriteFrames_r8pkn")
-animation = &"stomp"
+animation = &"die"
 autoplay = "walk"
 
 [connection signal="area_shape_entered" from="." to="." method="_on_arrived"]
+[connection signal="animation_finished" from="Sprite" to="." method="_on_animation_finished"]
