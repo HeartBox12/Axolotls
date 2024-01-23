@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://bf0snq1g2u65g"]
+[gd_scene load_steps=54 format=3 uid="uid://bf0snq1g2u65g"]
 
 [ext_resource type="Script" path="res://Map/main.gd" id="1_u5oha"]
 [ext_resource type="Script" path="res://Map/tiles.gd" id="2_4tv3b"]
@@ -22,6 +22,7 @@
 [ext_resource type="Texture2D" uid="uid://dmb2bhnjihw33" path="res://Assets/seeds.png" id="20_khmm0"]
 [ext_resource type="Texture2D" uid="uid://c353jrclywjdt" path="res://Assets/Le_Dollar.png" id="21_qdhs4"]
 [ext_resource type="AudioStream" uid="uid://oj3g7f82eugn" path="res://Sounds/a_lime_in_the_moonlight_night_theme.wav_looped.wav" id="22_qk032"]
+[ext_resource type="AudioStream" uid="uid://dbtlwt3gh3xjp" path="res://Sounds/day_phase_work_in_progress.mp3" id="23_wnnfu"]
 
 [sub_resource type="Animation" id="Animation_iq0yl"]
 resource_name = "Loss"
@@ -602,6 +603,32 @@ tracks/4/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("dayMusic")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("dayMusic:volume_db")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
 
 [sub_resource type="Animation" id="Animation_27aa4"]
 resource_name = "startOfNight"
@@ -651,9 +678,12 @@ tracks/3/path = NodePath("nightMusic")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
 "values": [{
+"args": [],
+"method": &"stop"
+}, {
 "args": [0.0],
 "method": &"play"
 }]
@@ -669,6 +699,32 @@ tracks/4/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [0.0]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("dayMusic")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(4.1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"stop"
+}]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("dayMusic:volume_db")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(1, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -60.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_6m7n0"]
@@ -987,13 +1043,13 @@ offset_right = 960.0
 offset_bottom = 540.0
 
 [node name="DayCount" type="RichTextLabel" parent="UI/Control"]
-modulate = Color(1, 1, 1, 0)
 top_level = true
 z_index = 1
 z_as_relative = false
 layout_mode = 0
+offset_top = 100.0
 offset_right = 960.0
-offset_bottom = 189.0
+offset_bottom = 289.0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_x = 2
 theme_override_constants/shadow_offset_y = 2
@@ -1017,12 +1073,11 @@ texture_progress = ExtResource("12_oh1mc")
 metadata/_edit_lock_ = true
 
 [node name="Button" type="Button" parent="UI/Control"]
-self_modulate = Color(1, 1, 1, 0)
 layout_mode = 0
 offset_left = 404.0
-offset_top = 260.0
+offset_top = 360.0
 offset_right = 468.0
-offset_bottom = 304.0
+offset_bottom = 404.0
 theme_override_fonts/font = ExtResource("4_dp6hs")
 theme_override_styles/normal = SubResource("StyleBoxTexture_t0hi3")
 disabled = true
@@ -1107,6 +1162,9 @@ color = Color(0, 0, 0, 1)
 
 [node name="nightMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("22_qk032")
+
+[node name="dayMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("23_wnnfu")
 
 [connection signal="clear" from="." to="Player" method="_reset"]
 [connection signal="coordValid" from="." to="Player" method="_set_coord_valid"]
