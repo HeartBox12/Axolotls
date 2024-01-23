@@ -1,7 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://drpk4li4eis1t"]
+[gd_scene load_steps=18 format=3 uid="uid://drpk4li4eis1t"]
 
 [ext_resource type="Script" path="res://manager/manager.gd" id="1_mywec"]
 [ext_resource type="FontFile" uid="uid://c4hliela7vl0q" path="res://Fonts/WorkSans-Bold.ttf" id="2_lirkw"]
+[ext_resource type="Texture2D" uid="uid://t1moyh1yup7f" path="res://Assets/start_up.png" id="3_fd2hn"]
+[ext_resource type="Texture2D" uid="uid://b4yyg7hesckxb" path="res://Assets/start_down.png" id="4_w86bi"]
+[ext_resource type="Texture2D" uid="uid://bfta875dujrv2" path="res://Assets/tut_up.png" id="5_4ddpg"]
+[ext_resource type="Texture2D" uid="uid://dol0u15scmhia" path="res://Assets/tut_down.png" id="6_f3kd1"]
 
 [sub_resource type="Animation" id="Animation_wjwfx"]
 resource_name = "finish"
@@ -135,6 +139,30 @@ _data = {
 "start": SubResource("Animation_emfsh")
 }
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5v4mh"]
+texture = ExtResource("3_fd2hn")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3s77o"]
+texture = ExtResource("3_fd2hn")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8tru6"]
+texture = ExtResource("4_w86bi")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8ohdk"]
+texture = ExtResource("4_w86bi")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_a26os"]
+texture = ExtResource("5_4ddpg")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_k3t37"]
+texture = ExtResource("5_4ddpg")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2q7af"]
+texture = ExtResource("6_f3kd1")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ilqor"]
+texture = ExtResource("6_f3kd1")
+
 [node name="manager" type="Node2D"]
 process_mode = 3
 script = ExtResource("1_mywec")
@@ -169,8 +197,12 @@ offset_left = 416.0
 offset_top = 238.0
 offset_right = 544.0
 offset_bottom = 302.0
+theme_override_constants/outline_size = 0
 theme_override_fonts/font = ExtResource("2_lirkw")
-text = "Start"
+theme_override_styles/normal = SubResource("StyleBoxTexture_5v4mh")
+theme_override_styles/hover = SubResource("StyleBoxTexture_3s77o")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_8tru6")
+theme_override_styles/focus = SubResource("StyleBoxTexture_8ohdk")
 
 [node name="Tutorial" type="Button" parent="Control"]
 top_level = true
@@ -180,7 +212,10 @@ offset_top = 302.0
 offset_right = 544.0
 offset_bottom = 366.0
 theme_override_fonts/font = ExtResource("2_lirkw")
-text = "Tutorial"
+theme_override_styles/normal = SubResource("StyleBoxTexture_a26os")
+theme_override_styles/hover = SubResource("StyleBoxTexture_k3t37")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_2q7af")
+theme_override_styles/focus = SubResource("StyleBoxTexture_ilqor")
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_finished"]
 [connection signal="pressed" from="Control/Start" to="." method="_on_start_pressed"]
