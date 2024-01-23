@@ -9,6 +9,7 @@ signal setTurret
 signal setPlant
 signal setUnplant
 signal setHarvest
+signal finished
 
 @export var plant:PackedScene
 @export var turret:PackedScene
@@ -72,7 +73,10 @@ func reset():
 				tiledNodes[i][j] = null
 
 func _on_shrine_destroyed(): #The player let the shrine get defaced. They lose.
-	$AnimationPlayer.queue("Loss")
+	$Camera.enabled = false
+	$UI.visible = false
+	finished.emit()
+	#$AnimationPlayer.queue("Loss")
 
 func _process(delta):
 	if isDay:

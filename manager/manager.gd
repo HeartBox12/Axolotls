@@ -13,6 +13,8 @@ func _on_start_pressed():
 	add_child(instance)
 	$AnimationPlayer.play("start")
 	get_tree().paused = false
+	
+	instance.finished.connect(_on_tutorial_finished)
 
 func _on_tutorial_pressed():
 	instance = tutScene.instantiate()
