@@ -87,6 +87,9 @@ func _process(delta):
 	if Input.is_action_just_pressed("reset"):
 		_on_shrine_destroyed()
 	
+	if Input.is_action_just_pressed("skip_day") && isDay:
+		$AnimationPlayer.play("startOfNight")
+	
 	if charZoom:
 		$Camera.position = $Player.position
 

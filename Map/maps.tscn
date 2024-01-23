@@ -726,6 +726,18 @@ tracks/6/keys = {
 "update": 0,
 "values": [0.0, -60.0]
 }
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("UI/Control/dayTimer:value")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_6m7n0"]
 _data = {
@@ -1043,13 +1055,13 @@ offset_right = 960.0
 offset_bottom = 540.0
 
 [node name="DayCount" type="RichTextLabel" parent="UI/Control"]
+modulate = Color(1, 1, 1, 0)
 top_level = true
 z_index = 1
 z_as_relative = false
 layout_mode = 0
-offset_top = 100.0
 offset_right = 960.0
-offset_bottom = 289.0
+offset_bottom = 189.0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_x = 2
 theme_override_constants/shadow_offset_y = 2
@@ -1073,11 +1085,12 @@ texture_progress = ExtResource("12_oh1mc")
 metadata/_edit_lock_ = true
 
 [node name="Button" type="Button" parent="UI/Control"]
+self_modulate = Color(1, 1, 1, 0)
 layout_mode = 0
 offset_left = 404.0
-offset_top = 360.0
+offset_top = 260.0
 offset_right = 468.0
-offset_bottom = 404.0
+offset_bottom = 304.0
 theme_override_fonts/font = ExtResource("4_dp6hs")
 theme_override_styles/normal = SubResource("StyleBoxTexture_t0hi3")
 disabled = true
