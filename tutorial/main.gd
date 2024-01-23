@@ -63,17 +63,19 @@ func _phaseAdvance(new): #Called automatically when phase is rewritten.
 
 func _on_player_coord_select(coords):
 	selPos = coords
+	if coords:
+		$indicator.position = $tiles.map_to_local(coords)
 	
 	if phase <= 2 && coords == plantSpot:
-		$indicator.visible = true
-		$indicator.position = $tiles.map_to_local(plantSpot)
+#		$indicator.visible = true
+#		$indicator.position = $tiles.map_to_local(plantSpot)
 		coordValid.emit(true)
 	elif phase == 3 && coords == turrSpot:
-		$indicator.visible = true
-		$indicator.position = $tiles.map_to_local(turrSpot)
+#		$indicator.visible = true
+#		$indicator.position = $tiles.map_to_local(turrSpot)
 		coordValid.emit(true)
 	else:
-		$indicator.visible = false
+#		$indicator.visible = false
 		coordValid.emit(false)
 
 func _on_player_reqPlant(coords):

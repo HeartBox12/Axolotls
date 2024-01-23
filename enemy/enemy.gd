@@ -39,7 +39,7 @@ func _physics_process(delta):
 		if !onTarget && target != null:
 			global_position += global_position.direction_to(target.position) * speed * delta
 			var angle = global_position.angle_to_point(target.position)
-			print(angle)
+			#print(angle)
 			if angle >= -1 * PI / 2 and angle <= PI / 2:
 				$Sprite.flip_h = false
 				$Sprite.position.x = abs($Sprite.position.x)

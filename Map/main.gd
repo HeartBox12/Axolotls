@@ -54,6 +54,7 @@ func _load():
 func setup():
 	Global.limes = initLimes
 	Global.seeds = initSeeds
+	Global.turrPriceInd = 0
 	day = -1
 	$UI/Control/Button.text = puns[day + 1]
 	$UI/Control/counters/TurretCost.text = str(Global.turretPrices[Global.turrPriceInd])
