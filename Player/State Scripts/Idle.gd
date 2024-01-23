@@ -40,7 +40,8 @@ func update(_delta): #Equivalent to func process(delta) in the host. Only use pr
 			host.selPos.y -= 1
 	
 	if Input.is_action_just_pressed("interact_plant"):
-		host.reqPlant.emit(host.selPos)
+		if host.selPos.x > 1 && host.selPos.x < 28 && host.selPos.y > 3 && host.selPos.y < 15:
+			host.reqPlant.emit(host.selPos)
 		
 		#var target = host.root.tiledNodes[host.selPos.x][host.selPos.y]
 		#if  target == null: #Trying to plant on empty tile
@@ -56,7 +57,8 @@ func update(_delta): #Equivalent to func process(delta) in the host. Only use pr
 			#swap.emit(self, "unplant")
 		
 	if Input.is_action_just_pressed("interact_turret"):
-		host.reqTurret.emit(host.selPos)
+		if host.selPos.x > 1 && host.selPos.x < 28 && host.selPos.y > 3 && host.selPos.y < 15:
+			host.reqTurret.emit(host.selPos)
 
 func physics_update(_delta): #Equivalent to func physics_process() in the host.
 	pass

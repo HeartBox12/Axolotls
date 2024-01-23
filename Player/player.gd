@@ -14,6 +14,7 @@ signal harvested
 signal reqPlant #Requesting to plant
 signal reqTurret #Requesting to make turret
 
+var canMove:bool = false
 var input:Vector2 = Vector2(0, 0) #Unit vector representing player movement dir
 var facing:int = 1 #clockwise, 0 is right, 3 is up.
 var selPos:Vector2i # The currently selected tile coordinates
@@ -25,6 +26,8 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
+	if $"../Camera".zoom != Vector2(2, 2):
+		return
 	input = Vector2(0, 0) #Reset
 	
 	#Read keyboard/controller. Accounts for weird input and < 1 controller tilt.

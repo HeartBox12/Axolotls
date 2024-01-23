@@ -6,7 +6,7 @@
 [ext_resource type="FontFile" uid="uid://tyuiinyuokna" path="res://Fonts/Cinzel-Regular.ttf" id="2_y1rl5"]
 [ext_resource type="PackedScene" uid="uid://ca53jhhml5hya" path="res://Turrets/universalTurret.tscn" id="3_1tqfq"]
 [ext_resource type="PackedScene" uid="uid://dxx3636flyr8a" path="res://Player/player.tscn" id="3_x65of"]
-[ext_resource type="PackedScene" path="res://enemy/enemyPitchfork.tscn" id="4_ewqfq"]
+[ext_resource type="PackedScene" uid="uid://dd2dv03lkhv26" path="res://enemy/enemyPitchfork.tscn" id="4_ewqfq"]
 [ext_resource type="Texture2D" uid="uid://5mtqajuld3qn" path="res://Assets/indicatorsheet.png" id="7_1b0ly"]
 [ext_resource type="PackedScene" uid="uid://cj7ghoonwgss6" path="res://shrine/shrine.tscn" id="9_rifa0"]
 

@@ -103,7 +103,7 @@ func start_day():
 	$AnimationPlayer.queue("startOfDay")
 	Global.Daytime.emit()
 	if day != 0 && day != 5:
-		Global.seeds += 2
+		Global.seeds += 1
 		$UI/Control/counters/SeedCount.text = str(Global.seeds)
 	$UI/Control/dayTimer.max_value = dayLength
 	$UI/Control/dayTimer.value = dayLength
@@ -122,7 +122,8 @@ func _on_coord_select(coords):
 		selPos = coords
 		
 		#Tile is dirt, can be selected
-		if $Tiles.get_cell_tile_data(0, selPos).get_custom_data("valid"):
+		if selPos.x > 1 && selPos.x < 28 && selPos.y > 3 && selPos.y < 15:
+		#if $Tiles.get_cell_tile_data(0, selPos).get_custom_data("valid"):
 			$indicator.position = $Tiles.map_to_local(selPos)
 			validTarget = true
 			
@@ -136,6 +137,10 @@ func _on_coord_select(coords):
 		coordValid.emit(validTarget)
 
 func _on_player_planted(coords): #player transmits after completed planting
+	if selPos.x > 1 && selPos.x < 28 && selPos.y > 3 && selPos.y < 15:
+		pass
+	else:
+		return
 	var instance = plant.instantiate()
 	$Tiles.add_child(instance)
 	instance.position = $Tiles.map_to_local(coords)
@@ -145,8 +150,17 @@ func _on_player_planted(coords): #player transmits after completed planting
 	$UI/Control/counters/SeedCount.text = str(Global.seeds)
 	
 	instance.destroyed.connect(_plant_down)
+	
+	if $Tiles.get_cell_tile_data(0, coords, false).get_terrain() == 0:
+		pass
+	else:
+		$Tiles.set_cells_terrain_connect(0, [coords], 0, 0, true)
 
 func _on_player_turreted(coords): #Player places a turret at coords
+	if selPos.x > 1 && selPos.x < 28 && selPos.y > 3 && selPos.y < 15:
+		pass
+	else:
+		return
 	var instance = turret.instantiate()
 	$Tiles.add_child(instance)
 	instance.position = $Tiles.map_to_local(coords)

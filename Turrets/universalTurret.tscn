@@ -1,67 +1,67 @@
 [gd_scene load_steps=17 format=3 uid="uid://ca53jhhml5hya"]
 
-[ext_resource type="Texture2D" uid="uid://chmed3t7klmw7" path="res://Assets/limefriendshoot.png" id="1_5axq7"]
-[ext_resource type="Texture2D" uid="uid://cfu6tyco46kdg" path="res://Assets/limefriendidle.png" id="2_y3flu"]
+[ext_resource type="Texture2D" uid="uid://d2ifokfhn6uxa" path="res://Assets/limefriendshoot.png" id="1_5axq7"]
+[ext_resource type="Texture2D" uid="uid://b6j3jj8sxnes" path="res://Assets/limefriendidle.png" id="2_y3flu"]
 [ext_resource type="AudioStream" uid="uid://dkjv2m2kwchtn" path="res://Sounds/gunshot_1.wav" id="3_275ji"]
 [ext_resource type="Script" path="res://Turrets/universalTurret.gd" id="4_2mfe1"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_n42v3"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_la8v0"]
 atlas = ExtResource("1_5axq7")
-region = Rect2(0, 0, 49, 57)
+region = Rect2(0, 0, 52, 57)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_8vik2"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_bve1g"]
 atlas = ExtResource("1_5axq7")
-region = Rect2(49, 0, 49, 57)
+region = Rect2(52, 0, 52, 57)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_1w7yu"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_h0fmh"]
 atlas = ExtResource("1_5axq7")
-region = Rect2(98, 0, 49, 57)
+region = Rect2(104, 0, 52, 57)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_cypxb"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_cr5m4"]
 atlas = ExtResource("1_5axq7")
-region = Rect2(147, 0, 49, 57)
+region = Rect2(156, 0, 52, 57)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_dnlw7"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_rj52a"]
 atlas = ExtResource("1_5axq7")
-region = Rect2(196, 0, 49, 57)
+region = Rect2(208, 0, 52, 57)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_vyh44"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_wbk1i"]
 atlas = ExtResource("2_y3flu")
-region = Rect2(0, 0, 49, 57)
+region = Rect2(0, 0, 52, 57)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ttnyp"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_r1ju4"]
 atlas = ExtResource("2_y3flu")
-region = Rect2(49, 0, 49, 57)
+region = Rect2(52, 0, 52, 57)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_16j5s"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_0vyfg"]
 atlas = ExtResource("2_y3flu")
-region = Rect2(98, 0, 49, 57)
+region = Rect2(104, 0, 52, 57)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_5u2cr"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_roxre"]
 atlas = ExtResource("2_y3flu")
-region = Rect2(147, 0, 49, 57)
+region = Rect2(156, 0, 52, 57)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_kjj68"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_efrdq"]
 atlas = ExtResource("2_y3flu")
-region = Rect2(196, 0, 49, 57)
+region = Rect2(208, 0, 52, 57)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_i10rj"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_n42v3")
+"texture": SubResource("AtlasTexture_la8v0")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_8vik2")
+"texture": SubResource("AtlasTexture_bve1g")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_1w7yu")
+"texture": SubResource("AtlasTexture_h0fmh")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_cypxb")
+"texture": SubResource("AtlasTexture_cr5m4")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_dnlw7")
+"texture": SubResource("AtlasTexture_rj52a")
 }],
 "loop": false,
 "name": &"firing",
@@ -69,19 +69,19 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_vyh44")
+"texture": SubResource("AtlasTexture_wbk1i")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ttnyp")
+"texture": SubResource("AtlasTexture_r1ju4")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_16j5s")
+"texture": SubResource("AtlasTexture_0vyfg")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_5u2cr")
+"texture": SubResource("AtlasTexture_roxre")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_kjj68")
+"texture": SubResource("AtlasTexture_efrdq")
 }],
 "loop": true,
 "name": &"idle",
@@ -92,8 +92,7 @@ animations = [{
 
 [node name="UniversalTurret" type="AnimatedSprite2D"]
 sprite_frames = SubResource("SpriteFrames_i10rj")
-animation = &"firing"
-frame = 4
+animation = &"idle"
 offset = Vector2(0, -8)
 script = ExtResource("4_2mfe1")
 
