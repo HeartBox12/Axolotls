@@ -19,7 +19,9 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
-	if fireRotation >= PI / 2 and fireRotation <= (3 * PI) / 2: #flip horizontally according to where it's target is
+	#Consider changing this conditional to currentTarget.position.x
+	if currentTarget && is_instance_valid(currentTarget) && currentTarget.global_position.x < global_position.x: 
+	#fireRotation >= PI / 2 and fireRotation <= (3 * PI) / 2: #flip horizontally according to where it's target is
 		flip_h = true
 	else:
 		flip_h = false
