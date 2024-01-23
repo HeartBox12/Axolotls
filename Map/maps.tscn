@@ -11,12 +11,12 @@
 [ext_resource type="PackedScene" uid="uid://dxx3636flyr8a" path="res://Player/player.tscn" id="8_ptg5p"]
 [ext_resource type="Texture2D" uid="uid://bhvahw3h141m5" path="res://Assets/Moon2.png" id="9_s1qpi"]
 [ext_resource type="PackedScene" uid="uid://x18enyc2dnnf" path="res://plant/plant.tscn" id="10_m1vjg"]
-[ext_resource type="Texture2D" uid="uid://dockdlpomc1ya" path="res://Assets/testbar.png" id="12_oh1mc"]
 [ext_resource type="Texture2D" uid="uid://5mtqajuld3qn" path="res://Assets/indicatorsheet.png" id="13_w1431"]
 [ext_resource type="Script" path="res://spawner/enemySpawner.gd" id="14_7jn5l"]
 [ext_resource type="AudioStream" uid="uid://br4qnoosexow" path="res://Assets/LimeScene_Drone.wav" id="15_wmapv"]
 [ext_resource type="AudioStream" uid="uid://3kf2ukbv1qw6" path="res://Assets/LimeScene_pop.wav" id="16_37h54"]
 [ext_resource type="Texture2D" uid="uid://mng3dtqi3o7p" path="res://Assets/skydrop.png" id="17_b45k4"]
+[ext_resource type="Texture2D" uid="uid://palr1rnsge2l" path="res://Assets/timer_bar.png" id="18_pxriq"]
 [ext_resource type="Texture2D" uid="uid://vgd0yj8g1w0w" path="res://Assets/Lime.png" id="19_bpy4l"]
 [ext_resource type="PackedScene" uid="uid://cj7ghoonwgss6" path="res://shrine/shrine.tscn" id="19_fnmnm"]
 [ext_resource type="Texture2D" uid="uid://dmb2bhnjihw33" path="res://Assets/seeds.png" id="20_khmm0"]
@@ -1081,7 +1081,7 @@ max_value = 10.0
 step = 0.0
 value = 10.0
 fill_mode = 1
-texture_progress = ExtResource("12_oh1mc")
+texture_progress = ExtResource("18_pxriq")
 metadata/_edit_lock_ = true
 
 [node name="Button" type="Button" parent="UI/Control"]
