@@ -52,7 +52,7 @@ func _physics_process(delta):
 			onTarget = false
 			target = null
 			$Sprite.play("die")
-			dying += delta
+			dying += delta #Need to set a different flag
 			$"CollisionShape2D".disabled = true #stop turrets from targeting after dying has begun
 	#else: #if already dying
 		#dying += delta

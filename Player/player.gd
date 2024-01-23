@@ -26,8 +26,8 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
-	if $"../Camera".zoom != Vector2(2, 2):
-		return
+	#if $"../Camera".zoom != Vector2(2, 2): #This statement breaks the tutorial.
+		#return
 	input = Vector2(0, 0) #Reset
 	
 	#Read keyboard/controller. Accounts for weird input and < 1 controller tilt.

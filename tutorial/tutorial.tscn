@@ -6,7 +6,7 @@
 [ext_resource type="FontFile" uid="uid://tyuiinyuokna" path="res://Fonts/Cinzel-Regular.ttf" id="2_y1rl5"]
 [ext_resource type="PackedScene" uid="uid://ca53jhhml5hya" path="res://Turrets/universalTurret.tscn" id="3_1tqfq"]
 [ext_resource type="PackedScene" uid="uid://dxx3636flyr8a" path="res://Player/player.tscn" id="3_x65of"]
-[ext_resource type="PackedScene" uid="uid://45sahp7fox80" path="res://enemy/enemyPitchfork.tscn" id="4_ewqfq"]
+[ext_resource type="PackedScene" uid="uid://crebxjccq0c18" path="res://enemy/enemyProtestor.tscn" id="4_270jr"]
 [ext_resource type="Texture2D" uid="uid://5mtqajuld3qn" path="res://Assets/indicatorsheet.png" id="7_1b0ly"]
 [ext_resource type="PackedScene" uid="uid://cj7ghoonwgss6" path="res://shrine/shrine.tscn" id="9_rifa0"]
 
@@ -552,7 +552,7 @@ animations = [{
 script = ExtResource("1_d8a0d")
 plant = ExtResource("2_hgs71")
 turret = ExtResource("3_1tqfq")
-enemy = ExtResource("4_ewqfq")
+enemy = ExtResource("4_270jr")
 initSeeds = 1
 plantSpot = Vector2i(14, 8)
 turrSpot = Vector2i(14, 9)

@@ -22,7 +22,7 @@
 [ext_resource type="Texture2D" uid="uid://dmb2bhnjihw33" path="res://Assets/seeds.png" id="20_khmm0"]
 [ext_resource type="Texture2D" uid="uid://c353jrclywjdt" path="res://Assets/Le_Dollar.png" id="21_qdhs4"]
 [ext_resource type="AudioStream" uid="uid://oj3g7f82eugn" path="res://Sounds/a_lime_in_the_moonlight_night_theme.wav_looped.wav" id="22_qk032"]
-[ext_resource type="AudioStream" uid="uid://dbtlwt3gh3xjp" path="res://Sounds/day_phase_work_in_progress.mp3" id="23_wnnfu"]
+[ext_resource type="AudioStream" uid="uid://bd5qme0dbdhvy" path="res://Sounds/dried_limes_day_theme-001.wav" id="23_gg8xl"]
 
 [sub_resource type="Animation" id="Animation_iq0yl"]
 resource_name = "Loss"
@@ -1177,7 +1177,7 @@ color = Color(0, 0, 0, 1)
 stream = ExtResource("22_qk032")
 
 [node name="dayMusic" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("23_wnnfu")
+stream = ExtResource("23_gg8xl")
 
 [connection signal="clear" from="." to="Player" method="_reset"]
 [connection signal="coordValid" from="." to="Player" method="_set_coord_valid"]

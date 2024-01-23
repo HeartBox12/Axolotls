@@ -50,11 +50,9 @@ func _phaseAdvance(new): #Called automatically when phase is rewritten.
 		2: #SPACE pressed
 			$AnimationPlayer.play("phase2")
 		3: #Plant harvested
-			$indicator.visible = false
 			coordValid.emit(false)
 			$AnimationPlayer.play("phase3")
 		4:#turret placed
-			$indicator.visible = false
 			coordValid.emit(false)
 			spawnemy()
 			$AnimationPlayer.play("phase4")
