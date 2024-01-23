@@ -13,6 +13,7 @@ var bulletScene = load("res://Turrets/Projectiles/universalProjectile.tscn") #Lo
 var bullets:Array = [] #array to store each turret's bullets, turrets[3] will correlate to bullets[3]
 
 func _ready():
+	Global.playSound($poofsnd_1)
 	var poofOrientation = randi_range(1, 16)
 	if poofOrientation >= 8:
 		$Poof.flip_h = true
@@ -72,7 +73,7 @@ func fireBullet():
 	shotBullet.lifetime = projectileLifetime
 	shotBullet.global_position = global_position
 	shotBullet.damage = projectileDamage
-	$gunsnd_1.play()
+	Global.playSound([$gunsnd_1, $gunsnd_2])
 
 func getTarget():
 	if is_instance_valid(currentTarget) or currentTarget == null: #if the current target exists

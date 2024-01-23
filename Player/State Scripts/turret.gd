@@ -11,7 +11,7 @@ func enter(): #When this state is entered
 	clock.max_value = wait_time
 	clock.value = 0
 	clock.visible = true
-	riser.play()
+	Global.playSound(riser, false)
 	
 	text.visible = true
 	text.text = "[center]Building...[/center]"

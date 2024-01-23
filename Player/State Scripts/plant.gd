@@ -5,14 +5,20 @@ extends State
 @export var riser:Node
 @export var pop:Node
 @export var text:Node
+@export var dig1:Node
+@export var dig2:Node
+@export var dig3:Node
+@export var dig4:Node
 
 @export var wait_time:int
+
+var digs:int = 0
 
 func enter(): #When this state is entered
 	clock.max_value = wait_time
 	clock.value = 0
 	clock.visible = true
-	riser.play()
+	Global.playSound(riser, false)
 	
 	text.visible = true
 	text.text = "[center]Planting...[/center]"
@@ -20,7 +26,7 @@ func enter(): #When this state is entered
 func exit(): #Just before this state is exited
 	clock.visible = false
 	riser.stop()
-	
+	digs = 0
 	text.visible = false
 	text.text = ""
 
@@ -29,6 +35,9 @@ func update(delta): #Equivalent to func process(delta) in the host. Only use pro
 		swap.emit(self, "walk")
 	
 	clock.value += delta
+	if clock.value >= digs * 0.7:
+		digs += 1
+		Global.playSound([dig1, dig2, dig3, dig4])
 	if clock.value >= clock.max_value: #Plant successful!
 		pop.play()
 		host.planted.emit(host.selPos)

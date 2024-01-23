@@ -34,9 +34,10 @@ func _on_area_entered(area):
 	hitOffset = areaHit.global_position - global_position #find where to stick to enemy after hit
 	areaHit.health -= damage #hurt the enemy
 	splatAnimation() #begin the splat timer
+	area.hurt()
 
 func splatAnimation():
 	splatting = true
 	#sprite.texture = texture
-	$hitsnd_3.play()
+	Global.playSound([$hitsnd_3, $hitsnd_5])
 	queue_free()

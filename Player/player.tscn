@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://dxx3636flyr8a"]
+[gd_scene load_steps=33 format=3 uid="uid://dxx3636flyr8a"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_1qpr2"]
 [ext_resource type="Script" path="res://State Machine.gd" id="2_15iyj"]
@@ -15,6 +15,11 @@
 [ext_resource type="Texture2D" uid="uid://cpysr50mc03b" path="res://Assets/limetimer.png" id="12_rf8i5"]
 [ext_resource type="AudioStream" uid="uid://su6g8cdur4xp" path="res://Sounds/plant_pop.wav" id="13_cpcc3"]
 [ext_resource type="FontFile" uid="uid://daoephs38yckp" path="res://Fonts/WorkSans-Regular.ttf" id="15_omwui"]
+[ext_resource type="AudioStream" uid="uid://4ke5bmca4vfk" path="res://Sounds/plant_riser_longer.wav" id="16_t20vg"]
+[ext_resource type="AudioStream" uid="uid://d3ttuejv2dkim" path="res://Sounds/dig4.wav" id="17_e67v4"]
+[ext_resource type="AudioStream" uid="uid://bv4qsrkwyqwle" path="res://Sounds/dig3.wav" id="18_4h1by"]
+[ext_resource type="AudioStream" uid="uid://b8xsvi4nhyr2j" path="res://Sounds/dig2.wav" id="19_j3shp"]
+[ext_resource type="AudioStream" uid="uid://c7t0f15b6ee5u" path="res://Sounds/dig1.wav" id="20_u66bv"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_63l4v"]
 
@@ -126,7 +131,7 @@ host = NodePath("../..")
 machine = NodePath("..")
 sprite = NodePath("../../sprite")
 
-[node name="plant" type="Node" parent="State Machine" node_paths=PackedStringArray("host", "machine", "clock", "riser", "pop", "text")]
+[node name="plant" type="Node" parent="State Machine" node_paths=PackedStringArray("host", "machine", "clock", "riser", "pop", "text", "dig1", "dig2", "dig3", "dig4")]
 script = ExtResource("5_r8208")
 host = NodePath("../..")
 machine = NodePath("..")
@@ -134,6 +139,10 @@ clock = NodePath("../../ProgClock")
 riser = NodePath("../../riser")
 pop = NodePath("../../PlantPop")
 text = NodePath("../../actDisplay")
+dig1 = NodePath("../../dig1")
+dig2 = NodePath("../../dig2")
+dig3 = NodePath("../../dig3")
+dig4 = NodePath("../../dig4")
 wait_time = 3
 
 [node name="turret" type="Node" parent="State Machine" node_paths=PackedStringArray("host", "machine", "clock", "riser", "text")]
@@ -141,26 +150,34 @@ script = ExtResource("6_feh3s")
 host = NodePath("../..")
 machine = NodePath("..")
 clock = NodePath("../../ProgClock")
-riser = NodePath("../../riser")
+riser = NodePath("../../longRiser")
 text = NodePath("../../actDisplay")
 wait_time = 5
 
-[node name="unplant" type="Node" parent="State Machine" node_paths=PackedStringArray("host", "machine", "clock", "riser", "text")]
+[node name="unplant" type="Node" parent="State Machine" node_paths=PackedStringArray("host", "machine", "clock", "riser", "text", "dig1", "dig2", "dig3", "dig4")]
 script = ExtResource("7_h3uhe")
 host = NodePath("../..")
 machine = NodePath("..")
 clock = NodePath("../../ProgClock")
 riser = NodePath("../../riser")
 text = NodePath("../../actDisplay")
+dig1 = NodePath("../../dig1")
+dig2 = NodePath("../../dig2")
+dig3 = NodePath("../../dig3")
+dig4 = NodePath("../../dig4")
 wait_time = 2
 
-[node name="harvest" type="Node" parent="State Machine" node_paths=PackedStringArray("host", "machine", "clock", "riser", "text")]
+[node name="harvest" type="Node" parent="State Machine" node_paths=PackedStringArray("host", "machine", "clock", "riser", "text", "dig1", "dig2", "dig3", "dig4")]
 script = ExtResource("8_rgh44")
 host = NodePath("../..")
 machine = NodePath("..")
 clock = NodePath("../../ProgClock")
 riser = NodePath("../../riser")
 text = NodePath("../../actDisplay")
+dig1 = NodePath("../../dig1")
+dig2 = NodePath("../../dig2")
+dig3 = NodePath("../../dig3")
+dig4 = NodePath("../../dig4")
 wait_time = 3
 
 [node name="offscreen" type="Node" parent="State Machine" node_paths=PackedStringArray("host", "machine")]
@@ -198,3 +215,18 @@ offset_bottom = 56.0
 theme_override_fonts/normal_font = ExtResource("15_omwui")
 theme_override_font_sizes/normal_font_size = 15
 bbcode_enabled = true
+
+[node name="longRiser" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("16_t20vg")
+
+[node name="dig4" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("17_e67v4")
+
+[node name="dig3" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("18_4h1by")
+
+[node name="dig2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("19_j3shp")
+
+[node name="dig1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("20_u66bv")

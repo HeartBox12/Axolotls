@@ -11,6 +11,8 @@ var target:Node
 
 var onTarget = false
 
+var hurting = 0
+
 #Find the closest thing and prepare to approach
 func _ready():
 	find_target()
@@ -33,6 +35,11 @@ func find_target():
 func _process(delta):
 	if onTarget: #Progress the anim. Equivalent to damage.
 		target.health -= delta
+	if hurting > 0:
+		hurting -= delta
+		modulate = Color("f99")
+	else:
+		modulate = Color("fff")
 
 func _physics_process(delta):
 	if dying == 0: #only move or begin dying if not already dying
@@ -76,6 +83,8 @@ func on_destroyed(): #Called when the plant the enemy is attacked runs out of he
 func _on_clear(): #FIXME: connect to signal "clear" from main
 	queue_free()
 
+func hurt():
+	hurting = 0.2
 
 func _on_animation_finished():
 	if $Sprite.animation == "die":

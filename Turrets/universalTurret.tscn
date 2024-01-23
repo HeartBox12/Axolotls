@@ -1,10 +1,12 @@
-[gd_scene load_steps=26 format=3 uid="uid://ca53jhhml5hya"]
+[gd_scene load_steps=28 format=3 uid="uid://ca53jhhml5hya"]
 
 [ext_resource type="Texture2D" uid="uid://d2ifokfhn6uxa" path="res://Assets/limefriendshoot.png" id="1_5axq7"]
 [ext_resource type="Texture2D" uid="uid://b6j3jj8sxnes" path="res://Assets/limefriendidle.png" id="2_y3flu"]
 [ext_resource type="AudioStream" uid="uid://dkjv2m2kwchtn" path="res://Sounds/gunshot_1.wav" id="3_275ji"]
 [ext_resource type="Script" path="res://Turrets/universalTurret.gd" id="4_2mfe1"]
+[ext_resource type="AudioStream" uid="uid://syc4lp7s6q8d" path="res://Sounds/gunshot_2.wav" id="5_4ynrr"]
 [ext_resource type="Texture2D" uid="uid://cvys4c6bbp835" path="res://Assets/spawnanimation.png" id="5_iq047"]
+[ext_resource type="AudioStream" uid="uid://cbfyw1hmpjcuk" path="res://Sounds/turret_place_poof.wav" id="6_60dsm"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_la8v0"]
 atlas = ExtResource("1_5axq7")
@@ -164,9 +166,15 @@ shape = SubResource("CircleShape2D_4q2c3")
 [node name="gunsnd_1" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_275ji")
 
+[node name="gunsnd_2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_4ynrr")
+
 [node name="Poof" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_b00va")
 animation = &"spawn"
+
+[node name="poofsnd_1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_60dsm")
 
 [connection signal="animation_finished" from="." to="." method="_on_animation_finished"]
 [connection signal="area_entered" from="Range" to="." method="_on_range_area_entered"]
