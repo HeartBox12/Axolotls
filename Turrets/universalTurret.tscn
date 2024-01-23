@@ -1,9 +1,10 @@
-[gd_scene load_steps=17 format=3 uid="uid://ca53jhhml5hya"]
+[gd_scene load_steps=26 format=3 uid="uid://ca53jhhml5hya"]
 
 [ext_resource type="Texture2D" uid="uid://d2ifokfhn6uxa" path="res://Assets/limefriendshoot.png" id="1_5axq7"]
 [ext_resource type="Texture2D" uid="uid://b6j3jj8sxnes" path="res://Assets/limefriendidle.png" id="2_y3flu"]
 [ext_resource type="AudioStream" uid="uid://dkjv2m2kwchtn" path="res://Sounds/gunshot_1.wav" id="3_275ji"]
 [ext_resource type="Script" path="res://Turrets/universalTurret.gd" id="4_2mfe1"]
+[ext_resource type="Texture2D" uid="uid://cvys4c6bbp835" path="res://Assets/spawnanimation.png" id="5_iq047"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_la8v0"]
 atlas = ExtResource("1_5axq7")
@@ -90,6 +91,63 @@ animations = [{
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4q2c3"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_yp0hj"]
+atlas = ExtResource("5_iq047")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ximbw"]
+atlas = ExtResource("5_iq047")
+region = Rect2(100, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xwbpb"]
+atlas = ExtResource("5_iq047")
+region = Rect2(200, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ks2xq"]
+atlas = ExtResource("5_iq047")
+region = Rect2(300, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q4fgj"]
+atlas = ExtResource("5_iq047")
+region = Rect2(400, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wv4ra"]
+atlas = ExtResource("5_iq047")
+region = Rect2(500, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5j6mo"]
+atlas = ExtResource("5_iq047")
+region = Rect2(600, 0, 100, 100)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_b00va"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yp0hj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ximbw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xwbpb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ks2xq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q4fgj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wv4ra")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5j6mo")
+}],
+"loop": false,
+"name": &"spawn",
+"speed": 20.0
+}]
+
 [node name="UniversalTurret" type="AnimatedSprite2D"]
 sprite_frames = SubResource("SpriteFrames_i10rj")
 animation = &"idle"
@@ -106,6 +164,11 @@ shape = SubResource("CircleShape2D_4q2c3")
 [node name="gunsnd_1" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_275ji")
 
+[node name="Poof" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_b00va")
+animation = &"spawn"
+
 [connection signal="animation_finished" from="." to="." method="_on_animation_finished"]
 [connection signal="area_entered" from="Range" to="." method="_on_range_area_entered"]
 [connection signal="area_exited" from="Range" to="." method="_on_range_area_exited"]
+[connection signal="animation_finished" from="Poof" to="." method="_on_poof_animation_finished"]
