@@ -13,6 +13,7 @@ var bulletScene = load("res://Turrets/Projectiles/universalProjectile.tscn") #Lo
 var bullets:Array = [] #array to store each turret's bullets, turrets[3] will correlate to bullets[3]
 
 func _ready():
+	$Poof.play("spawn")
 	play("idle")
 	$"Range/RangeCollision".shape.radius = fireRange
 	pass # Replace with function body.
@@ -55,7 +56,6 @@ func fireBullet():
 	shotBullet.lifetime = projectileLifetime
 	shotBullet.global_position = global_position
 	shotBullet.damage = projectileDamage
-	
 	$gunsnd_1.play()
 
 func getTarget():
@@ -86,3 +86,6 @@ func remove():
 
 func _on_animation_finished():
 	play("idle")
+
+func _on_poof_animation_finished():
+	$Poof.visible = false
