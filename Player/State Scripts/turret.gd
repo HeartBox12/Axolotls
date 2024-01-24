@@ -4,8 +4,13 @@ extends State
 @export var clock:Node
 @export var riser:Node
 @export var text:Node
+@export var metal1:Node
+@export var metal2:Node
+@export var metal3:Node
 
 @export var wait_time:int
+
+var clangs:int = 0
 
 func enter(): #When this state is entered
 	clock.max_value = wait_time
@@ -19,7 +24,7 @@ func enter(): #When this state is entered
 func exit(): #Just before this state is exited
 	clock.visible = false
 	riser.stop()
-	
+	clangs = 0
 	text.visible = false
 	text.text = ""
 
@@ -28,6 +33,9 @@ func update(delta): #Equivalent to func process(delta) in the host. Only use pro
 		swap.emit(self, "walk")
 	
 	clock.value += delta
+	if clock.value >= clangs * 1.3:
+		clangs += 1
+		Global.playSound([metal1, metal2, metal3])
 	if clock.value >= clock.max_value:
 		host.turreted.emit(host.selPos)
 		swap.emit(self, "idle")

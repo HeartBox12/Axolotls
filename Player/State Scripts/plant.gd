@@ -39,7 +39,7 @@ func update(delta): #Equivalent to func process(delta) in the host. Only use pro
 		digs += 1
 		Global.playSound([dig1, dig2, dig3, dig4])
 	if clock.value >= clock.max_value: #Plant successful!
-		pop.play()
+		Global.playSound(pop)
 		host.planted.emit(host.selPos)
 		swap.emit(self, "idle")
 

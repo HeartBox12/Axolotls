@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://dxx3636flyr8a"]
+[gd_scene load_steps=36 format=3 uid="uid://dxx3636flyr8a"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_1qpr2"]
 [ext_resource type="Script" path="res://State Machine.gd" id="2_15iyj"]
@@ -20,6 +20,9 @@
 [ext_resource type="AudioStream" uid="uid://bv4qsrkwyqwle" path="res://Sounds/dig3.wav" id="18_4h1by"]
 [ext_resource type="AudioStream" uid="uid://b8xsvi4nhyr2j" path="res://Sounds/dig2.wav" id="19_j3shp"]
 [ext_resource type="AudioStream" uid="uid://c7t0f15b6ee5u" path="res://Sounds/dig1.wav" id="20_u66bv"]
+[ext_resource type="AudioStream" uid="uid://ddxwpao0he5ee" path="res://Sounds/metal3.wav" id="21_hkfdu"]
+[ext_resource type="AudioStream" uid="uid://bo3gp105l0uim" path="res://Sounds/metal2.wav" id="22_2ug54"]
+[ext_resource type="AudioStream" uid="uid://cl87avm2gnfmx" path="res://Sounds/metal1.wav" id="23_5tl81"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_63l4v"]
 
@@ -145,13 +148,16 @@ dig3 = NodePath("../../dig3")
 dig4 = NodePath("../../dig4")
 wait_time = 3
 
-[node name="turret" type="Node" parent="State Machine" node_paths=PackedStringArray("host", "machine", "clock", "riser", "text")]
+[node name="turret" type="Node" parent="State Machine" node_paths=PackedStringArray("host", "machine", "clock", "riser", "text", "metal1", "metal2", "metal3")]
 script = ExtResource("6_feh3s")
 host = NodePath("../..")
 machine = NodePath("..")
 clock = NodePath("../../ProgClock")
 riser = NodePath("../../longRiser")
 text = NodePath("../../actDisplay")
+metal1 = NodePath("../../metal1")
+metal2 = NodePath("../../metal2")
+metal3 = NodePath("../../metal3")
 wait_time = 5
 
 [node name="unplant" type="Node" parent="State Machine" node_paths=PackedStringArray("host", "machine", "clock", "riser", "text", "dig1", "dig2", "dig3", "dig4")]
@@ -230,3 +236,12 @@ stream = ExtResource("19_j3shp")
 
 [node name="dig1" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("20_u66bv")
+
+[node name="metal3" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("21_hkfdu")
+
+[node name="metal2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("22_2ug54")
+
+[node name="metal1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("23_5tl81")

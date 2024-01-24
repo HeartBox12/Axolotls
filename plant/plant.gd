@@ -9,21 +9,21 @@ signal picked
 func _ready():
 	var poofOrientation = randi_range(1, 16)
 	if poofOrientation >= 8:
-		$Poof.flip_h = true
+		$poof.flip_h = true
 		poofOrientation -= 8
 	if poofOrientation >= 4:
-		$Poof.flip_v = true
+		$poof.flip_v = true
 		poofOrientation -= 4
 	match poofOrientation:
 		1:
-			$Poof.rotation_degrees = 0
+			$poof.rotation_degrees = 0
 		2:
-			$Poof.rotation_degrees = 90
+			$poof.rotation_degrees = 90
 		3:
-			$Poof.rotation_degrees = 180
+			$poof.rotation_degrees = 180
 		4:
-			$Poof.rotation_degrees = 270
-	$Poof.play("default")
+			$poof.rotation_degrees = 270
+	$poof.play("default")
 
 	Global.Daytime.connect(ripen)
 
