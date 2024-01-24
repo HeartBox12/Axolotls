@@ -1,11 +1,14 @@
-[gd_scene load_steps=121 format=3 uid="uid://bf0snq1g2u65g"]
+[gd_scene load_steps=124 format=3 uid="uid://bf0snq1g2u65g"]
 
 [ext_resource type="Script" path="res://Map/main.gd" id="1_u5oha"]
 [ext_resource type="Script" path="res://Map/tiles.gd" id="2_4tv3b"]
 [ext_resource type="Texture2D" uid="uid://c6odeo5iplw5u" path="res://Assets/newspaper1.png" id="2_jvldf"]
 [ext_resource type="PackedScene" uid="uid://ca53jhhml5hya" path="res://Turrets/universalTurret.tscn" id="3_7hvpt"]
+[ext_resource type="Texture2D" uid="uid://du47wqlkd8by7" path="res://Assets/newspaper2.png" id="3_bapb4"]
 [ext_resource type="TileSet" uid="uid://dbq1l3eowpxt" path="res://Assets/grassnDirt.tres" id="4_03pcs"]
 [ext_resource type="FontFile" uid="uid://tyuiinyuokna" path="res://Fonts/Cinzel-Regular.ttf" id="4_dp6hs"]
+[ext_resource type="Texture2D" uid="uid://blsgpht7ync16" path="res://Assets/newspaper3.png" id="4_okuc8"]
+[ext_resource type="Texture2D" uid="uid://bhqf1lx5ef2ap" path="res://Assets/newspaper4.png" id="5_whm3c"]
 [ext_resource type="Texture2D" uid="uid://ba6tp4ogijwrs" path="res://Assets/lime.jpg" id="6_aqrli"]
 [ext_resource type="FontFile" uid="uid://daoephs38yckp" path="res://Fonts/WorkSans-Regular.ttf" id="7_j4n7e"]
 [ext_resource type="Texture2D" uid="uid://sjkq12iuacd6" path="res://Assets/credits.png" id="7_r7iq4"]
@@ -1479,6 +1482,9 @@ modulate = Color(0.74902, 0.772549, 0.94902, 1)
 y_sort_enabled = true
 script = ExtResource("1_u5oha")
 article1 = ExtResource("2_jvldf")
+article2 = ExtResource("3_bapb4")
+article3 = ExtResource("4_okuc8")
+article4 = ExtResource("5_whm3c")
 plant = ExtResource("10_m1vjg")
 turret = ExtResource("3_7hvpt")
 initSeeds = 3
