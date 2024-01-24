@@ -9,7 +9,7 @@ func _ready():
 	Global.Daytime.connect(_on_daytime)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	if health <= 0:
 		destroyed.emit()
 		health = 10

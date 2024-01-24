@@ -2,6 +2,11 @@ extends Area2D
 
 @export var health:int = 5
 @export var speed:int
+@onready var death1:Node = $death1
+@onready var death2:Node = $death2
+@onready var death3:Node = $death3
+@onready var death4:Node = $death4
+@onready var death5:Node = $death5
 
 signal death
 
@@ -62,6 +67,7 @@ func _physics_process(delta):
 			onTarget = false
 			target = null
 			$Sprite.play("die")
+			Global.playSound([death1, death2, death3, death4, death5])
 			dying += delta #Need to set a different flag
 			$"CollisionShape2D".disabled = true #stop turrets from targeting after dying has begun
 	#else: #if already dying

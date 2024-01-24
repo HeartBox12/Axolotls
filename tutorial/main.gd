@@ -97,7 +97,7 @@ func _on_player_planted(_coords): #player transmits after completed planting
 	
 	phase = 1
 
-func _on_player_harvested(coords): #Player harvests a plant at coords
+func _on_player_harvested(_coords): #Player harvests a plant at coords
 	Global.limes += plantInstance.profit
 	plantInstance.remove()
 	$Control/counters/LimeCount.text = str(Global.limes)
