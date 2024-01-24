@@ -437,7 +437,6 @@ texture = ExtResource("9_0ofk4")
 
 [node name="poof" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_y60tb")
-autoplay = "default"
 frame = 6
 frame_progress = 1.0
 
