@@ -30,6 +30,7 @@ var isDay:bool = false #for timer purposes
 var livingEnems:int = 6 #Living enemies. When it reaches 0, start day. FIXME: set 0.
 var enemArray = []
 var charZoom:bool = true
+@export var buttonOffset:int = 480
 
 var validTarget:bool #Whether the player is looking at a valid tile for placement
 
@@ -41,7 +42,8 @@ var puns = ["Begin the timer!", "Squeeze the Day!", "No time to cit(rus) around!
 school every day and ate them in class. Seriously, she'd take a 
 quarter of a raw, unsweeted lime and just bite into it. Like, she probably could
 have eaten them like oranges, peeling them and taking out the segments, but she
-didn't. Also she hated my guts for some reason. Anyway, want one?", "Fulfill your zestiny!"]
+didn't. Also she hated my guts for some reason. Anyway, want one?",
+"Fulfill your zestiny!"]
 
 # Called when the node enters the scene tree for the first time.
 func _load():
@@ -82,12 +84,15 @@ func _on_shrine_destroyed(): #The player let the shrine get defaced. They lose.
 func _process(delta):
 	if isDay:
 		$UI/Control/dayTimer.value -= delta
-		if $UI/Control/dayTimer.value >= 1 && $UI/Control/dayTimer.value <= 2:
+		if $UI/Control/dayTimer.value >= 1 && $UI/Control/dayTimer.value <= 4:
 			$UI/Control/Button.text = puns[day]
 		if $UI/Control/dayTimer.value <= 0:
 			zoomOut()
 			$AnimationPlayer.queue("startOfNight")
 			isDay = false
+	
+	if Input.is_action_just_pressed("skip_to_win"):
+		day = lastDay - 1
 	
 	if Input.is_action_just_pressed("reset"):
 		_on_shrine_destroyed()
@@ -100,8 +105,8 @@ func _process(delta):
 
 
 func _day_button_pressed():
-	if lastDay + 1 == day:
-		modulate = Color("ffffff")
+	if lastDay == day:
+		$AnimationPlayer.queue("beforeWin")
 		$AnimationPlayer.queue("Win")
 	else:
 		start_day()
@@ -207,21 +212,20 @@ func _plant_down(): #called by plant.destroyed
 func nightOver():
 	day += 1
 	if lastDay == day: #If this is going to be the last day
-		var center = (960 - $UI/Control/Button.size.x) / 2
+		var center = buttonOffset - ($UI/Control/Button.size.x / 2)
 		$AnimationPlayer.get_animation("endOfNight").track_set_key_value(6, 1, Vector2(center, 260))
 		$AnimationPlayer.get_animation("endOfNight").track_set_key_value(6, 1, Vector2(center, 260))
 		$AnimationPlayer.get_animation("endOfNight").track_set_key_value(6, 2, Vector2(center, 360))
-		$UI/Control/DayCount.text = "
-[center]The stars have alimed.
+		$UI/Control/DayCount.text = "[center]The stars have alimed.
 Fulfull your zestiny.[/center]" #Note: might make this value-setting part of anim
 		modulate = Color("ffffff")
-		$AnimationPlayer.queue("Win")
+		$AnimationPlayer.queue("endOfNight")
 	else: #This is not the last day
 		if lastDay - day > 1:
 			$UI/Control/DayCount.text = "[center]The stars will alime in [color=#00FF00]%s days[/color][/center]" %[lastDay - day]
 		else:
 			$UI/Control/DayCount.text = "[center]The stars will alime in [color=#00FF00]1 day[/color][/center]"
-		var center = (960 - $UI/Control/Button.size.x) / 2
+		var center = buttonOffset - ($UI/Control/Button.size.x / 2)
 		$AnimationPlayer.get_animation("endOfNight").track_set_key_value(6, 1, Vector2(center, 260))
 		$AnimationPlayer.get_animation("endOfNight").track_set_key_value(6, 1, Vector2(center, 260))
 		$AnimationPlayer.get_animation("endOfNight").track_set_key_value(6, 2, Vector2(center, 360))
