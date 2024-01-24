@@ -111,6 +111,7 @@ func _process(delta):
 
 
 func _day_button_pressed():
+	$UI/Control/Button.disabled = true
 	if lastDay == day:
 		$AnimationPlayer.queue("beforeWin")
 		$AnimationPlayer.queue("Win")
