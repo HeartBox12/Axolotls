@@ -553,6 +553,18 @@ tracks/11/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("UI/Control/Button:position")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
+}
 
 [sub_resource type="Animation" id="Animation_18kjb"]
 resource_name = "startOfDay"
@@ -665,6 +677,18 @@ tracks/8/keys = {
 "transitions": PackedFloat32Array(2, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("UI/Control/Button:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
 }
 
 [sub_resource type="Animation" id="Animation_27aa4"]
@@ -1121,18 +1145,6 @@ fill_mode = 1
 texture_progress = ExtResource("18_pxriq")
 metadata/_edit_lock_ = true
 
-[node name="Button" type="Button" parent="UI/Control"]
-layout_mode = 0
-offset_left = 404.0
-offset_top = 420.0
-offset_right = 468.0
-offset_bottom = 464.0
-theme_override_fonts/font = ExtResource("4_dp6hs")
-theme_override_styles/normal = SubResource("StyleBoxTexture_t0hi3")
-shortcut = SubResource("Shortcut_2jnyp")
-text = "asdf
-asdfafs"
-
 [node name="newspaperX" type="TextureRect" parent="UI/Control"]
 layout_mode = 1
 anchors_preset = 8
@@ -1147,6 +1159,19 @@ offset_bottom = 140.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("19_uh8ws")
+
+[node name="Button" type="Button" parent="UI/Control"]
+layout_mode = 0
+offset_left = 404.0
+offset_top = 420.0
+offset_right = 468.0
+offset_bottom = 464.0
+theme_override_fonts/font = ExtResource("4_dp6hs")
+theme_override_styles/normal = SubResource("StyleBoxTexture_t0hi3")
+disabled = true
+shortcut = SubResource("Shortcut_2jnyp")
+text = "asdf
+asdfafs"
 
 [node name="counters" type="Control" parent="UI/Control"]
 anchors_preset = 0
