@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" path="res://Map/main.gd" id="1_u5oha"]
 [ext_resource type="Script" path="res://Map/tiles.gd" id="2_4tv3b"]
+[ext_resource type="Texture2D" uid="uid://c6odeo5iplw5u" path="res://Assets/newspaper1.png" id="2_jvldf"]
 [ext_resource type="PackedScene" uid="uid://ca53jhhml5hya" path="res://Turrets/universalTurret.tscn" id="3_7hvpt"]
 [ext_resource type="TileSet" uid="uid://dbq1l3eowpxt" path="res://Assets/grassnDirt.tres" id="4_03pcs"]
 [ext_resource type="FontFile" uid="uid://tyuiinyuokna" path="res://Fonts/Cinzel-Regular.ttf" id="4_dp6hs"]
@@ -1477,6 +1478,7 @@ process_mode = 1
 modulate = Color(0.74902, 0.772549, 0.94902, 1)
 y_sort_enabled = true
 script = ExtResource("1_u5oha")
+article1 = ExtResource("2_jvldf")
 plant = ExtResource("10_m1vjg")
 turret = ExtResource("3_7hvpt")
 initSeeds = 3
@@ -1719,6 +1721,11 @@ disabled = true
 shortcut = SubResource("Shortcut_2jnyp")
 text = "asdf
 asdfafs"
+
+[node name="newspaper" type="TextureRect" parent="UI/Control"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
 [node name="counters" type="Control" parent="UI/Control"]
 anchors_preset = 0

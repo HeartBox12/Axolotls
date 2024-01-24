@@ -11,6 +11,12 @@ signal setUnplant
 signal setHarvest
 signal finished
 
+@export var article1:Texture
+@export var article2:Texture
+@export var article3:Texture
+@export var article4:Texture
+@export var article5:Texture
+
 @export var plant:PackedScene
 @export var turret:PackedScene
 
@@ -113,6 +119,7 @@ func _day_button_pressed():
 
 func start_day():
 	zoomIn()
+	
 	$AnimationPlayer.queue("startOfDay")
 	Global.Daytime.emit()
 	if day != 0 && day != 5:
@@ -231,7 +238,20 @@ Fulfull your zestiny.[/center]" #Note: might make this value-setting part of ani
 		$AnimationPlayer.get_animation("endOfNight").track_set_key_value(6, 2, Vector2(center, 360))
 		$UI/Control/counters/LimeCount.text = str(Global.limes)
 		$UI/Control/counters/SeedCount.text = str(Global.seeds)
-		$AnimationPlayer.queue("endOfNight")
+	
+		match day:
+			0:
+				$UI/Control/newspaper.texture = article1
+			1:
+				$UI/Control/newspaper.texture = article2
+			2:
+				$UI/Control/newspaper.texture = article3
+			3:
+				$UI/Control/newspaper.texture = article4
+			4:
+				$UI/Control/newspaper.texture = article5
+		
+		$AnimationPlayer.queue("endOfNight") #This is 
 
 func zoomIn():
 	$Camera.set_limit(SIDE_TOP, 0)
