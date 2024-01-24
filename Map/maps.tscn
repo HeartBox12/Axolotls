@@ -218,7 +218,7 @@ tracks/11/path = NodePath("Camera/Credits/jxnerCredit:frame")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = {
-"times": PackedFloat32Array(0, 14, 20),
+"times": PackedFloat32Array(0, 15, 20),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [0, 0, 56]
@@ -242,7 +242,7 @@ tracks/13/path = NodePath("Camera/Credits/jxnerCredit/writing:playing")
 tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/keys = {
-"times": PackedFloat32Array(14),
+"times": PackedFloat32Array(15),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
@@ -1357,7 +1357,6 @@ script = ExtResource("2_4tv3b")
 libraries = {
 "": SubResource("AnimationLibrary_6m7n0")
 }
-autoplay = "TheMagmaPsychicCredits"
 
 [node name="Camera" type="Camera2D" parent="."]
 position = Vector2(480, 270)
@@ -1369,6 +1368,7 @@ limit_bottom = 540
 editor_draw_limits = true
 
 [node name="Credits" type="Sprite2D" parent="Camera"]
+visible = false
 z_index = 1
 scale = Vector2(2, 2)
 texture = ExtResource("7_r7iq4")
@@ -1386,15 +1386,15 @@ theme_override_constants/shadow_offset_y = 2
 theme_override_constants/shadow_outline_size = 6
 theme_override_constants/line_spacing = -19
 theme_override_fonts/font = ExtResource("4_dp6hs")
-theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/font_size = 50
 text = "TheMagmaPsychic
 -Coding"
 
 [node name="MaxCredit" type="Label" parent="Camera/Credits"]
 offset_left = -229.5
 offset_top = -124.0
-offset_right = 3276.5
-offset_bottom = 583.0
+offset_right = -42.5
+offset_bottom = -83.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("7_j4n7e")
 theme_override_font_sizes/font_size = 15
@@ -1634,6 +1634,7 @@ offset_bottom = 107.0
 texture = ExtResource("21_qdhs4")
 
 [node name="LossRect" type="ColorRect" parent="UI/Control"]
+visible = false
 top_level = true
 z_index = 2
 layout_mode = 0

@@ -56,6 +56,7 @@ func _physics_process(delta):
 		elif !onTarget && target == null:
 			find_target()
 		if health <= 0: #got hit too many times
+			target.destroyed.disconnect(on_destroyed)
 			onTarget = false
 			target = null
 			$Sprite.play("die")
@@ -84,7 +85,7 @@ func _on_clear(): #FIXME: connect to signal "clear" from main
 	queue_free()
 
 func hurt():
-	hurting = 0.2
+	hurting = 0.1
 
 func _on_animation_finished():
 	if $Sprite.animation == "die":

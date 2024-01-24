@@ -92,7 +92,9 @@ func _process(delta):
 		_on_shrine_destroyed()
 	
 	if Input.is_action_just_pressed("skip_day") && isDay:
-		$AnimationPlayer.play("startOfNight")
+		zoomOut()
+		$AnimationPlayer.queue("startOfNight")
+		isDay = false
 	
 	if charZoom:
 		$Camera.position = $Player.position
@@ -213,6 +215,7 @@ func nightOver():
 		$UI/Control/DayCount.text = "
 [center]The stars have alimed.
 Fulfull your zestiny.[/center]" #Note: might make this value-setting part of anim
+		modulate = Color("ffffff")
 		$AnimationPlayer.queue("Win")
 	else: #This is not the last day
 		if lastDay - day > 1:
