@@ -31,8 +31,6 @@ var livingEnems:int = 6 #Living enemies. When it reaches 0, start day. FIXME: se
 var enemArray = []
 var charZoom:bool = true
 
-var buttonOffset = 480 #screen size / 2 for right now
-
 var validTarget:bool #Whether the player is looking at a valid tile for placement
 
 var puns = ["Begin the timer!", "Squeeze the Day!", "No time to cit(rus) around!", 
@@ -211,7 +209,7 @@ func _plant_down(): #called by plant.destroyed
 func nightOver():
 	day += 1
 	if lastDay == day: #If this is going to be the last day
-		var center = ($UI/Control/Button.size.x / 2) + buttonOffset
+		var center = (960 - $UI/Control/Button.size.x) / 2
 		$AnimationPlayer.get_animation("endOfNight").track_set_key_value(6, 1, Vector2(center, 260))
 		$AnimationPlayer.get_animation("endOfNight").track_set_key_value(6, 1, Vector2(center, 260))
 		$AnimationPlayer.get_animation("endOfNight").track_set_key_value(6, 2, Vector2(center, 360))
@@ -225,7 +223,7 @@ Fulfull your zestiny.[/center]" #Note: might make this value-setting part of ani
 			$UI/Control/DayCount.text = "[center]The stars will alime in [color=#00FF00]%s days[/color][/center]" %[lastDay - day]
 		else:
 			$UI/Control/DayCount.text = "[center]The stars will alime in [color=#00FF00]1 day[/color][/center]"
-		var center = ($UI/Control/Button.size.x / 2) + buttonOffset
+		var center = (960 - $UI/Control/Button.size.x) / 2
 		$AnimationPlayer.get_animation("endOfNight").track_set_key_value(6, 1, Vector2(center, 260))
 		$AnimationPlayer.get_animation("endOfNight").track_set_key_value(6, 1, Vector2(center, 260))
 		$AnimationPlayer.get_animation("endOfNight").track_set_key_value(6, 2, Vector2(center, 360))
