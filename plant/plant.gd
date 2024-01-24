@@ -40,3 +40,7 @@ func remove():
 	remove_from_group("targets")
 	destroyed.emit()
 	queue_free()
+
+
+func _on_poof_over():
+	$poof.visible = false
