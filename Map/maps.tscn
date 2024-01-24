@@ -1,4 +1,4 @@
-[gd_scene load_steps=115 format=3 uid="uid://bf0snq1g2u65g"]
+[gd_scene load_steps=119 format=3 uid="uid://bf0snq1g2u65g"]
 
 [ext_resource type="Script" path="res://Map/main.gd" id="1_u5oha"]
 [ext_resource type="Script" path="res://Map/tiles.gd" id="2_4tv3b"]
@@ -10,11 +10,13 @@
 [ext_resource type="Texture2D" uid="uid://sjkq12iuacd6" path="res://Assets/credits.png" id="7_r7iq4"]
 [ext_resource type="PackedScene" uid="uid://dxx3636flyr8a" path="res://Player/player.tscn" id="8_ptg5p"]
 [ext_resource type="Texture2D" uid="uid://dhus018lhypt7" path="res://Assets/creditsjxner.png" id="9_0o8ow"]
+[ext_resource type="FontFile" uid="uid://c4hliela7vl0q" path="res://Fonts/WorkSans-Bold.ttf" id="9_mu3ln"]
 [ext_resource type="Texture2D" uid="uid://bhvahw3h141m5" path="res://Assets/Moon2.png" id="9_s1qpi"]
 [ext_resource type="AudioStream" uid="uid://mm1bed2031md" path="res://Sounds/jxner_writing.wav" id="10_24o5a"]
 [ext_resource type="PackedScene" uid="uid://x18enyc2dnnf" path="res://plant/plant.tscn" id="10_m1vjg"]
 [ext_resource type="AudioStream" uid="uid://bq2u8g3o50720" path="res://Sounds/jxner_explosion.wav" id="11_jh4rq"]
 [ext_resource type="Texture2D" uid="uid://5mtqajuld3qn" path="res://Assets/indicatorsheet.png" id="13_w1431"]
+[ext_resource type="AudioStream" uid="uid://ch5feecmw01fd" path="res://Sounds/scratchy_credit.wav" id="13_yjuwi"]
 [ext_resource type="Script" path="res://spawner/enemySpawner.gd" id="14_7jn5l"]
 [ext_resource type="AudioStream" uid="uid://br4qnoosexow" path="res://Assets/LimeScene_Drone.wav" id="15_wmapv"]
 [ext_resource type="AudioStream" uid="uid://3kf2ukbv1qw6" path="res://Assets/LimeScene_pop.wav" id="16_37h54"]
@@ -282,6 +284,32 @@ tracks/16/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("Camera/Credits/ScratchyCredit:rotation")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(1, 1.7),
+"transitions": PackedFloat32Array(15, 1),
+"update": 0,
+"values": [-1.5708, 0.0]
+}
+tracks/18/type = "method"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("Camera/Credits/ScratchyCredit/AudioStreamPlayer")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"times": PackedFloat32Array(1.1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_kcwfj"]
@@ -825,6 +853,12 @@ _data = {
 "startOfNight": SubResource("Animation_27aa4")
 }
 
+[sub_resource type="LabelSettings" id="LabelSettings_876ip"]
+font = ExtResource("9_mu3ln")
+font_size = 200
+font_color = Color(0, 0, 0, 1)
+outline_color = Color(0, 0, 0, 1)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_cqvv8"]
 atlas = ExtResource("9_0o8ow")
 region = Rect2(0, 0, 1024, 1024)
@@ -1232,6 +1266,11 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="LabelSettings" id="LabelSettings_n2o0s"]
+font = ExtResource("7_j4n7e")
+font_color = Color(0, 0, 0, 1)
+outline_size = 3
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_b8dn1"]
 atlas = ExtResource("13_w1431")
 region = Rect2(0, 0, 32, 32)
@@ -1359,6 +1398,7 @@ events = [SubResource("InputEventKey_ybyye")]
 
 [node name="Main" type="Node2D"]
 process_mode = 1
+modulate = Color(0.74902, 0.772549, 0.94902, 1)
 y_sort_enabled = true
 script = ExtResource("1_u5oha")
 plant = ExtResource("10_m1vjg")
@@ -1398,34 +1438,32 @@ scale = Vector2(2, 2)
 texture = ExtResource("7_r7iq4")
 
 [node name="TheMagmaPsychicLabel" type="Label" parent="Camera/Credits"]
-visible = false
 offset_left = -19.0
 offset_top = 66.5
 offset_right = 576.004
 offset_bottom = 211.5
 scale = Vector2(0.5, 0.5)
-theme_override_colors/font_color = Color(0.219608, 0.929412, 0.294118, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_constants/shadow_offset_x = 2
-theme_override_constants/shadow_offset_y = 2
-theme_override_constants/shadow_outline_size = 6
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/shadow_outline_size = 0
 theme_override_constants/line_spacing = -19
-theme_override_fonts/font = ExtResource("4_dp6hs")
-theme_override_font_sizes/font_size = 50
-text = "TheMagmaPsychic
--Coding"
+theme_override_fonts/font = ExtResource("7_j4n7e")
+theme_override_font_sizes/font_size = 30
+text = "TheMag"
 
 [node name="MaxCredit" type="Label" parent="Camera/Credits"]
-visible = false
-offset_left = -229.5
+offset_left = 300.0
 offset_top = -124.0
-offset_right = -42.5
+offset_right = 494.0
 offset_bottom = -83.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("7_j4n7e")
-theme_override_font_sizes/font_size = 15
+theme_override_font_sizes/font_size = 300
 text = "Max Cheskin/HeartBox1:
 -Coding"
+label_settings = SubResource("LabelSettings_876ip")
 
 [node name="jxnerCredit" type="AnimatedSprite2D" parent="Camera/Credits"]
 position = Vector2(-181.75, 71.75)
@@ -1437,6 +1475,19 @@ stream = ExtResource("10_24o5a")
 
 [node name="boom" type="AudioStreamPlayer" parent="Camera/Credits/jxnerCredit"]
 stream = ExtResource("11_jh4rq")
+
+[node name="ScratchyCredit" type="Label" parent="Camera/Credits"]
+offset_left = -15.0
+offset_top = -135.0
+offset_right = 122.0
+offset_bottom = -98.0
+size_flags_vertical = 6
+text = "Scratchy - Sound"
+label_settings = SubResource("LabelSettings_n2o0s")
+vertical_alignment = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Camera/Credits/ScratchyCredit"]
+stream = ExtResource("13_yjuwi")
 
 [node name="Moon" type="Sprite2D" parent="."]
 z_index = -1
@@ -1596,9 +1647,10 @@ asdfafs"
 
 [node name="counters" type="Control" parent="UI/Control"]
 anchors_preset = 0
-offset_left = 880.0
-offset_right = 960.0
-offset_bottom = 80.0
+offset_left = 960.0
+offset_top = 10.0
+offset_right = 1040.0
+offset_bottom = 90.0
 
 [node name="LimeCount" type="RichTextLabel" parent="UI/Control/counters"]
 z_index = 1

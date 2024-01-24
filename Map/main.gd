@@ -93,9 +93,7 @@ func _process(delta):
 		_on_shrine_destroyed()
 	
 	if Input.is_action_just_pressed("skip_day") && isDay:
-		zoomOut()
-		$AnimationPlayer.queue("startOfNight")
-		isDay = false
+		$UI/Control/dayTimer.value = 0
 	
 	if charZoom:
 		$Camera.position = $Player.position
