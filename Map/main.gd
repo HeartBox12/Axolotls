@@ -36,6 +36,7 @@ var validTarget:bool #Whether the player is looking at a valid tile for placemen
 var puns = ["Begin the timer!", "Squeeze the Day!", "No time to cit(rus) around!", 
 "Lime 'em up, knock 'em down!",
 "When life gives you limes, give the limes guns.",
+"Lemons are just sublimes",
 "I had this classmate in high school who took a tupperware of sliced limes to 
 school every day and ate them in class. Seriously, she'd take a 
 quarter of a raw, unsweeted lime and just bite into it. Like, she probably could

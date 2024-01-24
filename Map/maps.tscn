@@ -259,6 +259,30 @@ tracks/14/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("Camera/Credits/TheMagmaPsychicLabel:visible")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("Camera/Credits/MaxCredit:visible")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
 
 [sub_resource type="Animation" id="Animation_kcwfj"]
 resource_name = "Win"
@@ -1374,6 +1398,7 @@ scale = Vector2(2, 2)
 texture = ExtResource("7_r7iq4")
 
 [node name="TheMagmaPsychicLabel" type="Label" parent="Camera/Credits"]
+visible = false
 offset_left = -19.0
 offset_top = 66.5
 offset_right = 576.004
@@ -1391,6 +1416,7 @@ text = "TheMagmaPsychic
 -Coding"
 
 [node name="MaxCredit" type="Label" parent="Camera/Credits"]
+visible = false
 offset_left = -229.5
 offset_top = -124.0
 offset_right = -42.5

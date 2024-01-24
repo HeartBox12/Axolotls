@@ -56,7 +56,9 @@ func _physics_process(delta):
 		elif !onTarget && target == null:
 			find_target()
 		if health <= 0: #got hit too many times
-			target.destroyed.disconnect(on_destroyed)
+			if target != null:
+				if target.destroyed.is_connected(on_destroyed):
+					target.destroyed.disconnect(on_destroyed)
 			onTarget = false
 			target = null
 			$Sprite.play("die")
