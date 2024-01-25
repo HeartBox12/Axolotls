@@ -1,11 +1,14 @@
-[gd_scene load_steps=120 format=3 uid="uid://bf0snq1g2u65g"]
+[gd_scene load_steps=123 format=3 uid="uid://bf0snq1g2u65g"]
 
 [ext_resource type="Script" path="res://Map/main.gd" id="1_u5oha"]
 [ext_resource type="Script" path="res://Map/tiles.gd" id="2_4tv3b"]
 [ext_resource type="Texture2D" uid="uid://c6odeo5iplw5u" path="res://Assets/newspaper1.png" id="2_jvldf"]
 [ext_resource type="PackedScene" uid="uid://ca53jhhml5hya" path="res://Turrets/universalTurret.tscn" id="3_7hvpt"]
+[ext_resource type="Texture2D" uid="uid://du47wqlkd8by7" path="res://Assets/newspaper2.png" id="3_m1qi8"]
 [ext_resource type="TileSet" uid="uid://dbq1l3eowpxt" path="res://Assets/grassnDirt.tres" id="4_03pcs"]
 [ext_resource type="FontFile" uid="uid://tyuiinyuokna" path="res://Fonts/Cinzel-Regular.ttf" id="4_dp6hs"]
+[ext_resource type="Texture2D" uid="uid://blsgpht7ync16" path="res://Assets/newspaper3.png" id="4_sytvo"]
+[ext_resource type="Texture2D" uid="uid://bhqf1lx5ef2ap" path="res://Assets/newspaper4.png" id="5_e1pfk"]
 [ext_resource type="Texture2D" uid="uid://ba6tp4ogijwrs" path="res://Assets/lime.jpg" id="6_aqrli"]
 [ext_resource type="FontFile" uid="uid://daoephs38yckp" path="res://Fonts/WorkSans-Regular.ttf" id="7_j4n7e"]
 [ext_resource type="Texture2D" uid="uid://sjkq12iuacd6" path="res://Assets/credits.png" id="7_r7iq4"]
@@ -311,6 +314,30 @@ tracks/18/keys = {
 "args": [0.0],
 "method": &"play"
 }]
+}
+tracks/19/type = "value"
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/path = NodePath("Camera/Credits/jxnerCredit:visible")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/keys = {
+"times": PackedFloat32Array(0, 15.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/20/type = "value"
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/path = NodePath("Camera/Credits/ScratchyCredit:visible")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
 }
 
 [sub_resource type="Animation" id="Animation_kcwfj"]
@@ -1549,6 +1576,9 @@ modulate = Color(0.74902, 0.772549, 0.94902, 1)
 y_sort_enabled = true
 script = ExtResource("1_u5oha")
 article1 = ExtResource("2_jvldf")
+article2 = ExtResource("3_m1qi8")
+article3 = ExtResource("4_sytvo")
+article4 = ExtResource("5_e1pfk")
 plant = ExtResource("10_m1vjg")
 turret = ExtResource("3_7hvpt")
 initSeeds = 3
@@ -1586,30 +1616,31 @@ scale = Vector2(2, 2)
 texture = ExtResource("7_r7iq4")
 
 [node name="TheMagmaPsychicLabel" type="Label" parent="Camera/Credits"]
-offset_left = 46.4859
+visible = false
+offset_left = -19.0
 offset_top = 66.5
-offset_right = 641.49
+offset_right = 576.005
 offset_bottom = 211.5
 scale = Vector2(0.5, 0.5)
-theme_override_colors/font_color = Color(0.219608, 0.929412, 0.294118, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_constants/shadow_offset_x = 2
-theme_override_constants/shadow_offset_y = 2
-theme_override_constants/shadow_outline_size = 6
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/shadow_outline_size = 0
 theme_override_constants/line_spacing = -19
-theme_override_fonts/font = ExtResource("4_dp6hs")
-theme_override_font_sizes/font_size = 50
-text = "TheMagmaPsychic
--Coding"
+theme_override_fonts/font = ExtResource("7_j4n7e")
+theme_override_font_sizes/font_size = 30
+text = "T"
 
 [node name="MaxCredit" type="Label" parent="Camera/Credits"]
-offset_left = -229.5
+visible = false
+offset_left = 300.0
 offset_top = -124.0
-offset_right = -42.5
-offset_bottom = -83.0
+offset_right = 3806.0
+offset_bottom = 583.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("7_j4n7e")
-theme_override_font_sizes/font_size = 15
+theme_override_font_sizes/font_size = 300
 text = "Max Cheskin/HeartBox1:
 -Coding"
 
@@ -1617,7 +1648,6 @@ text = "Max Cheskin/HeartBox1:
 position = Vector2(-181.75, 71.75)
 scale = Vector2(0.109863, 0.109863)
 sprite_frames = SubResource("SpriteFrames_80cno")
-frame = 26
 
 [node name="writing" type="AudioStreamPlayer" parent="Camera/Credits/jxnerCredit"]
 stream = ExtResource("10_24o5a")
@@ -1630,6 +1660,7 @@ offset_left = -15.0
 offset_top = -135.0
 offset_right = 122.0
 offset_bottom = -98.0
+rotation = -1.5708
 size_flags_vertical = 6
 text = "Scratchy - Sound"
 label_settings = SubResource("LabelSettings_n2o0s")
@@ -1756,8 +1787,9 @@ top_level = true
 z_index = 1
 z_as_relative = false
 layout_mode = 0
+offset_top = -50.0
 offset_right = 960.0
-offset_bottom = 189.0
+offset_bottom = 139.0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_x = 2
 theme_override_constants/shadow_offset_y = 2
@@ -1784,9 +1816,9 @@ metadata/_edit_lock_ = true
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 0
 offset_left = 404.0
-offset_top = 460.0
+offset_top = 260.0
 offset_right = 468.0
-offset_bottom = 504.0
+offset_bottom = 304.0
 theme_override_fonts/font = ExtResource("4_dp6hs")
 theme_override_styles/normal = SubResource("StyleBoxTexture_t0hi3")
 disabled = true
