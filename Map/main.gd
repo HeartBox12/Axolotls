@@ -88,7 +88,7 @@ func _on_shrine_destroyed(): #The player let the shrine get defaced. They lose.
 	#$AnimationPlayer.queue("Loss")
 
 func _process(delta):
-	if isDay:
+	if isDay && $Player.canMove:
 		$UI/Control/dayTimer.value -= delta
 		if $UI/Control/dayTimer.value >= 1 && $UI/Control/dayTimer.value <= 4:
 			$UI/Control/Button.text = puns[day]
@@ -119,9 +119,9 @@ func _day_button_pressed():
 		start_day()
 
 func start_day():
-	zoomIn()
 	
 	$AnimationPlayer.queue("startOfDay")
+	zoomIn()
 	Global.Daytime.emit()
 	if day != 0 && day != 5:
 		Global.seeds += 1
@@ -260,7 +260,7 @@ func zoomIn():
 	$AnimationPlayer.get_animation("Zoom").track_set_key_value(1, 1, $Player.position) #sets end position keyframe to player position
 	$AnimationPlayer.get_animation("Zoom").track_set_key_value(0, 0, Vector2(1, 1)) #sets beginning zoom to full
 	$AnimationPlayer.get_animation("Zoom").track_set_key_value(0, 1, Vector2(2, 2)) #sets end zoom to double
-	$AnimationPlayer.play("Zoom")
+	$AnimationPlayer.queue("Zoom")
 	charZoom = true
 
 func zoomOut():
@@ -269,7 +269,7 @@ func zoomOut():
 	$AnimationPlayer.get_animation("Zoom").track_set_key_value(1, 1, Vector2(480, 270)) #sets end position keyframe to center of screen
 	$AnimationPlayer.get_animation("Zoom").track_set_key_value(0, 0, Vector2(2, 2)) #sets beginning zoom to double
 	$AnimationPlayer.get_animation("Zoom").track_set_key_value(0, 1, Vector2(1, 1)) #sets end zoom to full
-	$AnimationPlayer.play("Zoom")
+	$AnimationPlayer.queue("Zoom")
 	charZoom = false
 
 

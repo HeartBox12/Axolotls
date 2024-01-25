@@ -38,6 +38,7 @@ func _load():
 	Global.seeds = initSeeds
 	$Control/counters/TurretCost.text = str(Global.turretPrices[Global.turrPriceInd])
 	phase = 0 #It begins
+	$Player.toggleMove()
 
 func _phaseAdvance(new): #Called automatically when phase is rewritten.
 	phase = new

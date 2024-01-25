@@ -26,9 +26,10 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
-	#if $"../Camera".zoom != Vector2(2, 2): #This statement breaks the tutorial.
-		#return
 	input = Vector2(0, 0) #Reset
+	if !canMove: #TODO: IF THERE IS A BUG, REMOVE THIS STATEMENT. 
+		#Better to move while zooming than not be able to move when you should
+		return
 	
 	#Read keyboard/controller. Accounts for weird input and < 1 controller tilt.
 	input.y += Input.get_action_strength("move_down")
@@ -74,3 +75,6 @@ func _set_unplant():
 
 func _set_turret():
 	$"State Machine".on_swap($"State Machine/idle", "turret")
+
+func toggleMove():
+	canMove = !canMove
