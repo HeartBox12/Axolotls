@@ -221,9 +221,9 @@ func nightOver():
 	day += 1
 	if lastDay == day: #If this is going to be the last day
 		var center = buttonOffset - ($UI/Control/Button.size.x / 2)
-		$AnimationPlayer.get_animation("endOfNight").track_set_key_value(6, 1, Vector2(center, 260))
-		$AnimationPlayer.get_animation("endOfNight").track_set_key_value(6, 1, Vector2(center, 260))
-		$AnimationPlayer.get_animation("endOfNight").track_set_key_value(6, 2, Vector2(center, 360))
+		$AnimationPlayer.get_animation("endOfNight").track_set_key_value(6, 1, Vector2(center, 380))
+		$AnimationPlayer.get_animation("endOfNight").track_set_key_value(6, 1, Vector2(center, 380))
+		$AnimationPlayer.get_animation("endOfNight").track_set_key_value(6, 2, Vector2(center, 430))
 		$UI/Control/DayCount.text = "[center]The stars have alimed.
 Fulfull your zestiny.[/center]" #Note: might make this value-setting part of anim
 		modulate = Color("ffffff")
@@ -234,9 +234,9 @@ Fulfull your zestiny.[/center]" #Note: might make this value-setting part of ani
 		else:
 			$UI/Control/DayCount.text = "[center]The stars will alime in [color=#00FF00]1 day[/color][/center]"
 		var center = buttonOffset - ($UI/Control/Button.size.x / 2)
-		$AnimationPlayer.get_animation("endOfNight").track_set_key_value(6, 1, Vector2(center, 260))
-		$AnimationPlayer.get_animation("endOfNight").track_set_key_value(6, 1, Vector2(center, 260))
-		$AnimationPlayer.get_animation("endOfNight").track_set_key_value(6, 2, Vector2(center, 360))
+		$AnimationPlayer.get_animation("endOfNight").track_set_key_value(6, 1, Vector2(center, 380))
+		$AnimationPlayer.get_animation("endOfNight").track_set_key_value(6, 1, Vector2(center, 380))
+		$AnimationPlayer.get_animation("endOfNight").track_set_key_value(6, 2, Vector2(center, 430))
 		$UI/Control/counters/LimeCount.text = str(Global.limes)
 		$UI/Control/counters/SeedCount.text = str(Global.seeds)
 	
