@@ -16,3 +16,6 @@ func _process(_delta):
 
 func _on_daytime():
 	health = 10
+
+func _on_win():
+	$Sprite.play("default")
