@@ -2,6 +2,7 @@ extends Node2D
 
 signal daytime #Connects to plants to tell them to ripen.
 signal clear #Connects to enemies so the script can wipe them out
+signal complete # Tells the shrine to activate
 
 signal coordValid
 
