@@ -1,4 +1,4 @@
-[gd_scene load_steps=119 format=3 uid="uid://bf0snq1g2u65g"]
+[gd_scene load_steps=120 format=3 uid="uid://bf0snq1g2u65g"]
 
 [ext_resource type="Script" path="res://Map/main.gd" id="1_u5oha"]
 [ext_resource type="Script" path="res://Map/tiles.gd" id="2_4tv3b"]
@@ -28,6 +28,7 @@
 [ext_resource type="Texture2D" uid="uid://c353jrclywjdt" path="res://Assets/Le_Dollar.png" id="21_qdhs4"]
 [ext_resource type="AudioStream" uid="uid://oj3g7f82eugn" path="res://Sounds/a_lime_in_the_moonlight_night_theme.wav_looped.wav" id="22_qk032"]
 [ext_resource type="AudioStream" uid="uid://bd5qme0dbdhvy" path="res://Sounds/dried_limes_day_theme-001.wav" id="23_gg8xl"]
+[ext_resource type="AudioStream" uid="uid://ctdqg2vbbhst1" path="res://Assets/newspaper-003.wav" id="24_u73j0"]
 
 [sub_resource type="Animation" id="Animation_iq0yl"]
 resource_name = "Loss"
@@ -756,6 +757,20 @@ tracks/12/keys = {
 "update": 0,
 "values": [-0.523599, 0.0]
 }
+tracks/13/type = "method"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("UI/Control/newspaper/rustle")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(4),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_18kjb"]
 resource_name = "startOfDay"
@@ -805,7 +820,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(2, 1),
 "update": 0,
-"values": [Vector2(0, 100), Vector2(0, 0)]
+"values": [Vector2(0, 50), Vector2(0, -50)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -844,6 +859,30 @@ tracks/6/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [0.0]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("UI/Control/newspaper:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 2),
+"update": 0,
+"values": [Vector2(246, 130), Vector2(246, 80)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("UI/Control/newspaper:self_modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(2, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_27aa4"]
@@ -1506,6 +1545,7 @@ events = [SubResource("InputEventKey_ybyye")]
 
 [node name="Main" type="Node2D"]
 process_mode = 1
+modulate = Color(0.74902, 0.772549, 0.94902, 1)
 y_sort_enabled = true
 script = ExtResource("1_u5oha")
 article1 = ExtResource("2_jvldf")
@@ -1711,13 +1751,13 @@ offset_right = 960.0
 offset_bottom = 540.0
 
 [node name="DayCount" type="RichTextLabel" parent="UI/Control"]
+modulate = Color(1, 1, 1, 0)
 top_level = true
 z_index = 1
 z_as_relative = false
 layout_mode = 0
-offset_top = 50.0
 offset_right = 960.0
-offset_bottom = 239.0
+offset_bottom = 189.0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_x = 2
 theme_override_constants/shadow_offset_y = 2
@@ -1741,18 +1781,21 @@ texture_progress = ExtResource("18_pxriq")
 metadata/_edit_lock_ = true
 
 [node name="Button" type="Button" parent="UI/Control"]
+self_modulate = Color(1, 1, 1, 0)
 layout_mode = 0
 offset_left = 404.0
-offset_top = 360.0
+offset_top = 460.0
 offset_right = 468.0
-offset_bottom = 404.0
+offset_bottom = 504.0
 theme_override_fonts/font = ExtResource("4_dp6hs")
 theme_override_styles/normal = SubResource("StyleBoxTexture_t0hi3")
+disabled = true
 shortcut = SubResource("Shortcut_2jnyp")
 text = "asdf
 asdfafs"
 
 [node name="newspaper" type="TextureRect" parent="UI/Control"]
+self_modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1760,12 +1803,16 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -234.0
-offset_top = -140.0
+offset_top = -190.0
 offset_right = 234.0
-offset_bottom = 140.0
+offset_bottom = 90.0
 grow_horizontal = 2
 grow_vertical = 2
+rotation = -0.523599
 texture = ExtResource("2_jvldf")
+
+[node name="rustle" type="AudioStreamPlayer" parent="UI/Control/newspaper"]
+stream = ExtResource("24_u73j0")
 
 [node name="LossRect" type="ColorRect" parent="UI/Control"]
 visible = false
@@ -1779,9 +1826,9 @@ color = Color(0, 0, 0, 1)
 
 [node name="counters" type="Control" parent="UI/Control"]
 anchors_preset = 0
-offset_left = 880.0
+offset_left = 960.0
 offset_top = 10.0
-offset_right = 960.0
+offset_right = 1040.0
 offset_bottom = 90.0
 
 [node name="LimeCount" type="RichTextLabel" parent="UI/Control/counters"]
@@ -1845,7 +1892,6 @@ texture = ExtResource("21_qdhs4")
 
 [node name="nightMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("22_qk032")
-volume_db = -60.0
 
 [node name="dayMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("23_gg8xl")
