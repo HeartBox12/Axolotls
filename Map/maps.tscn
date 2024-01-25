@@ -1,4 +1,4 @@
-[gd_scene load_steps=123 format=3 uid="uid://bf0snq1g2u65g"]
+[gd_scene load_steps=125 format=3 uid="uid://bf0snq1g2u65g"]
 
 [ext_resource type="Script" path="res://Map/main.gd" id="1_u5oha"]
 [ext_resource type="Script" path="res://Map/tiles.gd" id="2_4tv3b"]
@@ -1567,8 +1567,16 @@ device = -1
 keycode = 32
 unicode = 32
 
+[sub_resource type="InputEventJoypadButton" id="InputEventJoypadButton_mde6w"]
+button_index = 2
+pressed = true
+
+[sub_resource type="InputEventKey" id="InputEventKey_2nvwg"]
+device = -1
+keycode = 4194309
+
 [sub_resource type="Shortcut" id="Shortcut_2jnyp"]
-events = [SubResource("InputEventKey_ybyye")]
+events = [SubResource("InputEventKey_ybyye"), SubResource("InputEventJoypadButton_mde6w"), SubResource("InputEventKey_2nvwg")]
 
 [node name="Main" type="Node2D"]
 process_mode = 1
