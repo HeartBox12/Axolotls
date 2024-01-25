@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://boom8e2b00di8"]
+[gd_scene load_steps=37 format=3 uid="uid://boom8e2b00di8"]
 
 [ext_resource type="TileSet" uid="uid://dbq1l3eowpxt" path="res://Assets/grassnDirt.tres" id="1_7qnh0"]
 [ext_resource type="Script" path="res://tutorial/main.gd" id="1_d8a0d"]
@@ -8,7 +8,10 @@
 [ext_resource type="PackedScene" uid="uid://dxx3636flyr8a" path="res://Player/player.tscn" id="3_x65of"]
 [ext_resource type="PackedScene" uid="uid://crebxjccq0c18" path="res://enemy/enemyProtestor.tscn" id="4_270jr"]
 [ext_resource type="Texture2D" uid="uid://5mtqajuld3qn" path="res://Assets/indicatorsheet.png" id="7_1b0ly"]
+[ext_resource type="Texture2D" uid="uid://vgd0yj8g1w0w" path="res://Assets/Lime.png" id="8_683h6"]
+[ext_resource type="Texture2D" uid="uid://dmb2bhnjihw33" path="res://Assets/seeds.png" id="9_p6ydf"]
 [ext_resource type="PackedScene" uid="uid://cj7ghoonwgss6" path="res://shrine/shrine.tscn" id="9_rifa0"]
+[ext_resource type="Texture2D" uid="uid://c353jrclywjdt" path="res://Assets/Le_Dollar.png" id="10_3gxtw"]
 
 [sub_resource type="Animation" id="Animation_mjalu"]
 resource_name = "phase0"
@@ -51,7 +54,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_1lrxd"]
 resource_name = "phase1"
-length = 2.0
+length = 3.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -125,6 +128,18 @@ tracks/5/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Control/counters/LimeCount/Highlight:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 2.2, 2.4, 2.6, 2.8, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, true, false, true]
 }
 
 [sub_resource type="Animation" id="Animation_umcum"]
@@ -217,10 +232,22 @@ tracks/6/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Control/counters/LimeCount/Highlight:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_li2r5"]
 resource_name = "phase3"
-length = 1.5
+length = 2.5
 tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -242,7 +269,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0.8),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": ["[center][color=#00FF00]Limes[/color] can be [color=#FFAA00]stationed[/color] with E/X/M.The amount of limes needed for each [color=FFAA00]Installation[/color] increases as you place more of them.[/center]"]
+"values": ["[center][color=#00FF00]Limes[/color] can be [color=#FFAA00]stationed[/color] with E/X/M.The [color=#FF0000]amount of limes[/color] needed for each [color=FFAA00]Installation[/color] increases as you place more of them.[/center]"]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -316,9 +343,22 @@ tracks/7/keys = {
 "update": 1,
 "values": [true, false]
 }
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Control/counters/TurretCost/Highlight:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 1.7, 1.9, 2.1, 2.3, 2.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, true, false, true]
+}
 
 [sub_resource type="Animation" id="Animation_qrcpi"]
 resource_name = "phase4"
+length = 2.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -377,6 +417,18 @@ tracks/4/keys = {
 "transitions": PackedFloat32Array(2, 1),
 "update": 0,
 "values": [Vector2(490, 286), Vector2(490, 236)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("shrine/highlight:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 1.2, 1.4, 1.6, 1.8, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, true, false, true]
 }
 
 [sub_resource type="Animation" id="Animation_rkcrk"]
@@ -548,6 +600,9 @@ animations = [{
 "speed": 15.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d28d5"]
+size = Vector2(72, 51)
+
 [node name="tutorial" type="Node2D"]
 script = ExtResource("1_d8a0d")
 plant = ExtResource("2_hgs71")
@@ -579,48 +634,6 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="counters" type="Control" parent="Control"]
-layout_mode = 3
-anchors_preset = 0
-offset_left = 960.0
-offset_right = 1040.0
-offset_bottom = 80.0
-
-[node name="LimeCount" type="RichTextLabel" parent="Control/counters"]
-z_index = 1
-z_as_relative = false
-layout_mode = 0
-offset_right = 80.0
-offset_bottom = 40.0
-theme_override_fonts/normal_font = ExtResource("2_y1rl5")
-theme_override_font_sizes/normal_font_size = 20
-bbcode_enabled = true
-text = "32"
-
-[node name="SeedCount" type="RichTextLabel" parent="Control/counters"]
-z_index = 1
-z_as_relative = false
-layout_mode = 0
-offset_top = 40.0
-offset_right = 81.0
-offset_bottom = 80.0
-theme_override_fonts/normal_font = ExtResource("2_y1rl5")
-theme_override_font_sizes/normal_font_size = 20
-bbcode_enabled = true
-text = "32"
-
-[node name="TurretCost" type="RichTextLabel" parent="Control/counters"]
-z_index = 1
-z_as_relative = false
-layout_mode = 0
-offset_top = 80.0
-offset_right = 81.0
-offset_bottom = 120.0
-theme_override_fonts/normal_font = ExtResource("2_y1rl5")
-theme_override_font_sizes/normal_font_size = 20
-bbcode_enabled = true
-text = "32"
-
 [node name="text" type="Control" parent="Control"]
 anchors_preset = 0
 offset_right = 40.0
@@ -633,10 +646,11 @@ layout_mode = 0
 offset_left = 490.0
 offset_top = 207.0
 offset_right = 1056.0
-offset_bottom = 247.0
+offset_bottom = 256.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 2
-text = "<- Face this tile and press Q/numpad 7/N/Q"
+text = "<- Select this tile with the white square and press
+Q/numpad 7/N/Q"
 
 [node name="harvestPrompt" type="RichTextLabel" parent="Control/text"]
 visible = false
@@ -667,13 +681,14 @@ text = "<- Create an [color=#FFAA00]Installation[/color] on this tile."
 [node name="Info" type="RichTextLabel" parent="Control/text"]
 visible = false
 layout_mode = 0
-offset_top = 476.0
+offset_top = 326.0
 offset_right = 960.0
-offset_bottom = 694.0
+offset_bottom = 543.999
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 2
 bbcode_enabled = true
-text = "[center][color=FFAA00]Installations[/color] will defend your lime plants and [color=FFFF00]Shrine[/color] from those that reject the way of the lime. Build as many as possible.[/center]"
+text = "[center][color=#00FF00]Lime Plants[/color] will ripen after one day. Then, they can be [color=#FFAA00]Harvested[/color] for one [color=#00FF00]lime[/color].
+They will [color=#FFAA00]Mature[/color] after another day, and will then be worth three."
 
 [node name="Survive" type="RichTextLabel" parent="Control/text"]
 visible = false
@@ -695,8 +710,97 @@ COMPLETE THE RITUAL.
 
 THE MOON SHALL BE SUBSUMED[/center]"
 
-[node name="Walls" type="Node2D" parent="."]
+[node name="counters" type="Control" parent="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 880.0
+offset_top = 10.0
+offset_right = 960.0
+offset_bottom = 90.0
+
+[node name="LimeCount" type="RichTextLabel" parent="Control/counters"]
+z_index = 1
+z_as_relative = false
+clip_contents = false
+layout_mode = 0
+offset_right = 80.0
+offset_bottom = 40.0
+theme_override_fonts/normal_font = ExtResource("2_y1rl5")
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+text = "32"
+
+[node name="Highlight" type="ReferenceRect" parent="Control/counters/LimeCount"]
 visible = false
+layout_mode = 0
+offset_left = -3.0
+offset_top = -7.0
+offset_right = 58.0
+offset_bottom = 30.0
+border_color = Color(0, 1, 0, 1)
+border_width = 4.0
+editor_only = false
+
+[node name="SeedCount" type="RichTextLabel" parent="Control/counters"]
+z_index = 1
+z_as_relative = false
+layout_mode = 0
+offset_top = 40.0
+offset_right = 81.0
+offset_bottom = 80.0
+theme_override_fonts/normal_font = ExtResource("2_y1rl5")
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+text = "32"
+
+[node name="TurretCost" type="RichTextLabel" parent="Control/counters"]
+z_index = 1
+z_as_relative = false
+clip_contents = false
+layout_mode = 0
+offset_top = 80.0
+offset_right = 81.0
+offset_bottom = 120.0
+theme_override_fonts/normal_font = ExtResource("2_y1rl5")
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+text = "32"
+
+[node name="Highlight" type="ReferenceRect" parent="Control/counters/TurretCost"]
+visible = false
+layout_mode = 0
+offset_left = -2.0
+offset_top = -8.0
+offset_right = 64.0
+offset_bottom = 29.0
+border_width = 4.0
+editor_only = false
+
+[node name="LimeIcon" type="TextureRect" parent="Control/counters"]
+layout_mode = 0
+offset_left = 30.0
+offset_top = -5.0
+offset_right = 62.0
+offset_bottom = 27.0
+texture = ExtResource("8_683h6")
+
+[node name="SeedIcon" type="TextureRect" parent="Control/counters"]
+layout_mode = 0
+offset_left = 30.0
+offset_top = 35.0
+offset_right = 62.0
+offset_bottom = 67.0
+texture = ExtResource("9_p6ydf")
+
+[node name="CostIcon" type="TextureRect" parent="Control/counters"]
+layout_mode = 0
+offset_left = 30.0
+offset_top = 75.0
+offset_right = 62.0
+offset_bottom = 107.0
+texture = ExtResource("10_3gxtw")
+
+[node name="Walls" type="Node2D" parent="."]
 
 [node name="leftWall" type="StaticBody2D" parent="Walls"]
 collision_mask = 8
@@ -739,6 +843,24 @@ position = Vector2(0, 544)
 
 [node name="shrine" parent="." instance=ExtResource("9_rifa0")]
 position = Vector2(467, 59)
+
+[node name="ShrineHitbox" type="StaticBody2D" parent="shrine"]
+position = Vector2(-467, -59)
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="shrine/ShrineHitbox"]
+position = Vector2(462, 82.5)
+shape = SubResource("RectangleShape2D_d28d5")
+
+[node name="highlight" type="ReferenceRect" parent="shrine"]
+visible = false
+offset_left = -45.0
+offset_top = -57.0
+offset_right = 31.0
+offset_bottom = 52.0
+border_color = Color(1, 1, 0, 1)
+border_width = 4.0
+editor_only = false
 
 [connection signal="coordValid" from="." to="Player" method="_set_coord_valid"]
 [connection signal="setHarvest" from="." to="Player" method="_set_harvest"]
