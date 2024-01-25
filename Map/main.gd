@@ -97,9 +97,6 @@ func _process(delta):
 			$AnimationPlayer.queue("startOfNight")
 			isDay = false
 	
-	if Input.is_action_just_pressed("skip_to_win"):
-		day = lastDay - 1
-	
 	if Input.is_action_just_pressed("reset"):
 		_on_shrine_destroyed()
 	

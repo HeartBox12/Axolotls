@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://drpk4li4eis1t"]
+[gd_scene load_steps=24 format=3 uid="uid://drpk4li4eis1t"]
 
 [ext_resource type="Script" path="res://manager/manager.gd" id="1_mywec"]
 [ext_resource type="FontFile" uid="uid://c4hliela7vl0q" path="res://Fonts/WorkSans-Bold.ttf" id="2_lirkw"]
@@ -151,6 +151,17 @@ texture = ExtResource("4_w86bi")
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8ohdk"]
 texture = ExtResource("4_w86bi")
 
+[sub_resource type="InputEventKey" id="InputEventKey_b3mnm"]
+device = -1
+keycode = 32
+unicode = 32
+
+[sub_resource type="InputEventJoypadButton" id="InputEventJoypadButton_3nfn0"]
+pressed = true
+
+[sub_resource type="Shortcut" id="Shortcut_uufmi"]
+events = [SubResource("InputEventKey_b3mnm"), SubResource("InputEventJoypadButton_3nfn0")]
+
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_a26os"]
 texture = ExtResource("5_4ddpg")
 
@@ -162,6 +173,17 @@ texture = ExtResource("6_f3kd1")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ilqor"]
 texture = ExtResource("6_f3kd1")
+
+[sub_resource type="InputEventKey" id="InputEventKey_r35f4"]
+device = -1
+keycode = 4194309
+
+[sub_resource type="InputEventJoypadButton" id="InputEventJoypadButton_3tq5k"]
+button_index = 1
+pressed = true
+
+[sub_resource type="Shortcut" id="Shortcut_08v7a"]
+events = [SubResource("InputEventKey_r35f4"), SubResource("InputEventJoypadButton_3tq5k")]
 
 [node name="manager" type="Node2D"]
 process_mode = 3
@@ -203,6 +225,7 @@ theme_override_styles/normal = SubResource("StyleBoxTexture_5v4mh")
 theme_override_styles/hover = SubResource("StyleBoxTexture_3s77o")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_8tru6")
 theme_override_styles/focus = SubResource("StyleBoxTexture_8ohdk")
+shortcut = SubResource("Shortcut_uufmi")
 
 [node name="Tutorial" type="Button" parent="Control"]
 top_level = true
@@ -216,6 +239,7 @@ theme_override_styles/normal = SubResource("StyleBoxTexture_a26os")
 theme_override_styles/hover = SubResource("StyleBoxTexture_k3t37")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_2q7af")
 theme_override_styles/focus = SubResource("StyleBoxTexture_ilqor")
+shortcut = SubResource("Shortcut_08v7a")
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_finished"]
 [connection signal="pressed" from="Control/Start" to="." method="_on_start_pressed"]
