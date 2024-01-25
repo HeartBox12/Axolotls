@@ -1,4 +1,4 @@
-[gd_scene load_steps=125 format=3 uid="uid://bf0snq1g2u65g"]
+[gd_scene load_steps=126 format=3 uid="uid://bf0snq1g2u65g"]
 
 [ext_resource type="Script" path="res://Map/main.gd" id="1_u5oha"]
 [ext_resource type="Script" path="res://Map/tiles.gd" id="2_4tv3b"]
@@ -24,6 +24,7 @@
 [ext_resource type="AudioStream" uid="uid://br4qnoosexow" path="res://Assets/LimeScene_Drone.wav" id="15_wmapv"]
 [ext_resource type="AudioStream" uid="uid://3kf2ukbv1qw6" path="res://Assets/LimeScene_pop.wav" id="16_37h54"]
 [ext_resource type="Texture2D" uid="uid://mng3dtqi3o7p" path="res://Assets/skydrop.png" id="17_b45k4"]
+[ext_resource type="AudioStream" uid="uid://su6g8cdur4xp" path="res://Sounds/plant_pop.wav" id="17_dfsom"]
 [ext_resource type="Texture2D" uid="uid://palr1rnsge2l" path="res://Assets/timer_bar.png" id="18_pxriq"]
 [ext_resource type="Texture2D" uid="uid://vgd0yj8g1w0w" path="res://Assets/Lime.png" id="19_bpy4l"]
 [ext_resource type="PackedScene" uid="uid://cj7ghoonwgss6" path="res://shrine/shrine.tscn" id="19_fnmnm"]
@@ -301,28 +302,26 @@ tracks/17/keys = {
 "update": 0,
 "values": [-1.5708, 0.0]
 }
-tracks/18/type = "method"
+tracks/18/type = "value"
 tracks/18/imported = false
 tracks/18/enabled = true
-tracks/18/path = NodePath("Camera/Credits/ScratchyCredit/AudioStreamPlayer")
+tracks/18/path = NodePath("Camera/Credits/jxnerCredit:visible")
 tracks/18/interp = 1
 tracks/18/loop_wrap = true
 tracks/18/keys = {
-"times": PackedFloat32Array(1.1),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [0.0],
-"method": &"play"
-}]
+"times": PackedFloat32Array(0, 15.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
 }
 tracks/19/type = "value"
 tracks/19/imported = false
 tracks/19/enabled = true
-tracks/19/path = NodePath("Camera/Credits/jxnerCredit:visible")
+tracks/19/path = NodePath("Camera/Credits/ScratchyCredit:visible")
 tracks/19/interp = 1
 tracks/19/loop_wrap = true
 tracks/19/keys = {
-"times": PackedFloat32Array(0, 15.1),
+"times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
@@ -330,14 +329,38 @@ tracks/19/keys = {
 tracks/20/type = "value"
 tracks/20/imported = false
 tracks/20/enabled = true
-tracks/20/path = NodePath("Camera/Credits/ScratchyCredit:visible")
+tracks/20/path = NodePath("Camera/Credits/OkamiCredit:visible")
 tracks/20/interp = 1
 tracks/20/loop_wrap = true
 tracks/20/keys = {
-"times": PackedFloat32Array(0, 1),
+"times": PackedFloat32Array(0, 4.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
+}
+tracks/21/type = "value"
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/path = NodePath("Camera/Credits/OkamiCredit/pop:playing")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/keys = {
+"times": PackedFloat32Array(4.5),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/22/type = "value"
+tracks/22/imported = false
+tracks/22/enabled = true
+tracks/22/path = NodePath("Camera/Credits/ScratchyCredit/yeowch:playing")
+tracks/22/interp = 1
+tracks/22/loop_wrap = true
+tracks/22/keys = {
+"times": PackedFloat32Array(1.7),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_kcwfj"]
@@ -798,32 +821,6 @@ tracks/13/keys = {
 "method": &"play"
 }]
 }
-tracks/14/type = "method"
-tracks/14/imported = false
-tracks/14/enabled = true
-tracks/14/path = NodePath("dayMusic")
-tracks/14/interp = 1
-tracks/14/loop_wrap = true
-tracks/14/keys = {
-"times": PackedFloat32Array(4),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [0.0],
-"method": &"play"
-}]
-}
-tracks/15/type = "value"
-tracks/15/imported = false
-tracks/15/enabled = true
-tracks/15/path = NodePath("dayMusic:volume_db")
-tracks/15/interp = 1
-tracks/15/loop_wrap = true
-tracks/15/keys = {
-"times": PackedFloat32Array(4),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
 
 [sub_resource type="Animation" id="Animation_18kjb"]
 resource_name = "startOfDay"
@@ -887,25 +884,51 @@ tracks/4/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
-tracks/5/type = "value"
+tracks/5/type = "method"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("UI/Control/newspaper:position")
+tracks/5/path = NodePath("dayMusic")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("dayMusic:volume_db")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("UI/Control/newspaper:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 2),
 "update": 0,
 "values": [Vector2(246, 130), Vector2(246, 80)]
 }
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("UI/Control/newspaper:self_modulate")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("UI/Control/newspaper:self_modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(2, 1),
 "update": 0,
@@ -1653,6 +1676,7 @@ text = "Max Cheskin/HeartBox1:
 -Coding"
 
 [node name="jxnerCredit" type="AnimatedSprite2D" parent="Camera/Credits"]
+visible = false
 position = Vector2(-181.75, 71.75)
 scale = Vector2(0.109863, 0.109863)
 sprite_frames = SubResource("SpriteFrames_80cno")
@@ -1664,6 +1688,7 @@ stream = ExtResource("10_24o5a")
 stream = ExtResource("11_jh4rq")
 
 [node name="ScratchyCredit" type="Label" parent="Camera/Credits"]
+visible = false
 offset_left = -15.0
 offset_top = -135.0
 offset_right = 122.0
@@ -1674,8 +1699,23 @@ text = "Scratchy - Sound"
 label_settings = SubResource("LabelSettings_n2o0s")
 vertical_alignment = 1
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Camera/Credits/ScratchyCredit"]
+[node name="yeowch" type="AudioStreamPlayer" parent="Camera/Credits/ScratchyCredit"]
 stream = ExtResource("13_yjuwi")
+
+[node name="OkamiCredit" type="Label" parent="Camera/Credits"]
+visible = false
+offset_left = 103.0
+offset_top = -89.0
+offset_right = 213.0
+offset_bottom = 5.0
+scale = Vector2(0.5, 0.5)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 37
+text = "Ms. Okami
+-Art"
+
+[node name="pop" type="AudioStreamPlayer" parent="Camera/Credits/OkamiCredit"]
+stream = ExtResource("17_dfsom")
 
 [node name="Moon" type="Sprite2D" parent="."]
 z_index = -1
