@@ -721,6 +721,30 @@ tracks/9/keys = {
 "method": &"stop"
 }]
 }
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("UI/Control/newspaper:position")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("UI/Control/newspaper:self_modulate")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
+}
 
 [sub_resource type="Animation" id="Animation_18kjb"]
 resource_name = "startOfDay"
@@ -1682,13 +1706,13 @@ offset_right = 960.0
 offset_bottom = 540.0
 
 [node name="DayCount" type="RichTextLabel" parent="UI/Control"]
+modulate = Color(1, 1, 1, 0)
 top_level = true
 z_index = 1
 z_as_relative = false
 layout_mode = 0
-offset_top = 100.0
 offset_right = 960.0
-offset_bottom = 289.0
+offset_bottom = 189.0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_x = 2
 theme_override_constants/shadow_offset_y = 2
@@ -1712,11 +1736,12 @@ texture_progress = ExtResource("18_pxriq")
 metadata/_edit_lock_ = true
 
 [node name="Button" type="Button" parent="UI/Control"]
+self_modulate = Color(1, 1, 1, 0)
 layout_mode = 0
 offset_left = 404.0
-offset_top = 360.0
+offset_top = 260.0
 offset_right = 468.0
-offset_bottom = 404.0
+offset_bottom = 304.0
 theme_override_fonts/font = ExtResource("4_dp6hs")
 theme_override_styles/normal = SubResource("StyleBoxTexture_t0hi3")
 disabled = true
@@ -1725,6 +1750,7 @@ text = "asdf
 asdfafs"
 
 [node name="newspaper" type="TextureRect" parent="UI/Control"]
+visible = false
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
