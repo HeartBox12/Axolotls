@@ -370,7 +370,8 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": ["[center][color=#00FF00]Limes[/color] can be [color=#FFAA00]stationed[/color] with E/X/M.The amount of limes needed for each [color=FFAA00]Installation[/color] increases as you place more of them.", "[center][color=FFAA00]Installations[/color] will defend your lime plants and [color=FFFF00]Shrine[/color] from those that reject the way of the lime.
-Build as many as possible. If the shrine is destroyed, you lose.[/center]"]
+Lime plants can be killed, preventing them from bearing fruit. If the [color =#FFFF00]shrine[/color]
+ is destroyed, you lose. Build as many turrets as possible.[/center]"]
 }
 tracks/1/type = "bezier"
 tracks/1/imported = false
@@ -380,7 +381,7 @@ tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(426, -0.25, 0, 0.25, 0, 476, -0.25, 0, 0.25, 0),
+"points": PackedFloat32Array(426, -0.25, 0, 0.25, 0, 466, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0.5, 1)
 }
 tracks/2/type = "value"
@@ -464,7 +465,7 @@ tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(476, -0.25, 0, 0.25, 0, 540, -0.25, 0, 0.25, 0),
+"points": PackedFloat32Array(466, -0.25, 0, 0.25, 0, 540, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0, 0.5)
 }
 tracks/2/type = "value"
@@ -642,11 +643,12 @@ offset_bottom = 40.0
 
 [node name="plantPrompt" type="RichTextLabel" parent="Control/text"]
 visible = false
+self_modulate = Color(1, 1, 1, 0)
 layout_mode = 0
 offset_left = 490.0
-offset_top = 257.0
+offset_top = 207.0
 offset_right = 1056.0
-offset_bottom = 306.0
+offset_bottom = 256.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 2
 text = "<- Select this tile with the white square and press
@@ -681,16 +683,14 @@ text = "<- Create an [color=#FFAA00]Installation[/color] on this tile."
 [node name="Info" type="RichTextLabel" parent="Control/text"]
 visible = false
 layout_mode = 0
-offset_top = 544.0
+offset_top = 326.0
 offset_right = 960.0
-offset_bottom = 761.999
+offset_bottom = 543.999
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 2
 bbcode_enabled = true
 text = "[center][color=#00FF00]Lime Plants[/color] will ripen after one day. Then, they can be [color=#FFAA00]Harvested[/color] for one [color=#00FF00]lime[/color].
-They will [color=#FFAA00]Mature[/color] after another day, and will then be worth three.
-
-Lime plants always cost one [color=#FF0000]seed[/color] to build."
+They will [color=#FFAA00]Mature[/color] after another day, and will then be worth three."
 
 [node name="Survive" type="RichTextLabel" parent="Control/text"]
 visible = false
@@ -758,6 +758,7 @@ text = "32"
 
 [node name="Highlight" type="ReferenceRect" parent="Control/counters/SeedCount"]
 visible = false
+layout_mode = 0
 offset_left = -2.0
 offset_top = -8.0
 offset_right = 64.0

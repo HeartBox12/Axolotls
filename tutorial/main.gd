@@ -136,7 +136,7 @@ func _on_enemy_down(_instance):
 	phase = 5
 
 func _unhandled_input(event):
-	if event.is_action_pressed("begin_day") && phase == 1: #Placeholder
+	if event.is_action_pressed("continue") && phase == 1: #Placeholder
 		phase = 2
 
 func _close():

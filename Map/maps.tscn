@@ -1,4 +1,4 @@
-[gd_scene load_steps=125 format=3 uid="uid://bf0snq1g2u65g"]
+[gd_scene load_steps=123 format=3 uid="uid://bf0snq1g2u65g"]
 
 [ext_resource type="Script" path="res://Map/main.gd" id="1_u5oha"]
 [ext_resource type="Script" path="res://Map/tiles.gd" id="2_4tv3b"]
@@ -805,7 +805,7 @@ tracks/14/path = NodePath("dayMusic")
 tracks/14/interp = 1
 tracks/14/loop_wrap = true
 tracks/14/keys = {
-"times": PackedFloat32Array(4),
+"times": PackedFloat32Array(4.5),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [0.0],
@@ -819,7 +819,7 @@ tracks/15/path = NodePath("dayMusic:volume_db")
 tracks/15/interp = 1
 tracks/15/loop_wrap = true
 tracks/15/keys = {
-"times": PackedFloat32Array(4),
+"times": PackedFloat32Array(4.5),
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [0.0]
@@ -1567,16 +1567,8 @@ device = -1
 keycode = 32
 unicode = 32
 
-[sub_resource type="InputEventJoypadButton" id="InputEventJoypadButton_mde6w"]
-button_index = 2
-pressed = true
-
-[sub_resource type="InputEventKey" id="InputEventKey_2nvwg"]
-device = -1
-keycode = 4194309
-
 [sub_resource type="Shortcut" id="Shortcut_2jnyp"]
-events = [SubResource("InputEventKey_ybyye"), SubResource("InputEventJoypadButton_mde6w"), SubResource("InputEventKey_2nvwg")]
+events = [SubResource("InputEventKey_ybyye")]
 
 [node name="Main" type="Node2D"]
 process_mode = 1
