@@ -60,7 +60,7 @@ func _load():
 		for j in range(boundY):
 			tiledNodes[i].append(null)
 	$Camera.enabled = true #The camera starts the game inactive.
-	#setup()
+	setup()
 
 func setup():
 	Global.limes = initLimes

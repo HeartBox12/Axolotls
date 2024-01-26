@@ -1746,7 +1746,6 @@ script = ExtResource("2_4tv3b")
 libraries = {
 "": SubResource("AnimationLibrary_6m7n0")
 }
-autoplay = "TheMagmaPsychicCredits"
 
 [node name="Camera" type="Camera2D" parent="."]
 position = Vector2(480, 270)
@@ -1770,26 +1769,25 @@ offset_top = 66.5
 offset_right = 576.005
 offset_bottom = 211.5
 scale = Vector2(0.5, 0.5)
-theme_override_colors/font_color = Color(0.219608, 0.929412, 0.294118, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_constants/shadow_offset_x = 2
-theme_override_constants/shadow_offset_y = 2
-theme_override_constants/shadow_outline_size = 6
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/shadow_outline_size = 0
 theme_override_constants/line_spacing = -19
-theme_override_fonts/font = ExtResource("4_dp6hs")
-theme_override_font_sizes/font_size = 50
-text = "TheMagmaPsychic
--Coding"
+theme_override_fonts/font = ExtResource("7_j4n7e")
+theme_override_font_sizes/font_size = 30
+text = "T"
 
 [node name="MaxCredit" type="Label" parent="Camera/Credits"]
 visible = false
-offset_left = -229.5
+offset_left = 300.0
 offset_top = -124.0
-offset_right = -42.5
-offset_bottom = -83.0
+offset_right = 3806.0
+offset_bottom = 583.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("7_j4n7e")
-theme_override_font_sizes/font_size = 15
+theme_override_font_sizes/font_size = 300
 text = "Max Cheskin/HeartBox1:
 -Coding"
 
@@ -1798,7 +1796,6 @@ visible = false
 position = Vector2(-181.75, 71.75)
 scale = Vector2(0.109863, 0.109863)
 sprite_frames = SubResource("SpriteFrames_80cno")
-frame = 56
 
 [node name="writing" type="AudioStreamPlayer" parent="Camera/Credits/jxnerCredit"]
 stream = ExtResource("10_24o5a")
@@ -1812,6 +1809,7 @@ offset_left = -15.0
 offset_top = -135.0
 offset_right = 122.0
 offset_bottom = -98.0
+rotation = -1.5708
 size_flags_vertical = 6
 text = "Scratchy - Sound"
 label_settings = SubResource("LabelSettings_n2o0s")
