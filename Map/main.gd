@@ -60,7 +60,7 @@ func _load():
 		for j in range(boundY):
 			tiledNodes[i].append(null)
 	$Camera.enabled = true #The camera starts the game inactive.
-	setup()
+	#setup()
 
 func setup():
 	Global.limes = initLimes
@@ -202,7 +202,7 @@ func _on_player_harvested(coords): #Player harvests a plant at coords
 	$UI/Control/counters/LimeCount.text = str(Global.limes)
 
 func play_TMG_credit():
-	$"AnimationPlayer".queue("TheMagmaPsychicCredits")
+	$AnimationPlayer.queue("TheMagmaPsychicCredits")
 
 func _enemy_down(instance):
 	livingEnems -= 1
@@ -292,3 +292,6 @@ func _on_player_reqTurret(coords): #When the player requests a build action.
 	
 	if target == null && Global.limes >= Global.turretPrices[Global.turrPriceInd]: #If there's room...
 		setTurret.emit()
+
+func _on_replay_button_pressed():
+	$AnimationPlayer.play("TheMagmaPsychicCredits")

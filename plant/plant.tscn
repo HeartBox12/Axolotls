@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=3 uid="uid://x18enyc2dnnf"]
+[gd_scene load_steps=60 format=3 uid="uid://x18enyc2dnnf"]
 
 [ext_resource type="Script" path="res://plant/plant.gd" id="1_o4dp6"]
 [ext_resource type="Texture2D" uid="uid://1itovynffnvi" path="res://Assets/plantmaturedead.png" id="2_nyetf"]
@@ -10,6 +10,8 @@
 [ext_resource type="Texture2D" uid="uid://cfepmqlvoee0y" path="res://Assets/plantunripedead.png" id="4_bsnj0"]
 [ext_resource type="Texture2D" uid="uid://bf3ag6ailcl2a" path="res://Assets/plantskull.png" id="9_0ofk4"]
 [ext_resource type="Texture2D" uid="uid://opmagl02xtlv" path="res://Assets/turr_spawn_animation.png" id="10_kvvwo"]
+[ext_resource type="AudioStream" uid="uid://bawvtv76lb3a2" path="res://Sounds/plant_hurt_2.wav" id="11_ihuko"]
+[ext_resource type="AudioStream" uid="uid://c5nr6oqfg8vf2" path="res://Sounds/plant_hurt_5.wav" id="12_8n356"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k2ya0"]
 size = Vector2(32, 32)
@@ -412,10 +414,12 @@ animations = [{
 "speed": 20.0
 }]
 
-[node name="plant" type="Area2D" groups=["plants", "targets"]]
+[node name="plant" type="Area2D" node_paths=PackedStringArray("plantHurt1", "plantHurt2") groups=["plants", "targets"]]
 collision_layer = 32
 collision_mask = 4
 script = ExtResource("1_o4dp6")
+plantHurt1 = NodePath("planthurt1")
+plantHurt2 = NodePath("planthurt2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_k2ya0")
@@ -439,6 +443,12 @@ texture = ExtResource("9_0ofk4")
 sprite_frames = SubResource("SpriteFrames_y60tb")
 frame = 6
 frame_progress = 1.0
+
+[node name="planthurt1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_ihuko")
+
+[node name="planthurt2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_8n356")
 
 [connection signal="animation_finished" from="sprite" to="." method="_on_sprite_animation_finished"]
 [connection signal="animation_finished" from="poof" to="." method="_on_poof_over"]

@@ -6,6 +6,7 @@ var instance:Node = null
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	get_tree().paused = true
+	$nightMusic.play()
 
 func _on_start_pressed():
 	instance = mainScene.instantiate()
@@ -34,3 +35,7 @@ func _on_animation_finished(anim_name):
 
 func _on_tutorial_finished():
 	$AnimationPlayer.play("finish")
+
+
+func _on_night_music_finished():
+	$nightMusic.play()

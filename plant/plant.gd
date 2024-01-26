@@ -1,7 +1,11 @@
 extends Area2D
 
 @export var health:float = 5
+@export var plantHurt1:Node
+@export var plantHurt2:Node
 var profit = 0 #The current number of limes
+var timesHit:int = 5
+var hurting:float = 0
 
 signal destroyed
 signal picked
@@ -37,7 +41,11 @@ func ripen():
 	elif profit == 3: #The plant is mature, and will die
 		health = 0
 
-func _process(_delta):
+func _process(delta):
+	if health < timesHit:
+		timesHit -= 1
+		Global.playSound([plantHurt1, plantHurt2])
+		hurting = 0.2
 	if health <= 0:
 		$AnimationPlayer.play("death")
 		match profit:
@@ -47,6 +55,11 @@ func _process(_delta):
 				$sprite.animation = "dead_ripe"
 			3:
 				$sprite.animation = "dead_mature"
+	if hurting > 0:
+		$sprite.modulate = Color("f99")
+		hurting -= delta
+	else:
+		$sprite.modulate = Color("fff")
 
 func _on_sprite_animation_finished():
 	if $sprite.animation == "ripen":
