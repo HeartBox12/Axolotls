@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://drpk4li4eis1t"]
+[gd_scene load_steps=25 format=3 uid="uid://drpk4li4eis1t"]
 
 [ext_resource type="Script" path="res://manager/manager.gd" id="1_mywec"]
 [ext_resource type="FontFile" uid="uid://c4hliela7vl0q" path="res://Fonts/WorkSans-Bold.ttf" id="2_lirkw"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://b4yyg7hesckxb" path="res://Assets/start_down.png" id="4_w86bi"]
 [ext_resource type="Texture2D" uid="uid://bfta875dujrv2" path="res://Assets/tut_up.png" id="5_4ddpg"]
 [ext_resource type="Texture2D" uid="uid://dol0u15scmhia" path="res://Assets/tut_down.png" id="6_f3kd1"]
+[ext_resource type="Texture2D" uid="uid://ddx8qshfhg7ow" path="res://Assets/title.png" id="7_pd6xk"]
 
 [sub_resource type="Animation" id="Animation_wjwfx"]
 resource_name = "finish"
@@ -43,7 +44,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(2, 2),
 "update": 0,
-"values": [Vector2(416, -302), Vector2(416, 238)]
+"values": [Vector2(240, -90), Vector2(240, 450)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -67,7 +68,7 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(2, 2),
 "update": 0,
-"values": [Vector2(416, -238), Vector2(416, 302)]
+"values": [Vector2(592, -90), Vector2(592, 450)]
 }
 
 [sub_resource type="Animation" id="Animation_emfsh"]
@@ -106,7 +107,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(2, 1),
 "update": 0,
-"values": [Vector2(416, 238), Vector2(416, -302)]
+"values": [Vector2(240, 450), Vector2(240, -90)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -130,7 +131,7 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(2, 1),
 "update": 0,
-"values": [Vector2(416, 302), Vector2(416, -238)]
+"values": [Vector2(592, 450), Vector2(592, -90)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_dr384"]
@@ -215,10 +216,10 @@ color = Color(0, 0, 0, 1)
 [node name="Start" type="Button" parent="Control"]
 top_level = true
 layout_mode = 0
-offset_left = 416.0
-offset_top = 238.0
-offset_right = 544.0
-offset_bottom = 302.0
+offset_left = 240.0
+offset_top = 450.0
+offset_right = 368.0
+offset_bottom = 514.0
 theme_override_constants/outline_size = 0
 theme_override_fonts/font = ExtResource("2_lirkw")
 theme_override_styles/normal = SubResource("StyleBoxTexture_5v4mh")
@@ -230,16 +231,27 @@ shortcut = SubResource("Shortcut_uufmi")
 [node name="Tutorial" type="Button" parent="Control"]
 top_level = true
 layout_mode = 0
-offset_left = 416.0
-offset_top = 302.0
-offset_right = 544.0
-offset_bottom = 366.0
+offset_left = 592.0
+offset_top = 450.0
+offset_right = 720.0
+offset_bottom = 514.0
 theme_override_fonts/font = ExtResource("2_lirkw")
 theme_override_styles/normal = SubResource("StyleBoxTexture_a26os")
 theme_override_styles/hover = SubResource("StyleBoxTexture_k3t37")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_2q7af")
 theme_override_styles/focus = SubResource("StyleBoxTexture_ilqor")
 shortcut = SubResource("Shortcut_08v7a")
+
+[node name="TextureRect" type="TextureRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -300.0
+offset_right = 300.0
+offset_bottom = 419.0
+grow_horizontal = 2
+texture = ExtResource("7_pd6xk")
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_finished"]
 [connection signal="pressed" from="Control/Start" to="." method="_on_start_pressed"]
