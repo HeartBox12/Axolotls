@@ -668,11 +668,13 @@ bbcode_enabled = true
 text = "The same button (Q/N/Z) is used to [color=#FFAA00]harvest[/color] a plant."
 
 [node name="buildPrompt" type="RichTextLabel" parent="Control/text"]
+visible = false
+self_modulate = Color(1, 1, 1, 0)
 layout_mode = 0
 offset_left = 490.0
-offset_top = 286.0
+offset_top = 236.0
 offset_right = 1056.0
-offset_bottom = 319.0
+offset_bottom = 269.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 2
 bbcode_enabled = true
@@ -681,13 +683,14 @@ text = "<- Create an [color=#FFAA00]Installation[/color] on this tile."
 [node name="Info" type="RichTextLabel" parent="Control/text"]
 visible = false
 layout_mode = 0
-offset_top = 426.0
+offset_top = 326.0
 offset_right = 960.0
-offset_bottom = 643.999
+offset_bottom = 543.999
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 2
 bbcode_enabled = true
-text = "[center][color=#00FF00]Limes[/color] can be [color=#FFAA00]stationed[/color] with E/X/M.The amount of limes needed for each [color=FFAA00]Installation[/color] increases as you place more of them."
+text = "[center][color=#00FF00]Lime Plants[/color] will ripen after one day. Then, they can be [color=#FFAA00]Harvested[/color] for one [color=#00FF00]lime[/color].
+They will [color=#FFAA00]Mature[/color] after another day, and will then be worth three."
 
 [node name="Survive" type="RichTextLabel" parent="Control/text"]
 visible = false
@@ -727,7 +730,8 @@ offset_bottom = 40.0
 theme_override_fonts/normal_font = ExtResource("2_y1rl5")
 theme_override_font_sizes/normal_font_size = 20
 bbcode_enabled = true
-text = "32"
+text = "0
+"
 
 [node name="Highlight" type="ReferenceRect" parent="Control/counters/LimeCount"]
 visible = false
@@ -751,7 +755,8 @@ offset_bottom = 80.0
 theme_override_fonts/normal_font = ExtResource("2_y1rl5")
 theme_override_font_sizes/normal_font_size = 20
 bbcode_enabled = true
-text = "32"
+text = "1
+"
 
 [node name="Highlight" type="ReferenceRect" parent="Control/counters/SeedCount"]
 visible = false
@@ -774,7 +779,7 @@ offset_bottom = 120.0
 theme_override_fonts/normal_font = ExtResource("2_y1rl5")
 theme_override_font_sizes/normal_font_size = 20
 bbcode_enabled = true
-text = "32"
+text = "1"
 
 [node name="Highlight" type="ReferenceRect" parent="Control/counters/TurretCost"]
 visible = false
