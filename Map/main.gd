@@ -224,7 +224,7 @@ func nightOver():
 		$AnimationPlayer.get_animation("endOfNight").track_set_key_value(6, 2, Vector2(center, 430))
 		$UI/Control/DayCount.text = "[center]The stars have alimed.
 Fulfull your zestiny.[/center]" #Note: might make this value-setting part of anim
-		modulate = Color("ffffff")
+		modulate = Color("ffffff") #just to be sure.
 		$AnimationPlayer.queue("endOfNight")
 	else: #This is not the last day
 		if lastDay - day > 1:
@@ -238,7 +238,7 @@ Fulfull your zestiny.[/center]" #Note: might make this value-setting part of ani
 		$UI/Control/counters/LimeCount.text = str(Global.limes)
 		$UI/Control/counters/SeedCount.text = str(Global.seeds)
 	
-		match day:
+		match day: #Custom newspapers!
 			0:
 				$UI/Control/newspaper.texture = article1
 			1:
@@ -252,7 +252,7 @@ Fulfull your zestiny.[/center]" #Note: might make this value-setting part of ani
 		
 		$AnimationPlayer.queue("endOfNight") #This is 
 
-func zoomIn():
+func zoomIn(): #Called by anim
 	$Camera.set_limit(SIDE_TOP, 0)
 	$AnimationPlayer.get_animation("Zoom").track_set_key_value(1, 0, Vector2(480, 270)) #sets beginning position keyframe to center of screen
 	$AnimationPlayer.get_animation("Zoom").track_set_key_value(1, 1, $Player.position) #sets end position keyframe to player position
@@ -261,7 +261,7 @@ func zoomIn():
 	$AnimationPlayer.queue("Zoom")
 	charZoom = true
 
-func zoomOut():
+func zoomOut():#called by anim
 	$Camera.set_limit(SIDE_TOP, -540)
 	$AnimationPlayer.get_animation("Zoom").track_set_key_value(1, 0, $Camera.position) #sets beginning position keyframe to player position
 	$AnimationPlayer.get_animation("Zoom").track_set_key_value(1, 1, Vector2(480, 270)) #sets end position keyframe to center of screen
@@ -293,5 +293,5 @@ func _on_player_reqTurret(coords): #When the player requests a build action.
 	if target == null && Global.limes >= Global.turretPrices[Global.turrPriceInd]: #If there's room...
 		setTurret.emit()
 
-func _on_replay_button_pressed():
+func _on_replay_button_pressed(): #Start the credits over
 	$AnimationPlayer.play("TheMagmaPsychicCredits")

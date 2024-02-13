@@ -1,21 +1,21 @@
 extends Node2D
 
-signal coordValid
-signal tutSetup
-signal finished
+signal coordValid #Sent with bool indicating emptiness of player-selected tile
+signal tutSetup #Gets the player into the idle state
+signal finished #Return to main menu
 
-signal setPlant
-signal setTurret
-signal setHarvest
+signal setPlant #Puts the player into the plant state
+signal setTurret #Puts the player into the turret state
+signal setHarvest #Puts the player into the harvest state
 
 @export var plant:PackedScene
 @export var turret:PackedScene
 @export var enemy:PackedScene
-@export var initSeeds:int
-@export var initLimes:int
+@export var initSeeds:int #How many seeds the player starts with
+@export var initLimes:int #How many limes the player starts with
 
-@export var plantSpot:Vector2i
-@export var turrSpot:Vector2i
+@export var plantSpot:Vector2i #Where the player is to put a plant
+@export var turrSpot:Vector2i #Where the player is to put a turret
 
 var playerPos #Player position in tilemap coords.
 var selPos #The tile currently selected by the player
@@ -77,7 +77,7 @@ func _on_player_coord_select(coords):
 #		$indicator.visible = false
 		coordValid.emit(false)
 
-func _on_player_reqPlant(coords):
+func _on_player_reqPlant(coords): #When the player wants to harvest
 	if phase == 0 && coords == plantSpot:
 		setPlant.emit()
 	if phase == 2 && coords == plantSpot:
@@ -104,7 +104,7 @@ func _on_player_harvested(_coords): #Player harvests a plant at coords
 	$Control/counters/LimeCount.text = str(Global.limes)
 	phase = 3
 
-func _start_day():
+func _start_day(): #Called by animation
 	Global.Daytime.emit()
 
 func _plant_down():
@@ -114,17 +114,14 @@ func _on_player_reqTurret(coords):
 	if phase == 3 && coords == turrSpot:
 		setTurret.emit()
 
-func _on_player_turreted(_coords):
-	turretInstance = turret.instantiate()
+func _on_player_turreted(_coords): #Player is done building
+	turretInstance = turret.instantiate() #Create turret
 	add_child(turretInstance)
 	turretInstance.position = $tiles.map_to_local(turrSpot)
 	
-	Global.seeds -= 1
-	$Control/counters/SeedCount.text = str(Global.limes)
-	
 	phase = 4
 
-func spawnemy():
+func spawnemy(): #For phase 4
 	
 	enemyInstance = enemy.instantiate()
 	enemyInstance.position = $enemSpawn.position
